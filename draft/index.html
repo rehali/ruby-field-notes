@@ -200,85 +200,9 @@
         </div>
         <div class="hx:mt-16"></div>
         <div class="hx:mt-16"></div>
-        <script>
-  function getGiscusTheme() {
-    const giscusTheme = '';
-    if (giscusTheme === 'light' || giscusTheme === 'dark') {
-      return giscusTheme;
-    }
+        
+  
 
-    const hugoTheme = localStorage.getItem("color-theme");
-    if (hugoTheme === 'light' || hugoTheme === 'dark') {
-      return hugoTheme;
-    }
-
-    if (hugoTheme === 'system') {
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-
-    const defaultTheme = '';
-    if (defaultTheme === 'light' || defaultTheme === 'dark') {
-      return defaultTheme;
-    }
-
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  }
-
-  function setGiscusTheme() {
-    const iframe = document.querySelector('iframe.giscus-frame');
-    if (!iframe) return;
-
-    const msg = {
-      giscus: {
-        setConfig: {
-          theme: getGiscusTheme(),
-        },
-      },
-    }
-
-    iframe.contentWindow.postMessage(msg, 'https://giscus.app');
-  }
-
-  document.addEventListener('DOMContentLoaded', function () {
-    const giscusAttributes = {
-      "src": "https://giscus.app/client.js",
-      "data-repo": "rehali\/ruby-field-notes",
-      "data-repo-id": "R_kgDOR-q3Ww",
-      "data-category": "General",
-      "data-category-id": "DIC_kwDOR-q3W84C6gUP",
-      "data-mapping": "pathname",
-      "data-strict": "0",
-      "data-reactions-enabled": "1",
-      "data-emit-metadata": "0",
-      "data-input-position": "top",
-      "data-theme": getGiscusTheme(),
-      "data-lang": "en",
-      "crossorigin": "anonymous",
-      "async": "",
-    };
-
-    
-    const giscusScript = document.createElement("script");
-    Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
-    
-    document.getElementById('giscus-hextra-bb112b9f807c37c1752e5da6a1652a29').appendChild(giscusScript);
-
-    
-    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", setGiscusTheme);
-
-    
-    const themeToggleOptions = document.querySelectorAll(".hextra-theme-toggle-options [data-item]");
-    if (themeToggleOptions) {
-      themeToggleOptions.forEach(toggle => {
-        toggle.addEventListener('click', () => {
-          setTimeout(setGiscusTheme, 0);
-        });
-      });
-    }
-  });
-</script>
-
-<div id="giscus-hextra-bb112b9f807c37c1752e5da6a1652a29"></div>
       </main>
     </article>
   </div>
