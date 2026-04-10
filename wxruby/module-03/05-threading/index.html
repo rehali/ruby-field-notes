@@ -34,7 +34,7 @@ The solution is to move slow work off the main thread. This lesson explains why 
   <meta itemprop="name" content="Ruby Field Notes">
   <meta itemprop="description" content="Threading: keeping the UI responsiveAny slow operation running on the main thread — a large file read, a network request, image processing, a long calculation — blocks wxRuby3’s event loop for its entire duration. The window stops responding. Buttons don’t click. The window can’t be moved or resized. On macOS the spinning beachball appears. Users assume the app has crashed.
 The solution is to move slow work off the main thread. This lesson explains why that’s harder than it sounds in MRI Ruby, shows the correct approach, and gives you several working patterns to choose from.">
-  <meta itemprop="wordCount" content="2404">
+  <meta itemprop="wordCount" content="2421">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
   <meta name="twitter:description" content="Threading: keeping the UI responsiveAny slow operation running on the main thread — a large file read, a network request, image processing, a long calculation — blocks wxRuby3’s event loop for its entire duration. The window stops responding. Buttons don’t click. The window can’t be moved or resized. On macOS the spinning beachball appears. Users assume the app has crashed.
@@ -663,6 +663,8 @@ The solution is to move slow work off the main thread. This lesson explains why 
   <p><strong>JRuby and TruffleRuby</strong> have true parallel threads without a GIL. If you use either of these runtimes, background threads are scheduled by the JVM&rsquo;s thread scheduler and the event loop does not starve them. The patterns in this lesson still work, but the timer fix is not strictly necessary.</p>
 
 </blockquote>
+<p>We&rsquo;ll be building a simple app which has a long running process (sleep) on a background thread.</p>
+<p><img src="/wxruby/module-03/05-threading/thread.png" alt="thread.png"  loading="lazy" /></p>
 <h2>The fix: give threads time<span class="hx:absolute hx:-mt-20" id="the-fix-give-threads-time"></span>
     <a href="#the-fix-give-threads-time" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>The solution is a global timer that fires every 25ms and calls <code>Thread.pass</code> — explicitly telling the Ruby scheduler to switch to another thread:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">

@@ -744,6 +744,7 @@
         
         
         &lt;h1&gt;Rich text&lt;/h1&gt;&lt;p&gt;&lt;code&gt;Wx::RTC::RichTextCtrl&lt;/code&gt; is a powerful formatted text editor. Unlike &lt;code&gt;Wx::TextCtrl&lt;/code&gt;, it supports inline bold, italic, font sizes, colours, and paragraph alignment — all within a single editable widget. It is suitable for any application that needs to display or produce styled text: documentation tools, note-taking apps, report editors, and markdown previewers.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.rehali.com/wxruby/module-04/03-rich-text/rich_text.png&#34; alt=&#34;rich_text.png&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
 &lt;h2&gt;Creating a RichTextCtrl&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;creating-a-richtextctrl&#34;&gt;&lt;/span&gt;
     &lt;a href=&#34;#creating-a-richtextctrl&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The widget lives in the &lt;code&gt;Wx::RTC&lt;/code&gt; namespace:&lt;/p&gt;
 &lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
@@ -1173,7 +1174,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;See &lt;code&gt;rich_text_demo.rb&lt;/code&gt; for the complete demonstration including a simple toolbar with Bold, Italic, and font size controls.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;rich_text_demo.rb&#34;&gt;Download rich_text_demo.rb&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;rich_text_demo.zip&#34;&gt;Download rich_text_demo&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;What to take forward&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;what-to-take-forward&#34;&gt;&lt;/span&gt;
     &lt;a href=&#34;#what-to-take-forward&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;Wx::RTC::RichTextCtrl&lt;/code&gt; — the namespace and class name&lt;/li&gt;
@@ -1199,6 +1200,7 @@
         
         
         &lt;h1&gt;HtmlWindow&lt;/h1&gt;&lt;p&gt;&lt;code&gt;Wx::HTML::HtmlWindow&lt;/code&gt; is a lightweight HTML renderer built into wxRuby3. It handles a useful subset of HTML — headings, paragraphs, lists, tables, inline formatting, images, links, and horizontal rules — without requiring a full browser engine. It is the right tool when you need to display formatted content that you control and know will be straightforward HTML.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.rehali.com/wxruby/module-04/04-html-window/html_window.png&#34; alt=&#34;html_window.png&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Note the namespace: it is &lt;code&gt;Wx::HTML&lt;/code&gt; (all caps), not &lt;code&gt;Wx::Html&lt;/code&gt;.&lt;/p&gt;
 &lt;h2&gt;When to use HtmlWindow&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;when-to-use-htmlwindow&#34;&gt;&lt;/span&gt;
     &lt;a href=&#34;#when-to-use-htmlwindow&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Use &lt;code&gt;HtmlWindow&lt;/code&gt; when:&lt;/p&gt;
@@ -1419,7 +1421,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;See &lt;code&gt;html_window_demo.rb&lt;/code&gt; for the complete demonstration including a page selector and link click handling.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;html_window_demo.rb&#34;&gt;Download html_window_demo.rb&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;html_demo.rb&#34;&gt;Download html_demo.rb&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;What to take forward&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;what-to-take-forward&#34;&gt;&lt;/span&gt;
     &lt;a href=&#34;#what-to-take-forward&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;Namespace is &lt;code&gt;Wx::HTML&lt;/code&gt; (all caps) not &lt;code&gt;Wx::Html&lt;/code&gt;&lt;/li&gt;
@@ -1450,6 +1452,8 @@
 
 &lt;/blockquote&gt;
 &lt;p&gt;Type markdown on the left. The preview on the right updates automatically when you pause. Open and save &lt;code&gt;.md&lt;/code&gt; files. Export the rendered HTML.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.rehali.com/wxruby/module-04/05-markdown-editor/markdown_editor.png&#34; alt=&#34;markdown_editor.png&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;To run the program you&amp;rsquo;ll need to install the &lt;strong&gt;kramdown&lt;/strong&gt; parser (this is one of several available markdown parsers for ruby). Check the Gemfile in the project root to see what&amp;rsquo;s been added.&lt;/p&gt;
 &lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
 
 &lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;

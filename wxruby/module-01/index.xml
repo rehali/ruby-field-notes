@@ -615,7 +615,8 @@
 &lt;/div&gt;
 &lt;p&gt;This opens a GUI window listing all bundled samples by category. Double-click any sample to run it. You will see menus, toolbars, custom drawing, grids, trees, dialogs — the full range of what wxRuby3 can do. We return to the sampler in the next lesson with more guidance on how to read the code.&lt;/p&gt;
 &lt;h2&gt;Your first window&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;your-first-window&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#your-first-window&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Create a file called &lt;code&gt;hello.rb&lt;/code&gt;:&lt;/p&gt;
+    &lt;a href=&#34;#your-first-window&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://www.rehali.com/wxruby/module-01/03-installation/hello.png&#34; alt=&#34;hello.png&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Create a file called &lt;code&gt;hello.rb&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
 
 &lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -672,6 +673,7 @@
 &lt;p&gt;A native, empty window should appear. That is a complete wxRuby3 application — an event loop is running, the window is responding to resize and close events, and the process will exit cleanly when you close the window.&lt;/p&gt;
 &lt;h2&gt;A more structured first app&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;a-more-structured-first-app&#34;&gt;&lt;/span&gt;
     &lt;a href=&#34;#a-more-structured-first-app&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The one-liner above works, but real wxRuby3 apps use a class for the frame. Here is the pattern you will use throughout this series:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.rehali.com/wxruby/module-01/03-installation/hello_frame.png&#34; alt=&#34;hello_frame.png&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
 &lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
 
 &lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -806,6 +808,7 @@ The wxWidgets development libraries are not installed. Return to the platform pr
   &lt;/button&gt;
 &lt;/div&gt;
 &lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.rehali.com/wxruby/module-01/04-the-sampler/sampler.png&#34; alt=&#34;sampler.png&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;This opens a GUI window listing all bundled samples organised by category. You can run any sample by double-clicking it, and copy its source to your working directory with the Copy button.&lt;/p&gt;
 &lt;p&gt;If the &lt;code&gt;wxruby&lt;/code&gt; command is not found, see the troubleshooting section of the previous lesson. You can also run the sampler directly:&lt;/p&gt;
 &lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;

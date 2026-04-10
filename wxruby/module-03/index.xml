@@ -1552,6 +1552,7 @@
         
         &lt;h1&gt;Data-driven widgets&lt;/h1&gt;&lt;p&gt;The widgets in Module 2 dealt with single values — one text field, one checkbox, one slider. Many real applications need to display and manage &lt;em&gt;collections&lt;/em&gt; of data: lists of files, hierarchies of items, tables of records. wxRuby3 provides three powerful widgets for this: &lt;code&gt;Wx::ListCtrl&lt;/code&gt;, &lt;code&gt;Wx::TreeCtrl&lt;/code&gt;, and &lt;code&gt;Wx::Grid&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;This lesson builds a working demo for each, using the multi-file structure from lesson 3.2. Each widget gets its own panel class in its own file. The app runs after every addition.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.rehali.com/wxruby/module-03/03-data-driven-widgets/data_widgets.png&#34; alt=&#34;data_widgets.png&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
 &lt;h2&gt;File structure&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;file-structure&#34;&gt;&lt;/span&gt;
     &lt;a href=&#34;#file-structure&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
 
@@ -3330,6 +3331,8 @@
   &lt;p&gt;&lt;strong&gt;JRuby and TruffleRuby&lt;/strong&gt; have true parallel threads without a GIL. If you use either of these runtimes, background threads are scheduled by the JVM&amp;rsquo;s thread scheduler and the event loop does not starve them. The patterns in this lesson still work, but the timer fix is not strictly necessary.&lt;/p&gt;
 
 &lt;/blockquote&gt;
+&lt;p&gt;We&amp;rsquo;ll be building a simple app which has a long running process (sleep) on a background thread.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.rehali.com/wxruby/module-03/05-threading/thread.png&#34; alt=&#34;thread.png&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
 &lt;h2&gt;The fix: give threads time&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;the-fix-give-threads-time&#34;&gt;&lt;/span&gt;
     &lt;a href=&#34;#the-fix-give-threads-time&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The solution is a global timer that fires every 25ms and calls &lt;code&gt;Thread.pass&lt;/code&gt; — explicitly telling the Ruby scheduler to switch to another thread:&lt;/p&gt;
 &lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;

@@ -1543,6 +1543,7 @@
         
         
         &lt;h1&gt;Project: Markdown editor with WebView&lt;/h1&gt;&lt;p&gt;This project upgrades the Module 4 markdown editor from &lt;code&gt;Wx::HTML::HtmlWindow&lt;/code&gt; to &lt;code&gt;Wx::WEB::WebView&lt;/code&gt;. The model and editor panel are completely unchanged. Only &lt;code&gt;PreviewPanel&lt;/code&gt; is different — and the improvement is immediately visible.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.rehali.com/wxruby/module-05/05-markdown-editor/markdown_editor.png&#34; alt=&#34;markdown_editor.png&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
 &lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
 
 &lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1778,7 +1779,7 @@
 &lt;li&gt;The ready pattern correctly applied&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../04-leaflet-maps/&#34;&gt;Leaflet maps&lt;/a&gt; | Next: &lt;a href=&#34;../../module-06/&#34;&gt;Module 6 — Real-world applications&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../04-leaflet-maps/&#34;&gt;Leaflet maps&lt;/a&gt; | Next: &lt;a href=&#34;../../wrap_up/&#34;&gt;Wrapping up&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>

@@ -35,7 +35,7 @@ By the end you will have a tabbed preferences dialog with OK, Cancel, and Apply 
   <meta itemprop="name" content="Ruby Field Notes">
   <meta itemprop="description" content="A Preferences PanelThis project brings together everything from Module 2 — frames, panels, widgets, sizers, menus, and custom dialogs — into a single finished app. The result is a preferences dialog of the kind that appears in almost every real desktop application.
 By the end you will have a tabbed preferences dialog with OK, Cancel, and Apply buttons, dirty state tracking, and four categories of settings across four tabs.">
-  <meta itemprop="wordCount" content="2111">
+  <meta itemprop="wordCount" content="2262">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
   <meta name="twitter:description" content="A Preferences PanelThis project brings together everything from Module 2 — frames, panels, widgets, sizers, menus, and custom dialogs — into a single finished app. The result is a preferences dialog of the kind that appears in almost every real desktop application.
@@ -702,102 +702,151 @@ By the end you will have a tabbed preferences dialog with OK, Cancel, and Apply 
 <li><strong>Network</strong> — proxy settings, timeout, connection options</li>
 <li><strong>Advanced</strong> — debug logging, cache size, reset button</li>
 </ul>
-<p>The main frame is minimal — a text area showing the current preferences, and a Preferences menu item to open the dialog.</p>
+<p>The main frame is minimal — a text area showing the current preferences, and a Preferences menu item and button to open the dialog.</p>
 <h2>Step 1 — The main frame<span class="hx:absolute hx:-mt-20" id="step-1--the-main-frame"></span>
     <a href="#step-1--the-main-frame" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Create <code>preferences_app.rb</code>:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span><span class="lnt">60
-</span><span class="lnt">61
-</span><span class="lnt">62
-</span><span class="lnt">63
-</span><span class="lnt">64
-</span><span class="lnt">65
-</span><span class="lnt">66
-</span><span class="lnt">67
-</span><span class="lnt">68
-</span><span class="lnt">69
-</span><span class="lnt">70
-</span><span class="lnt">71
-</span><span class="lnt">72
-</span><span class="lnt">73
-</span><span class="lnt">74
-</span><span class="lnt">75
-</span><span class="lnt">76
-</span><span class="lnt">77
-</span><span class="lnt">78
-</span><span class="lnt">79
-</span><span class="lnt">80
-</span><span class="lnt">81
-</span><span class="lnt">82
-</span><span class="lnt">83
-</span><span class="lnt">84
-</span><span class="lnt">85
-</span><span class="lnt">86
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="nb">require</span> <span class="s1">&#39;wx&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">PreferencesDialog</span> <span class="o">&lt;</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Dialog</span>
+</span></span><span class="line"><span class="cl">  <span class="kp">attr_reader</span> <span class="ss">:prefs</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">prefs</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">super</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="ss">title</span><span class="p">:</span> <span class="s1">&#39;Preferences&#39;</span><span class="p">,</span> <span class="ss">style</span><span class="p">:</span> <span class="no">Wx</span><span class="o">::</span><span class="no">DEFAULT_DIALOG_STYLE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@prefs</span> <span class="o">=</span> <span class="n">prefs</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">panel</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Panel</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">label</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">StaticText</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Preferences Dialog Placeholder&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ok_btn</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Button</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">panel</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ID_OK</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Close&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ok_btn</span><span class="o">.</span><span class="n">set_default</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">sizer</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">VBoxSizer</span><span class="o">.</span><span class="n">new</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sizer</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">EXPAND</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALL</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sizer</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ok_btn</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALIGN_RIGHT</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">RIGHT</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">BOTTOM</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">panel</span><span class="o">.</span><span class="n">set_sizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">fit</span>
+</span></span><span class="line"><span class="cl">    <span class="n">centre</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">PreferencesFrame</span> <span class="o">&lt;</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Frame</span>
 </span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">initialize</span>
@@ -817,24 +866,24 @@ By the end you will have a tabbed preferences dialog with OK, Cancel, and Apply 
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">default_prefs</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="ss">username</span><span class="p">:</span>       <span class="s1">&#39;user&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="ss">auto_save</span><span class="p">:</span>      <span class="kp">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="ss">username</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="ss">auto_save</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">      <span class="ss">auto_save_mins</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">      <span class="ss">start_maximised</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="ss">theme</span><span class="p">:</span>          <span class="s1">&#39;System&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="ss">font_name</span><span class="p">:</span>      <span class="s1">&#39;System Default&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="ss">density</span><span class="p">:</span>        <span class="s1">&#39;Normal&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="ss">use_proxy</span><span class="p">:</span>      <span class="kp">false</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="ss">proxy_host</span><span class="p">:</span>     <span class="s1">&#39;&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="ss">proxy_port</span><span class="p">:</span>     <span class="s1">&#39;8080&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="ss">timeout</span><span class="p">:</span>        <span class="mi">30</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="ss">debug_logging</span><span class="p">:</span>  <span class="kp">false</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="ss">cache_size</span><span class="p">:</span>     <span class="mi">256</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="ss">theme</span><span class="p">:</span> <span class="s1">&#39;System&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="ss">font_name</span><span class="p">:</span> <span class="s1">&#39;System Default&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="ss">density</span><span class="p">:</span> <span class="s1">&#39;Normal&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="ss">use_proxy</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="ss">proxy_host</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="ss">proxy_port</span><span class="p">:</span> <span class="s1">&#39;8080&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="ss">timeout</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="ss">debug_logging</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="ss">cache_size</span><span class="p">:</span> <span class="mi">256</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="k">end</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">build_menu</span>
-</span></span><span class="line"><span class="cl">    <span class="n">menu_bar</span>  <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">MenuBar</span><span class="o">.</span><span class="n">new</span>
+</span></span><span class="line"><span class="cl">    <span class="n">menu_bar</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">MenuBar</span><span class="o">.</span><span class="n">new</span>
 </span></span><span class="line"><span class="cl">    <span class="n">file_menu</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Menu</span><span class="o">.</span><span class="n">new</span>
 </span></span><span class="line"><span class="cl">    <span class="vi">@prefs_id</span> <span class="o">=</span> <span class="n">file_menu</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="no">Wx</span><span class="o">::</span><span class="no">ID_ANY</span><span class="p">,</span> <span class="s2">&#34;&amp;Preferences...</span><span class="se">\t</span><span class="s2">Ctrl+,&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">id</span>
 </span></span><span class="line"><span class="cl">    <span class="n">file_menu</span><span class="o">.</span><span class="n">append_separator</span>
@@ -847,19 +896,24 @@ By the end you will have a tabbed preferences dialog with OK, Cancel, and Apply 
 </span></span><span class="line"><span class="cl">    <span class="vi">@panel</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Panel</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="vi">@prefs_display</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">TextCtrl</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="ss">value</span><span class="p">:</span> <span class="n">prefs_summary</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="ss">style</span><span class="p">:</span> <span class="no">Wx</span><span class="o">::</span><span class="no">TE_MULTILINE</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">TE_READONLY</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                                      <span class="ss">value</span><span class="p">:</span> <span class="n">prefs_summary</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                      <span class="ss">style</span><span class="p">:</span> <span class="no">Wx</span><span class="o">::</span><span class="no">TE_MULTILINE</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">TE_READONLY</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="vi">@preferences_btn</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Button</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Update Preferences&#39;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="n">sizer</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">VBoxSizer</span><span class="o">.</span><span class="n">new</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sizer</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="vi">@preferences_btn</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALL</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">RIGHT</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">sizer</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="no">Wx</span><span class="o">::</span><span class="no">StaticText</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Current preferences:&#39;</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">              <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALL</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">sizer</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="vi">@prefs_display</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">EXPAND</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">LEFT</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">RIGHT</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">BOTTOM</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="vi">@panel</span><span class="o">.</span><span class="n">set_sizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">  <span class="k">end</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">bind_events</span>
-</span></span><span class="line"><span class="cl">    <span class="n">evt_close</span>        <span class="p">{</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span> <span class="n">on_close</span><span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="n">evt_menu</span><span class="p">(</span><span class="vi">@prefs_id</span><span class="p">)</span>  <span class="p">{</span> <span class="n">on_preferences</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">evt_close</span> <span class="p">{</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span> <span class="n">on_close</span><span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">evt_menu</span><span class="p">(</span><span class="vi">@prefs_id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_preferences</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">evt_button</span><span class="p">(</span><span class="vi">@preferences_btn</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_preferences</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="n">evt_tool</span><span class="p">(</span><span class="no">Wx</span><span class="o">::</span><span class="no">ID_EXIT</span><span class="p">)</span> <span class="p">{</span> <span class="n">close</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="n">evt_menu</span><span class="p">(</span><span class="no">Wx</span><span class="o">::</span><span class="no">ID_EXIT</span><span class="p">)</span> <span class="p">{</span> <span class="n">close</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="k">end</span>
@@ -898,92 +952,112 @@ By the end you will have a tabbed preferences dialog with OK, Cancel, and Apply 
 </div>
 <p>We pass <code>@prefs.dup</code> to the dialog so changes inside the dialog do not affect the main app until the user clicks OK. This is the standard pattern for preferences dialogs — the dialog works on a copy, and only on OK do we accept the result.</p>
 <h2>Step 2 — The dialog skeleton<span class="hx:absolute hx:-mt-20" id="step-2--the-dialog-skeleton"></span>
-    <a href="#step-2--the-dialog-skeleton" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Add the <code>PreferencesDialog</code> class above <code>PreferencesFrame</code> in the file:</p>
+    <a href="#step-2--the-dialog-skeleton" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Replace the <code>PreferencesDialog</code> with our base template for building out the preferences:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span><span class="lnt">60
-</span><span class="lnt">61
-</span><span class="lnt">62
-</span><span class="lnt">63
-</span><span class="lnt">64
-</span><span class="lnt">65
-</span><span class="lnt">66
-</span><span class="lnt">67
-</span><span class="lnt">68
-</span><span class="lnt">69
-</span><span class="lnt">70
-</span><span class="lnt">71
-</span><span class="lnt">72
-</span><span class="lnt">73
-</span><span class="lnt">74
-</span><span class="lnt">75
-</span><span class="lnt">76
-</span><span class="lnt">77
-</span><span class="lnt">78
-</span><span class="lnt">79
-</span><span class="lnt">80
-</span><span class="lnt">81
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">PreferencesDialog</span> <span class="o">&lt;</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Dialog</span>
@@ -1052,6 +1126,26 @@ By the end you will have a tabbed preferences dialog with OK, Cancel, and Apply 
 </span></span><span class="line"><span class="cl">    <span class="n">mark_clean</span>
 </span></span><span class="line"><span class="cl">  <span class="k">end</span>
 </span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">build_general_page</span>
+</span></span><span class="line"><span class="cl">    <span class="n">page</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Panel</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@notebook</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@notebook</span><span class="o">.</span><span class="n">add_page</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="s1">&#39;General&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">build_appearance_page</span>
+</span></span><span class="line"><span class="cl">    <span class="n">page</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Panel</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@notebook</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@notebook</span><span class="o">.</span><span class="n">add_page</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="s1">&#39;Appearance&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">build_network_page</span>
+</span></span><span class="line"><span class="cl">    <span class="n">page</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Panel</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@notebook</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@notebook</span><span class="o">.</span><span class="n">add_page</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="s1">&#39;Network&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">build_advanced_page</span>
+</span></span><span class="line"><span class="cl">    <span class="n">page</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Panel</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@notebook</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@notebook</span><span class="o">.</span><span class="n">add_page</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="s1">&#39;advanced&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">apply_prefs</span>
 </span></span><span class="line"><span class="cl">    <span class="c1"># Collect values from all widgets into @prefs</span>
 </span></span><span class="line"><span class="cl">    <span class="c1"># Populated in the next steps</span>
@@ -1080,7 +1174,7 @@ By the end you will have a tabbed preferences dialog with OK, Cancel, and Apply 
   </button>
 </div>
 </div>
-<p>Run it — the frame opens, the Preferences menu item is there, but clicking it will crash because the page-building methods don&rsquo;t exist yet. We add them one at a time.</p>
+<p>Run it — clicking on the &ldquo;Update Preferences now shows the notebook tabs with empty preference panels. We&rsquo;ll now add them one at a time.</p>
 <p>Notice <code>end_modal</code> rather than <code>close</code> — dialogs use <code>end_modal(return_value)</code> to dismiss themselves and set the value that <code>show_modal</code> returns to the caller.</p>
 <h2>Step 3 — General tab<span class="hx:absolute hx:-mt-20" id="step-3--general-tab"></span>
     <a href="#step-3--general-tab" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Add the first notebook page inside <code>PreferencesDialog</code>:</p>
