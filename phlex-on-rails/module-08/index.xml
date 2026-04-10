@@ -1,13 +1,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ruby Field Notes – </title>
-    <link>http://localhost:1313/phlex-on-rails/module-08/</link>
+    <link>https://www.rehali.com/phlex-on-rails/module-08/</link>
     <description>Recent content on Ruby Field Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2026 rehali 2 — Tutorial content: CC BY-NC-ND 4.0 · Code examples: MIT</copyright>
     
-	  <atom:link href="http://localhost:1313/phlex-on-rails/module-08/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://www.rehali.com/phlex-on-rails/module-08/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -17,10 +17,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-08/01-stimulus-in-depth/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-08/01-stimulus-in-depth/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-08/01-stimulus-in-depth/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-08/01-stimulus-in-depth/</guid>
       <description>
         
         
@@ -303,10 +303,10 @@ Turbo (Turbo handles this automatically)&lt;/li&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-08/02-fixing-alert/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-08/02-fixing-alert/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-08/02-fixing-alert/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-08/02-fixing-alert/</guid>
       <description>
         
         
@@ -470,10 +470,10 @@ controller owns the behaviour.&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-08/03-modals/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-08/03-modals/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-08/03-modals/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-08/03-modals/</guid>
       <description>
         
         
@@ -813,10 +813,10 @@ the start of the &lt;code&gt;view_template&lt;/code&gt; again and verify that yo
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-08/04-dropdowns/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-08/04-dropdowns/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-08/04-dropdowns/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-08/04-dropdowns/</guid>
       <description>
         
         
@@ -1149,10 +1149,10 @@ because we don&amp;rsquo;t have that path yet.&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-08/05-toast/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-08/05-toast/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-08/05-toast/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-08/05-toast/</guid>
       <description>
         
         
@@ -1543,10 +1543,10 @@ Stream that appends to the container:&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-08/06-accordion-and-tabs/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-08/06-accordion-and-tabs/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-08/06-accordion-and-tabs/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-08/06-accordion-and-tabs/</guid>
       <description>
         
         
@@ -2044,10 +2044,10 @@ Stream that appends to the container:&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-08/07-cross-controller-communication/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-08/07-cross-controller-communication/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-08/07-cross-controller-communication/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-08/07-cross-controller-communication/</guid>
       <description>
         
         
@@ -2476,10 +2476,10 @@ outlet connections — invaluable for debugging outlet setup.&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-08/08-lookbook_previews/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-08/08-lookbook_previews/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-08/08-lookbook_previews/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-08/08-lookbook_previews/</guid>
       <description>
         
         

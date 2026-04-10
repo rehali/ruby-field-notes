@@ -1,13 +1,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ruby Field Notes – </title>
-    <link>http://localhost:1313/wxruby/</link>
+    <link>https://www.rehali.com/wxruby/</link>
     <description>Recent content on Ruby Field Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2026 rehali 2 — Tutorial content: CC BY-NC-ND 4.0 · Code examples: MIT</copyright>
     
-	  <atom:link href="http://localhost:1313/wxruby/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://www.rehali.com/wxruby/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -17,10 +17,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-04/01-drawing-with-device-contexts/</link>
+      <link>https://www.rehali.com/wxruby/module-04/01-drawing-with-device-contexts/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-04/01-drawing-with-device-contexts/</guid>
+      <guid>https://www.rehali.com/wxruby/module-04/01-drawing-with-device-contexts/</guid>
       <description>
         
         
@@ -388,10 +388,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-03/01-event-handling/</link>
+      <link>https://www.rehali.com/wxruby/module-03/01-event-handling/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-03/01-event-handling/</guid>
+      <guid>https://www.rehali.com/wxruby/module-03/01-event-handling/</guid>
       <description>
         
         
@@ -1181,10 +1181,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-02/01-frames-and-panels/</link>
+      <link>https://www.rehali.com/wxruby/module-02/01-frames-and-panels/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-02/01-frames-and-panels/</guid>
+      <guid>https://www.rehali.com/wxruby/module-02/01-frames-and-panels/</guid>
       <description>
         
         
@@ -1567,17 +1567,17 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-05/01-webview-basics/</link>
+      <link>https://www.rehali.com/wxruby/module-05/01-webview-basics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-05/01-webview-basics/</guid>
+      <guid>https://www.rehali.com/wxruby/module-05/01-webview-basics/</guid>
       <description>
         
         
         &lt;h1&gt;WebView basics&lt;/h1&gt;&lt;p&gt;&lt;code&gt;Wx::WEB::WebView&lt;/code&gt; embeds a full browser engine in your desktop app. On macOS and Linux it uses WebKit; on Windows it uses the Edge WebView2 runtime. The result is a widget that can render any modern web page, execute JavaScript, load external resources, and display content indistinguishable from a browser tab.&lt;/p&gt;
 &lt;p&gt;This is categorically different from &lt;code&gt;Wx::HTML::HtmlWindow&lt;/code&gt;. HtmlWindow is a lightweight renderer supporting a useful subset of HTML. WebView is a full browser — everything that works in Chrome or Safari works in a WebView.&lt;/p&gt;
 &lt;h3&gt;Here&amp;rsquo;s our first sample&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;heres-our-first-sample&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#heres-our-first-sample&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/wxruby/module-05/01-webview-basics/webview01.png&#34; alt=&#34;basic webview&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+    &lt;a href=&#34;#heres-our-first-sample&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://www.rehali.com/wxruby/module-05/01-webview-basics/webview01.png&#34; alt=&#34;basic webview&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
 &lt;h2&gt;Creating a WebView&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;creating-a-webview&#34;&gt;&lt;/span&gt;
     &lt;a href=&#34;#creating-a-webview&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The widget lives in the &lt;code&gt;Wx::WEB&lt;/code&gt; namespace:&lt;/p&gt;
 &lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
@@ -1966,10 +1966,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-01/01-the-case-for-desktop/</link>
+      <link>https://www.rehali.com/wxruby/module-01/01-the-case-for-desktop/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-01/01-the-case-for-desktop/</guid>
+      <guid>https://www.rehali.com/wxruby/module-01/01-the-case-for-desktop/</guid>
       <description>
         
         
@@ -2015,10 +2015,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-03/02-application-structure/</link>
+      <link>https://www.rehali.com/wxruby/module-03/02-application-structure/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-03/02-application-structure/</guid>
+      <guid>https://www.rehali.com/wxruby/module-03/02-application-structure/</guid>
       <description>
         
         
@@ -2748,10 +2748,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-02/02-core-widgets/</link>
+      <link>https://www.rehali.com/wxruby/module-02/02-core-widgets/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-02/02-core-widgets/</guid>
+      <guid>https://www.rehali.com/wxruby/module-02/02-core-widgets/</guid>
       <description>
         
         
@@ -3685,10 +3685,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-04/02-images-and-bitmaps/</link>
+      <link>https://www.rehali.com/wxruby/module-04/02-images-and-bitmaps/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-04/02-images-and-bitmaps/</guid>
+      <guid>https://www.rehali.com/wxruby/module-04/02-images-and-bitmaps/</guid>
       <description>
         
         
@@ -4033,15 +4033,15 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-05/02-js-bridge/</link>
+      <link>https://www.rehali.com/wxruby/module-05/02-js-bridge/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-05/02-js-bridge/</guid>
+      <guid>https://www.rehali.com/wxruby/module-05/02-js-bridge/</guid>
       <description>
         
         
         &lt;h1&gt;The JavaScript bridge&lt;/h1&gt;&lt;p&gt;&lt;code&gt;run_script&lt;/code&gt; handles Ruby→JS communication for simple cases. For JS→Ruby you need a bridge — a mechanism for JavaScript to send messages back to your Ruby code. This lesson covers three approaches, progressively more capable, each demonstrated in a separate working app.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/wxruby/module-05/02-js-bridge/bridge.png&#34; alt=&#34;bridge.png&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.rehali.com/wxruby/module-05/02-js-bridge/bridge.png&#34; alt=&#34;bridge.png&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
 &lt;h2&gt;Demo 1 — Navigation interception&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;demo-1--navigation-interception&#34;&gt;&lt;/span&gt;
     &lt;a href=&#34;#demo-1--navigation-interception&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The simplest approach requires no setup at all. JavaScript sets &lt;code&gt;window.location&lt;/code&gt; to a custom URL scheme. Ruby intercepts the navigation in &lt;code&gt;evt_webview_navigating&lt;/code&gt;, cancels it, and handles the message.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;JavaScript:&lt;/strong&gt;&lt;/p&gt;
@@ -4490,10 +4490,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-01/02-the-mental-model/</link>
+      <link>https://www.rehali.com/wxruby/module-01/02-the-mental-model/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-01/02-the-mental-model/</guid>
+      <guid>https://www.rehali.com/wxruby/module-01/02-the-mental-model/</guid>
       <description>
         
         
@@ -4769,10 +4769,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-03/03-data-driven-widgets/</link>
+      <link>https://www.rehali.com/wxruby/module-03/03-data-driven-widgets/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-03/03-data-driven-widgets/</guid>
+      <guid>https://www.rehali.com/wxruby/module-03/03-data-driven-widgets/</guid>
       <description>
         
         
@@ -5614,10 +5614,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-01/03-installation/</link>
+      <link>https://www.rehali.com/wxruby/module-01/03-installation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-01/03-installation/</guid>
+      <guid>https://www.rehali.com/wxruby/module-01/03-installation/</guid>
       <description>
         
         
@@ -6044,10 +6044,10 @@ The wxWidgets development libraries are not installed. Return to the platform pr
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-02/03-layout-with-sizers/</link>
+      <link>https://www.rehali.com/wxruby/module-02/03-layout-with-sizers/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-02/03-layout-with-sizers/</guid>
+      <guid>https://www.rehali.com/wxruby/module-02/03-layout-with-sizers/</guid>
       <description>
         
         
@@ -6818,15 +6818,15 @@ The wxWidgets development libraries are not installed. Return to the platform pr
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-05/03-live-charts/</link>
+      <link>https://www.rehali.com/wxruby/module-05/03-live-charts/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-05/03-live-charts/</guid>
+      <guid>https://www.rehali.com/wxruby/module-05/03-live-charts/</guid>
       <description>
         
         
         &lt;h1&gt;Live data with Chart.js&lt;/h1&gt;&lt;p&gt;This lesson builds a live sensor dashboard — three Chart.js line charts fed by Ruby timers via &lt;code&gt;JsBridge&lt;/code&gt;. It demonstrates the full multi-file pattern applied to a WebView app, with a clean separation between the data model, the WebView panel, and the wx sidebar.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/wxruby/module-05/03-live-charts/charts.png&#34; alt=&#34;charts.png&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.rehali.com/wxruby/module-05/03-live-charts/charts.png&#34; alt=&#34;charts.png&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
 &lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
 
 &lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -7086,10 +7086,10 @@ The wxWidgets development libraries are not installed. Return to the platform pr
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-04/03-rich-text/</link>
+      <link>https://www.rehali.com/wxruby/module-04/03-rich-text/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-04/03-rich-text/</guid>
+      <guid>https://www.rehali.com/wxruby/module-04/03-rich-text/</guid>
       <description>
         
         
@@ -7541,10 +7541,10 @@ The wxWidgets development libraries are not installed. Return to the platform pr
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-01/04-the-sampler/</link>
+      <link>https://www.rehali.com/wxruby/module-01/04-the-sampler/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-01/04-the-sampler/</guid>
+      <guid>https://www.rehali.com/wxruby/module-01/04-the-sampler/</guid>
       <description>
         
         
@@ -7740,10 +7740,10 @@ The wxWidgets development libraries are not installed. Return to the platform pr
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-03/04-file-input-output/</link>
+      <link>https://www.rehali.com/wxruby/module-03/04-file-input-output/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-03/04-file-input-output/</guid>
+      <guid>https://www.rehali.com/wxruby/module-03/04-file-input-output/</guid>
       <description>
         
         
@@ -8665,10 +8665,10 @@ The wxWidgets development libraries are not installed. Return to the platform pr
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-04/04-html-window/</link>
+      <link>https://www.rehali.com/wxruby/module-04/04-html-window/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-04/04-html-window/</guid>
+      <guid>https://www.rehali.com/wxruby/module-04/04-html-window/</guid>
       <description>
         
         
@@ -8910,15 +8910,15 @@ The wxWidgets development libraries are not installed. Return to the platform pr
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-05/04-leaflet-maps/</link>
+      <link>https://www.rehali.com/wxruby/module-05/04-leaflet-maps/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-05/04-leaflet-maps/</guid>
+      <guid>https://www.rehali.com/wxruby/module-05/04-leaflet-maps/</guid>
       <description>
         
         
         &lt;h1&gt;Leaflet maps&lt;/h1&gt;&lt;p&gt;Leaflet.js is a lightweight mapping library that runs beautifully inside a WebView. This lesson builds an interactive map with city navigation and click-to-place markers, demonstrating how map events flow to Ruby and how Ruby controls the map via &lt;code&gt;JsBridge&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/wxruby/module-05/04-leaflet-maps/map01.png&#34; alt=&#34;map01.png&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.rehali.com/wxruby/module-05/04-leaflet-maps/map01.png&#34; alt=&#34;map01.png&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
 &lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
 
 &lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -9304,10 +9304,10 @@ The wxWidgets development libraries are not installed. Return to the platform pr
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-02/04-menus-and-toolbars/</link>
+      <link>https://www.rehali.com/wxruby/module-02/04-menus-and-toolbars/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-02/04-menus-and-toolbars/</guid>
+      <guid>https://www.rehali.com/wxruby/module-02/04-menus-and-toolbars/</guid>
       <description>
         
         
@@ -10299,16 +10299,16 @@ The wxWidgets development libraries are not installed. Return to the platform pr
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-02/05-dialogs/</link>
+      <link>https://www.rehali.com/wxruby/module-02/05-dialogs/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-02/05-dialogs/</guid>
+      <guid>https://www.rehali.com/wxruby/module-02/05-dialogs/</guid>
       <description>
         
         
         &lt;h1&gt;Dialogs&lt;/h1&gt;&lt;p&gt;Dialogs are focused windows that interrupt the main flow to get input from the user or deliver important information. wxRuby3 provides ready-made dialogs for the most common tasks — file picking, colour selection, font selection, text entry, and messages — so you rarely need to build these from scratch.&lt;/p&gt;
 &lt;p&gt;This lesson covers the standard dialogs and then shows how to build your own when none of the built-in ones fit.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/wxruby/module-02/05-dialogs/dialog_panel.png&#34; alt=&#34;dialog_panel.png&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.rehali.com/wxruby/module-02/05-dialogs/dialog_panel.png&#34; alt=&#34;dialog_panel.png&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
 &lt;h2&gt;Start fresh&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;start-fresh&#34;&gt;&lt;/span&gt;
     &lt;a href=&#34;#start-fresh&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Create a new file called &lt;code&gt;dialog_demo.rb&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
@@ -10985,7 +10985,7 @@ The wxWidgets development libraries are not installed. Return to the platform pr
 &lt;h2&gt;Step 7 — Building a custom dialog&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;step-7--building-a-custom-dialog&#34;&gt;&lt;/span&gt;
     &lt;a href=&#34;#step-7--building-a-custom-dialog&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;When none of the standard dialogs fits, subclass &lt;code&gt;Wx::Dialog&lt;/code&gt;. A custom dialog is just a frame with a panel, sizer, and an &lt;code&gt;OK&lt;/code&gt;/&lt;code&gt;Cancel&lt;/code&gt; button pair — the same building blocks you already know.&lt;/p&gt;
 &lt;p&gt;Here is a simple login dialog:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/wxruby/module-02/05-dialogs/dialog_2.png&#34; alt=&#34;dialog_2.png&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.rehali.com/wxruby/module-02/05-dialogs/dialog_2.png&#34; alt=&#34;dialog_2.png&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
 &lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
 
 &lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -11149,10 +11149,10 @@ The wxWidgets development libraries are not installed. Return to the platform pr
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-04/05-markdown-editor/</link>
+      <link>https://www.rehali.com/wxruby/module-04/05-markdown-editor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-04/05-markdown-editor/</guid>
+      <guid>https://www.rehali.com/wxruby/module-04/05-markdown-editor/</guid>
       <description>
         
         
@@ -11343,10 +11343,10 @@ The wxWidgets development libraries are not installed. Return to the platform pr
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-05/05-markdown-editor/</link>
+      <link>https://www.rehali.com/wxruby/module-05/05-markdown-editor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-05/05-markdown-editor/</guid>
+      <guid>https://www.rehali.com/wxruby/module-05/05-markdown-editor/</guid>
       <description>
         
         
@@ -11593,10 +11593,10 @@ The wxWidgets development libraries are not installed. Return to the platform pr
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-03/05-threading/</link>
+      <link>https://www.rehali.com/wxruby/module-03/05-threading/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-03/05-threading/</guid>
+      <guid>https://www.rehali.com/wxruby/module-03/05-threading/</guid>
       <description>
         
         
@@ -12596,16 +12596,16 @@ The wxWidgets development libraries are not installed. Return to the platform pr
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-02/06-preferences-panel/</link>
+      <link>https://www.rehali.com/wxruby/module-02/06-preferences-panel/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-02/06-preferences-panel/</guid>
+      <guid>https://www.rehali.com/wxruby/module-02/06-preferences-panel/</guid>
       <description>
         
         
         &lt;h1&gt;A Preferences Panel&lt;/h1&gt;&lt;p&gt;This project brings together everything from Module 2 — frames, panels, widgets, sizers, menus, and custom dialogs — into a single finished app. The result is a preferences dialog of the kind that appears in almost every real desktop application.&lt;/p&gt;
 &lt;p&gt;By the end you will have a tabbed preferences dialog with OK, Cancel, and Apply buttons, dirty state tracking, and four categories of settings across four tabs.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/wxruby/module-02/06-preferences-panel/preference_panel.png&#34; alt=&#34;Preferences Panel&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.rehali.com/wxruby/module-02/06-preferences-panel/preference_panel.png&#34; alt=&#34;Preferences Panel&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
 &lt;h2&gt;Wx::Notebook&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;wxnotebook&#34;&gt;&lt;/span&gt;
     &lt;a href=&#34;#wxnotebook&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Wx::Notebook&lt;/code&gt; is the tabbed container widget. Each tab is a separate panel added to the notebook — the notebook handles the tab strip and switching between panels automatically.&lt;/p&gt;
 &lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
@@ -13667,10 +13667,10 @@ Wx::App.run { PreferencesFrame.new.show }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&l
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-03/06-a-file-processor/</link>
+      <link>https://www.rehali.com/wxruby/module-03/06-a-file-processor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-03/06-a-file-processor/</guid>
+      <guid>https://www.rehali.com/wxruby/module-03/06-a-file-processor/</guid>
       <description>
         
         

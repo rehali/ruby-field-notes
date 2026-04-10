@@ -1,13 +1,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ruby Field Notes – </title>
-    <link>http://localhost:1313/wxruby/module-04/</link>
+    <link>https://www.rehali.com/wxruby/module-04/</link>
     <description>Recent content on Ruby Field Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2026 rehali 2 — Tutorial content: CC BY-NC-ND 4.0 · Code examples: MIT</copyright>
     
-	  <atom:link href="http://localhost:1313/wxruby/module-04/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://www.rehali.com/wxruby/module-04/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -17,10 +17,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-04/01-drawing-with-device-contexts/</link>
+      <link>https://www.rehali.com/wxruby/module-04/01-drawing-with-device-contexts/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-04/01-drawing-with-device-contexts/</guid>
+      <guid>https://www.rehali.com/wxruby/module-04/01-drawing-with-device-contexts/</guid>
       <description>
         
         
@@ -388,10 +388,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-04/02-images-and-bitmaps/</link>
+      <link>https://www.rehali.com/wxruby/module-04/02-images-and-bitmaps/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-04/02-images-and-bitmaps/</guid>
+      <guid>https://www.rehali.com/wxruby/module-04/02-images-and-bitmaps/</guid>
       <description>
         
         
@@ -736,10 +736,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-04/03-rich-text/</link>
+      <link>https://www.rehali.com/wxruby/module-04/03-rich-text/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-04/03-rich-text/</guid>
+      <guid>https://www.rehali.com/wxruby/module-04/03-rich-text/</guid>
       <description>
         
         
@@ -1191,10 +1191,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-04/04-html-window/</link>
+      <link>https://www.rehali.com/wxruby/module-04/04-html-window/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-04/04-html-window/</guid>
+      <guid>https://www.rehali.com/wxruby/module-04/04-html-window/</guid>
       <description>
         
         
@@ -1436,10 +1436,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-04/05-markdown-editor/</link>
+      <link>https://www.rehali.com/wxruby/module-04/05-markdown-editor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-04/05-markdown-editor/</guid>
+      <guid>https://www.rehali.com/wxruby/module-04/05-markdown-editor/</guid>
       <description>
         
         

@@ -1,13 +1,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ruby Field Notes – </title>
-    <link>http://localhost:1313/wxruby/module-06/</link>
+    <link>https://www.rehali.com/wxruby/module-06/</link>
     <description>Recent content on Ruby Field Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2026 rehali 2 — Tutorial content: CC BY-NC-ND 4.0 · Code examples: MIT</copyright>
     
-	  <atom:link href="http://localhost:1313/wxruby/module-06/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://www.rehali.com/wxruby/module-06/index.xml" rel="self" type="application/rss+xml" />
     
     
       

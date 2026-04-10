@@ -1,13 +1,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ruby Field Notes – </title>
-    <link>http://localhost:1313/phlex-on-rails/module-07/</link>
+    <link>https://www.rehali.com/phlex-on-rails/module-07/</link>
     <description>Recent content on Ruby Field Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2026 rehali 2 — Tutorial content: CC BY-NC-ND 4.0 · Code examples: MIT</copyright>
     
-	  <atom:link href="http://localhost:1313/phlex-on-rails/module-07/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://www.rehali.com/phlex-on-rails/module-07/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -17,10 +17,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-07/01-design-tokens/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-07/01-design-tokens/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-07/01-design-tokens/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-07/01-design-tokens/</guid>
       <description>
         
         
@@ -318,10 +318,10 @@ link, and badge updates&lt;/li&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-07/02-restyling-components/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-07/02-restyling-components/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-07/02-restyling-components/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-07/02-restyling-components/</guid>
       <description>
         
         
@@ -1228,10 +1228,10 @@ but the underlying html should be using our new token styles.&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-07/03-dark-mode/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-07/03-dark-mode/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-07/03-dark-mode/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-07/03-dark-mode/</guid>
       <description>
         
         
@@ -1464,10 +1464,10 @@ manually, with their preference saved to &lt;code&gt;localStorage&lt;/code&gt;.&
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-07/04-theme-switching/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-07/04-theme-switching/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-07/04-theme-switching/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-07/04-theme-switching/</guid>
       <description>
         
         
@@ -1800,10 +1800,10 @@ manually, with their preference saved to &lt;code&gt;localStorage&lt;/code&gt;.&
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-07/07-multi-theme/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-07/07-multi-theme/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-07/07-multi-theme/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-07/07-multi-theme/</guid>
       <description>
         
         

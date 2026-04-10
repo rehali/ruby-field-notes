@@ -1,13 +1,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ruby Field Notes – </title>
-    <link>http://localhost:1313/phlex-on-rails/module-03/</link>
+    <link>https://www.rehali.com/phlex-on-rails/module-03/</link>
     <description>Recent content on Ruby Field Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2026 rehali 2 — Tutorial content: CC BY-NC-ND 4.0 · Code examples: MIT</copyright>
     
-	  <atom:link href="http://localhost:1313/phlex-on-rails/module-03/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://www.rehali.com/phlex-on-rails/module-03/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -17,10 +17,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-03/01-base-component/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-03/01-base-component/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-03/01-base-component/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-03/01-base-component/</guid>
       <description>
         
         
@@ -435,7 +435,7 @@
   &lt;/button&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;Don&amp;rsquo;t forget to download You will need to download the &lt;a href=&#34;http://localhost:1313/downloads/phlex-on-rails/module-03/demo.css&#34;&gt;demo CSS file&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Don&amp;rsquo;t forget to download You will need to download the &lt;a href=&#34;https://www.rehali.com/downloads/phlex-on-rails/module-03/demo.css&#34;&gt;demo CSS file&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Run it:&lt;/p&gt;
 &lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
 
@@ -465,10 +465,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-03/02-kits/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-03/02-kits/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-03/02-kits/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-03/02-kits/</guid>
       <description>
         
         
@@ -717,10 +717,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-03/03-simple-components/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-03/03-simple-components/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-03/03-simple-components/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-03/03-simple-components/</guid>
       <description>
         
         
@@ -1188,10 +1188,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-03/04-simple-yield/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-03/04-simple-yield/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-03/04-simple-yield/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-03/04-simple-yield/</guid>
       <description>
         
         
@@ -1438,10 +1438,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-03/05-named-slots/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-03/05-named-slots/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-03/05-named-slots/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-03/05-named-slots/</guid>
       <description>
         
         
@@ -1929,10 +1929,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-03/06-table-component/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-03/06-table-component/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-03/06-table-component/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-03/06-table-component/</guid>
       <description>
         
         
@@ -2218,17 +2218,17 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/details&gt;
-&lt;p&gt;The completed component library and demo page can be downloaded here: &lt;a href=&#34;http://localhost:1313/downloads/phlex-on-rails/module-03/phlex-sandbox.zip&#34;&gt;phlex-sandbox&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The completed component library and demo page can be downloaded here: &lt;a href=&#34;https://www.rehali.com/downloads/phlex-on-rails/module-03/phlex-sandbox.zip&#34;&gt;phlex-sandbox&lt;/a&gt;.&lt;/p&gt;
 
       </description>
     </item>
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-03/07-testing-with-minitest/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-03/07-testing-with-minitest/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-03/07-testing-with-minitest/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-03/07-testing-with-minitest/</guid>
       <description>
         
         

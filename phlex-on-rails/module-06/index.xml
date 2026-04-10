@@ -1,13 +1,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ruby Field Notes – </title>
-    <link>http://localhost:1313/phlex-on-rails/module-06/</link>
+    <link>https://www.rehali.com/phlex-on-rails/module-06/</link>
     <description>Recent content on Ruby Field Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2026 rehali 2 — Tutorial content: CC BY-NC-ND 4.0 · Code examples: MIT</copyright>
     
-	  <atom:link href="http://localhost:1313/phlex-on-rails/module-06/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://www.rehali.com/phlex-on-rails/module-06/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -17,10 +17,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-06/01-form-with/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-06/01-form-with/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-06/01-form-with/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-06/01-form-with/</guid>
       <description>
         
         
@@ -325,10 +325,10 @@ Phlex primitives.&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-06/02-form-fields/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-06/02-form-fields/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-06/02-form-fields/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-06/02-form-fields/</guid>
       <description>
         
         
@@ -512,10 +512,10 @@ happens in one place and applies to every primitive automatically.&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-06/03-form-primitives/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-06/03-form-primitives/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-06/03-form-primitives/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-06/03-form-primitives/</guid>
       <description>
         
         
@@ -1804,10 +1804,10 @@ but overrides &lt;code&gt;view_template&lt;/code&gt; entirely:&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-06/04-error-handling/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-06/04-error-handling/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-06/04-error-handling/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-06/04-error-handling/</guid>
       <description>
         
         
@@ -2055,10 +2055,10 @@ warrant a summary. We choose per form as we build them.&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-06/05-self-permitting-forms/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-06/05-self-permitting-forms/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-06/05-self-permitting-forms/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-06/05-self-permitting-forms/</guid>
       <description>
         
         
@@ -2359,10 +2359,10 @@ button label changes via &lt;code&gt;@board.persisted?&lt;/code&gt;.&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-06/06-the-finished-form/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-06/06-the-finished-form/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-06/06-the-finished-form/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-06/06-the-finished-form/</guid>
       <description>
         
         

@@ -2,252 +2,252 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/phlex-on-rails/overview/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/overview/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/overview/</loc>
+    <loc>https://www.rehali.com/wxruby/overview/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-03/01-base-component/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-03/01-base-component/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-07/01-design-tokens/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-07/01-design-tokens/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-04/01-drawing-with-device-contexts/</loc>
+    <loc>https://www.rehali.com/wxruby/module-04/01-drawing-with-device-contexts/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-03/01-event-handling/</loc>
+    <loc>https://www.rehali.com/wxruby/module-03/01-event-handling/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-02/01-frames-and-panels/</loc>
+    <loc>https://www.rehali.com/wxruby/module-02/01-frames-and-panels/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-09/01-hotwire-mental-model/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-09/01-hotwire-mental-model/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-04/01-installation/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-04/01-installation/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-05/01-lookbook/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-05/01-lookbook/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-01/</loc>
+    <loc>https://www.rehali.com/wxruby/module-01/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-01/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-01/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-10/01-rails-8-auth/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-10/01-rails-8-auth/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-11/01-setup-and-seeding/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-11/01-setup-and-seeding/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-08/01-stimulus-in-depth/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-08/01-stimulus-in-depth/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-01/01-the-problem-with-erb/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-01/01-the-problem-with-erb/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-06/01-form-with/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-06/01-form-with/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-05/01-webview-basics/</loc>
+    <loc>https://www.rehali.com/wxruby/module-05/01-webview-basics/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-01/01-the-case-for-desktop/</loc>
+    <loc>https://www.rehali.com/wxruby/module-01/01-the-case-for-desktop/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-02/01-your-first-component/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-02/01-your-first-component/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/</loc>
+    <loc>https://www.rehali.com/wxruby/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-03/02-application-structure/</loc>
+    <loc>https://www.rehali.com/wxruby/module-03/02-application-structure/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-02/02-attributes/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-02/02-attributes/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-10/02-auth-views/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-10/02-auth-views/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-11/02-board-policy/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-11/02-board-policy/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-01/02-component-philosophy/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-01/02-component-philosophy/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-02/02-core-widgets/</loc>
+    <loc>https://www.rehali.com/wxruby/module-02/02-core-widgets/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-05/02-empty-state/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-05/02-empty-state/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-09/02-enabling-turbo-morph/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-09/02-enabling-turbo-morph/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-08/02-fixing-alert/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-08/02-fixing-alert/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-06/02-form-fields/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-06/02-form-fields/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-04/02-hybrid-or-pure/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-04/02-hybrid-or-pure/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-04/02-images-and-bitmaps/</loc>
+    <loc>https://www.rehali.com/wxruby/module-04/02-images-and-bitmaps/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-03/02-kits/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-03/02-kits/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-02/</loc>
+    <loc>https://www.rehali.com/wxruby/module-02/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-02/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-02/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-07/02-restyling-components/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-07/02-restyling-components/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-05/02-js-bridge/</loc>
+    <loc>https://www.rehali.com/wxruby/module-05/02-js-bridge/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-01/02-the-mental-model/</loc>
+    <loc>https://www.rehali.com/wxruby/module-01/02-the-mental-model/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-07/03-dark-mode/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-07/03-dark-mode/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-03/03-data-driven-widgets/</loc>
+    <loc>https://www.rehali.com/wxruby/module-03/03-data-driven-widgets/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-06/03-form-primitives/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-06/03-form-primitives/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-05/03-improved-table/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-05/03-improved-table/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-01/03-installation/</loc>
+    <loc>https://www.rehali.com/wxruby/module-01/03-installation/</loc>
   </url><url>
-    <loc>http://localhost:1313/kamal/</loc>
+    <loc>https://www.rehali.com/kamal/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-02/03-layout-with-sizers/</loc>
+    <loc>https://www.rehali.com/wxruby/module-02/03-layout-with-sizers/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-04/03-layouts-in-phlex/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-04/03-layouts-in-phlex/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-05/03-live-charts/</loc>
+    <loc>https://www.rehali.com/wxruby/module-05/03-live-charts/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-11/03-members-page/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-11/03-members-page/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-08/03-modals/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-08/03-modals/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-03/</loc>
+    <loc>https://www.rehali.com/wxruby/module-03/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-03/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-03/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-04/03-rich-text/</loc>
+    <loc>https://www.rehali.com/wxruby/module-04/03-rich-text/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-10/03-sign-up/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-10/03-sign-up/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-03/03-simple-components/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-03/03-simple-components/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-02/03-the-difference-from-erb/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-02/03-the-difference-from-erb/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-09/03-the-full-board-view/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-09/03-the-full-board-view/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-03/04-simple-yield/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-03/04-simple-yield/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-05/04-breadcrumb/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-05/04-breadcrumb/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-09/04-drag-and-drop/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-09/04-drag-and-drop/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-08/04-dropdowns/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-08/04-dropdowns/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-06/04-error-handling/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-06/04-error-handling/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-01/04-the-sampler/</loc>
+    <loc>https://www.rehali.com/wxruby/module-01/04-the-sampler/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-03/04-file-input-output/</loc>
+    <loc>https://www.rehali.com/wxruby/module-03/04-file-input-output/</loc>
   </url><url>
-    <loc>http://localhost:1313/forms/</loc>
+    <loc>https://www.rehali.com/forms/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-04/04-html-window/</loc>
+    <loc>https://www.rehali.com/wxruby/module-04/04-html-window/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-05/04-leaflet-maps/</loc>
+    <loc>https://www.rehali.com/wxruby/module-05/04-leaflet-maps/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-02/04-menus-and-toolbars/</loc>
+    <loc>https://www.rehali.com/wxruby/module-02/04-menus-and-toolbars/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-04/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-04/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-04/</loc>
+    <loc>https://www.rehali.com/wxruby/module-04/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-11/04-policy-driven-ui/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-11/04-policy-driven-ui/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-04/04-rendering-from-controllers/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-04/04-rendering-from-controllers/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-02/04-structural-safety/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-02/04-structural-safety/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-07/04-theme-switching/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-07/04-theme-switching/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-10/04-current-user/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-10/04-current-user/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-02/05-dialogs/</loc>
+    <loc>https://www.rehali.com/wxruby/module-02/05-dialogs/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-05/05-icon-library/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-05/05-icon-library/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-09/05-inline-edits/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-09/05-inline-edits/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-11/05-presence/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-11/05-presence/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-05/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-05/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-05/</loc>
+    <loc>https://www.rehali.com/wxruby/module-05/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-07/07-multi-theme/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-07/07-multi-theme/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-03/05-named-slots/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-03/05-named-slots/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-04/05-markdown-editor/</loc>
+    <loc>https://www.rehali.com/wxruby/module-04/05-markdown-editor/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-05/05-markdown-editor/</loc>
+    <loc>https://www.rehali.com/wxruby/module-05/05-markdown-editor/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-04/05-rails-helpers-in-phlex/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-04/05-rails-helpers-in-phlex/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-10/05-scoping-board-access/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-10/05-scoping-board-access/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-06/05-self-permitting-forms/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-06/05-self-permitting-forms/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-02/05-svg-components/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-02/05-svg-components/</loc>
   </url><url>
-    <loc>http://localhost:1313/tailwind/</loc>
+    <loc>https://www.rehali.com/tailwind/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-03/05-threading/</loc>
+    <loc>https://www.rehali.com/wxruby/module-03/05-threading/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-08/05-toast/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-08/05-toast/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-03/06-table-component/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-03/06-table-component/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-08/06-accordion-and-tabs/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-08/06-accordion-and-tabs/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-11/06-conclusion/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-11/06-conclusion/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-02/06-building-html-strings/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-02/06-building-html-strings/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-04/06-kanbanflow-tailwind-views/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-04/06-kanbanflow-tailwind-views/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-06/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-06/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-02/06-preferences-panel/</loc>
+    <loc>https://www.rehali.com/wxruby/module-02/06-preferences-panel/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-03/06-a-file-processor/</loc>
+    <loc>https://www.rehali.com/wxruby/module-03/06-a-file-processor/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-09/06-real-time-broadcasts/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-09/06-real-time-broadcasts/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-06/06-the-finished-form/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-06/06-the-finished-form/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-05/06-view-tests/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-05/06-view-tests/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-05/07-composition/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-05/07-composition/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-08/07-cross-controller-communication/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-08/07-cross-controller-communication/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-07/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-07/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-04/07-testing-phlex-views/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-04/07-testing-phlex-views/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-03/07-testing-with-minitest/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-03/07-testing-with-minitest/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-05/08-documentation/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-05/08-documentation/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-08/08-lookbook_previews/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-08/08-lookbook_previews/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-08/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-08/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-09/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-09/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-05/06-wrap-up/</loc>
+    <loc>https://www.rehali.com/wxruby/module-05/06-wrap-up/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-10/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-10/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/module-11/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/module-11/</loc>
   </url><url>
-    <loc>http://localhost:1313/phlex-on-rails/bonus-01/</loc>
+    <loc>https://www.rehali.com/phlex-on-rails/bonus-01/</loc>
   </url><url>
-    <loc>http://localhost:1313/wxruby/module-06/</loc>
+    <loc>https://www.rehali.com/wxruby/module-06/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://www.rehali.com/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/phlex/</loc>
+    <loc>https://www.rehali.com/tags/phlex/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/rails/</loc>
+    <loc>https://www.rehali.com/tags/rails/</loc>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://www.rehali.com/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://www.rehali.com/tags/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/testing/</loc>
+    <loc>https://www.rehali.com/tags/testing/</loc>
   </url>
 </urlset>

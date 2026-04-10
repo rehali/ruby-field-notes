@@ -1,13 +1,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ruby Field Notes – </title>
-    <link>http://localhost:1313/wxruby/module-01/</link>
+    <link>https://www.rehali.com/wxruby/module-01/</link>
     <description>Recent content on Ruby Field Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2026 rehali 2 — Tutorial content: CC BY-NC-ND 4.0 · Code examples: MIT</copyright>
     
-	  <atom:link href="http://localhost:1313/wxruby/module-01/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://www.rehali.com/wxruby/module-01/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -17,10 +17,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-01/01-the-case-for-desktop/</link>
+      <link>https://www.rehali.com/wxruby/module-01/01-the-case-for-desktop/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-01/01-the-case-for-desktop/</guid>
+      <guid>https://www.rehali.com/wxruby/module-01/01-the-case-for-desktop/</guid>
       <description>
         
         
@@ -66,10 +66,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-01/02-the-mental-model/</link>
+      <link>https://www.rehali.com/wxruby/module-01/02-the-mental-model/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-01/02-the-mental-model/</guid>
+      <guid>https://www.rehali.com/wxruby/module-01/02-the-mental-model/</guid>
       <description>
         
         
@@ -345,10 +345,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-01/03-installation/</link>
+      <link>https://www.rehali.com/wxruby/module-01/03-installation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-01/03-installation/</guid>
+      <guid>https://www.rehali.com/wxruby/module-01/03-installation/</guid>
       <description>
         
         
@@ -775,10 +775,10 @@ The wxWidgets development libraries are not installed. Return to the platform pr
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-01/04-the-sampler/</link>
+      <link>https://www.rehali.com/wxruby/module-01/04-the-sampler/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-01/04-the-sampler/</guid>
+      <guid>https://www.rehali.com/wxruby/module-01/04-the-sampler/</guid>
       <description>
         
         

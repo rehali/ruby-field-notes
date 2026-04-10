@@ -1,13 +1,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ruby Field Notes – </title>
-    <link>http://localhost:1313/phlex-on-rails/module-09/</link>
+    <link>https://www.rehali.com/phlex-on-rails/module-09/</link>
     <description>Recent content on Ruby Field Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2026 rehali 2 — Tutorial content: CC BY-NC-ND 4.0 · Code examples: MIT</copyright>
     
-	  <atom:link href="http://localhost:1313/phlex-on-rails/module-09/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://www.rehali.com/phlex-on-rails/module-09/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -17,10 +17,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-09/01-hotwire-mental-model/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-09/01-hotwire-mental-model/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-09/01-hotwire-mental-model/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-09/01-hotwire-mental-model/</guid>
       <description>
         
         
@@ -75,10 +75,10 @@ loading. Streams again for real-time broadcasting.&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-09/02-enabling-turbo-morph/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-09/02-enabling-turbo-morph/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-09/02-enabling-turbo-morph/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-09/02-enabling-turbo-morph/</guid>
       <description>
         
         
@@ -307,10 +307,10 @@ are mid-display shouldn&amp;rsquo;t be wiped by a morph:&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-09/03-the-full-board-view/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-09/03-the-full-board-view/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-09/03-the-full-board-view/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-09/03-the-full-board-view/</guid>
       <description>
         
         
@@ -1850,10 +1850,10 @@ two things Frames still do well.&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-09/04-drag-and-drop/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-09/04-drag-and-drop/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-09/04-drag-and-drop/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-09/04-drag-and-drop/</guid>
       <description>
         
         
@@ -2780,10 +2780,10 @@ positions.&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-09/05-inline-edits/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-09/05-inline-edits/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-09/05-inline-edits/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-09/05-inline-edits/</guid>
       <description>
         
         
@@ -3979,10 +3979,10 @@ doing exactly what they&amp;rsquo;re designed to do.&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-09/06-real-time-broadcasts/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-09/06-real-time-broadcasts/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-09/06-real-time-broadcasts/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-09/06-real-time-broadcasts/</guid>
       <description>
         
         

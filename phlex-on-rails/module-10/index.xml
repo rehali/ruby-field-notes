@@ -1,13 +1,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ruby Field Notes – </title>
-    <link>http://localhost:1313/phlex-on-rails/module-10/</link>
+    <link>https://www.rehali.com/phlex-on-rails/module-10/</link>
     <description>Recent content on Ruby Field Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2026 rehali 2 — Tutorial content: CC BY-NC-ND 4.0 · Code examples: MIT</copyright>
     
-	  <atom:link href="http://localhost:1313/phlex-on-rails/module-10/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://www.rehali.com/phlex-on-rails/module-10/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -17,10 +17,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-10/01-rails-8-auth/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-10/01-rails-8-auth/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-10/01-rails-8-auth/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-10/01-rails-8-auth/</guid>
       <description>
         
         
@@ -642,10 +642,10 @@ auth. We handle that in the next lesson.&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-10/02-auth-views/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-10/02-auth-views/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-10/02-auth-views/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-10/02-auth-views/</guid>
       <description>
         
         
@@ -1109,10 +1109,10 @@ object, pass &lt;code&gt;f&lt;/code&gt; through or use a raw &lt;code&gt;input&l
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-10/03-sign-up/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-10/03-sign-up/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-10/03-sign-up/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-10/03-sign-up/</guid>
       <description>
         
         
@@ -1431,10 +1431,10 @@ sign up. A simple &lt;code&gt;RegistrationsController&lt;/code&gt; covers this.&
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-10/04-current-user/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-10/04-current-user/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-10/04-current-user/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-10/04-current-user/</guid>
       <description>
         
         
@@ -1976,10 +1976,10 @@ Add a &lt;code&gt;before_action&lt;/code&gt; to verify ownership:&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-10/05-scoping-board-access/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-10/05-scoping-board-access/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-10/05-scoping-board-access/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-10/05-scoping-board-access/</guid>
       <description>
         
         

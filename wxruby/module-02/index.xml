@@ -1,13 +1,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ruby Field Notes – </title>
-    <link>http://localhost:1313/wxruby/module-02/</link>
+    <link>https://www.rehali.com/wxruby/module-02/</link>
     <description>Recent content on Ruby Field Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2026 rehali 2 — Tutorial content: CC BY-NC-ND 4.0 · Code examples: MIT</copyright>
     
-	  <atom:link href="http://localhost:1313/wxruby/module-02/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://www.rehali.com/wxruby/module-02/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -17,10 +17,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-02/01-frames-and-panels/</link>
+      <link>https://www.rehali.com/wxruby/module-02/01-frames-and-panels/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-02/01-frames-and-panels/</guid>
+      <guid>https://www.rehali.com/wxruby/module-02/01-frames-and-panels/</guid>
       <description>
         
         
@@ -403,10 +403,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-02/02-core-widgets/</link>
+      <link>https://www.rehali.com/wxruby/module-02/02-core-widgets/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-02/02-core-widgets/</guid>
+      <guid>https://www.rehali.com/wxruby/module-02/02-core-widgets/</guid>
       <description>
         
         
@@ -1340,10 +1340,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-02/03-layout-with-sizers/</link>
+      <link>https://www.rehali.com/wxruby/module-02/03-layout-with-sizers/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-02/03-layout-with-sizers/</guid>
+      <guid>https://www.rehali.com/wxruby/module-02/03-layout-with-sizers/</guid>
       <description>
         
         
@@ -2114,10 +2114,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-02/04-menus-and-toolbars/</link>
+      <link>https://www.rehali.com/wxruby/module-02/04-menus-and-toolbars/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-02/04-menus-and-toolbars/</guid>
+      <guid>https://www.rehali.com/wxruby/module-02/04-menus-and-toolbars/</guid>
       <description>
         
         
@@ -3109,16 +3109,16 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-02/05-dialogs/</link>
+      <link>https://www.rehali.com/wxruby/module-02/05-dialogs/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-02/05-dialogs/</guid>
+      <guid>https://www.rehali.com/wxruby/module-02/05-dialogs/</guid>
       <description>
         
         
         &lt;h1&gt;Dialogs&lt;/h1&gt;&lt;p&gt;Dialogs are focused windows that interrupt the main flow to get input from the user or deliver important information. wxRuby3 provides ready-made dialogs for the most common tasks — file picking, colour selection, font selection, text entry, and messages — so you rarely need to build these from scratch.&lt;/p&gt;
 &lt;p&gt;This lesson covers the standard dialogs and then shows how to build your own when none of the built-in ones fit.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/wxruby/module-02/05-dialogs/dialog_panel.png&#34; alt=&#34;dialog_panel.png&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.rehali.com/wxruby/module-02/05-dialogs/dialog_panel.png&#34; alt=&#34;dialog_panel.png&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
 &lt;h2&gt;Start fresh&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;start-fresh&#34;&gt;&lt;/span&gt;
     &lt;a href=&#34;#start-fresh&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Create a new file called &lt;code&gt;dialog_demo.rb&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
@@ -3795,7 +3795,7 @@
 &lt;h2&gt;Step 7 — Building a custom dialog&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;step-7--building-a-custom-dialog&#34;&gt;&lt;/span&gt;
     &lt;a href=&#34;#step-7--building-a-custom-dialog&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;When none of the standard dialogs fits, subclass &lt;code&gt;Wx::Dialog&lt;/code&gt;. A custom dialog is just a frame with a panel, sizer, and an &lt;code&gt;OK&lt;/code&gt;/&lt;code&gt;Cancel&lt;/code&gt; button pair — the same building blocks you already know.&lt;/p&gt;
 &lt;p&gt;Here is a simple login dialog:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/wxruby/module-02/05-dialogs/dialog_2.png&#34; alt=&#34;dialog_2.png&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.rehali.com/wxruby/module-02/05-dialogs/dialog_2.png&#34; alt=&#34;dialog_2.png&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
 &lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
 
 &lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -3959,16 +3959,16 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/wxruby/module-02/06-preferences-panel/</link>
+      <link>https://www.rehali.com/wxruby/module-02/06-preferences-panel/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/wxruby/module-02/06-preferences-panel/</guid>
+      <guid>https://www.rehali.com/wxruby/module-02/06-preferences-panel/</guid>
       <description>
         
         
         &lt;h1&gt;A Preferences Panel&lt;/h1&gt;&lt;p&gt;This project brings together everything from Module 2 — frames, panels, widgets, sizers, menus, and custom dialogs — into a single finished app. The result is a preferences dialog of the kind that appears in almost every real desktop application.&lt;/p&gt;
 &lt;p&gt;By the end you will have a tabbed preferences dialog with OK, Cancel, and Apply buttons, dirty state tracking, and four categories of settings across four tabs.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/wxruby/module-02/06-preferences-panel/preference_panel.png&#34; alt=&#34;Preferences Panel&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.rehali.com/wxruby/module-02/06-preferences-panel/preference_panel.png&#34; alt=&#34;Preferences Panel&#34;  loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
 &lt;h2&gt;Wx::Notebook&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;wxnotebook&#34;&gt;&lt;/span&gt;
     &lt;a href=&#34;#wxnotebook&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Wx::Notebook&lt;/code&gt; is the tabbed container widget. Each tab is a separate panel added to the notebook — the notebook handles the tab strip and switching between panels automatically.&lt;/p&gt;
 &lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;

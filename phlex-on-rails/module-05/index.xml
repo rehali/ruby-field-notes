@@ -1,13 +1,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ruby Field Notes – </title>
-    <link>http://localhost:1313/phlex-on-rails/module-05/</link>
+    <link>https://www.rehali.com/phlex-on-rails/module-05/</link>
     <description>Recent content on Ruby Field Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2026 rehali 2 — Tutorial content: CC BY-NC-ND 4.0 · Code examples: MIT</copyright>
     
-	  <atom:link href="http://localhost:1313/phlex-on-rails/module-05/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://www.rehali.com/phlex-on-rails/module-05/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -17,10 +17,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-05/01-lookbook/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-05/01-lookbook/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-05/01-lookbook/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-05/01-lookbook/</guid>
       <description>
         
         
@@ -845,10 +845,10 @@ we can&amp;rsquo;t allow an empty label so we provide a default as a fallback.&l
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-05/02-empty-state/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-05/02-empty-state/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-05/02-empty-state/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-05/02-empty-state/</guid>
       <description>
         
         
@@ -1270,10 +1270,10 @@ grid of boards. Click one to see the column placeholder view.&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-05/03-improved-table/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-05/03-improved-table/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-05/03-improved-table/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-05/03-improved-table/</guid>
       <description>
         
         
@@ -1731,10 +1731,10 @@ that &lt;code&gt;EmptyState&lt;/code&gt; renders correctly rather than an empty 
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-05/04-breadcrumb/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-05/04-breadcrumb/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-05/04-breadcrumb/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-05/04-breadcrumb/</guid>
       <description>
         
         
@@ -1961,10 +1961,10 @@ represents the current page. All previous items render as links.&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-05/05-icon-library/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-05/05-icon-library/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-05/05-icon-library/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-05/05-icon-library/</guid>
       <description>
         
         
@@ -2548,10 +2548,10 @@ with &lt;code&gt;Icon&lt;/code&gt;. The pattern is the same in both:&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-05/06-view-tests/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-05/06-view-tests/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-05/06-view-tests/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-05/06-view-tests/</guid>
       <description>
         
         
@@ -3420,10 +3420,10 @@ even though the caller would normally pass a route helper result.&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-05/07-composition/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-05/07-composition/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-05/07-composition/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-05/07-composition/</guid>
       <description>
         
         
@@ -3612,10 +3612,10 @@ understand what it renders, before reading a single implementation detail.&lt;/p
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-05/08-documentation/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-05/08-documentation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-05/08-documentation/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-05/08-documentation/</guid>
       <description>
         
         

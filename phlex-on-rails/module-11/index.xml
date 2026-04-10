@@ -1,13 +1,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ruby Field Notes – </title>
-    <link>http://localhost:1313/phlex-on-rails/module-11/</link>
+    <link>https://www.rehali.com/phlex-on-rails/module-11/</link>
     <description>Recent content on Ruby Field Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2026 rehali 2 — Tutorial content: CC BY-NC-ND 4.0 · Code examples: MIT</copyright>
     
-	  <atom:link href="http://localhost:1313/phlex-on-rails/module-11/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://www.rehali.com/phlex-on-rails/module-11/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -17,10 +17,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-11/01-setup-and-seeding/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-11/01-setup-and-seeding/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-11/01-setup-and-seeding/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-11/01-setup-and-seeding/</guid>
       <description>
         
         
@@ -227,10 +227,10 @@ the user owns (since &lt;code&gt;add_owner_as_member&lt;/code&gt; creates that r
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-11/02-board-policy/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-11/02-board-policy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-11/02-board-policy/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-11/02-board-policy/</guid>
       <description>
         
         
@@ -827,10 +827,10 @@ delete correctly.&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-11/03-members-page/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-11/03-members-page/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-11/03-members-page/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-11/03-members-page/</guid>
       <description>
         
         
@@ -1296,10 +1296,10 @@ Pass the policy through from the controller:&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-11/04-policy-driven-ui/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-11/04-policy-driven-ui/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-11/04-policy-driven-ui/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-11/04-policy-driven-ui/</guid>
       <description>
         
         
@@ -1862,10 +1862,10 @@ this board, and who&amp;rsquo;s here right now.&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-11/05-presence/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-11/05-presence/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-11/05-presence/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-11/05-presence/</guid>
       <description>
         
         
@@ -2560,10 +2560,10 @@ from broadcast&lt;/li&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-11/06-conclusion/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-11/06-conclusion/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-11/06-conclusion/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-11/06-conclusion/</guid>
       <description>
         
         

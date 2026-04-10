@@ -1,13 +1,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ruby Field Notes – Module 02 — Phlex Fundamentals</title>
-    <link>http://localhost:1313/phlex-on-rails/module-02/</link>
+    <link>https://www.rehali.com/phlex-on-rails/module-02/</link>
     <description>Recent content in Module 02 — Phlex Fundamentals on Ruby Field Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2026 rehali 2 — Tutorial content: CC BY-NC-ND 4.0 · Code examples: MIT</copyright>
     
-	  <atom:link href="http://localhost:1313/phlex-on-rails/module-02/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://www.rehali.com/phlex-on-rails/module-02/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -17,10 +17,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-02/01-your-first-component/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-02/01-your-first-component/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-02/01-your-first-component/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-02/01-your-first-component/</guid>
       <description>
         
         
@@ -661,10 +661,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-02/02-attributes/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-02/02-attributes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-02/02-attributes/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-02/02-attributes/</guid>
       <description>
         
         
@@ -1347,10 +1347,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-02/03-the-difference-from-erb/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-02/03-the-difference-from-erb/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-02/03-the-difference-from-erb/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-02/03-the-difference-from-erb/</guid>
       <description>
         
         
@@ -2227,10 +2227,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-02/04-structural-safety/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-02/04-structural-safety/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-02/04-structural-safety/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-02/04-structural-safety/</guid>
       <description>
         
         
@@ -2726,10 +2726,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-02/05-svg-components/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-02/05-svg-components/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-02/05-svg-components/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-02/05-svg-components/</guid>
       <description>
         
         
@@ -3139,10 +3139,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-02/06-building-html-strings/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-02/06-building-html-strings/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-02/06-building-html-strings/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-02/06-building-html-strings/</guid>
       <description>
         
         

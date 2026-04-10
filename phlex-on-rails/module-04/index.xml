@@ -1,13 +1,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ruby Field Notes – </title>
-    <link>http://localhost:1313/phlex-on-rails/module-04/</link>
+    <link>https://www.rehali.com/phlex-on-rails/module-04/</link>
     <description>Recent content on Ruby Field Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2026 rehali 2 — Tutorial content: CC BY-NC-ND 4.0 · Code examples: MIT</copyright>
     
-	  <atom:link href="http://localhost:1313/phlex-on-rails/module-04/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://www.rehali.com/phlex-on-rails/module-04/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -17,10 +17,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-04/01-installation/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-04/01-installation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-04/01-installation/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-04/01-installation/</guid>
       <description>
         
         
@@ -396,10 +396,10 @@ app/views/layouts/app_layout.rb → Views::Layouts::AppLayout&lt;/code&gt;&lt;/p
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-04/02-hybrid-or-pure/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-04/02-hybrid-or-pure/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-04/02-hybrid-or-pure/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-04/02-hybrid-or-pure/</guid>
       <description>
         
         
@@ -544,10 +544,10 @@ app/views/layouts/app_layout.rb → Views::Layouts::AppLayout&lt;/code&gt;&lt;/p
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-04/03-layouts-in-phlex/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-04/03-layouts-in-phlex/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-04/03-layouts-in-phlex/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-04/03-layouts-in-phlex/</guid>
       <description>
         
         
@@ -1045,10 +1045,10 @@ app/views/layouts/app_layout.rb → Views::Layouts::AppLayout&lt;/code&gt;&lt;/p
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-04/04-rendering-from-controllers/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-04/04-rendering-from-controllers/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-04/04-rendering-from-controllers/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-04/04-rendering-from-controllers/</guid>
       <description>
         
         
@@ -1525,10 +1525,10 @@ app/views/layouts/app_layout.rb → Views::Layouts::AppLayout&lt;/code&gt;&lt;/p
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-04/05-rails-helpers-in-phlex/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-04/05-rails-helpers-in-phlex/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-04/05-rails-helpers-in-phlex/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-04/05-rails-helpers-in-phlex/</guid>
       <description>
         
         
@@ -2190,10 +2190,10 @@ KanbanFlow, &lt;code&gt;DATE_FORMATS&lt;/code&gt; is simpler and sufficient. If 
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-04/06-kanbanflow-tailwind-views/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-04/06-kanbanflow-tailwind-views/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-04/06-kanbanflow-tailwind-views/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-04/06-kanbanflow-tailwind-views/</guid>
       <description>
         
         
@@ -2604,7 +2604,7 @@ has realistic content to work with:&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Rather than restyling each component manually — which is mechanical work that teaches nothing new about Phlex — download the pre-styled components and drop them into app/components/. The prop declarations, slot methods, and view_template structure are identical to Module 3. Only the Tailwind class strings have changed.&lt;/p&gt;
-&lt;p&gt;Download &lt;a href=&#34;http://localhost:1313/downloads/phlex-on-rails/module-04/phlex-ui-tailwind.zip&#34;&gt;phlex-ui-tailwind.zip&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Download &lt;a href=&#34;https://www.rehali.com/downloads/phlex-on-rails/module-04/phlex-ui-tailwind.zip&#34;&gt;phlex-ui-tailwind.zip&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Copy the contents into your Rails app, run the tests to confirm everything is working.&lt;/p&gt;
 &lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
 
@@ -2652,10 +2652,10 @@ has realistic content to work with:&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>http://localhost:1313/phlex-on-rails/module-04/07-testing-phlex-views/</link>
+      <link>https://www.rehali.com/phlex-on-rails/module-04/07-testing-phlex-views/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/phlex-on-rails/module-04/07-testing-phlex-views/</guid>
+      <guid>https://www.rehali.com/phlex-on-rails/module-04/07-testing-phlex-views/</guid>
       <description>
         
         
