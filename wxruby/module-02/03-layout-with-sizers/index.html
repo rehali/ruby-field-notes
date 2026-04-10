@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="robots" content="noindex, nofollow" />
+  <link rel="icon shortcut" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" id="favicon-svg" />
+<link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
+<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+<link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
+<title>Ruby Field Notes</title>
+  <meta name="description" content="Layout with sizersThe form you built in the previous lesson works, but it looks rough. The widgets are positioned with hardcoded pos: coordinates — manual arithmetic that breaks the moment you resize the window, change a font, or add a new field. This is not how wxRuby3 apps are meant to be laid out.
+Sizers are wxRuby3’s layout system. Rather than fixing pixel positions, sizers describe relationships between widgets — “these two controls should sit side by side”, “this widget should expand to fill available space”, “leave 8 pixels of padding around everything”. The sizer calculates the actual positions at runtime, and recalculates automatically whenever the window is resized." /><link rel="canonical" href="http://localhost:1313/wxruby/module-02/03-layout-with-sizers/" itemprop="url" />
+
+<meta property="og:title" content="">
+<meta
+  property="og:description"
+  content="
+    
+      Layout with sizersThe form you built in the previous lesson works, but it looks rough. The widgets are positioned with hardcoded pos: coordinates — manual arithmetic that breaks the moment you resize the window, change a font, or add a new field. This is not how wxRuby3 apps are meant to be laid out.
+Sizers are wxRuby3&rsquo;s layout system. Rather than fixing pixel positions, sizers describe relationships between widgets — &ldquo;these two controls should sit side by side&rdquo;, &ldquo;this widget should expand to fill available space&rdquo;, &ldquo;leave 8 pixels of padding around everything&rdquo;. The sizer calculates the actual positions at runtime, and recalculates automatically whenever the window is resized.
+    
+  ">
+<meta
+  property="og:type"
+  content="
+    article
+  ">
+<meta property="og:url" content="http://localhost:1313/wxruby/module-02/03-layout-with-sizers/"><meta property="article:section" content="wxruby">
+
+
+
+
+  <meta itemprop="name" content="Ruby Field Notes">
+  <meta itemprop="description" content="Layout with sizersThe form you built in the previous lesson works, but it looks rough. The widgets are positioned with hardcoded pos: coordinates — manual arithmetic that breaks the moment you resize the window, change a font, or add a new field. This is not how wxRuby3 apps are meant to be laid out.
+Sizers are wxRuby3’s layout system. Rather than fixing pixel positions, sizers describe relationships between widgets — “these two controls should sit side by side”, “this widget should expand to fill available space”, “leave 8 pixels of padding around everything”. The sizer calculates the actual positions at runtime, and recalculates automatically whenever the window is resized.">
+  <meta itemprop="wordCount" content="2220">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Ruby Field Notes">
+  <meta name="twitter:description" content="Layout with sizersThe form you built in the previous lesson works, but it looks rough. The widgets are positioned with hardcoded pos: coordinates — manual arithmetic that breaks the moment you resize the window, change a font, or add a new field. This is not how wxRuby3 apps are meant to be laid out.
+Sizers are wxRuby3’s layout system. Rather than fixing pixel positions, sizers describe relationships between widgets — “these two controls should sit side by side”, “this widget should expand to fill available space”, “leave 8 pixels of padding around everything”. The sizer calculates the actual positions at runtime, and recalculates automatically whenever the window is resized.">
+<link href="/css/compiled/main.css" rel="stylesheet" />
+    <link href="/css/variables.css" rel="stylesheet" />
+    <link href="/css/custom.css" rel="stylesheet" />
+
+  
+<script src="/js/main-head.js" integrity=""></script>
+
+  
+  
+  </head>
+<body>
+    <a href="#content" class="hx:sr-only hx:focus-visible:not-sr-only hx:focus-visible:fixed hx:focus-visible:z-50 hx:focus-visible:top-2 hx:focus-visible:left-2 hx:focus-visible:bg-primary-500 hx:focus-visible:text-white hx:focus-visible:px-4 hx:focus-visible:py-2 hx:focus-visible:rounded-md hx:focus-visible:text-sm hx:focus-visible:font-medium">Skip to content</a><div class="hextra-nav-container hx:sticky hx:top-0 hx:z-20 hx:w-full hx:bg-transparent hx:print:hidden">
+  <div
+    class="hextra-nav-container-blur hx:pointer-events-none hx:absolute hx:z-[-1] hx:h-full hx:w-full hx:bg-white hx:dark:bg-dark hx:shadow-[0_2px_4px_rgba(0,0,0,.02),0_1px_0_rgba(0,0,0,.06)] hx:contrast-more:shadow-[0_0_0_1px_#000] hx:dark:shadow-[0_-1px_0_rgba(255,255,255,.1)_inset] hx:contrast-more:dark:shadow-[0_0_0_1px_#fff]"
+  ></div>
+
+  <nav class="hextra-max-navbar-width hx:mx-auto hx:flex hx:items-center hx:justify-end hx:gap-2 hx:h-16 hx:px-6">
+    <a class="hx:flex hx:items-center hx:hover:opacity-75 hx:ltr:mr-auto hx:rtl:ml-auto" href="/">
+    <span class="hx:mr-2 hx:font-extrabold hx:inline hx:select-none">Ruby Field Notes</span>
+</a>
+<button type="button" aria-label="Menu" aria-expanded="false" class="hextra-hamburger-menu hx:cursor-pointer hx:-mr-2 hx:rounded-sm hx:p-2 hx:active:bg-gray-400/20 hx:md:hidden hx:hextra-focus-visible-inset"><svg height=24 fill="none" viewBox="0 0 24 24" stroke="currentColor"><g><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8H20"></path></g><g><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16H20"></path></g></svg></button>
+  </nav>
+</div>
+
+  <div class='hx:mx-auto hx:flex hextra-max-page-width'>
+    <aside class="hextra-sidebar-container hx:flex hx:flex-col hx:print:hidden hx:md:top-16 hx:md:shrink-0 hx:md:w-64 hx:md:self-start hx:max-md:[transform:translate3d(0,-100%,0)] hx:md:hidden hx:xl:block">
+    <div class="hx:px-4 hx:pt-4 hx:md:hidden">
+      <div class="hextra-search-wrapper hx:relative hx:md:w-64">
+  <div class="hx:relative hx:flex hx:items-center hx:text-gray-900 hx:contrast-more:text-gray-800 hx:dark:text-gray-300 hx:contrast-more:dark:text-gray-300">
+    <input
+      placeholder="Search..."
+      aria-label="Search..."
+      class="hextra-search-input hx:hextra-focus-visible hx:block hx:w-full hx:appearance-none hx:rounded-lg hx:px-3 hx:py-2 hx:transition-colors hx:text-base hx:leading-tight hx:md:text-sm hx:bg-black/[.05] hx:dark:bg-gray-50/10 hx:focus-visible:bg-white hx:dark:focus-visible:bg-dark hx:placeholder:text-gray-500 hx:dark:placeholder:text-gray-400 hx:contrast-more:border hx:contrast-more:border-current"
+      type="search"
+      autocomplete="off"
+      value=""
+      spellcheck="false"
+    />
+    <kbd
+      class="hx:absolute hx:my-1.5 hx:select-none hx:ltr:right-1.5 hx:rtl:left-1.5 hx:h-5 hx:rounded-sm hx:bg-white hx:px-1.5 hx:font-mono hx:text-[10px] hx:font-medium hx:text-gray-500 hx:border hx:border-gray-200 hx:dark:border-gray-100/20 hx:dark:bg-dark/50 hx:contrast-more:border-current hx:contrast-more:text-current hx:contrast-more:dark:border-current hx:items-center hx:gap-1 hx:transition-opacity hx:pointer-events-none hx:hidden hx:sm:flex"
+    >
+      CTRL K
+    </kbd>
+  </div>
+
+  <div>
+    <ul
+      class="hextra-search-results hextra-scrollbar hx:hidden hx:border hx:border-gray-200 hx:bg-white hx:text-gray-100 hx:dark:border-neutral-800 hx:dark:bg-neutral-900 hx:absolute hx:top-full hx:z-20 hx:mt-2 hx:overflow-auto hx:overscroll-contain hx:rounded-xl hx:py-2.5 hx:shadow-xl hx:max-h-[min(calc(50vh-11rem-env(safe-area-inset-bottom)),400px)] hx:md:max-h-[min(calc(100vh-5rem-env(safe-area-inset-bottom)),400px)] hx:inset-x-0 hx:ltr:md:left-auto hx:rtl:md:right-auto hx:contrast-more:border hx:contrast-more:border-gray-900 hx:contrast-more:dark:border-gray-50 hx:w-screen hx:min-h-[100px] hx:max-w-[min(calc(100vw-2rem),calc(100%+20rem))]"
+      aria-label="Search results"
+      style="transition: max-height 0.2s ease 0s;"
+    ></ul>
+    <div class="hextra-search-status hx:sr-only" aria-live="polite" role="status"></div>
+  </div>
+</div>
+
+    </div><div class="hextra-scrollbar hx:overflow-y-auto hx:overflow-x-hidden hx:p-4 hx:grow hx:md:h-[calc(100vh-var(--navbar-height)-var(--menu-height))]">
+    <ul class="hx:flex hx:flex-col hx:gap-1 hx:md:hidden">
+      
+      
+    </ul>
+
+    <div class="hx:max-xl:hidden hx:h-0 hx:w-64 hx:shrink-0"></div></div>
+  
+  
+    <div class="hx:md:hidden  hx:sticky hx:bottom-0 hx:max-h-(--menu-height) hx:bg-white hx:dark:bg-dark hx:mx-4 hx:py-4 hx:shadow-[0_-12px_16px_#fff] hx:flex hx:items-center hx:gap-2 hx:border-gray-200 hx:dark:border-neutral-800 hx:dark:shadow-[0_-12px_16px_#111] hx:contrast-more:border-neutral-400 hx:contrast-more:shadow-none hx:contrast-more:dark:shadow-none hx:border-t" data-toggle-animation="show"><div class="hx:flex hx:grow hx:flex-col"><div class="hx:flex hx:justify-items-start hx:group" data-theme="light">
+  <button
+    title="Change theme"
+    data-state="closed"
+    data-location="bottom"
+    class="hextra-theme-toggle hx:cursor-pointer hx:rounded-md hx:text-left hx:font-medium hx:h-7 hx:px-2 hx:text-xs hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:font-medium hx:text-gray-600 hx:transition-colors hx:dark:text-gray-400 hx:grow"
+    type="button"
+    aria-label="Change theme"
+    aria-expanded="false"
+    aria-haspopup="menu"
+  >
+    <div class="hx:flex hx:items-center hx:gap-2 hx:capitalize"><svg height=12 class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg><span class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden">Light</span><svg height=12 class="hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg><span class="hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden">Dark</span><svg height=12 class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  fill="currentColor">
+  <path d="M 11.996094,2 C 6.4986225,2.0192368 2.03125,6.5024993 2.03125,12 c 0,5.497501 4.4673725,9.980763 9.964844,10 H 12 12.0039 c 5.497471,-0.01924 9.964844,-4.502499 9.964844,-10 0,-5.4975007 -4.467373,-9.9807632 -9.964844,-10 H 12 Z M 12,4 c 4.417218,0.017598 7.96875,3.5822356 7.96875,8 0,4.417764 -3.551532,7.982402 -7.96875,8 z" />
+</svg>
+<span class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden">System</span></div>
+  </button>
+  <ul
+    class="hextra-theme-toggle-options hx:hidden hx:z-20 hx:max-h-64 hx:overflow-auto hx:rounded-lg hx:border hx:border-gray-200 hx:bg-white hx:p-1 hx:text-sm hx:shadow-lg hx:dark:border-neutral-700 hx:dark:bg-neutral-900"
+    style="position: fixed; inset: auto auto 0px 0px; margin: 0px; min-width: 100px;"
+    data-theme="light"
+    role="menu"
+  >
+    <li role="none" class="hx:flex hx:flex-col">
+      <button
+        type="button"
+        role="menuitemradio"
+        aria-checked="true"
+        tabindex="-1"
+        data-item="light"
+        class="hx:text-gray-700 hx:dark:text-gray-300 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:hover:bg-neutral-800 hx:dark:hover:text-gray-100 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:rounded-sm hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9 hx:text-left hx:w-full hx:bg-transparent hx:border-0"
+      >
+        Light
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </button>
+    </li>
+    <li role="none" class="hx:flex hx:flex-col">
+      <button
+        type="button"
+        role="menuitemradio"
+        aria-checked="false"
+        tabindex="-1"
+        data-item="dark"
+        class="hx:text-gray-700 hx:dark:text-gray-300 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:hover:bg-neutral-800 hx:dark:hover:text-gray-100 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:rounded-sm hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9 hx:text-left hx:w-full hx:bg-transparent hx:border-0"
+      >
+        Dark
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </button>
+    </li>
+    <li role="none" class="hx:flex hx:flex-col">
+      <button
+        type="button"
+        role="menuitemradio"
+        aria-checked="false"
+        tabindex="-1"
+        data-item="system"
+        class="hx:text-gray-700 hx:dark:text-gray-300 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:hover:bg-neutral-800 hx:dark:hover:text-gray-100 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:rounded-sm hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9 hx:text-left hx:w-full hx:bg-transparent hx:border-0"
+      >
+        System
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </button>
+    </li>
+  </ul>
+</div>
+</div></div></aside>
+    
+<nav class="hextra-toc hx:order-last hx:hidden hx:w-64 hx:shrink-0 hx:xl:block hx:print:hidden hx:px-4" aria-label="Table of contents">
+    <div class="hextra-scrollbar hx:sticky hx:top-16 hx:overflow-y-auto hx:pr-4 hx:pt-6 hx:text-sm [hyphens:auto] hx:max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] hx:ltr:-mr-4 hx:rtl:-ml-4"><p class="hx:mb-4 hx:font-semibold hx:tracking-tight">On this page</p><ul>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#how-sizers-work">How sizers work
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#vboxsizer-and-hboxsizer">VBoxSizer and HBoxSizer
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#the-add-method">The add method
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#proportion--space-along-the-main-axis">proportion — space along the main axis
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#wxexpand--filling-perpendicular-space">Wx::EXPAND — filling perpendicular space
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#flags-for-borders-and-alignment">flags for borders and alignment
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#border">border
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#flexgridsizer">FlexGridSizer
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#nested-sizers">Nested sizers
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#replacing-pos-in-your-form">Replacing pos: in your form
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#the-finished-lesson-app">The finished lesson app
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#what-changed-and-why">What changed and why
+        </a>
+      </li></ul>
+      <div class="hx:mt-8 hx:border-t hx:bg-white hx:pt-8 hx:shadow-[0_-12px_16px_white] hx:dark:bg-dark hx:dark:shadow-[0_-12px_16px_#111] hx:sticky hx:bottom-0 hx:flex hx:flex-col hx:items-start hx:gap-2 hx:pb-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-t hx:contrast-more:border-neutral-400 hx:contrast-more:shadow-none hx:contrast-more:dark:border-neutral-400">
+        <button id="backToTop" tabindex="-1" onClick="scrollUp();" class="hx:cursor-pointer hx:transition-all hx:duration-75 hx:opacity-0 hx:text-xs hx:font-medium hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-100 hx:contrast-more:text-gray-800 hx:contrast-more:dark:text-gray-50">
+          <span>Scroll to top</span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" focusable="false" class="hx:inline hx:ltr:ml-1 hx:rtl:mr-1 hx:h-3.5 hx:w-3.5 hx:rounded-full hx:border hx:border-gray-500 hx:hover:border-gray-900 hx:dark:border-gray-400 hx:dark:hover:border-gray-100 hx:contrast-more:border-gray-800 hx:contrast-more:dark:border-gray-50">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+
+    <article class="hx:w-full hx:break-words hx:flex hx:min-h-[calc(100vh-var(--navbar-height))] hx:min-w-0 hx:justify-center hx:pb-8 hx:pr-[calc(env(safe-area-inset-right)-1.5rem)]">
+      <main id="content" class="hx:w-full hx:min-w-0 hextra-max-content-width hx:px-6 hx:pt-4 hx:md:px-12">
+        
+        <br class="hx:mt-1.5 hx:text-sm" />
+        
+        <div class="hx:mb-16"></div>
+        <div class="content">
+          <h1>Layout with sizers</h1><p>The form you built in the previous lesson works, but it looks rough. The widgets are positioned with hardcoded <code>pos:</code> coordinates — manual arithmetic that breaks the moment you resize the window, change a font, or add a new field. This is not how wxRuby3 apps are meant to be laid out.</p>
+<p>Sizers are wxRuby3&rsquo;s layout system. Rather than fixing pixel positions, sizers describe <em>relationships</em> between widgets — &ldquo;these two controls should sit side by side&rdquo;, &ldquo;this widget should expand to fill available space&rdquo;, &ldquo;leave 8 pixels of padding around everything&rdquo;. The sizer calculates the actual positions at runtime, and recalculates automatically whenever the window is resized.</p>
+<p>In this lesson you will learn the two sizers you will reach for in almost every app, and then replace every <code>pos:</code> in your form with a proper sizer layout.</p>
+<h2>How sizers work<span class="hx:absolute hx:-mt-20" id="how-sizers-work"></span>
+    <a href="#how-sizers-work" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>A sizer is an invisible layout container. You add widgets to it, tell it how each widget should behave, and attach it to a panel. The panel then delegates all size calculations to the sizer.</p>
+<p>The basic pattern:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">sizer</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">VBoxSizer</span><span class="o">.</span><span class="n">new</span>                     <span class="c1"># create the sizer</span>
+</span></span><span class="line"><span class="cl"><span class="n">sizer</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">widget</span><span class="p">,</span> <span class="n">proportion</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">border</span><span class="p">)</span>  <span class="c1"># add widgets</span>
+</span></span><span class="line"><span class="cl"><span class="n">panel</span><span class="o">.</span><span class="n">set_sizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>                        <span class="c1"># attach to panel</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>Two calls complete the setup. <code>panel.set_sizer</code> attaches the sizer to the panel — without it the sizer exists but has no effect. Then <code>layout</code> called on the frame tells the frame to resize the panel to fill the window and trigger the sizer calculations. Without <code>layout</code>, the panel stays at its default size and widgets bunch up in the corner.</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">panel</span><span class="o">.</span><span class="n">set_sizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># ... in initialize, after build_ui:</span>
+</span></span><span class="line"><span class="cl"><span class="n">layout</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>In the skeleton from lesson 2.1, <code>layout</code> belongs in <code>initialize</code> after <code>build_ui</code> is called.</p>
+<h2>VBoxSizer and HBoxSizer<span class="hx:absolute hx:-mt-20" id="vboxsizer-and-hboxsizer"></span>
+    <a href="#vboxsizer-and-hboxsizer" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><code>Wx::VBoxSizer</code> stacks widgets vertically, top to bottom. <code>Wx::HBoxSizer</code> arranges them horizontally, left to right. These two sizers, nested inside each other, can produce almost any layout you will need.</p>
+<p>Create a new file <code>sizer_demo.rb</code> and type this:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="nb">require</span> <span class="s1">&#39;wx&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">SizerFrame</span> <span class="o">&lt;</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Frame</span>
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">initialize</span>
+</span></span><span class="line"><span class="cl">    <span class="k">super</span><span class="p">(</span><span class="kp">nil</span><span class="p">,</span> <span class="ss">title</span><span class="p">:</span> <span class="s1">&#39;Sizer Demo&#39;</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="o">[</span><span class="mi">400</span><span class="p">,</span> <span class="mi">300</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">build_ui</span>
+</span></span><span class="line"><span class="cl">    <span class="n">layout</span>
+</span></span><span class="line"><span class="cl">    <span class="n">centre</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kp">private</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">build_ui</span>
+</span></span><span class="line"><span class="cl">    <span class="n">panel</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Panel</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">btn_a</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Button</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Button A&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">btn_b</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Button</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Button B&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">btn_c</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Button</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Button C&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">vbox</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">VBoxSizer</span><span class="o">.</span><span class="n">new</span>
+</span></span><span class="line"><span class="cl">    <span class="n">vbox</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">btn_a</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALL</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">vbox</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">btn_b</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALL</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">vbox</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">btn_c</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALL</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">panel</span><span class="o">.</span><span class="n">set_sizer</span><span class="p">(</span><span class="n">vbox</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="no">Wx</span><span class="o">::</span><span class="no">App</span><span class="o">.</span><span class="n">run</span> <span class="p">{</span> <span class="no">SizerFrame</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">show</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>Run it. Three buttons stacked vertically, each with 8 pixels of space around them. Try resizing the window — the buttons stay at their natural size but the empty space adjusts. Now change <code>VBoxSizer</code> to <code>HBoxSizer</code> and run again — the same three buttons arranged in a row.</p>
+<h2>The add method<span class="hx:absolute hx:-mt-20" id="the-add-method"></span>
+    <a href="#the-add-method" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><code>sizer.add(widget, proportion, flags, border)</code> is the method you will type hundreds of times. Its four arguments control two distinct things — how much space a widget gets, and how it fills that space — and it is worth understanding them separately.</p>
+<h3>proportion — space along the main axis<span class="hx:absolute hx:-mt-20" id="proportion--space-along-the-main-axis"></span>
+    <a href="#proportion--space-along-the-main-axis" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>In a <code>VBoxSizer</code>, the main axis is vertical. Proportion controls how much of the available <em>vertical</em> space each widget receives when the window is taller than the widgets need.</p>
+<ul>
+<li><code>0</code> — the widget takes only the height it needs; any leftover vertical space goes elsewhere</li>
+<li><code>1</code> — the widget gets a share of leftover vertical space</li>
+<li><code>2</code> — the widget gets twice as much leftover space as a widget with proportion <code>1</code></li>
+</ul>
+<p>To see this clearly, update <code>sizer_demo.rb</code> — note there is no <code>Wx::EXPAND</code> here so we isolate proportion from width behaviour:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">vbox</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">btn_a</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALL</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">vbox</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">btn_b</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALL</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">vbox</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">btn_c</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALL</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>Run it and resize the window vertically. Button A stays at its natural height. Buttons B and C grow taller to fill the extra vertical space — C always gets twice as much as B. The buttons stay at their natural width because <code>Wx::EXPAND</code> is not in the flags.</p>
+<h3>Wx::EXPAND — filling perpendicular space<span class="hx:absolute hx:-mt-20" id="wxexpand--filling-perpendicular-space"></span>
+    <a href="#wxexpand--filling-perpendicular-space" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p><code>Wx::EXPAND</code> is a flag, not a proportion argument. In a <code>VBoxSizer</code> it tells the widget to fill the full available <em>width</em> — perpendicular to the main axis. Without it, widgets sit at their natural width regardless of how wide the window is.</p>
+<p>Update the demo to see the difference:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">vbox</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">btn_a</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALL</span><span class="p">,</span>          <span class="mi">8</span><span class="p">)</span>   <span class="c1"># natural width, fixed height</span>
+</span></span><span class="line"><span class="cl"><span class="n">vbox</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">btn_b</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALL</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">EXPAND</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>   <span class="c1"># full width, fixed height</span>
+</span></span><span class="line"><span class="cl"><span class="n">vbox</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">btn_c</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALL</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">EXPAND</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>   <span class="c1"># full width, grows vertically</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>Run it and resize in both directions. Button A stays small and fixed. Button B stretches to fill the window width but stays at natural height. Button C stretches in both directions — full width from <code>Wx::EXPAND</code>, growing height from proportion <code>1</code>.</p>
+<p>This is the combination you will use most in real forms: proportion <code>1</code> with <code>Wx::EXPAND</code> on input fields so they grow both ways with the window.</p>
+<h3>flags for borders and alignment<span class="hx:absolute hx:-mt-20" id="flags-for-borders-and-alignment"></span>
+    <a href="#flags-for-borders-and-alignment" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>The remaining flags control which sides the border applies to, and how the widget aligns within its allocated space:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Flag</th>
+          <th>Effect</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>Wx::ALL</code></td>
+          <td>Border on all four sides</td>
+      </tr>
+      <tr>
+          <td><code>Wx::TOP</code>, <code>Wx::BOTTOM</code>, <code>Wx::LEFT</code>, <code>Wx::RIGHT</code></td>
+          <td>Border on specific sides only</td>
+      </tr>
+      <tr>
+          <td><code>Wx::ALIGN_CENTER</code></td>
+          <td>Centre the widget in its allocated space</td>
+      </tr>
+      <tr>
+          <td><code>Wx::ALIGN_CENTER_VERTICAL</code></td>
+          <td>Centre vertically — useful in <code>HBoxSizer</code> rows</td>
+      </tr>
+      <tr>
+          <td><code>Wx::ALIGN_RIGHT</code></td>
+          <td>Align to the right of allocated space</td>
+      </tr>
+  </tbody>
+</table>
+<p>Flags are combined with <code>|</code>:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">vbox</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">label</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALIGN_CENTER_VERTICAL</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">RIGHT</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">vbox</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">field</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">EXPAND</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">BOTTOM</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<h3>border<span class="hx:absolute hx:-mt-20" id="border"></span>
+    <a href="#border" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>The last argument is the number of pixels of padding to apply on whichever sides are specified by the flags. <code>Wx::ALL, 8</code> means 8 pixels on every side. <code>Wx::TOP | Wx::BOTTOM, 4</code> means 4 pixels top and bottom, none left or right.</p>
+<h2>FlexGridSizer<span class="hx:absolute hx:-mt-20" id="flexgridsizer"></span>
+    <a href="#flexgridsizer" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><code>Wx::FlexGridSizer</code> arranges widgets in a grid of rows and columns. It is the right tool for forms — the classic &ldquo;label on the left, control on the right&rdquo; layout.</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">grid</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">FlexGridSizer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">vgap</span><span class="p">,</span> <span class="n">hgap</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<ul>
+<li><code>rows</code> — number of rows. Use <code>0</code> to let the sizer calculate rows automatically from the number of items</li>
+<li><code>cols</code> — number of columns</li>
+<li><code>vgap</code> — vertical gap between rows in pixels</li>
+<li><code>hgap</code> — horizontal gap between columns in pixels</li>
+</ul>
+<p><code>FlexGridSizer</code> differs from the simpler <code>GridSizer</code> in one important way: columns (and rows) can have different widths. You can mark a column as growable, so it expands to fill available space while other columns stay fixed:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">grid</span><span class="o">.</span><span class="n">add_growable_col</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># column 1 (the right column) expands</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>For a two-column form, this means the label column stays narrow and the input column stretches as the window widens.</p>
+<p>Try it — replace <code>sizer_demo.rb</code> with this:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="nb">require</span> <span class="s1">&#39;wx&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">SizerFrame</span> <span class="o">&lt;</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Frame</span>
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">initialize</span>
+</span></span><span class="line"><span class="cl">    <span class="k">super</span><span class="p">(</span><span class="kp">nil</span><span class="p">,</span> <span class="ss">title</span><span class="p">:</span> <span class="s1">&#39;Grid Demo&#39;</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="o">[</span><span class="mi">400</span><span class="p">,</span> <span class="mi">200</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">build_ui</span>
+</span></span><span class="line"><span class="cl">    <span class="n">layout</span>
+</span></span><span class="line"><span class="cl">    <span class="n">centre</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kp">private</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">build_ui</span>
+</span></span><span class="line"><span class="cl">    <span class="n">panel</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Panel</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">grid</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">FlexGridSizer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">grid</span><span class="o">.</span><span class="n">add_growable_col</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">[[</span><span class="s1">&#39;Name:&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="s1">&#39;Email:&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="s1">&#39;City:&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="o">]].</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">label_text</span><span class="p">,</span> <span class="n">value</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl">      <span class="n">label</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">StaticText</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="n">label_text</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="n">field</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">TextCtrl</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">panel</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="n">value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="n">grid</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALIGN_CENTER_VERTICAL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="n">grid</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">EXPAND</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">outer</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">VBoxSizer</span><span class="o">.</span><span class="n">new</span>
+</span></span><span class="line"><span class="cl">    <span class="n">outer</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">EXPAND</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALL</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">panel</span><span class="o">.</span><span class="n">set_sizer</span><span class="p">(</span><span class="n">outer</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="no">Wx</span><span class="o">::</span><span class="no">App</span><span class="o">.</span><span class="n">run</span> <span class="p">{</span> <span class="no">SizerFrame</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">show</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>Run it and resize the window. The label column holds its width; the input fields expand to fill the space. This is the pattern at the heart of every form in this series.</p>
+<p>Notice the <code>outer</code> VBoxSizer wrapping the grid — this is the standard pattern. The <code>FlexGridSizer</code> handles the grid layout; an outer <code>VBoxSizer</code> adds the margin around it and positions it within the panel. Direct-to-panel without an outer sizer leaves no margin at the window edges.</p>
+<h2>Nested sizers<span class="hx:absolute hx:-mt-20" id="nested-sizers"></span>
+    <a href="#nested-sizers" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>The real power of sizers comes from nesting them. An <code>HBoxSizer</code> inside a <code>VBoxSizer</code> row lets you put multiple widgets side by side within a vertically stacked layout — exactly what you need for the radio button rows in your form.</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># A row containing a label and two buttons side by side</span>
+</span></span><span class="line"><span class="cl"><span class="n">row</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">HBoxSizer</span><span class="o">.</span><span class="n">new</span>
+</span></span><span class="line"><span class="cl"><span class="n">row</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="no">Wx</span><span class="o">::</span><span class="no">Button</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Yes&#39;</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">RIGHT</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">row</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="no">Wx</span><span class="o">::</span><span class="no">Button</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;No&#39;</span><span class="p">),</span>  <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">vbox</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALL</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>The <code>vbox</code> sees one item in that row — the <code>HBoxSizer</code> — and positions it like any other widget. Inside, the <code>HBoxSizer</code> arranges its two buttons horizontally.</p>
+<h2>Replacing pos: in your form<span class="hx:absolute hx:-mt-20" id="replacing-pos-in-your-form"></span>
+    <a href="#replacing-pos-in-your-form" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Now apply what you have learned. Open <code>app.rb</code> from the previous lesson. You are going to remove every <code>pos:</code> and <code>size:</code> argument and replace the whole layout with sizers.</p>
+<p>The layout goal is a two-column form: labels on the left at fixed width, controls on the right expanding to fill space. Radio button rows need an inner <code>HBoxSizer</code> to arrange the buttons horizontally. The slider row needs an <code>HBoxSizer</code> to put the value label beside the slider.</p>
+<h2>The finished lesson app<span class="hx:absolute hx:-mt-20" id="the-finished-lesson-app"></span>
+    <a href="#the-finished-lesson-app" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Your complete <code>app.rb</code> with sizers replacing all absolute positioning:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="nb">require</span> <span class="s1">&#39;wx&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">AppFrame</span> <span class="o">&lt;</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Frame</span>
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">initialize</span>
+</span></span><span class="line"><span class="cl">    <span class="k">super</span><span class="p">(</span><span class="kp">nil</span><span class="p">,</span> <span class="ss">title</span><span class="p">:</span> <span class="s1">&#39;Widget Demo&#39;</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="o">[</span><span class="mi">460</span><span class="p">,</span> <span class="mi">340</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">build_ui</span>
+</span></span><span class="line"><span class="cl">    <span class="n">bind_events</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">layout</span>
+</span></span><span class="line"><span class="cl">    <span class="n">centre</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kp">private</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">build_ui</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@panel</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Panel</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">create_status_bar</span>
+</span></span><span class="line"><span class="cl">    <span class="n">set_status_text</span><span class="p">(</span><span class="s1">&#39;Ready&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="vi">@name_label</span>  <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">StaticText</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Name:&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@name_field</span>  <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">TextCtrl</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="vi">@email_label</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">StaticText</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Email:&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@email_field</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">TextCtrl</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="vi">@subscribe_cb</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">CheckBox</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Subscribe to newsletter&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@subscribe_cb</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="kp">true</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="vi">@size_buttons</span> <span class="o">=</span> <span class="o">[</span>
+</span></span><span class="line"><span class="cl">      <span class="no">Wx</span><span class="o">::</span><span class="no">RadioButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Small&#39;</span><span class="p">,</span>  <span class="ss">style</span><span class="p">:</span> <span class="no">Wx</span><span class="o">::</span><span class="no">RB_GROUP</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="no">Wx</span><span class="o">::</span><span class="no">RadioButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Medium&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="no">Wx</span><span class="o">::</span><span class="no">RadioButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Large&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="o">]</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@size_buttons</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">value</span> <span class="o">=</span> <span class="kp">true</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="vi">@colour_buttons</span> <span class="o">=</span> <span class="o">[</span>
+</span></span><span class="line"><span class="cl">      <span class="no">Wx</span><span class="o">::</span><span class="no">RadioButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Red&#39;</span><span class="p">,</span>   <span class="ss">style</span><span class="p">:</span> <span class="no">Wx</span><span class="o">::</span><span class="no">RB_GROUP</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="no">Wx</span><span class="o">::</span><span class="no">RadioButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Green&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="no">Wx</span><span class="o">::</span><span class="no">RadioButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Blue&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="o">]</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@colour_buttons</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">value</span> <span class="o">=</span> <span class="kp">true</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">countries</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;Australia&#39;</span><span class="p">,</span> <span class="s1">&#39;Canada&#39;</span><span class="p">,</span> <span class="s1">&#39;New Zealand&#39;</span><span class="p">,</span> <span class="s1">&#39;United Kingdom&#39;</span><span class="p">,</span> <span class="s1">&#39;United States&#39;</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@country</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Choice</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">choices</span><span class="p">:</span> <span class="n">countries</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@country</span><span class="o">.</span><span class="n">selection</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="vi">@age_slider</span>      <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Slider</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="ss">min_value</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span> <span class="ss">max_value</span><span class="p">:</span> <span class="mi">99</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@age_value_label</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">StaticText</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;25&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="vi">@submit_btn</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Button</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Submit&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@submit_btn</span><span class="o">.</span><span class="n">set_default</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">grid</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">FlexGridSizer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">grid</span><span class="o">.</span><span class="n">add_growable_col</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">grid</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="vi">@name_label</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALIGN_CENTER_VERTICAL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">grid</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="vi">@name_field</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">EXPAND</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">grid</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="vi">@email_label</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALIGN_CENTER_VERTICAL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">grid</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="vi">@email_field</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">EXPAND</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">grid</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="no">Wx</span><span class="o">::</span><span class="no">StaticText</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">grid</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="vi">@subscribe_cb</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">size_row</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">HBoxSizer</span><span class="o">.</span><span class="n">new</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@size_buttons</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">rb</span><span class="o">|</span> <span class="n">size_row</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">rb</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">RIGHT</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">grid</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="no">Wx</span><span class="o">::</span><span class="no">StaticText</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Size:&#39;</span><span class="p">),</span>   <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALIGN_CENTER_VERTICAL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">grid</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">size_row</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">colour_row</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">HBoxSizer</span><span class="o">.</span><span class="n">new</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@colour_buttons</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">rb</span><span class="o">|</span> <span class="n">colour_row</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">rb</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">RIGHT</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">grid</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="no">Wx</span><span class="o">::</span><span class="no">StaticText</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Colour:&#39;</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALIGN_CENTER_VERTICAL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">grid</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">colour_row</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">grid</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="no">Wx</span><span class="o">::</span><span class="no">StaticText</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Country:&#39;</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALIGN_CENTER_VERTICAL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">grid</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="vi">@country</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">EXPAND</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">age_row</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">HBoxSizer</span><span class="o">.</span><span class="n">new</span>
+</span></span><span class="line"><span class="cl">    <span class="n">age_row</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="vi">@age_slider</span><span class="p">,</span>      <span class="mi">1</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">EXPAND</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">RIGHT</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">age_row</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="vi">@age_value_label</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALIGN_CENTER_VERTICAL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">grid</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="no">Wx</span><span class="o">::</span><span class="no">StaticText</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Age:&#39;</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALIGN_CENTER_VERTICAL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">grid</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">age_row</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">EXPAND</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">outer</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">VBoxSizer</span><span class="o">.</span><span class="n">new</span>
+</span></span><span class="line"><span class="cl">    <span class="n">outer</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span>        <span class="mi">1</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">EXPAND</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALL</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">outer</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="vi">@submit_btn</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALIGN_RIGHT</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">RIGHT</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">BOTTOM</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="vi">@panel</span><span class="o">.</span><span class="n">set_sizer</span><span class="p">(</span><span class="n">outer</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@panel</span><span class="o">.</span><span class="n">layout</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">bind_events</span>
+</span></span><span class="line"><span class="cl">    <span class="n">evt_close</span> <span class="p">{</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span> <span class="n">on_close</span><span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">evt_checkbox</span><span class="p">(</span><span class="vi">@subscribe_cb</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span> <span class="n">on_subscribe_changed</span><span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="vi">@size_buttons</span><span class="o">.</span><span class="n">each</span>   <span class="p">{</span> <span class="o">|</span><span class="n">rb</span><span class="o">|</span> <span class="n">evt_radiobutton</span><span class="p">(</span><span class="n">rb</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_group_changed</span> <span class="p">}</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@colour_buttons</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">rb</span><span class="o">|</span> <span class="n">evt_radiobutton</span><span class="p">(</span><span class="n">rb</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_group_changed</span> <span class="p">}</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">evt_choice</span><span class="p">(</span><span class="vi">@country</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_country_changed</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">evt_slider</span><span class="p">(</span><span class="vi">@age_slider</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl">      <span class="vi">@age_value_label</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">int</span><span class="o">.</span><span class="n">to_s</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">evt_button</span><span class="p">(</span><span class="vi">@submit_btn</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_submit</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">on_close</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">event</span><span class="o">.</span><span class="n">skip</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">on_subscribe_changed</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">set_status_text</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">checked?</span> <span class="p">?</span> <span class="s1">&#39;Subscribed&#39;</span> <span class="p">:</span> <span class="s1">&#39;Not subscribed&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">on_group_changed</span>
+</span></span><span class="line"><span class="cl">    <span class="n">size</span>   <span class="o">=</span> <span class="vi">@size_buttons</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:value</span><span class="p">)</span><span class="o">.</span><span class="n">label</span>
+</span></span><span class="line"><span class="cl">    <span class="n">colour</span> <span class="o">=</span> <span class="vi">@colour_buttons</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:value</span><span class="p">)</span><span class="o">.</span><span class="n">label</span>
+</span></span><span class="line"><span class="cl">    <span class="n">set_status_text</span><span class="p">(</span><span class="s2">&#34;Size: </span><span class="si">#{</span><span class="n">size</span><span class="si">}</span><span class="s2">  Colour: </span><span class="si">#{</span><span class="n">colour</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">on_country_changed</span>
+</span></span><span class="line"><span class="cl">    <span class="n">set_status_text</span><span class="p">(</span><span class="s2">&#34;Country: </span><span class="si">#{</span><span class="vi">@country</span><span class="o">.</span><span class="n">string_selection</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">on_submit</span>
+</span></span><span class="line"><span class="cl">    <span class="n">size</span>   <span class="o">=</span> <span class="vi">@size_buttons</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:value</span><span class="p">)</span><span class="o">.</span><span class="n">label</span>
+</span></span><span class="line"><span class="cl">    <span class="n">colour</span> <span class="o">=</span> <span class="vi">@colour_buttons</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:value</span><span class="p">)</span><span class="o">.</span><span class="n">label</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">summary</span> <span class="o">=</span> <span class="o">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;Name:      </span><span class="si">#{</span><span class="vi">@name_field</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;Email:     </span><span class="si">#{</span><span class="vi">@email_field</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;Subscribe: </span><span class="si">#{</span><span class="vi">@subscribe_cb</span><span class="o">.</span><span class="n">value</span> <span class="p">?</span> <span class="s1">&#39;Yes&#39;</span> <span class="p">:</span> <span class="s1">&#39;No&#39;</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;Size:      </span><span class="si">#{</span><span class="n">size</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;Colour:    </span><span class="si">#{</span><span class="n">colour</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;Country:   </span><span class="si">#{</span><span class="vi">@country</span><span class="o">.</span><span class="n">string_selection</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;Age:       </span><span class="si">#{</span><span class="vi">@age_slider</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="o">].</span><span class="n">join</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="no">Wx</span><span class="o">::</span><span class="n">message_box</span><span class="p">(</span><span class="n">summary</span><span class="p">,</span> <span class="s1">&#39;Form values&#39;</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">OK</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ICON_INFORMATION</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="no">Wx</span><span class="o">::</span><span class="no">App</span><span class="o">.</span><span class="n">run</span> <span class="p">{</span> <span class="no">AppFrame</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">show</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>This is the same form as the end of lesson 2.2 — same widgets, same events, same handlers — but now it looks right, resizes correctly, and required no manual pixel arithmetic to produce.</p>
+<h2>What changed and why<span class="hx:absolute hx:-mt-20" id="what-changed-and-why"></span>
+    <a href="#what-changed-and-why" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>A few things in the new layout are worth pausing on.</p>
+<p><strong>Empty StaticText as a spacer.</strong> The subscribe checkbox and the radio group labels need to occupy the right column, leaving the left column empty. <code>Wx::StaticText.new(@panel, label: '')</code> creates an invisible placeholder that occupies the left cell without displaying anything. This is the simplest way to skip a cell in a <code>FlexGridSizer</code>.</p>
+<p><strong>HBoxSizer inside a grid cell.</strong> The size and colour rows each contain multiple radio buttons side by side. The <code>FlexGridSizer</code> can only hold one item per cell, so you put an <code>HBoxSizer</code> in the cell and add the buttons to that. The grid positions the sizer; the sizer positions the buttons within it.</p>
+<p><strong>proportion on the age row.</strong> The <code>age_row</code> <code>HBoxSizer</code> is added to the grid with proportion <code>1</code> and <code>Wx::EXPAND</code>, so it stretches to fill the full right column. Inside, the slider has proportion <code>1</code> (it expands) and the label has proportion <code>0</code> (it stays fixed). This gives the slider all the growing space while keeping the number label pinned to its right edge.</p>
+<hr>
+<p><em>Previous: <a href="../02-core-widgets/">Core widgets</a> | Next: <a href="../04-menus-toolbars/">Menus and toolbars</a></em></p>
+
+        </div>
+        <div class="hx:mt-16"></div>
+        <script>
+  function getGiscusTheme() {
+    const giscusTheme = '';
+    if (giscusTheme === 'light' || giscusTheme === 'dark') {
+      return giscusTheme;
+    }
+
+    const hugoTheme = localStorage.getItem("color-theme");
+    if (hugoTheme === 'light' || hugoTheme === 'dark') {
+      return hugoTheme;
+    }
+
+    if (hugoTheme === 'system') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    const defaultTheme = '';
+    if (defaultTheme === 'light' || defaultTheme === 'dark') {
+      return defaultTheme;
+    }
+
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function setGiscusTheme() {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+
+    const msg = {
+      giscus: {
+        setConfig: {
+          theme: getGiscusTheme(),
+        },
+      },
+    }
+
+    iframe.contentWindow.postMessage(msg, 'https://giscus.app');
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const giscusAttributes = {
+      "src": "https://giscus.app/client.js",
+      "data-repo": "rehali\/ruby-field-notes",
+      "data-repo-id": "R_kgDOxxxxxxxx",
+      "data-category": "General",
+      "data-category-id": "DIC_kwDOxxxxxxxxx",
+      "data-mapping": "pathname",
+      "data-strict": "0",
+      "data-reactions-enabled": "1",
+      "data-emit-metadata": "0",
+      "data-input-position": "top",
+      "data-theme": getGiscusTheme(),
+      "data-lang": "en",
+      "crossorigin": "anonymous",
+      "async": "",
+    };
+
+    
+    const giscusScript = document.createElement("script");
+    Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+    
+    document.getElementById('giscus-hextra-bb112b9f807c37c1752e5da6a1652a29').appendChild(giscusScript);
+
+    
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", setGiscusTheme);
+
+    
+    const themeToggleOptions = document.querySelectorAll(".hextra-theme-toggle-options [data-item]");
+    if (themeToggleOptions) {
+      themeToggleOptions.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+          setTimeout(setGiscusTheme, 0);
+        });
+      });
+    }
+  });
+</script>
+
+<div id="giscus-hextra-bb112b9f807c37c1752e5da6a1652a29"></div>
+      </main>
+    </article>
+  </div>
+
+      <footer class="hextra-footer hx:bg-gray-100 hx:pb-[env(safe-area-inset-bottom)] hx:dark:bg-neutral-900 hx:print:bg-transparent"><div class="hx:mx-auto hx:flex hx:gap-2 hx:py-2 hx:px-4 hextra-max-footer-width"><div class="hx:flex hx:justify-items-start hx:group" data-theme="light">
+  <button
+    title="Change theme"
+    data-state="closed"
+    data-location="bottom"
+    class="hextra-theme-toggle hx:cursor-pointer hx:rounded-md hx:text-left hx:font-medium hx:h-7 hx:px-2 hx:text-xs hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:font-medium hx:text-gray-600 hx:transition-colors hx:dark:text-gray-400 hx:grow"
+    type="button"
+    aria-label="Change theme"
+    aria-expanded="false"
+    aria-haspopup="menu"
+  >
+    <div class="hx:flex hx:items-center hx:gap-2 hx:capitalize"><svg height=12 class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg><span class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden">Light</span><svg height=12 class="hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg><span class="hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden">Dark</span><svg height=12 class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  fill="currentColor">
+  <path d="M 11.996094,2 C 6.4986225,2.0192368 2.03125,6.5024993 2.03125,12 c 0,5.497501 4.4673725,9.980763 9.964844,10 H 12 12.0039 c 5.497471,-0.01924 9.964844,-4.502499 9.964844,-10 0,-5.4975007 -4.467373,-9.9807632 -9.964844,-10 H 12 Z M 12,4 c 4.417218,0.017598 7.96875,3.5822356 7.96875,8 0,4.417764 -3.551532,7.982402 -7.96875,8 z" />
+</svg>
+<span class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden">System</span></div>
+  </button>
+  <ul
+    class="hextra-theme-toggle-options hx:hidden hx:z-20 hx:max-h-64 hx:overflow-auto hx:rounded-lg hx:border hx:border-gray-200 hx:bg-white hx:p-1 hx:text-sm hx:shadow-lg hx:dark:border-neutral-700 hx:dark:bg-neutral-900"
+    style="position: fixed; inset: auto auto 0px 0px; margin: 0px; min-width: 100px;"
+    data-theme="light"
+    role="menu"
+  >
+    <li role="none" class="hx:flex hx:flex-col">
+      <button
+        type="button"
+        role="menuitemradio"
+        aria-checked="true"
+        tabindex="-1"
+        data-item="light"
+        class="hx:text-gray-700 hx:dark:text-gray-300 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:hover:bg-neutral-800 hx:dark:hover:text-gray-100 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:rounded-sm hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9 hx:text-left hx:w-full hx:bg-transparent hx:border-0"
+      >
+        Light
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </button>
+    </li>
+    <li role="none" class="hx:flex hx:flex-col">
+      <button
+        type="button"
+        role="menuitemradio"
+        aria-checked="false"
+        tabindex="-1"
+        data-item="dark"
+        class="hx:text-gray-700 hx:dark:text-gray-300 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:hover:bg-neutral-800 hx:dark:hover:text-gray-100 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:rounded-sm hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9 hx:text-left hx:w-full hx:bg-transparent hx:border-0"
+      >
+        Dark
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </button>
+    </li>
+    <li role="none" class="hx:flex hx:flex-col">
+      <button
+        type="button"
+        role="menuitemradio"
+        aria-checked="false"
+        tabindex="-1"
+        data-item="system"
+        class="hx:text-gray-700 hx:dark:text-gray-300 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:hover:bg-neutral-800 hx:dark:hover:text-gray-100 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:rounded-sm hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9 hx:text-left hx:w-full hx:bg-transparent hx:border-0"
+      >
+        System
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </button>
+    </li>
+  </ul>
+</div>
+</div><hr class="hx:border-gray-200 hx:dark:border-neutral-800" /><div class="hextra-custom-footer hextra-max-footer-width hx:pl-[max(env(safe-area-inset-left),1.5rem)] hx:pr-[max(env(safe-area-inset-right),1.5rem)] hx:text-gray-600 hx:dark:text-gray-400"><div class="hx:text-xs hx:text-gray-500 hx:mt-2" style="padding: 6px;">
+  © 2026 rehali — Tutorial content: 
+  <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a>
+  · Code examples: MIT · Built with <a href="https://github.com/imfing/hextra" target="_blank" rel="noopener">Hextra</a>
+</div></div><div
+      class="hextra-max-footer-width hx:mx-auto hx:flex hx:justify-center hx:py-12 hx:pl-[max(env(safe-area-inset-left),1.5rem)] hx:pr-[max(env(safe-area-inset-right),1.5rem)] hx:text-gray-600 hx:dark:text-gray-400 hx:md:justify-start"
+    >
+      <div class="hx:flex hx:w-full hx:flex-col hx:items-center hx:sm:items-start"><div class="hx:mt-6 hx:text-xs">© 2025 Hextra Project.</div></div>
+    </div></footer>
+    
+    <script defer src="/js/main.js" integrity=""></script>
+<script defer src="/js/flexsearch.9f5b5908f93ae86f1ecd4b043b799f580c2d1654e703dd9357d568ac41b2547a.js" integrity="sha256-n1tZCPk66G8ezUsEO3mfWAwtFlTnA92TV9VorEGyVHo=" crossorigin="anonymous"></script><script defer src="/en.search.js" integrity=""></script>
+  </body>
+</html>

@@ -1,0 +1,511 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ruby Field Notes – Module 01 — Introduction to Phlex</title>
+    <link>http://localhost:1313/phlex-on-rails/module-01/</link>
+    <description>Recent content in Module 01 — Introduction to Phlex on Ruby Field Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2026 rehali 2 — Tutorial content: CC BY-NC-ND 4.0 · Code examples: MIT</copyright>
+    
+	  <atom:link href="http://localhost:1313/phlex-on-rails/module-01/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>The Problem with ERB at Scale</title>
+      <link>http://localhost:1313/phlex-on-rails/module-01/01-the-problem-with-erb/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/phlex-on-rails/module-01/01-the-problem-with-erb/</guid>
+      <description>
+        
+        
+        &lt;h2&gt;Lesson 1 — The problem with ERB at scale&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;lesson-1--the-problem-with-erb-at-scale&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#lesson-1--the-problem-with-erb-at-scale&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Where Rails views start&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;where-rails-views-start&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#where-rails-views-start&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;When you generate a new Rails app and scaffold your first resource, everything feels clean. You get a handful of &lt;code&gt;.html.erb&lt;/code&gt; files, each one mapping neatly to a controller action. The structure is obvious. The separation feels right.&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;app/views/posts/
+  index.html.erb
+  show.html.erb
+  new.html.erb
+  edit.html.erb
+  _form.html.erb&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;Copy code&#34;
+    aria-label=&#34;Copy code&#34;
+    data-copied-label=&#34;Copied!&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;This works beautifully for a while. ERB is readable, the file-per-action convention is easy to follow, and partials handle the obvious repetition. For a simple CRUD app, this is genuinely fine.&lt;/p&gt;
+&lt;p&gt;The trouble starts when the UI grows up.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;The complexity creep&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;the-complexity-creep&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#the-complexity-creep&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Consider a &lt;code&gt;posts/index.html.erb&lt;/code&gt; six months into a real project. It probably looks something like this:&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;&amp;lt;% content_for :title, &amp;#34;Posts&amp;#34; %&amp;gt;
+&amp;lt;% content_for :sidebar do %&amp;gt;
+  &amp;lt;%= render &amp;#34;shared/filters&amp;#34;, filters: @filters %&amp;gt;
+&amp;lt;% end %&amp;gt;
+
+&amp;lt;div class=&amp;#34;page-header&amp;#34;&amp;gt;
+  &amp;lt;h1&amp;gt;Posts&amp;lt;/h1&amp;gt;
+  &amp;lt;%= link_to &amp;#34;New Post&amp;#34;, new_post_path, class: button_classes(:primary) %&amp;gt;
+&amp;lt;/div&amp;gt;
+
+&amp;lt;% if @posts.empty? %&amp;gt;
+  &amp;lt;%= render &amp;#34;shared/empty_state&amp;#34;, message: &amp;#34;No posts yet&amp;#34; %&amp;gt;
+&amp;lt;% else %&amp;gt;
+  &amp;lt;div class=&amp;#34;post-grid&amp;#34;&amp;gt;
+    &amp;lt;% @posts.each do |post| %&amp;gt;
+      &amp;lt;%= render &amp;#34;posts/post_card&amp;#34;,
+            post: post,
+            show_author: current_user.admin?,
+            highlight: params[:highlight_id] == post.id.to_s %&amp;gt;
+    &amp;lt;% end %&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;% end %&amp;gt;
+
+&amp;lt;%= render &amp;#34;shared/pagination&amp;#34;, pagy: @pagy %&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;Copy code&#34;
+    aria-label=&#34;Copy code&#34;
+    data-copied-label=&#34;Copied!&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;That&amp;rsquo;s already pulling in four different partials, calling a helper (&lt;code&gt;button_classes&lt;/code&gt;), reading from &lt;code&gt;content_for&lt;/code&gt;, and accessing &lt;code&gt;current_user&lt;/code&gt; implicitly through the view context. And this is a &lt;em&gt;tidy&lt;/em&gt; version.&lt;/p&gt;
+&lt;p&gt;Now ask yourself: where does &lt;code&gt;button_classes&lt;/code&gt; come from? Where is the &lt;code&gt;:sidebar&lt;/code&gt; &lt;code&gt;content_for&lt;/code&gt; consumed? What does &lt;code&gt;_post_card.html.erb&lt;/code&gt; accept as locals? What happens if you render &lt;code&gt;_post_card&lt;/code&gt; from a different context where &lt;code&gt;current_user&lt;/code&gt; isn&amp;rsquo;t available?&lt;/p&gt;
+&lt;p&gt;These questions don&amp;rsquo;t have obvious answers. You have to go hunting.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;The four-way tension&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;the-four-way-tension&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#the-four-way-tension&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;ERB views in a mature Rails app are pulled in four directions simultaneously, and none of them play nicely together.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Partials&lt;/strong&gt; handle repetition, but they&amp;rsquo;re essentially untyped function calls. Their interface is implicit — there&amp;rsquo;s no contract. A partial can silently access instance variables set by the controller, which makes it secretly coupled to a specific rendering context. Rename &lt;code&gt;@posts&lt;/code&gt; to &lt;code&gt;@pagy_posts&lt;/code&gt; and suddenly a partial three levels deep breaks with a cryptic nil error.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Helpers&lt;/strong&gt; handle logic that &amp;ldquo;doesn&amp;rsquo;t belong in the view&amp;rdquo;, but they&amp;rsquo;re globally scoped. Every helper in every &lt;code&gt;*_helper.rb&lt;/code&gt; file is available everywhere. They accumulate. Teams hesitate to delete them because it&amp;rsquo;s hard to know what still uses them. And because they return HTML strings, they&amp;rsquo;re invisible to your test suite unless you test them explicitly.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Layouts&lt;/strong&gt; handle page structure, but they communicate with views through &lt;code&gt;yield&lt;/code&gt; and &lt;code&gt;content_for&lt;/code&gt; — an implicit, stringly-typed protocol. When a view calls &lt;code&gt;content_for :sidebar&lt;/code&gt;, it is making an assumption about what the layout does with a &lt;code&gt;:sidebar&lt;/code&gt; slot. Break the layout, break every view silently.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Instance variables&lt;/strong&gt; are the invisible thread that binds it all together. Controllers set them, layouts read them, views use them, partials inherit them. There&amp;rsquo;s no declared interface anywhere. The controller and the view are tightly coupled through shared mutable state, but that coupling is completely invisible in both files.&lt;/p&gt;
+&lt;p&gt;The result is a web of implicit dependencies. A senior developer can navigate it through experience and convention, but it resists refactoring, resists testing in isolation, and actively fights the instinct to extract reusable UI.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;What &amp;ldquo;complexity&amp;rdquo; actually looks like&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;what-complexity-actually-looks-like&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#what-complexity-actually-looks-like&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Here&amp;rsquo;s a concrete symptom: imagine you want to extract a &lt;code&gt;PostCard&lt;/code&gt; that can be used in three places — the posts index, the search results page, and a dashboard widget. With ERB, you create &lt;code&gt;_post_card.html.erb&lt;/code&gt; and start wiring it up. Then you discover:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The index passes &lt;code&gt;show_author:&lt;/code&gt; as a local, but the dashboard doesn&amp;rsquo;t need it&lt;/li&gt;
+&lt;li&gt;The search results need a &lt;code&gt;highlight_terms:&lt;/code&gt; local that the other two don&amp;rsquo;t&lt;/li&gt;
+&lt;li&gt;The dashboard is rendered inside a Turbo Frame, so links need a &lt;code&gt;data-turbo-frame&lt;/code&gt; attribute&lt;/li&gt;
+&lt;li&gt;One context calls the partial through a collection (&lt;code&gt;render @posts&lt;/code&gt;), another calls it individually&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You end up with a partial that has grown a sprawling set of optional locals, internal conditionals, and context-sniffing logic. Or you end up with three slightly different partials that share duplicated markup. Either way, you&amp;rsquo;ve lost the encapsulation you were aiming for.&lt;/p&gt;
+&lt;p&gt;The partial is not a component. It&amp;rsquo;s a macro — a text substitution with some variable interpolation. It has no object identity, no explicit interface, no lifecycle, and no way to enforce how it&amp;rsquo;s used.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;The testing dead end&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;the-testing-dead-end&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#the-testing-dead-end&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;This is where the ERB complexity really hurts. How do you test a partial in isolation?&lt;/p&gt;
+&lt;p&gt;In theory: render it in an ActionView test context with stub locals and assert on the output. In practice: almost nobody does this. The setup is awkward, the test is fragile, and the payoff feels low.&lt;/p&gt;
+&lt;p&gt;So view logic goes untested. Helpers get a few unit tests if you&amp;rsquo;re disciplined. But the actual rendered output? You trust integration tests and your eyes.&lt;/p&gt;
+&lt;p&gt;This has a compounding effect. Because view code isn&amp;rsquo;t tested, developers are reluctant to refactor it. Because it isn&amp;rsquo;t refactored, it grows. Because it grows, it becomes harder to test. The cycle continues until the views directory becomes the part of the codebase nobody wants to touch.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;The insight&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;the-insight&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#the-insight&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The core problem is not ERB the templating language. ERB is fine for simple cases. The problem is that Rails gives you no structured way to create &lt;em&gt;encapsulated, reusable UI components with explicit interfaces&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;What you actually want is something like this:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A component is a Ruby object with a defined initializer — its interface is explicit and type-checkable&lt;/li&gt;
+&lt;li&gt;A component only renders what it was given — no implicit instance variable access&lt;/li&gt;
+&lt;li&gt;A component can be rendered from anywhere — controller, another component, a mailer, a test&lt;/li&gt;
+&lt;li&gt;A component can be tested as a unit — instantiate it, render it, assert on the output&lt;/li&gt;
+&lt;li&gt;A component owns its markup — no hunting across multiple files to understand what it produces&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This is exactly what Phlex gives you. And it gives it to you in pure Ruby, with no new templating syntax to learn.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Component Philosophy — Phlex vs ViewComponent vs Partials</title>
+      <link>http://localhost:1313/phlex-on-rails/module-01/02-component-philosophy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/phlex-on-rails/module-01/02-component-philosophy/</guid>
+      <description>
+        
+        
+        &lt;h2&gt;Lesson 2 — Component philosophy: Phlex vs ViewComponent vs partials&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;lesson-2--component-philosophy-phlex-vs-viewcomponent-vs-partials&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#lesson-2--component-philosophy-phlex-vs-viewcomponent-vs-partials&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;The component landscape&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;the-component-landscape&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#the-component-landscape&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Once you accept that you want encapsulated UI components, you have choices. Rails itself doesn&amp;rsquo;t provide a component abstraction, but the ecosystem has filled the gap in different ways. Understanding the options — and their tradeoffs — will help you make a confident, informed choice in favour of Phlex.&lt;/p&gt;
+&lt;p&gt;The three approaches worth comparing:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;ERB partials&lt;/strong&gt; (built-in, no gem required)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ViewComponent&lt;/strong&gt; (GitHub&amp;rsquo;s component library, the established choice)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Phlex&lt;/strong&gt; (pure Ruby components, the modern choice)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3&gt;ERB partials — the baseline&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;erb-partials--the-baseline&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#erb-partials--the-baseline&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;We covered the problems in Lesson 1. But partials do have genuine advantages:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Zero setup — they&amp;rsquo;re part of Rails&lt;/li&gt;
+&lt;li&gt;Familiar to every Rails developer&lt;/li&gt;
+&lt;li&gt;Great tooling support (ERB syntax highlighting, language servers, etc.)&lt;/li&gt;
+&lt;li&gt;Fast enough for most applications&lt;/li&gt;
+&lt;li&gt;Easy to migrate to incrementally&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The verdict: &lt;strong&gt;partials are fine for simple, stable UI fragments&lt;/strong&gt;. A &lt;code&gt;_flash_messages.html.erb&lt;/code&gt; or a &lt;code&gt;_footer.html.erb&lt;/code&gt; doesn&amp;rsquo;t need to become a component. The pain arrives when you need &lt;em&gt;parameterised, reusable, testable&lt;/em&gt; UI — and that&amp;rsquo;s where both ViewComponent and Phlex shine.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;ViewComponent — the established choice&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;viewcomponent--the-established-choice&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#viewcomponent--the-established-choice&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;ViewComponent was built by GitHub and has been battle-tested at enormous scale. It introduces a Ruby class alongside each ERB template:&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# app/components/post_card_component.rb&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;PostCardComponent&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;ViewComponent&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;Base&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;initialize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;ss&#34;&gt;post&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:,&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;show_author&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kp&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;vi&#34;&gt;@post&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;post&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;vi&#34;&gt;@show_author&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;show_author&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;Copy code&#34;
+    aria-label=&#34;Copy code&#34;
+    data-copied-label=&#34;Copied!&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;&amp;lt;%# app/components/post_card_component.html.erb %&amp;gt;
+&amp;lt;div class=&amp;#34;post-card&amp;#34;&amp;gt;
+  &amp;lt;h2&amp;gt;&amp;lt;%= @post.title %&amp;gt;&amp;lt;/h2&amp;gt;
+  &amp;lt;% if @show_author %&amp;gt;
+    &amp;lt;p&amp;gt;By &amp;lt;%= @post.author.name %&amp;gt;&amp;lt;/p&amp;gt;
+  &amp;lt;% end %&amp;gt;
+&amp;lt;/div&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;Copy code&#34;
+    aria-label=&#34;Copy code&#34;
+    data-copied-label=&#34;Copied!&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;This is a genuine improvement over raw partials. The interface is explicit (the &lt;code&gt;initialize&lt;/code&gt; method), instance variables are private to the component, and the component can be unit-tested cleanly.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;What ViewComponent does well:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Strong Rails integration — it works exactly like a view&lt;/li&gt;
+&lt;li&gt;Sidecar files: the &lt;code&gt;.rb&lt;/code&gt; and &lt;code&gt;.html.erb&lt;/code&gt; sit next to each other&lt;/li&gt;
+&lt;li&gt;Established gem with strong community and GitHub backing&lt;/li&gt;
+&lt;li&gt;Stimulus controller sidecar support&lt;/li&gt;
+&lt;li&gt;Preview system for component development in isolation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Where ViewComponent has friction:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You always need two files — the Ruby class and the ERB template&lt;/li&gt;
+&lt;li&gt;The template is still ERB, so all the ERB pain (string concatenation for dynamic classes, no IDE type checking on variables passed to the template, etc.) is still present&lt;/li&gt;
+&lt;li&gt;Composition and slots are possible but feel bolted on&lt;/li&gt;
+&lt;li&gt;The file-per-component discipline means extracting small sub-components has real overhead&lt;/li&gt;
+&lt;li&gt;Testing requires a ViewComponent-specific test helper&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3&gt;Phlex — the modern choice&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;phlex--the-modern-choice&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#phlex--the-modern-choice&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Phlex takes a different position: &lt;strong&gt;what if the component and its template were the same Ruby class?&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# app/components/post_card.rb&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Components&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;PostCard&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;Components&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;Base&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;initialize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;ss&#34;&gt;post&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:,&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;show_author&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kp&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;vi&#34;&gt;@post&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;post&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;vi&#34;&gt;@show_author&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;show_author&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;view_template&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;div&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;ss&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;post-card&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;n&#34;&gt;h2&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;vi&#34;&gt;@post&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;title&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nb&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;By &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;#{&lt;/span&gt;&lt;span class=&#34;vi&#34;&gt;@post&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;author&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;vi&#34;&gt;@show_author&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;Copy code&#34;
+    aria-label=&#34;Copy code&#34;
+    data-copied-label=&#34;Copied!&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;No ERB file. No separate template. The HTML structure is described using Ruby methods that map directly to HTML tags. &lt;code&gt;div&lt;/code&gt;, &lt;code&gt;h2&lt;/code&gt;, &lt;code&gt;p&lt;/code&gt; — they&amp;rsquo;re just method calls that take blocks.&lt;/p&gt;
+&lt;p&gt;This has a cascade of consequences that matter enormously in practice.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;Why &amp;ldquo;everything is a Ruby class&amp;rdquo; changes everything&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;why-everything-is-a-ruby-class-changes-everything&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#why-everything-is-a-ruby-class-changes-everything&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Explicit interfaces, for free.&lt;/strong&gt;&lt;br&gt;
+Because a Phlex component is just a Ruby class with an &lt;code&gt;initialize&lt;/code&gt; method, its interface is exactly what Ruby gives you: keyword arguments with types, defaults, and required/optional semantics. Your IDE understands it. RubyLSP can autocomplete it. RuboCop can lint it. This is not possible with ERB partials or ViewComponent templates.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Composition is natural.&lt;/strong&gt;&lt;br&gt;
+In Ruby, you compose objects. In Phlex, composing components is the same thing:&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;view_template&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;render&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;Components&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;Card&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;render&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;Components&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;PostCard&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;ss&#34;&gt;post&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;vi&#34;&gt;@post&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;render&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;Components&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;TagList&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;ss&#34;&gt;tags&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;vi&#34;&gt;@post&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tags&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;Copy code&#34;
+    aria-label=&#34;Copy code&#34;
+    data-copied-label=&#34;Copied!&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;There&amp;rsquo;s no special slot API to learn. You just render components inside other components, the same way you nest Ruby objects.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Kits make component libraries elegant.&lt;/strong&gt;&lt;br&gt;
+Phlex v2 introduces Kits — modules that expose a collection of components with a clean call syntax:&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;module&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;Components&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;kp&#34;&gt;extend&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;Phlex&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;Kit&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Now anywhere in your views:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;render&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;Components&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;PostCard&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;ss&#34;&gt;post&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;vi&#34;&gt;@post&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;render&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;Components&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;Button&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Save&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;variant&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;:primary&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;Copy code&#34;
+    aria-label=&#34;Copy code&#34;
+    data-copied-label=&#34;Copied!&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;This feels like a design system DSL, but it&amp;rsquo;s just Ruby modules.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Testing is trivial.&lt;/strong&gt;&lt;br&gt;
+Because a Phlex component is a plain Ruby object, testing it requires nothing special:&lt;/p&gt;
+&lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;
+
+&lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;test&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;post card shows author when requested&amp;#34;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;post&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;Post&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;ss&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Hello&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;author&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;User&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Alice&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;component&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;Components&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;no&#34;&gt;PostCard&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;ss&#34;&gt;post&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;post&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;show_author&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kp&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;render_inline&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;component&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;assert_text&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Alice&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0&#34;&gt;
+  &lt;button
+    class=&#34;hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50&#34;
+    title=&#34;Copy code&#34;
+    aria-label=&#34;Copy code&#34;
+    data-copied-label=&#34;Copied!&#34;
+  &gt;
+    &lt;div class=&#34;hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4&#34;&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;No view context mocking, no partial rendering setup. Instantiate, render, assert.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Performance.&lt;/strong&gt;&lt;br&gt;
+Phlex renders HTML at approximately 1.4 GB/s per core on modern hardware. It doesn&amp;rsquo;t slow down as you extract more components — each component call is a method call, not a file load. For most applications this doesn&amp;rsquo;t matter much, but it&amp;rsquo;s worth knowing there&amp;rsquo;s no performance penalty for aggressive component extraction.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Tailwind CSS is a natural fit.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Tailwind&amp;rsquo;s utility-first approach is designed for component-based development — but it has a serious problem in a traditional Rails app. Utility classes end up scattered across ERB templates, partials, and helpers alongside the markup. A &lt;strong&gt;&lt;code&gt;_post_card.html.erb&lt;/code&gt;&lt;/strong&gt; with &lt;strong&gt;&lt;code&gt;class=&amp;quot;flex items-center gap-3 p-4 rounded-lg border bg-white shadow-sm hover:shadow-md&amp;quot;&lt;/code&gt;&lt;/strong&gt; repeated across a dozen templates is as hard to maintain as the HTML around it. Changing the card&amp;rsquo;s appearance means hunting down every partial that renders one.&lt;/p&gt;
+&lt;p&gt;With Phlex, every component owns its styles. The Tailwind classes for a Button live in &lt;strong&gt;&lt;code&gt;Components::Button&lt;/code&gt;&lt;/strong&gt; and nowhere else. Changing the button&amp;rsquo;s appearance means changing one file. Adding a new variant means adding one entry to a constants hash. The component is the design system — not a convention spread across dozens of files.&lt;/p&gt;
+&lt;p&gt;This is why Tailwind and Phlex are a natural pairing. They share the same philosophy: co-locate everything that belongs together, make the single source of truth explicit, and eliminate the implicit coupling that makes large codebases hard to change.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;In Module 7 we take this further with CSS design tokens — custom properties that let you retheme the entire Phlex::UI library by changing values in one place, with full dark mode support.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3&gt;The honest comparison&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;the-honest-comparison&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#the-honest-comparison&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;/th&gt;
+          &lt;th&gt;Partials&lt;/th&gt;
+          &lt;th&gt;ViewComponent&lt;/th&gt;
+          &lt;th&gt;Phlex&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Files per component&lt;/td&gt;
+          &lt;td&gt;1&lt;/td&gt;
+          &lt;td&gt;2&lt;/td&gt;
+          &lt;td&gt;1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Explicit interface&lt;/td&gt;
+          &lt;td&gt;No&lt;/td&gt;
+          &lt;td&gt;Yes (Ruby)&lt;/td&gt;
+          &lt;td&gt;Yes (Ruby)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Template language&lt;/td&gt;
+          &lt;td&gt;ERB&lt;/td&gt;
+          &lt;td&gt;ERB&lt;/td&gt;
+          &lt;td&gt;Ruby&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;IDE support&lt;/td&gt;
+          &lt;td&gt;Partial&lt;/td&gt;
+          &lt;td&gt;Good&lt;/td&gt;
+          &lt;td&gt;Excellent&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Unit testable&lt;/td&gt;
+          &lt;td&gt;Awkward&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Composition model&lt;/td&gt;
+          &lt;td&gt;Manual&lt;/td&gt;
+          &lt;td&gt;Slots API&lt;/td&gt;
+          &lt;td&gt;Native Ruby&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Rails helper access&lt;/td&gt;
+          &lt;td&gt;Implicit&lt;/td&gt;
+          &lt;td&gt;Via helpers&lt;/td&gt;
+          &lt;td&gt;Via adapters&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Learning curve&lt;/td&gt;
+          &lt;td&gt;None&lt;/td&gt;
+          &lt;td&gt;Low&lt;/td&gt;
+          &lt;td&gt;Low–Medium&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Incremental adoption&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;The case for ViewComponent over Phlex is mostly familiarity with ERB and the existing ecosystem. If your team is deeply comfortable with ERB and has an existing ViewComponent library, the migration cost may not be worth it.&lt;/p&gt;
+&lt;p&gt;The case for Phlex is everything else: a single file per component, a purely Ruby mental model, natural composition, excellent testability, and the kind of IDE support that makes refactoring feel safe.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;Phlex and the Rails ecosystem&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;phlex-and-the-rails-ecosystem&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#phlex-and-the-rails-ecosystem&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;One concern developers often raise: &lt;em&gt;does Phlex play nicely with the rest of Rails?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The answer is yes, deliberately so. Phlex was designed to work alongside ERB — you can render a Phlex component from an ERB template and vice versa. This means adoption can be incremental. You don&amp;rsquo;t rewrite your app; you introduce Phlex components one at a time, in the parts of the UI where the complexity justifies it.&lt;/p&gt;
+&lt;p&gt;Phlex also ships adapters for all major Rails helpers: &lt;code&gt;link_to&lt;/code&gt;, &lt;code&gt;image_tag&lt;/code&gt;, &lt;code&gt;form_with&lt;/code&gt;, route helpers, &lt;code&gt;content_for&lt;/code&gt;, and more. Turbo and Stimulus work exactly as you&amp;rsquo;d expect — Phlex just generates HTML, and Turbo/Stimulus don&amp;rsquo;t care where the HTML came from.&lt;/p&gt;
+&lt;p&gt;In this tutorial series, we&amp;rsquo;ll use Phlex exclusively from Module 4 onwards — no ERB views at all. This is the &amp;ldquo;all in&amp;rdquo; approach. It&amp;rsquo;s not the only valid approach, but it&amp;rsquo;s the best way to really understand what Phlex makes possible.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;The mental model to carry forward&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;the-mental-model-to-carry-forward&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#the-mental-model-to-carry-forward&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Before we write a single line of Phlex, internalise this:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;A Phlex component is a Ruby object that knows how to render itself as HTML.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;/blockquote&gt;
+&lt;p&gt;That&amp;rsquo;s it. Everything else — tags, attributes, composition, testing, kits, layouts — is a consequence of taking that idea seriously.&lt;/p&gt;
+&lt;p&gt;In the next module, we&amp;rsquo;ll start building that intuition with the Phlex HTML DSL, before touching Rails at all.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Module 1 summary&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;module-1-summary&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#module-1-summary&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;ERB partials work well for simple, stable fragments. They break down when you need parameterised, reusable, testable UI.&lt;/li&gt;
+&lt;li&gt;The four-way tension between partials, helpers, layouts, and instance variables creates implicit coupling that resists refactoring and testing.&lt;/li&gt;
+&lt;li&gt;ViewComponent solves the interface and testing problems but keeps ERB as the template language.&lt;/li&gt;
+&lt;li&gt;Phlex solves all of them: one file, explicit Ruby interface, natural composition, trivial testing.&lt;/li&gt;
+&lt;li&gt;Phlex is fully compatible with Rails — adoption can be incremental, and all Rails helpers are supported.&lt;/li&gt;
+&lt;li&gt;The core mental model: &lt;strong&gt;a component is a Ruby object that renders itself as HTML&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

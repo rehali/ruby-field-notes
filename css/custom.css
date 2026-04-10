@@ -1,0 +1,35 @@
+.hextra-feature-card img {
+  position: absolute;
+  top: 40%;
+  left: 24px;
+  width: 110%;
+  max-width: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  border-radius: 8px;
+}
+
+.coming-soon-card img {
+  position: absolute;
+  top: 55%;
+  right: 35%;
+  left: auto;
+  width: 30%;
+  max-width: none;
+  box-shadow: none;
+}
+
+.coming-soon-card .hextra-feature-card {
+  min-height: 250px;
+}
+
+.hextra-footer .hextra-max-footer-width:last-child {
+  display: none;
+}
+
+.hextra-footer {
+  background-color: white !important;
+}
+
+.dark .hextra-footer {
+  background-color: rgb(23, 23, 23) !important;
+}

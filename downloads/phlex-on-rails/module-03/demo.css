@@ -1,0 +1,126 @@
+/* demo.css — supplements Pico CSS for the Phlex::UI sandbox demo.
+ *
+ * Pico CSS handles headings, buttons, tables, articles, and most HTML
+ * elements automatically. This file adds styles for components that have
+ * no direct Pico equivalent (Avatar, Badge variants, Alert variants) and
+ * provides simple layout helpers for the demo page grid.
+ *
+ * This file is sandbox-only. In Module 4, Tailwind replaces all
+ * component styling inside a proper Rails app.
+ */
+
+/* ── Avatar ─────────────────────────────────────────────────────────────── */
+.avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--pico-muted-background);
+    font-weight: 600;
+    overflow: hidden;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 0.875rem;
+}
+
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+.avatar.sm  { width: 2rem;  height: 2rem;  font-size: 0.75rem; }
+.avatar.lg  { width: 3rem;  height: 3rem;  font-size: 1rem;    }
+
+/* ── Badge — mark element colour variants ───────────────────────────────── */
+/* Pico styles <mark> with a default highlight. These classes override
+ * the colour for each semantic variant. */
+mark.primary { background: #dbeafe; color: #1e40af; }
+mark.success { background: #d1fae5; color: #065f46; }
+mark.warning { background: #fef3c7; color: #92400e; }
+mark.danger  { background: #fee2e2; color: #991b1b; }
+
+/* ── Alert variants ─────────────────────────────────────────────────────── */
+/* Pico does not style role="alert" by default — these provide the
+ * coloured background and border for each variant. */
+[role="alert"] {
+    padding: 1rem;
+    border-radius: var(--pico-border-radius);
+    border: 1px solid;
+    margin-bottom: 1rem;
+}
+
+[role="alert"].info    { background: #eff6ff; border-color: #bfdbfe; color: #1e40af; }
+[role="alert"].success { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+[role="alert"].warning { background: #fffbeb; border-color: #fde68a; color: #92400e; }
+[role="alert"].danger  { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+
+[role="alert"] { position: relative; padding-right: 2.5rem; }
+[role="alert"] button {
+    position: absolute !important;
+    top: 0.3rem !important;
+    right: 0.5rem !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    opacity: 0.6;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    color: inherit;
+}
+[role="alert"] button:hover { opacity: 1; }
+
+/* ── Demo layout helpers ────────────────────────────────────────────────── */
+/* Simple flex/grid wrappers used on the demo page to group components
+ * side by side. These replace the Tailwind layout classes (flex, grid,
+ * gap-*) that would be used in a real app. */
+
+.demo-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.demo-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.demo-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.section-border {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.card-header { padding: 1rem; border-bottom: 1px solid var(--pico-muted-border-color); }
+.card-body   { padding: 1rem; }
+.card-footer { padding: 1rem; border-top: 1px solid var(--pico-muted-border-color);
+    background: var(--pico-muted-background); }
+
+/* Section slots */
+.section-body {
+    padding: 1rem;
+}
+
+.section-aside {
+    padding: 1rem;
+    background: var(--pico-muted-background);
+    border-left: 3px solid var(--pico-muted-border-color);
+}
+
+.section-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1rem;
+}

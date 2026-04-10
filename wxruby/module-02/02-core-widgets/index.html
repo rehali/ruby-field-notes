@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="robots" content="noindex, nofollow" />
+  <link rel="icon shortcut" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" id="favicon-svg" />
+<link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
+<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+<link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
+<title>Ruby Field Notes</title>
+  <meta name="description" content="Core widgetsWidgets are the controls users interact with — buttons they click, fields they type into, checkboxes they toggle. This lesson introduces the controls you will use in almost every application.
+You will work with the app.rb skeleton from the previous lesson, adding one widget at a time and running the app after each addition. By the end of the lesson the skeleton will have grown into a working registration form." /><link rel="canonical" href="http://localhost:1313/wxruby/module-02/02-core-widgets/" itemprop="url" />
+
+<meta property="og:title" content="">
+<meta
+  property="og:description"
+  content="
+    
+      Core widgetsWidgets are the controls users interact with — buttons they click, fields they type into, checkboxes they toggle. This lesson introduces the controls you will use in almost every application.
+You will work with the app.rb skeleton from the previous lesson, adding one widget at a time and running the app after each addition. By the end of the lesson the skeleton will have grown into a working registration form.
+    
+  ">
+<meta
+  property="og:type"
+  content="
+    article
+  ">
+<meta property="og:url" content="http://localhost:1313/wxruby/module-02/02-core-widgets/"><meta property="article:section" content="wxruby">
+
+
+
+
+  <meta itemprop="name" content="Ruby Field Notes">
+  <meta itemprop="description" content="Core widgetsWidgets are the controls users interact with — buttons they click, fields they type into, checkboxes they toggle. This lesson introduces the controls you will use in almost every application.
+You will work with the app.rb skeleton from the previous lesson, adding one widget at a time and running the app after each addition. By the end of the lesson the skeleton will have grown into a working registration form.">
+  <meta itemprop="wordCount" content="1988">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Ruby Field Notes">
+  <meta name="twitter:description" content="Core widgetsWidgets are the controls users interact with — buttons they click, fields they type into, checkboxes they toggle. This lesson introduces the controls you will use in almost every application.
+You will work with the app.rb skeleton from the previous lesson, adding one widget at a time and running the app after each addition. By the end of the lesson the skeleton will have grown into a working registration form.">
+<link href="/css/compiled/main.css" rel="stylesheet" />
+    <link href="/css/variables.css" rel="stylesheet" />
+    <link href="/css/custom.css" rel="stylesheet" />
+
+  
+<script src="/js/main-head.js" integrity=""></script>
+
+  
+  
+  </head>
+<body>
+    <a href="#content" class="hx:sr-only hx:focus-visible:not-sr-only hx:focus-visible:fixed hx:focus-visible:z-50 hx:focus-visible:top-2 hx:focus-visible:left-2 hx:focus-visible:bg-primary-500 hx:focus-visible:text-white hx:focus-visible:px-4 hx:focus-visible:py-2 hx:focus-visible:rounded-md hx:focus-visible:text-sm hx:focus-visible:font-medium">Skip to content</a><div class="hextra-nav-container hx:sticky hx:top-0 hx:z-20 hx:w-full hx:bg-transparent hx:print:hidden">
+  <div
+    class="hextra-nav-container-blur hx:pointer-events-none hx:absolute hx:z-[-1] hx:h-full hx:w-full hx:bg-white hx:dark:bg-dark hx:shadow-[0_2px_4px_rgba(0,0,0,.02),0_1px_0_rgba(0,0,0,.06)] hx:contrast-more:shadow-[0_0_0_1px_#000] hx:dark:shadow-[0_-1px_0_rgba(255,255,255,.1)_inset] hx:contrast-more:dark:shadow-[0_0_0_1px_#fff]"
+  ></div>
+
+  <nav class="hextra-max-navbar-width hx:mx-auto hx:flex hx:items-center hx:justify-end hx:gap-2 hx:h-16 hx:px-6">
+    <a class="hx:flex hx:items-center hx:hover:opacity-75 hx:ltr:mr-auto hx:rtl:ml-auto" href="/">
+    <span class="hx:mr-2 hx:font-extrabold hx:inline hx:select-none">Ruby Field Notes</span>
+</a>
+<button type="button" aria-label="Menu" aria-expanded="false" class="hextra-hamburger-menu hx:cursor-pointer hx:-mr-2 hx:rounded-sm hx:p-2 hx:active:bg-gray-400/20 hx:md:hidden hx:hextra-focus-visible-inset"><svg height=24 fill="none" viewBox="0 0 24 24" stroke="currentColor"><g><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8H20"></path></g><g><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16H20"></path></g></svg></button>
+  </nav>
+</div>
+
+  <div class='hx:mx-auto hx:flex hextra-max-page-width'>
+    <aside class="hextra-sidebar-container hx:flex hx:flex-col hx:print:hidden hx:md:top-16 hx:md:shrink-0 hx:md:w-64 hx:md:self-start hx:max-md:[transform:translate3d(0,-100%,0)] hx:md:hidden hx:xl:block">
+    <div class="hx:px-4 hx:pt-4 hx:md:hidden">
+      <div class="hextra-search-wrapper hx:relative hx:md:w-64">
+  <div class="hx:relative hx:flex hx:items-center hx:text-gray-900 hx:contrast-more:text-gray-800 hx:dark:text-gray-300 hx:contrast-more:dark:text-gray-300">
+    <input
+      placeholder="Search..."
+      aria-label="Search..."
+      class="hextra-search-input hx:hextra-focus-visible hx:block hx:w-full hx:appearance-none hx:rounded-lg hx:px-3 hx:py-2 hx:transition-colors hx:text-base hx:leading-tight hx:md:text-sm hx:bg-black/[.05] hx:dark:bg-gray-50/10 hx:focus-visible:bg-white hx:dark:focus-visible:bg-dark hx:placeholder:text-gray-500 hx:dark:placeholder:text-gray-400 hx:contrast-more:border hx:contrast-more:border-current"
+      type="search"
+      autocomplete="off"
+      value=""
+      spellcheck="false"
+    />
+    <kbd
+      class="hx:absolute hx:my-1.5 hx:select-none hx:ltr:right-1.5 hx:rtl:left-1.5 hx:h-5 hx:rounded-sm hx:bg-white hx:px-1.5 hx:font-mono hx:text-[10px] hx:font-medium hx:text-gray-500 hx:border hx:border-gray-200 hx:dark:border-gray-100/20 hx:dark:bg-dark/50 hx:contrast-more:border-current hx:contrast-more:text-current hx:contrast-more:dark:border-current hx:items-center hx:gap-1 hx:transition-opacity hx:pointer-events-none hx:hidden hx:sm:flex"
+    >
+      CTRL K
+    </kbd>
+  </div>
+
+  <div>
+    <ul
+      class="hextra-search-results hextra-scrollbar hx:hidden hx:border hx:border-gray-200 hx:bg-white hx:text-gray-100 hx:dark:border-neutral-800 hx:dark:bg-neutral-900 hx:absolute hx:top-full hx:z-20 hx:mt-2 hx:overflow-auto hx:overscroll-contain hx:rounded-xl hx:py-2.5 hx:shadow-xl hx:max-h-[min(calc(50vh-11rem-env(safe-area-inset-bottom)),400px)] hx:md:max-h-[min(calc(100vh-5rem-env(safe-area-inset-bottom)),400px)] hx:inset-x-0 hx:ltr:md:left-auto hx:rtl:md:right-auto hx:contrast-more:border hx:contrast-more:border-gray-900 hx:contrast-more:dark:border-gray-50 hx:w-screen hx:min-h-[100px] hx:max-w-[min(calc(100vw-2rem),calc(100%+20rem))]"
+      aria-label="Search results"
+      style="transition: max-height 0.2s ease 0s;"
+    ></ul>
+    <div class="hextra-search-status hx:sr-only" aria-live="polite" role="status"></div>
+  </div>
+</div>
+
+    </div><div class="hextra-scrollbar hx:overflow-y-auto hx:overflow-x-hidden hx:p-4 hx:grow hx:md:h-[calc(100vh-var(--navbar-height)-var(--menu-height))]">
+    <ul class="hx:flex hx:flex-col hx:gap-1 hx:md:hidden">
+      
+      
+    </ul>
+
+    <div class="hx:max-xl:hidden hx:h-0 hx:w-64 hx:shrink-0"></div></div>
+  
+  
+    <div class="hx:md:hidden  hx:sticky hx:bottom-0 hx:max-h-(--menu-height) hx:bg-white hx:dark:bg-dark hx:mx-4 hx:py-4 hx:shadow-[0_-12px_16px_#fff] hx:flex hx:items-center hx:gap-2 hx:border-gray-200 hx:dark:border-neutral-800 hx:dark:shadow-[0_-12px_16px_#111] hx:contrast-more:border-neutral-400 hx:contrast-more:shadow-none hx:contrast-more:dark:shadow-none hx:border-t" data-toggle-animation="show"><div class="hx:flex hx:grow hx:flex-col"><div class="hx:flex hx:justify-items-start hx:group" data-theme="light">
+  <button
+    title="Change theme"
+    data-state="closed"
+    data-location="bottom"
+    class="hextra-theme-toggle hx:cursor-pointer hx:rounded-md hx:text-left hx:font-medium hx:h-7 hx:px-2 hx:text-xs hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:font-medium hx:text-gray-600 hx:transition-colors hx:dark:text-gray-400 hx:grow"
+    type="button"
+    aria-label="Change theme"
+    aria-expanded="false"
+    aria-haspopup="menu"
+  >
+    <div class="hx:flex hx:items-center hx:gap-2 hx:capitalize"><svg height=12 class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg><span class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden">Light</span><svg height=12 class="hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg><span class="hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden">Dark</span><svg height=12 class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  fill="currentColor">
+  <path d="M 11.996094,2 C 6.4986225,2.0192368 2.03125,6.5024993 2.03125,12 c 0,5.497501 4.4673725,9.980763 9.964844,10 H 12 12.0039 c 5.497471,-0.01924 9.964844,-4.502499 9.964844,-10 0,-5.4975007 -4.467373,-9.9807632 -9.964844,-10 H 12 Z M 12,4 c 4.417218,0.017598 7.96875,3.5822356 7.96875,8 0,4.417764 -3.551532,7.982402 -7.96875,8 z" />
+</svg>
+<span class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden">System</span></div>
+  </button>
+  <ul
+    class="hextra-theme-toggle-options hx:hidden hx:z-20 hx:max-h-64 hx:overflow-auto hx:rounded-lg hx:border hx:border-gray-200 hx:bg-white hx:p-1 hx:text-sm hx:shadow-lg hx:dark:border-neutral-700 hx:dark:bg-neutral-900"
+    style="position: fixed; inset: auto auto 0px 0px; margin: 0px; min-width: 100px;"
+    data-theme="light"
+    role="menu"
+  >
+    <li role="none" class="hx:flex hx:flex-col">
+      <button
+        type="button"
+        role="menuitemradio"
+        aria-checked="true"
+        tabindex="-1"
+        data-item="light"
+        class="hx:text-gray-700 hx:dark:text-gray-300 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:hover:bg-neutral-800 hx:dark:hover:text-gray-100 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:rounded-sm hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9 hx:text-left hx:w-full hx:bg-transparent hx:border-0"
+      >
+        Light
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </button>
+    </li>
+    <li role="none" class="hx:flex hx:flex-col">
+      <button
+        type="button"
+        role="menuitemradio"
+        aria-checked="false"
+        tabindex="-1"
+        data-item="dark"
+        class="hx:text-gray-700 hx:dark:text-gray-300 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:hover:bg-neutral-800 hx:dark:hover:text-gray-100 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:rounded-sm hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9 hx:text-left hx:w-full hx:bg-transparent hx:border-0"
+      >
+        Dark
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </button>
+    </li>
+    <li role="none" class="hx:flex hx:flex-col">
+      <button
+        type="button"
+        role="menuitemradio"
+        aria-checked="false"
+        tabindex="-1"
+        data-item="system"
+        class="hx:text-gray-700 hx:dark:text-gray-300 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:hover:bg-neutral-800 hx:dark:hover:text-gray-100 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:rounded-sm hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9 hx:text-left hx:w-full hx:bg-transparent hx:border-0"
+      >
+        System
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </button>
+    </li>
+  </ul>
+</div>
+</div></div></aside>
+    
+<nav class="hextra-toc hx:order-last hx:hidden hx:w-64 hx:shrink-0 hx:xl:block hx:print:hidden hx:px-4" aria-label="Table of contents">
+    <div class="hextra-scrollbar hx:sticky hx:top-16 hx:overflow-y-auto hx:pr-4 hx:pt-6 hx:text-sm [hyphens:auto] hx:max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] hx:ltr:-mr-4 hx:rtl:-ml-4"><p class="hx:mb-4 hx:font-semibold hx:tracking-tight">On this page</p><ul>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#a-note-on-ruby-style-method-names">A note on Ruby-style method names
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#the-constructor-pattern">The constructor pattern
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#a-note-on-positioning-in-this-lesson">A note on positioning in this lesson
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#step-1--statictext">Step 1 — StaticText
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#step-2--textctrl">Step 2 — TextCtrl
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#step-3--checkbox">Step 3 — CheckBox
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#step-4--radiobutton">Step 4 — RadioButton
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#step-5--choice">Step 5 — Choice
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#step-6--slider">Step 6 — Slider
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#step-7--button-and-submit">Step 7 — Button and submit
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#the-finished-lesson-app">The finished lesson app
+        </a>
+      </li></ul>
+      <div class="hx:mt-8 hx:border-t hx:bg-white hx:pt-8 hx:shadow-[0_-12px_16px_white] hx:dark:bg-dark hx:dark:shadow-[0_-12px_16px_#111] hx:sticky hx:bottom-0 hx:flex hx:flex-col hx:items-start hx:gap-2 hx:pb-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-t hx:contrast-more:border-neutral-400 hx:contrast-more:shadow-none hx:contrast-more:dark:border-neutral-400">
+        <button id="backToTop" tabindex="-1" onClick="scrollUp();" class="hx:cursor-pointer hx:transition-all hx:duration-75 hx:opacity-0 hx:text-xs hx:font-medium hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-100 hx:contrast-more:text-gray-800 hx:contrast-more:dark:text-gray-50">
+          <span>Scroll to top</span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" focusable="false" class="hx:inline hx:ltr:ml-1 hx:rtl:mr-1 hx:h-3.5 hx:w-3.5 hx:rounded-full hx:border hx:border-gray-500 hx:hover:border-gray-900 hx:dark:border-gray-400 hx:dark:hover:border-gray-100 hx:contrast-more:border-gray-800 hx:contrast-more:dark:border-gray-50">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+
+    <article class="hx:w-full hx:break-words hx:flex hx:min-h-[calc(100vh-var(--navbar-height))] hx:min-w-0 hx:justify-center hx:pb-8 hx:pr-[calc(env(safe-area-inset-right)-1.5rem)]">
+      <main id="content" class="hx:w-full hx:min-w-0 hextra-max-content-width hx:px-6 hx:pt-4 hx:md:px-12">
+        
+        <br class="hx:mt-1.5 hx:text-sm" />
+        
+        <div class="hx:mb-16"></div>
+        <div class="content">
+          <h1>Core widgets</h1><p>Widgets are the controls users interact with — buttons they click, fields they type into, checkboxes they toggle. This lesson introduces the controls you will use in almost every application.</p>
+<p>You will work with the <code>app.rb</code> skeleton from the previous lesson, adding one widget at a time and running the app after each addition. By the end of the lesson the skeleton will have grown into a working registration form.</p>
+<blockquote>
+  <p>The skeleton from lesson 2.1 should still be open. If you need to recreate it, go back and type it in before continuing here.</p>
+
+</blockquote>
+<h2>A note on Ruby-style method names<span class="hx:absolute hx:-mt-20" id="a-note-on-ruby-style-method-names"></span>
+    <a href="#a-note-on-ruby-style-method-names" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>wxRuby3 is a Ruby binding for a C++ library, and many methods exist in both a C++ style and a Ruby style. Throughout this series we use the Ruby style consistently:</p>
+<table>
+  <thead>
+      <tr>
+          <th>C++ style</th>
+          <th>Ruby style</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>get_value</code></td>
+          <td><code>value</code></td>
+      </tr>
+      <tr>
+          <td><code>set_value('x')</code></td>
+          <td><code>value = 'x'</code></td>
+      </tr>
+      <tr>
+          <td><code>get_label</code></td>
+          <td><code>label</code></td>
+      </tr>
+      <tr>
+          <td><code>set_label('x')</code></td>
+          <td><code>label = 'x'</code></td>
+      </tr>
+      <tr>
+          <td><code>get_id</code></td>
+          <td><code>id</code></td>
+      </tr>
+      <tr>
+          <td><code>is_checked</code></td>
+          <td><code>checked?</code></td>
+      </tr>
+  </tbody>
+</table>
+<p>When you read community code, wxWidgets C++ documentation, or Python wxPython examples, you will see the <code>get_</code>/<code>set_</code> style — and it works fine in wxRuby3 too. But in this series we write Ruby, so we use the Ruby style. The mapping above is the same pattern for every widget you will encounter.</p>
+<h2>The constructor pattern<span class="hx:absolute hx:-mt-20" id="the-constructor-pattern"></span>
+    <a href="#the-constructor-pattern" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Every widget follows the same constructor:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="no">Wx</span><span class="o">::</span><span class="no">SomeWidget</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">keyword_options</span><span class="o">...</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>The first argument is always the parent — the panel or container the widget belongs to. Everything else is a keyword option: <code>label:</code>, <code>value:</code>, <code>style:</code>, <code>size:</code>, and so on. Most have sensible defaults and can be omitted.</p>
+<h2>A note on positioning in this lesson<span class="hx:absolute hx:-mt-20" id="a-note-on-positioning-in-this-lesson"></span>
+    <a href="#a-note-on-positioning-in-this-lesson" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Proper layout in wxRuby3 is handled by sizers — that is the subject of the next lesson. For now, we use absolute positioning with <code>pos: [x, y]</code> to keep widgets visible and separated as we add them. This is not how real apps are built, and lesson 2.3 will replace it entirely. Think of <code>pos:</code> here as temporary scaffolding: it keeps things readable while we focus on learning what each widget does.</p>
+<h2>Step 1 — StaticText<span class="hx:absolute hx:-mt-20" id="step-1--statictext"></span>
+    <a href="#step-1--statictext" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><code>Wx::StaticText</code> displays a non-interactive label. Add the following to <code>build_ui</code>, replacing the existing empty method:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">build_ui</span>
+</span></span><span class="line"><span class="cl">  <span class="vi">@panel</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Panel</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">create_status_bar</span>
+</span></span><span class="line"><span class="cl">  <span class="n">set_status_text</span><span class="p">(</span><span class="s1">&#39;Ready&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="vi">@name_label</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">StaticText</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Name:&#39;</span><span class="p">,</span> <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>Run the app. The label &ldquo;Name:&rdquo; appears at position [20, 20] — 20 pixels from the left and top edges of the panel.</p>
+<p>To change a label&rsquo;s text at runtime:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@name_label</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Full name:&#39;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<h2>Step 2 — TextCtrl<span class="hx:absolute hx:-mt-20" id="step-2--textctrl"></span>
+    <a href="#step-2--textctrl" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><code>Wx::TextCtrl</code> is the text input field. Update <code>build_ui</code> to add a name field next to the label:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@name_label</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">StaticText</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Name:&#39;</span><span class="p">,</span> <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">22</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="vi">@name_field</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">TextCtrl</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">18</span><span class="o">]</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>Run it. The label and field sit on the same row, the field accepting input immediately. The <code>size: [200, -1]</code> sets the width to 200 pixels; <code>-1</code> tells wxRuby3 to use the default height for the platform. Read the value in a method with:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@name_field</span><span class="o">.</span><span class="n">value</span>            <span class="c1"># returns the current string</span>
+</span></span><span class="line"><span class="cl"><span class="vi">@name_field</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;John&#39;</span>   <span class="c1"># sets the value programmatically</span>
+</span></span><span class="line"><span class="cl"><span class="vi">@name_field</span><span class="o">.</span><span class="n">clear</span>            <span class="c1"># empties the field</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>Add a second row for email below the first:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@name_label</span>  <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">StaticText</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Name:&#39;</span><span class="p">,</span>  <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">20</span><span class="p">,</span>  <span class="mi">22</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="vi">@name_field</span>  <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">TextCtrl</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span>  <span class="ss">value</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>        <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">80</span><span class="p">,</span>  <span class="mi">18</span><span class="o">]</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="vi">@email_label</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">StaticText</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Email:&#39;</span><span class="p">,</span> <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">20</span><span class="p">,</span>  <span class="mi">52</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="vi">@email_field</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">TextCtrl</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span>  <span class="ss">value</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>        <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">80</span><span class="p">,</span>  <span class="mi">48</span><span class="o">]</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>Run it. Two clean rows, label and field side by side.</p>
+<p><code>TextCtrl</code> has several useful style variants. You will use these in later lessons:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># Multi-line text area</span>
+</span></span><span class="line"><span class="cl"><span class="no">Wx</span><span class="o">::</span><span class="no">TextCtrl</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="ss">style</span><span class="p">:</span> <span class="no">Wx</span><span class="o">::</span><span class="no">TE_MULTILINE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Password field — masks input</span>
+</span></span><span class="line"><span class="cl"><span class="no">Wx</span><span class="o">::</span><span class="no">TextCtrl</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="ss">style</span><span class="p">:</span> <span class="no">Wx</span><span class="o">::</span><span class="no">TE_PASSWORD</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Read-only field</span>
+</span></span><span class="line"><span class="cl"><span class="no">Wx</span><span class="o">::</span><span class="no">TextCtrl</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="s1">&#39;Cannot edit this&#39;</span><span class="p">,</span> <span class="ss">style</span><span class="p">:</span> <span class="no">Wx</span><span class="o">::</span><span class="no">TE_READONLY</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<h2>Step 3 — CheckBox<span class="hx:absolute hx:-mt-20" id="step-3--checkbox"></span>
+    <a href="#step-3--checkbox" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><code>Wx::CheckBox</code> is a labelled boolean toggle. Add one below the email field:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@subscribe_cb</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">CheckBox</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Subscribe to newsletter&#39;</span><span class="p">,</span> <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">80</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="vi">@subscribe_cb</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="kp">true</span>    <span class="c1"># checked by default</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>Run it. The checkbox appears, checked. Read its state with:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@subscribe_cb</span><span class="o">.</span><span class="n">value</span>    <span class="c1"># true or false</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>Now wire up a handler in <code>bind_events</code> so something happens when the user toggles it:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">bind_events</span>
+</span></span><span class="line"><span class="cl">  <span class="n">evt_close</span> <span class="p">{</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span> <span class="n">on_close</span><span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">evt_checkbox</span><span class="p">(</span><span class="vi">@subscribe_cb</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span> <span class="n">on_subscribe_changed</span><span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">on_subscribe_changed</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">checked?</span>
+</span></span><span class="line"><span class="cl">    <span class="n">set_status_text</span><span class="p">(</span><span class="s1">&#39;Subscribed&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">else</span>
+</span></span><span class="line"><span class="cl">    <span class="n">set_status_text</span><span class="p">(</span><span class="s1">&#39;Not subscribed&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>Run it. Toggle the checkbox and watch the status bar update. This is the first time we are handling a widget event — notice the pattern: <code>evt_checkbox</code> in <code>bind_events</code> takes the widget&rsquo;s <code>id</code>, and the block receives an event object. <code>event.checked?</code> is the Ruby-style equivalent of the C++ <code>event.IsChecked()</code> you will see in wxWidgets documentation.</p>
+<h2>Step 4 — RadioButton<span class="hx:absolute hx:-mt-20" id="step-4--radiobutton"></span>
+    <a href="#step-4--radiobutton" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Radio buttons present a set of mutually exclusive options. wxRuby3 determines group membership by creation order: all buttons created after a <code>Wx::RB_GROUP</code> button, and before the next <code>Wx::RB_GROUP</code> button, belong to the same group. This means you can have multiple independent groups on the same panel — the <code>Wx::RB_GROUP</code> flag acts as the boundary marker between them.</p>
+<p>Add two groups — one for size, one for colour. Store each group as an array of buttons:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@size_buttons</span> <span class="o">=</span> <span class="o">[</span>
+</span></span><span class="line"><span class="cl">  <span class="no">Wx</span><span class="o">::</span><span class="no">RadioButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Small&#39;</span><span class="p">,</span>  <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">80</span><span class="p">,</span>  <span class="mi">112</span><span class="o">]</span><span class="p">,</span> <span class="ss">style</span><span class="p">:</span> <span class="no">Wx</span><span class="o">::</span><span class="no">RB_GROUP</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="no">Wx</span><span class="o">::</span><span class="no">RadioButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Medium&#39;</span><span class="p">,</span> <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">148</span><span class="p">,</span> <span class="mi">112</span><span class="o">]</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="no">Wx</span><span class="o">::</span><span class="no">RadioButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Large&#39;</span><span class="p">,</span>  <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">220</span><span class="p">,</span> <span class="mi">112</span><span class="o">]</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl"><span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="vi">@size_buttons</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">value</span> <span class="o">=</span> <span class="kp">true</span>    <span class="c1"># Medium selected by default</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="vi">@colour_buttons</span> <span class="o">=</span> <span class="o">[</span>
+</span></span><span class="line"><span class="cl">  <span class="no">Wx</span><span class="o">::</span><span class="no">RadioButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Red&#39;</span><span class="p">,</span>   <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">80</span><span class="p">,</span>  <span class="mi">140</span><span class="o">]</span><span class="p">,</span> <span class="ss">style</span><span class="p">:</span> <span class="no">Wx</span><span class="o">::</span><span class="no">RB_GROUP</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="no">Wx</span><span class="o">::</span><span class="no">RadioButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Green&#39;</span><span class="p">,</span> <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">130</span><span class="p">,</span> <span class="mi">140</span><span class="o">]</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="no">Wx</span><span class="o">::</span><span class="no">RadioButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Blue&#39;</span><span class="p">,</span>  <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">190</span><span class="p">,</span> <span class="mi">140</span><span class="o">]</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl"><span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="vi">@colour_buttons</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">value</span> <span class="o">=</span> <span class="kp">true</span>    <span class="c1"># Red selected by default</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>Run it. The two groups operate completely independently — selecting &ldquo;Large&rdquo; has no effect on the colour selection, and vice versa. wxRuby3 knows which group each button belongs to because of the <code>Wx::RB_GROUP</code> flag on the first button of each group.</p>
+<p>Now wire up handlers for both groups. Storing buttons in arrays pays off here — one registration loop per group, and the handler uses <code>find(&amp;:value)</code> to locate the selected button and reads its label directly, so you never have to keep button names synchronised with a separate list of strings:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@size_buttons</span><span class="o">.</span><span class="n">each</span>   <span class="p">{</span> <span class="o">|</span><span class="n">rb</span><span class="o">|</span> <span class="n">evt_radiobutton</span><span class="p">(</span><span class="n">rb</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_group_changed</span> <span class="p">}</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="vi">@colour_buttons</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">rb</span><span class="o">|</span> <span class="n">evt_radiobutton</span><span class="p">(</span><span class="n">rb</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_group_changed</span> <span class="p">}</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">on_group_changed</span>
+</span></span><span class="line"><span class="cl">  <span class="n">size</span>   <span class="o">=</span> <span class="vi">@size_buttons</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:value</span><span class="p">)</span><span class="o">.</span><span class="n">label</span>
+</span></span><span class="line"><span class="cl">  <span class="n">colour</span> <span class="o">=</span> <span class="vi">@colour_buttons</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:value</span><span class="p">)</span><span class="o">.</span><span class="n">label</span>
+</span></span><span class="line"><span class="cl">  <span class="n">set_status_text</span><span class="p">(</span><span class="s2">&#34;Size: </span><span class="si">#{</span><span class="n">size</span><span class="si">}</span><span class="s2">  Colour: </span><span class="si">#{</span><span class="n">colour</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>Run it. The status bar shows both selections updating as you click either group. <code>find(&amp;:value)</code> returns the first button whose <code>value</code> is <code>true</code> — the selected one — and <code>.label</code> gives you its text without any if/elsif chain.</p>
+<h2>Step 5 — Choice<span class="hx:absolute hx:-mt-20" id="step-5--choice"></span>
+    <a href="#step-5--choice" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><code>Wx::Choice</code> is a drop-down list that shows only the selected item. Add a country selector:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">countries</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;Australia&#39;</span><span class="p">,</span> <span class="s1">&#39;Canada&#39;</span><span class="p">,</span> <span class="s1">&#39;New Zealand&#39;</span><span class="p">,</span> <span class="s1">&#39;United Kingdom&#39;</span><span class="p">,</span> <span class="s1">&#39;United States&#39;</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="vi">@country</span>  <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Choice</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">choices</span><span class="p">:</span> <span class="n">countries</span><span class="p">,</span> <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">144</span><span class="o">]</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="vi">@country</span><span class="o">.</span><span class="n">selection</span> <span class="o">=</span> <span class="mi">0</span>    <span class="c1"># select the first item by default</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>Run it. The drop-down shows &ldquo;Australia&rdquo; and expands when clicked. Read the selection:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@country</span><span class="o">.</span><span class="n">selection</span>           <span class="c1"># integer index of selected item</span>
+</span></span><span class="line"><span class="cl"><span class="vi">@country</span><span class="o">.</span><span class="n">string_selection</span>    <span class="c1"># the selected string directly</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>Add and remove items at runtime if needed:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@country</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Ireland&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="vi">@country</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>     <span class="c1"># remove item at index 0</span>
+</span></span><span class="line"><span class="cl"><span class="vi">@country</span><span class="o">.</span><span class="n">clear</span>         <span class="c1"># remove all items</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>Wire up a handler:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">evt_choice</span><span class="p">(</span><span class="vi">@country</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_country_changed</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">on_country_changed</span>
+</span></span><span class="line"><span class="cl">  <span class="n">set_status_text</span><span class="p">(</span><span class="s2">&#34;Country: </span><span class="si">#{</span><span class="vi">@country</span><span class="o">.</span><span class="n">string_selection</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>Run it. The status bar shows the selected country as you change it.</p>
+<p><code>Wx::ComboBox</code> is a related control that adds a text field, allowing the user to type a value not in the list. Use <code>Wx::Choice</code> when the options are fixed, <code>Wx::ComboBox</code> when the user might provide their own value.</p>
+<h2>Step 6 — Slider<span class="hx:absolute hx:-mt-20" id="step-6--slider"></span>
+    <a href="#step-6--slider" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><code>Wx::Slider</code> lets the user select a numeric value within a range by dragging a handle. Add an age slider with a label that updates as it moves:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@age_slider</span>      <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Slider</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="ss">min_value</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span> <span class="ss">max_value</span><span class="p">:</span> <span class="mi">99</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                   <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">180</span><span class="o">]</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="o">[</span><span class="mi">180</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="vi">@age_value_label</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">StaticText</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;25&#39;</span><span class="p">,</span> <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">270</span><span class="p">,</span> <span class="mi">183</span><span class="o">]</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>Wire up the slider event in <code>bind_events</code>:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">evt_slider</span><span class="p">(</span><span class="vi">@age_slider</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl">  <span class="vi">@age_value_label</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">int</span><span class="o">.</span><span class="n">to_s</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>Run it. Drag the slider and the label updates in real time. <code>event.int</code> returns the slider&rsquo;s current integer value — this is the Ruby equivalent of the C++ <code>event.GetInt()</code>.</p>
+<h2>Step 7 — Button and submit<span class="hx:absolute hx:-mt-20" id="step-7--button-and-submit"></span>
+    <a href="#step-7--button-and-submit" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Add a submit button and wire it to a handler that reads all the values and shows them in a message box:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@submit_btn</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Button</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Submit&#39;</span><span class="p">,</span> <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">220</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="vi">@submit_btn</span><span class="o">.</span><span class="n">set_default</span>    <span class="c1"># activated by pressing Enter</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">evt_button</span><span class="p">(</span><span class="vi">@submit_btn</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_submit</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">on_submit</span>
+</span></span><span class="line"><span class="cl">   <span class="n">size</span>   <span class="o">=</span> <span class="vi">@size_buttons</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:value</span><span class="p">)</span><span class="o">.</span><span class="n">label</span>
+</span></span><span class="line"><span class="cl">   <span class="n">colour</span> <span class="o">=</span> <span class="vi">@colour_buttons</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:value</span><span class="p">)</span><span class="o">.</span><span class="n">label</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">summary</span> <span class="o">=</span> <span class="o">[</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Name:      </span><span class="si">#{</span><span class="vi">@name_field</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Email:     </span><span class="si">#{</span><span class="vi">@email_field</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Subscribe: </span><span class="si">#{</span><span class="vi">@subscribe_cb</span><span class="o">.</span><span class="n">value</span> <span class="p">?</span> <span class="s1">&#39;Yes&#39;</span> <span class="p">:</span> <span class="s1">&#39;No&#39;</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Size:      </span><span class="si">#{</span><span class="n">size</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Colour:    </span><span class="si">#{</span><span class="n">colour</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Country:   </span><span class="si">#{</span><span class="vi">@country</span><span class="o">.</span><span class="n">string_selection</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Age:       </span><span class="si">#{</span><span class="vi">@age_slider</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="o">].</span><span class="n">join</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="no">Wx</span><span class="o">::</span><span class="n">message_box</span><span class="p">(</span><span class="n">summary</span><span class="p">,</span> <span class="s1">&#39;Form values&#39;</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">OK</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ICON_INFORMATION</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>Run it. Fill in the form and click Submit — a native message dialog shows everything you entered.</p>
+<h2>The finished lesson app<span class="hx:absolute hx:-mt-20" id="the-finished-lesson-app"></span>
+    <a href="#the-finished-lesson-app" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Your complete <code>app.rb</code> at the end of this lesson:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="nb">require</span> <span class="s1">&#39;wx&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">AppFrame</span> <span class="o">&lt;</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Frame</span>
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">initialize</span>
+</span></span><span class="line"><span class="cl">    <span class="k">super</span><span class="p">(</span><span class="kp">nil</span><span class="p">,</span> <span class="ss">title</span><span class="p">:</span> <span class="s1">&#39;Widget Demo&#39;</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="o">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">520</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">build_ui</span>
+</span></span><span class="line"><span class="cl">    <span class="n">bind_events</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">centre</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kp">private</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">build_ui</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@panel</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Panel</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">create_status_bar</span>
+</span></span><span class="line"><span class="cl">    <span class="n">set_status_text</span><span class="p">(</span><span class="s1">&#39;Ready&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="vi">@name_label</span>  <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">StaticText</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Name:&#39;</span><span class="p">,</span>  <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">20</span><span class="p">,</span>  <span class="mi">22</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@name_field</span>  <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">TextCtrl</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span>   <span class="ss">value</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>       <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">80</span><span class="p">,</span>  <span class="mi">18</span><span class="o">]</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="vi">@email_label</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">StaticText</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Email:&#39;</span><span class="p">,</span> <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">20</span><span class="p">,</span>  <span class="mi">52</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@email_field</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">TextCtrl</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span>   <span class="ss">value</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>       <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">80</span><span class="p">,</span>  <span class="mi">48</span><span class="o">]</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="vi">@subscribe_cb</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">CheckBox</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Subscribe to newsletter&#39;</span><span class="p">,</span> <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">80</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@subscribe_cb</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="kp">true</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="vi">@size_buttons</span> <span class="o">=</span> <span class="o">[</span>
+</span></span><span class="line"><span class="cl">      <span class="no">Wx</span><span class="o">::</span><span class="no">RadioButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Small&#39;</span><span class="p">,</span>  <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">80</span><span class="p">,</span>  <span class="mi">112</span><span class="o">]</span><span class="p">,</span> <span class="ss">style</span><span class="p">:</span> <span class="no">Wx</span><span class="o">::</span><span class="no">RB_GROUP</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="no">Wx</span><span class="o">::</span><span class="no">RadioButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Medium&#39;</span><span class="p">,</span> <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">148</span><span class="p">,</span> <span class="mi">112</span><span class="o">]</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="no">Wx</span><span class="o">::</span><span class="no">RadioButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Large&#39;</span><span class="p">,</span>  <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">220</span><span class="p">,</span> <span class="mi">112</span><span class="o">]</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="o">]</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@size_buttons</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">value</span> <span class="o">=</span> <span class="kp">true</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="vi">@colour_buttons</span> <span class="o">=</span> <span class="o">[</span>
+</span></span><span class="line"><span class="cl">      <span class="no">Wx</span><span class="o">::</span><span class="no">RadioButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Red&#39;</span><span class="p">,</span>   <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">80</span><span class="p">,</span>  <span class="mi">140</span><span class="o">]</span><span class="p">,</span> <span class="ss">style</span><span class="p">:</span> <span class="no">Wx</span><span class="o">::</span><span class="no">RB_GROUP</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="no">Wx</span><span class="o">::</span><span class="no">RadioButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Green&#39;</span><span class="p">,</span> <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">130</span><span class="p">,</span> <span class="mi">140</span><span class="o">]</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="no">Wx</span><span class="o">::</span><span class="no">RadioButton</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Blue&#39;</span><span class="p">,</span>  <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">190</span><span class="p">,</span> <span class="mi">140</span><span class="o">]</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="o">]</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@colour_buttons</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">value</span> <span class="o">=</span> <span class="kp">true</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">countries</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;Australia&#39;</span><span class="p">,</span> <span class="s1">&#39;Canada&#39;</span><span class="p">,</span> <span class="s1">&#39;New Zealand&#39;</span><span class="p">,</span> <span class="s1">&#39;United Kingdom&#39;</span><span class="p">,</span> <span class="s1">&#39;United States&#39;</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@country</span>  <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Choice</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">choices</span><span class="p">:</span> <span class="n">countries</span><span class="p">,</span> <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">172</span><span class="o">]</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@country</span><span class="o">.</span><span class="n">selection</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="vi">@age_slider</span>      <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Slider</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="ss">min_value</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span> <span class="ss">max_value</span><span class="p">:</span> <span class="mi">99</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                       <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">208</span><span class="o">]</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="o">[</span><span class="mi">180</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@age_value_label</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">StaticText</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;25&#39;</span><span class="p">,</span> <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">270</span><span class="p">,</span> <span class="mi">211</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="vi">@submit_btn</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Button</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Submit&#39;</span><span class="p">,</span> <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">250</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@submit_btn</span><span class="o">.</span><span class="n">set_default</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">bind_events</span>
+</span></span><span class="line"><span class="cl">    <span class="n">evt_close</span> <span class="p">{</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span> <span class="n">on_close</span><span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">evt_checkbox</span><span class="p">(</span><span class="vi">@subscribe_cb</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span> <span class="n">on_subscribe_changed</span><span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="vi">@size_buttons</span><span class="o">.</span><span class="n">each</span>   <span class="p">{</span> <span class="o">|</span><span class="n">rb</span><span class="o">|</span> <span class="n">evt_radiobutton</span><span class="p">(</span><span class="n">rb</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_group_changed</span> <span class="p">}</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@colour_buttons</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">rb</span><span class="o">|</span> <span class="n">evt_radiobutton</span><span class="p">(</span><span class="n">rb</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_group_changed</span> <span class="p">}</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">evt_choice</span><span class="p">(</span><span class="vi">@country</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_country_changed</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">evt_slider</span><span class="p">(</span><span class="vi">@age_slider</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">event</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl">      <span class="vi">@age_value_label</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">int</span><span class="o">.</span><span class="n">to_s</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">evt_button</span><span class="p">(</span><span class="vi">@submit_btn</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_submit</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">on_close</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">event</span><span class="o">.</span><span class="n">skip</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">on_subscribe_changed</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">set_status_text</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">checked?</span> <span class="p">?</span> <span class="s1">&#39;Subscribed&#39;</span> <span class="p">:</span> <span class="s1">&#39;Not subscribed&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">on_group_changed</span>
+</span></span><span class="line"><span class="cl">    <span class="n">size</span>   <span class="o">=</span> <span class="vi">@size_buttons</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:value</span><span class="p">)</span><span class="o">.</span><span class="n">label</span>
+</span></span><span class="line"><span class="cl">    <span class="n">colour</span> <span class="o">=</span> <span class="vi">@colour_buttons</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:value</span><span class="p">)</span><span class="o">.</span><span class="n">label</span>
+</span></span><span class="line"><span class="cl">    <span class="n">set_status_text</span><span class="p">(</span><span class="s2">&#34;Size: </span><span class="si">#{</span><span class="n">size</span><span class="si">}</span><span class="s2">  Colour: </span><span class="si">#{</span><span class="n">colour</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">on_country_changed</span>
+</span></span><span class="line"><span class="cl">    <span class="n">set_status_text</span><span class="p">(</span><span class="s2">&#34;Country: </span><span class="si">#{</span><span class="vi">@country</span><span class="o">.</span><span class="n">string_selection</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">on_submit</span>
+</span></span><span class="line"><span class="cl">    <span class="n">size</span>   <span class="o">=</span> <span class="vi">@size_buttons</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:value</span><span class="p">)</span><span class="o">.</span><span class="n">label</span>
+</span></span><span class="line"><span class="cl">    <span class="n">colour</span> <span class="o">=</span> <span class="vi">@colour_buttons</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:value</span><span class="p">)</span><span class="o">.</span><span class="n">label</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">summary</span> <span class="o">=</span> <span class="o">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;Name:      </span><span class="si">#{</span><span class="vi">@name_field</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;Email:     </span><span class="si">#{</span><span class="vi">@email_field</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;Subscribe: </span><span class="si">#{</span><span class="vi">@subscribe_cb</span><span class="o">.</span><span class="n">value</span> <span class="p">?</span> <span class="s1">&#39;Yes&#39;</span> <span class="p">:</span> <span class="s1">&#39;No&#39;</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;Size:      </span><span class="si">#{</span><span class="n">size</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;Colour:    </span><span class="si">#{</span><span class="n">colour</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;Country:   </span><span class="si">#{</span><span class="vi">@country</span><span class="o">.</span><span class="n">string_selection</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;Age:       </span><span class="si">#{</span><span class="vi">@age_slider</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="o">].</span><span class="n">join</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="no">Wx</span><span class="o">::</span><span class="n">message_box</span><span class="p">(</span><span class="n">summary</span><span class="p">,</span> <span class="s1">&#39;Form values&#39;</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">OK</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ICON_INFORMATION</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="no">Wx</span><span class="o">::</span><span class="no">App</span><span class="o">.</span><span class="n">run</span> <span class="p">{</span> <span class="no">AppFrame</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">show</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>The widgets are laid out with absolute <code>pos:</code> values — workable, but inflexible. The form does not resize gracefully and the positioning is manual arithmetic. Sizers replace all of that in the next lesson, and you will apply them to this exact app to see the difference.</p>
+<hr>
+<p><em>Previous: <a href="../01-frames-and-panels/">Frames and panels</a> | Next: <a href="../03-sizers/">Layout with sizers</a></em></p>
+
+        </div>
+        <div class="hx:mt-16"></div>
+        <script>
+  function getGiscusTheme() {
+    const giscusTheme = '';
+    if (giscusTheme === 'light' || giscusTheme === 'dark') {
+      return giscusTheme;
+    }
+
+    const hugoTheme = localStorage.getItem("color-theme");
+    if (hugoTheme === 'light' || hugoTheme === 'dark') {
+      return hugoTheme;
+    }
+
+    if (hugoTheme === 'system') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    const defaultTheme = '';
+    if (defaultTheme === 'light' || defaultTheme === 'dark') {
+      return defaultTheme;
+    }
+
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function setGiscusTheme() {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+
+    const msg = {
+      giscus: {
+        setConfig: {
+          theme: getGiscusTheme(),
+        },
+      },
+    }
+
+    iframe.contentWindow.postMessage(msg, 'https://giscus.app');
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const giscusAttributes = {
+      "src": "https://giscus.app/client.js",
+      "data-repo": "rehali\/ruby-field-notes",
+      "data-repo-id": "R_kgDOxxxxxxxx",
+      "data-category": "General",
+      "data-category-id": "DIC_kwDOxxxxxxxxx",
+      "data-mapping": "pathname",
+      "data-strict": "0",
+      "data-reactions-enabled": "1",
+      "data-emit-metadata": "0",
+      "data-input-position": "top",
+      "data-theme": getGiscusTheme(),
+      "data-lang": "en",
+      "crossorigin": "anonymous",
+      "async": "",
+    };
+
+    
+    const giscusScript = document.createElement("script");
+    Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+    
+    document.getElementById('giscus-hextra-bb112b9f807c37c1752e5da6a1652a29').appendChild(giscusScript);
+
+    
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", setGiscusTheme);
+
+    
+    const themeToggleOptions = document.querySelectorAll(".hextra-theme-toggle-options [data-item]");
+    if (themeToggleOptions) {
+      themeToggleOptions.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+          setTimeout(setGiscusTheme, 0);
+        });
+      });
+    }
+  });
+</script>
+
+<div id="giscus-hextra-bb112b9f807c37c1752e5da6a1652a29"></div>
+      </main>
+    </article>
+  </div>
+
+      <footer class="hextra-footer hx:bg-gray-100 hx:pb-[env(safe-area-inset-bottom)] hx:dark:bg-neutral-900 hx:print:bg-transparent"><div class="hx:mx-auto hx:flex hx:gap-2 hx:py-2 hx:px-4 hextra-max-footer-width"><div class="hx:flex hx:justify-items-start hx:group" data-theme="light">
+  <button
+    title="Change theme"
+    data-state="closed"
+    data-location="bottom"
+    class="hextra-theme-toggle hx:cursor-pointer hx:rounded-md hx:text-left hx:font-medium hx:h-7 hx:px-2 hx:text-xs hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:font-medium hx:text-gray-600 hx:transition-colors hx:dark:text-gray-400 hx:grow"
+    type="button"
+    aria-label="Change theme"
+    aria-expanded="false"
+    aria-haspopup="menu"
+  >
+    <div class="hx:flex hx:items-center hx:gap-2 hx:capitalize"><svg height=12 class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg><span class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden">Light</span><svg height=12 class="hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg><span class="hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden">Dark</span><svg height=12 class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  fill="currentColor">
+  <path d="M 11.996094,2 C 6.4986225,2.0192368 2.03125,6.5024993 2.03125,12 c 0,5.497501 4.4673725,9.980763 9.964844,10 H 12 12.0039 c 5.497471,-0.01924 9.964844,-4.502499 9.964844,-10 0,-5.4975007 -4.467373,-9.9807632 -9.964844,-10 H 12 Z M 12,4 c 4.417218,0.017598 7.96875,3.5822356 7.96875,8 0,4.417764 -3.551532,7.982402 -7.96875,8 z" />
+</svg>
+<span class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden">System</span></div>
+  </button>
+  <ul
+    class="hextra-theme-toggle-options hx:hidden hx:z-20 hx:max-h-64 hx:overflow-auto hx:rounded-lg hx:border hx:border-gray-200 hx:bg-white hx:p-1 hx:text-sm hx:shadow-lg hx:dark:border-neutral-700 hx:dark:bg-neutral-900"
+    style="position: fixed; inset: auto auto 0px 0px; margin: 0px; min-width: 100px;"
+    data-theme="light"
+    role="menu"
+  >
+    <li role="none" class="hx:flex hx:flex-col">
+      <button
+        type="button"
+        role="menuitemradio"
+        aria-checked="true"
+        tabindex="-1"
+        data-item="light"
+        class="hx:text-gray-700 hx:dark:text-gray-300 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:hover:bg-neutral-800 hx:dark:hover:text-gray-100 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:rounded-sm hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9 hx:text-left hx:w-full hx:bg-transparent hx:border-0"
+      >
+        Light
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </button>
+    </li>
+    <li role="none" class="hx:flex hx:flex-col">
+      <button
+        type="button"
+        role="menuitemradio"
+        aria-checked="false"
+        tabindex="-1"
+        data-item="dark"
+        class="hx:text-gray-700 hx:dark:text-gray-300 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:hover:bg-neutral-800 hx:dark:hover:text-gray-100 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:rounded-sm hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9 hx:text-left hx:w-full hx:bg-transparent hx:border-0"
+      >
+        Dark
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </button>
+    </li>
+    <li role="none" class="hx:flex hx:flex-col">
+      <button
+        type="button"
+        role="menuitemradio"
+        aria-checked="false"
+        tabindex="-1"
+        data-item="system"
+        class="hx:text-gray-700 hx:dark:text-gray-300 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:hover:bg-neutral-800 hx:dark:hover:text-gray-100 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:rounded-sm hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9 hx:text-left hx:w-full hx:bg-transparent hx:border-0"
+      >
+        System
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </button>
+    </li>
+  </ul>
+</div>
+</div><hr class="hx:border-gray-200 hx:dark:border-neutral-800" /><div class="hextra-custom-footer hextra-max-footer-width hx:pl-[max(env(safe-area-inset-left),1.5rem)] hx:pr-[max(env(safe-area-inset-right),1.5rem)] hx:text-gray-600 hx:dark:text-gray-400"><div class="hx:text-xs hx:text-gray-500 hx:mt-2" style="padding: 6px;">
+  © 2026 rehali — Tutorial content: 
+  <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a>
+  · Code examples: MIT · Built with <a href="https://github.com/imfing/hextra" target="_blank" rel="noopener">Hextra</a>
+</div></div><div
+      class="hextra-max-footer-width hx:mx-auto hx:flex hx:justify-center hx:py-12 hx:pl-[max(env(safe-area-inset-left),1.5rem)] hx:pr-[max(env(safe-area-inset-right),1.5rem)] hx:text-gray-600 hx:dark:text-gray-400 hx:md:justify-start"
+    >
+      <div class="hx:flex hx:w-full hx:flex-col hx:items-center hx:sm:items-start"><div class="hx:mt-6 hx:text-xs">© 2025 Hextra Project.</div></div>
+    </div></footer>
+    
+    <script defer src="/js/main.js" integrity=""></script>
+<script defer src="/js/flexsearch.9f5b5908f93ae86f1ecd4b043b799f580c2d1654e703dd9357d568ac41b2547a.js" integrity="sha256-n1tZCPk66G8ezUsEO3mfWAwtFlTnA92TV9VorEGyVHo=" crossorigin="anonymous"></script><script defer src="/en.search.js" integrity=""></script>
+  </body>
+</html>
