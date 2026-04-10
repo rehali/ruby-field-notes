@@ -9,52 +9,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 <title>Ruby Field Notes</title>
-  <meta name="description" content="Lesson 6 — KanbanFlow: domain, Tailwind, and first views This is the payoff lesson. We scaffold the KanbanFlow domain, apply Tailwind styling to Phlex::UI, and build the first real views.
-The domain KanbanFlow has five models. Generate them in this order so references resolve correctly:
-1 2 3 4 5 6 bin/rails generate model User email:string name:string bin/rails generate model Board name:string user:references bin/rails generate model Column name:string position:integer board:references bin/rails generate model Card title:string position:integer column:references bin/rails generate model Membership role:integer user:references board:references bin/rails db:migrate Note: We’re creating a minimal User model here with just email and name. Authentication — login, logout, password handling, sessions — is covered in Module 10. For now User is a plain ActiveRecord model that gives our associations the correct shape." /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-04/06-kanbanflow-tailwind-views/" itemprop="url" />
+  <meta name="description" content="Tailwind with Phlex" /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-04/06-kanbanflow-tailwind-views/" itemprop="url" />
 
 <meta property="og:title" content="">
 <meta
   property="og:description"
   content="
-    
-      Lesson 6 — KanbanFlow: domain, Tailwind, and first views
-    This is the payoff lesson. We scaffold the KanbanFlow domain, apply Tailwind styling to Phlex::UI, and build the first real views.
-The domain
-    KanbanFlow has five models. Generate them in this order so references
-resolve correctly:
-
-
-
-
-1
-2
-3
-4
-5
-6
-
-
-bin/rails generate model User email:string name:string
-bin/rails generate model Board name:string user:references
-bin/rails generate model Column name:string position:integer board:references
-bin/rails generate model Card title:string position:integer column:references
-bin/rails generate model Membership role:integer user:references board:references
-bin/rails db:migrate
-
-
-  
-    
-
-  
-
-
-
-  Note: We&rsquo;re creating a minimal User model here with just email
-and name. Authentication — login, logout, password handling, sessions
-— is covered in Module 10. For now User is a plain ActiveRecord model
-that gives our associations the correct shape.
-    
+    Tailwind with Phlex
   ">
 <meta
   property="og:type"
@@ -67,15 +28,11 @@ that gives our associations the correct shape.
 
 
   <meta itemprop="name" content="Ruby Field Notes">
-  <meta itemprop="description" content="Lesson 6 — KanbanFlow: domain, Tailwind, and first views This is the payoff lesson. We scaffold the KanbanFlow domain, apply Tailwind styling to Phlex::UI, and build the first real views.
-The domain KanbanFlow has five models. Generate them in this order so references resolve correctly:
-1 2 3 4 5 6 bin/rails generate model User email:string name:string bin/rails generate model Board name:string user:references bin/rails generate model Column name:string position:integer board:references bin/rails generate model Card title:string position:integer column:references bin/rails generate model Membership role:integer user:references board:references bin/rails db:migrate Note: We’re creating a minimal User model here with just email and name. Authentication — login, logout, password handling, sessions — is covered in Module 10. For now User is a plain ActiveRecord model that gives our associations the correct shape.">
+  <meta itemprop="description" content="Tailwind with Phlex">
   <meta itemprop="wordCount" content="799">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
-  <meta name="twitter:description" content="Lesson 6 — KanbanFlow: domain, Tailwind, and first views This is the payoff lesson. We scaffold the KanbanFlow domain, apply Tailwind styling to Phlex::UI, and build the first real views.
-The domain KanbanFlow has five models. Generate them in this order so references resolve correctly:
-1 2 3 4 5 6 bin/rails generate model User email:string name:string bin/rails generate model Board name:string user:references bin/rails generate model Column name:string position:integer board:references bin/rails generate model Card title:string position:integer column:references bin/rails generate model Membership role:integer user:references board:references bin/rails db:migrate Note: We’re creating a minimal User model here with just email and name. Authentication — login, logout, password handling, sessions — is covered in Module 10. For now User is a plain ActiveRecord model that gives our associations the correct shape.">
+  <meta name="twitter:description" content="Tailwind with Phlex">
 
     <link rel="preload" href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" as="style" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
     <link href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" rel="stylesheet" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />

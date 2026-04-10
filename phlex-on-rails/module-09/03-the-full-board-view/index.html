@@ -9,46 +9,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 <title>Ruby Field Notes</title>
-  <meta name="description" content="Lesson 3 — The full board view With morphing enabled, the board view is straightforward. The server renders columns and cards; Turbo morphs any changes. We don’t need explicit IDs for Turbo targeting — though we’ll use dom_id as good practice for Stimulus targeting and debugging.
-dom_id in Phlex dom_id generates stable, predictable IDs from ActiveRecord objects:
-1 2 3 4 dom_id(board) # =&gt; &#34;board_1&#34; dom_id(column) # =&gt; &#34;column_3&#34; dom_id(card) # =&gt; &#34;card_42&#34; dom_id(Card.new) # =&gt; &#34;new_card&#34; Include the helper in Components::Base:" /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-09/03-the-full-board-view/" itemprop="url" />
+  <meta name="description" content="Hotwire and turbo with Plex-rails" /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-09/03-the-full-board-view/" itemprop="url" />
 
 <meta property="og:title" content="">
 <meta
   property="og:description"
   content="
-    
-      Lesson 3 — The full board view
-    With morphing enabled, the board view is straightforward. The server
-renders columns and cards; Turbo morphs any changes. We don&rsquo;t need
-explicit IDs for Turbo targeting — though we&rsquo;ll use dom_id as good
-practice for Stimulus targeting and debugging.
-dom_id in Phlex
-    dom_id generates stable, predictable IDs from ActiveRecord objects:
-
-
-
-
-1
-2
-3
-4
-
-
-dom_id(board)       # =&gt; &#34;board_1&#34;
-dom_id(column)      # =&gt; &#34;column_3&#34;
-dom_id(card)        # =&gt; &#34;card_42&#34;
-dom_id(Card.new)    # =&gt; &#34;new_card&#34;
-
-
-  
-    
-
-  
-
-
-Include the helper in Components::Base:
-    
+    Hotwire and turbo with Plex-rails
   ">
 <meta
   property="og:type"
@@ -61,15 +28,11 @@ Include the helper in Components::Base:
 
 
   <meta itemprop="name" content="Ruby Field Notes">
-  <meta itemprop="description" content="Lesson 3 — The full board view With morphing enabled, the board view is straightforward. The server renders columns and cards; Turbo morphs any changes. We don’t need explicit IDs for Turbo targeting — though we’ll use dom_id as good practice for Stimulus targeting and debugging.
-dom_id in Phlex dom_id generates stable, predictable IDs from ActiveRecord objects:
-1 2 3 4 dom_id(board) # =&gt; &#34;board_1&#34; dom_id(column) # =&gt; &#34;column_3&#34; dom_id(card) # =&gt; &#34;card_42&#34; dom_id(Card.new) # =&gt; &#34;new_card&#34; Include the helper in Components::Base:">
+  <meta itemprop="description" content="Hotwire and turbo with Plex-rails">
   <meta itemprop="wordCount" content="2544">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
-  <meta name="twitter:description" content="Lesson 3 — The full board view With morphing enabled, the board view is straightforward. The server renders columns and cards; Turbo morphs any changes. We don’t need explicit IDs for Turbo targeting — though we’ll use dom_id as good practice for Stimulus targeting and debugging.
-dom_id in Phlex dom_id generates stable, predictable IDs from ActiveRecord objects:
-1 2 3 4 dom_id(board) # =&gt; &#34;board_1&#34; dom_id(column) # =&gt; &#34;column_3&#34; dom_id(card) # =&gt; &#34;card_42&#34; dom_id(Card.new) # =&gt; &#34;new_card&#34; Include the helper in Components::Base:">
+  <meta name="twitter:description" content="Hotwire and turbo with Plex-rails">
 
     <link rel="preload" href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" as="style" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
     <link href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" rel="stylesheet" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />

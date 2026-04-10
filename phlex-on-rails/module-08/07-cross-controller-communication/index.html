@@ -9,25 +9,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 <title>Ruby Field Notes</title>
-  <meta name="description" content="Lesson 7 — Cross-controller communication The challenge Stimulus controllers are deliberately small and focused. But real UIs often require coordination between controllers — a card being dragged should update a column’s card count; a form submission should trigger a toast; a modal closing should reset a filter.
-In ERB, the data-* attributes that wire these interactions are scattered across templates, making the relationships hard to follow. In Phlex, each component owns its wiring — cross-controller communication is more explicit and traceable." /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-08/07-cross-controller-communication/" itemprop="url" />
+  <meta name="description" content="Stimulus and cross controller communications with Plex-rails" /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-08/07-cross-controller-communication/" itemprop="url" />
 
 <meta property="og:title" content="">
 <meta
   property="og:description"
   content="
-    
-      Lesson 7 — Cross-controller communication
-    The challenge
-    Stimulus controllers are deliberately small and focused. But real UIs
-often require coordination between controllers — a card being dragged
-should update a column&rsquo;s card count; a form submission should trigger a
-toast; a modal closing should reset a filter.
-In ERB, the data-* attributes that wire these interactions are
-scattered across templates, making the relationships hard to follow.
-In Phlex, each component owns its wiring — cross-controller
-communication is more explicit and traceable.
-    
+    Stimulus and cross controller communications with Plex-rails
   ">
 <meta
   property="og:type"
@@ -40,13 +28,11 @@ communication is more explicit and traceable.
 
 
   <meta itemprop="name" content="Ruby Field Notes">
-  <meta itemprop="description" content="Lesson 7 — Cross-controller communication The challenge Stimulus controllers are deliberately small and focused. But real UIs often require coordination between controllers — a card being dragged should update a column’s card count; a form submission should trigger a toast; a modal closing should reset a filter.
-In ERB, the data-* attributes that wire these interactions are scattered across templates, making the relationships hard to follow. In Phlex, each component owns its wiring — cross-controller communication is more explicit and traceable.">
+  <meta itemprop="description" content="Stimulus and cross controller communications with Plex-rails">
   <meta itemprop="wordCount" content="811">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
-  <meta name="twitter:description" content="Lesson 7 — Cross-controller communication The challenge Stimulus controllers are deliberately small and focused. But real UIs often require coordination between controllers — a card being dragged should update a column’s card count; a form submission should trigger a toast; a modal closing should reset a filter.
-In ERB, the data-* attributes that wire these interactions are scattered across templates, making the relationships hard to follow. In Phlex, each component owns its wiring — cross-controller communication is more explicit and traceable.">
+  <meta name="twitter:description" content="Stimulus and cross controller communications with Plex-rails">
 
     <link rel="preload" href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" as="style" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
     <link href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" rel="stylesheet" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />

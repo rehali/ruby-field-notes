@@ -9,22 +9,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 <title>Ruby Field Notes</title>
-  <meta name="description" content="Lesson 7 — Composing views from components The boards index already composes EmptyState and the board card. This lesson looks at composition more deliberately — how to decide when to extract a component, how to pass data through a composition chain, and how to keep views readable as complexity grows.
-When to extract a component The board card in Views::Boards::Index is currently a private method:" /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-05/07-composition/" itemprop="url" />
+  <meta name="description" content="Composing views with Phlex" /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-05/07-composition/" itemprop="url" />
 
 <meta property="og:title" content="">
 <meta
   property="og:description"
   content="
-    
-      Lesson 7 — Composing views from components
-    The boards index already composes EmptyState and the board card.
-This lesson looks at composition more deliberately — how to decide when
-to extract a component, how to pass data through a composition chain,
-and how to keep views readable as complexity grows.
-When to extract a component
-    The board card in Views::Boards::Index is currently a private method:
-    
+    Composing views with Phlex
   ">
 <meta
   property="og:type"
@@ -37,13 +28,11 @@ When to extract a component
 
 
   <meta itemprop="name" content="Ruby Field Notes">
-  <meta itemprop="description" content="Lesson 7 — Composing views from components The boards index already composes EmptyState and the board card. This lesson looks at composition more deliberately — how to decide when to extract a component, how to pass data through a composition chain, and how to keep views readable as complexity grows.
-When to extract a component The board card in Views::Boards::Index is currently a private method:">
+  <meta itemprop="description" content="Composing views with Phlex">
   <meta itemprop="wordCount" content="441">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
-  <meta name="twitter:description" content="Lesson 7 — Composing views from components The boards index already composes EmptyState and the board card. This lesson looks at composition more deliberately — how to decide when to extract a component, how to pass data through a composition chain, and how to keep views readable as complexity grows.
-When to extract a component The board card in Views::Boards::Index is currently a private method:">
+  <meta name="twitter:description" content="Composing views with Phlex">
 
     <link rel="preload" href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" as="style" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
     <link href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" rel="stylesheet" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />

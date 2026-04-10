@@ -668,7 +668,7 @@
       <description>
         
         
-        &lt;h2&gt;Lesson 2 — Attributes, booleans, and data attributes&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;lesson-2--attributes-booleans-and-data-attributes&#34;&gt;&lt;/span&gt;
+        &lt;h2&gt;Lesson 2 — Attributes, booleans and data attributes&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;lesson-2--attributes-booleans-and-data-attributes&#34;&gt;&lt;/span&gt;
     &lt;a href=&#34;#lesson-2--attributes-booleans-and-data-attributes&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Passing attributes to tags&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;passing-attributes-to-tags&#34;&gt;&lt;/span&gt;
     &lt;a href=&#34;#passing-attributes-to-tags&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Every tag method accepts a hash of attributes as its first argument:&lt;/p&gt;
 &lt;div class=&#34;hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code&#34;&gt;

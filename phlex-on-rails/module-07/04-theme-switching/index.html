@@ -9,25 +9,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 <title>Ruby Field Notes</title>
-  <meta name="description" content="Lesson 4 — Theme switching with Stimulus What we’re adding Lesson 3 gave us automatic dark mode via @media (prefers-color-scheme: dark). That works without any JavaScript — but the user has no way to override it from within the app. This lesson adds a manual toggle that:
-Overrides the system preference when the user explicitly chooses Persists the choice to localStorage Falls back to system preference when no choice has been made Updating application.css Now that we have a manual toggle, we need to extend the CSS to support it. Add @custom-variant and the .dark and .light override blocks:" /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-07/04-theme-switching/" itemprop="url" />
+  <meta name="description" content="Tailwind and theming using Plex-rails" /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-07/04-theme-switching/" itemprop="url" />
 
 <meta property="og:title" content="">
 <meta
   property="og:description"
   content="
-    
-      Lesson 4 — Theme switching with Stimulus
-    What we&rsquo;re adding
-    Lesson 3 gave us automatic dark mode via @media (prefers-color-scheme: dark). That works without any JavaScript — but the user has no way to override it from within the app. This lesson adds a manual toggle that:
-
-Overrides the system preference when the user explicitly chooses
-Persists the choice to localStorage
-Falls back to system preference when no choice has been made
-
-Updating application.css
-    Now that we have a manual toggle, we need to extend the CSS to support it. Add @custom-variant and the .dark and .light override blocks:
-    
+    Tailwind and theming using Plex-rails
   ">
 <meta
   property="og:type"
@@ -40,13 +28,11 @@ Updating application.css
 
 
   <meta itemprop="name" content="Ruby Field Notes">
-  <meta itemprop="description" content="Lesson 4 — Theme switching with Stimulus What we’re adding Lesson 3 gave us automatic dark mode via @media (prefers-color-scheme: dark). That works without any JavaScript — but the user has no way to override it from within the app. This lesson adds a manual toggle that:
-Overrides the system preference when the user explicitly chooses Persists the choice to localStorage Falls back to system preference when no choice has been made Updating application.css Now that we have a manual toggle, we need to extend the CSS to support it. Add @custom-variant and the .dark and .light override blocks:">
+  <meta itemprop="description" content="Tailwind and theming using Plex-rails">
   <meta itemprop="wordCount" content="655">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
-  <meta name="twitter:description" content="Lesson 4 — Theme switching with Stimulus What we’re adding Lesson 3 gave us automatic dark mode via @media (prefers-color-scheme: dark). That works without any JavaScript — but the user has no way to override it from within the app. This lesson adds a manual toggle that:
-Overrides the system preference when the user explicitly chooses Persists the choice to localStorage Falls back to system preference when no choice has been made Updating application.css Now that we have a manual toggle, we need to extend the CSS to support it. Add @custom-variant and the .dark and .light override blocks:">
+  <meta name="twitter:description" content="Tailwind and theming using Plex-rails">
 
     <link rel="preload" href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" as="style" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
     <link href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" rel="stylesheet" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />

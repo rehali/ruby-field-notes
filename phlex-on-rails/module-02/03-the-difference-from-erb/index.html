@@ -9,55 +9,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 <title>Ruby Field Notes</title>
-  <meta name="description" content="Lesson 3 — Text, whitespace, and the difference from ERB How text gets into the output In Phlex, text content is output by returning a string from an element’s block:
-1 2 3 4 5 6 7 8 9 10 11 require &#34;phlex&#34; require &#34;date&#34; class TextDemo &lt; Phlex::HTML def view_template p { &#34;This is text from a block return value.&#34; } end end puts TextDemo.new.call # =&gt; &lt;p&gt;This is text from a block return value.&lt;/p&gt; This works because Phlex uses the block’s return value as the element’s text content — but only under a specific condition. The official Phlex documentation states it precisely:" /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-02/03-the-difference-from-erb/" itemprop="url" />
+  <meta name="description" content="phlex vs erb" /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-02/03-the-difference-from-erb/" itemprop="url" />
 
 <meta property="og:title" content="">
 <meta
   property="og:description"
   content="
-    
-      Lesson 3 — Text, whitespace, and the difference from ERB
-    How text gets into the output
-    In Phlex, text content is output by returning a string from an element&rsquo;s block:
-
-
-
-
- 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-
-
-require &#34;phlex&#34;
-require &#34;date&#34;
-
-class TextDemo &lt; Phlex::HTML
-  def view_template
-    p { &#34;This is text from a block return value.&#34; }
-  end
-end
-
-puts TextDemo.new.call
-# =&gt; &lt;p&gt;This is text from a block return value.&lt;/p&gt;
-
-
-  
-    
-
-  
-
-
-This works because Phlex uses the block&rsquo;s return value as the element&rsquo;s text content — but only under a specific condition. The official Phlex documentation states it precisely:
-    
+    phlex vs erb
   ">
 <meta
   property="og:type"
@@ -70,13 +28,11 @@ This works because Phlex uses the block&rsquo;s return value as the element&rsqu
 
 
   <meta itemprop="name" content="Ruby Field Notes">
-  <meta itemprop="description" content="Lesson 3 — Text, whitespace, and the difference from ERB How text gets into the output In Phlex, text content is output by returning a string from an element’s block:
-1 2 3 4 5 6 7 8 9 10 11 require &#34;phlex&#34; require &#34;date&#34; class TextDemo &lt; Phlex::HTML def view_template p { &#34;This is text from a block return value.&#34; } end end puts TextDemo.new.call # =&gt; &lt;p&gt;This is text from a block return value.&lt;/p&gt; This works because Phlex uses the block’s return value as the element’s text content — but only under a specific condition. The official Phlex documentation states it precisely:">
+  <meta itemprop="description" content="phlex vs erb">
   <meta itemprop="wordCount" content="1826">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
-  <meta name="twitter:description" content="Lesson 3 — Text, whitespace, and the difference from ERB How text gets into the output In Phlex, text content is output by returning a string from an element’s block:
-1 2 3 4 5 6 7 8 9 10 11 require &#34;phlex&#34; require &#34;date&#34; class TextDemo &lt; Phlex::HTML def view_template p { &#34;This is text from a block return value.&#34; } end end puts TextDemo.new.call # =&gt; &lt;p&gt;This is text from a block return value.&lt;/p&gt; This works because Phlex uses the block’s return value as the element’s text content — but only under a specific condition. The official Phlex documentation states it precisely:">
+  <meta name="twitter:description" content="phlex vs erb">
 
     <link rel="preload" href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" as="style" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
     <link href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" rel="stylesheet" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />

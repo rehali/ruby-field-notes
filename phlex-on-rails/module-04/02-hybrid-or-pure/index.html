@@ -9,51 +9,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 <title>Ruby Field Notes</title>
-  <meta name="description" content="Lesson 2 — Two approaches to Phlex in Rails Before writing a single view, make a conscious architectural decision: full Phlex or hybrid?
-Approach 1 — Full Phlex Delete all ERB. Render Phlex views directly from controllers. The entire UI lives in app/views/ and app/components/.
-1 2 3 4 5 6 7 8 # app/controllers/boards_controller.rb class BoardsController &lt; ApplicationController layout false # disable Rails&#39; built-in layout system def index render Views::Boards::Index.new(boards: current_user.boards) end end Best for: greenfield apps, teams comfortable with Ruby-first views, maximum consistency." /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-04/02-hybrid-or-pure/" itemprop="url" />
+  <meta name="description" content="Pure Phlex or a hybrid approach with ERB" /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-04/02-hybrid-or-pure/" itemprop="url" />
 
 <meta property="og:title" content="">
 <meta
   property="og:description"
   content="
-    
-      Lesson 2 — Two approaches to Phlex in Rails
-    Before writing a single view, make a conscious architectural decision: full Phlex or hybrid?
-Approach 1 — Full Phlex
-    Delete all ERB. Render Phlex views directly from controllers. The entire UI lives in app/views/ and app/components/.
-
-
-
-
-1
-2
-3
-4
-5
-6
-7
-8
-
-
-# app/controllers/boards_controller.rb
-class BoardsController &lt; ApplicationController
-  layout false   # disable Rails&#39; built-in layout system
-
-  def index
-    render Views::Boards::Index.new(boards: current_user.boards)
-  end
-end
-
-
-  
-    
-
-  
-
-
-Best for: greenfield apps, teams comfortable with Ruby-first views, maximum consistency.
-    
+    Pure Phlex or a hybrid approach with ERB
   ">
 <meta
   property="og:type"
@@ -66,15 +28,11 @@ Best for: greenfield apps, teams comfortable with Ruby-first views, maximum cons
 
 
   <meta itemprop="name" content="Ruby Field Notes">
-  <meta itemprop="description" content="Lesson 2 — Two approaches to Phlex in Rails Before writing a single view, make a conscious architectural decision: full Phlex or hybrid?
-Approach 1 — Full Phlex Delete all ERB. Render Phlex views directly from controllers. The entire UI lives in app/views/ and app/components/.
-1 2 3 4 5 6 7 8 # app/controllers/boards_controller.rb class BoardsController &lt; ApplicationController layout false # disable Rails&#39; built-in layout system def index render Views::Boards::Index.new(boards: current_user.boards) end end Best for: greenfield apps, teams comfortable with Ruby-first views, maximum consistency.">
+  <meta itemprop="description" content="Pure Phlex or a hybrid approach with ERB">
   <meta itemprop="wordCount" content="427">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
-  <meta name="twitter:description" content="Lesson 2 — Two approaches to Phlex in Rails Before writing a single view, make a conscious architectural decision: full Phlex or hybrid?
-Approach 1 — Full Phlex Delete all ERB. Render Phlex views directly from controllers. The entire UI lives in app/views/ and app/components/.
-1 2 3 4 5 6 7 8 # app/controllers/boards_controller.rb class BoardsController &lt; ApplicationController layout false # disable Rails&#39; built-in layout system def index render Views::Boards::Index.new(boards: current_user.boards) end end Best for: greenfield apps, teams comfortable with Ruby-first views, maximum consistency.">
+  <meta name="twitter:description" content="Pure Phlex or a hybrid approach with ERB">
 
     <link rel="preload" href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" as="style" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
     <link href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" rel="stylesheet" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />

@@ -9,24 +9,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 <title>Ruby Field Notes</title>
-  <meta name="description" content="Lesson 6 — Real-time updates with Turbo Broadcasts The multi-user problem Everything built so far works perfectly for a single user. When two users have the same board open and one adds a card, the other sees nothing until they manually refresh.
-Fixing this requires two things: a way for the server to push a signal to connected browsers, and a way for those browsers to update their view in response. ActionCable handles the push. Turbo Morph handles the update." /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-09/06-real-time-broadcasts/" itemprop="url" />
+  <meta name="description" content="Action cable and turbo broadcasts with Plex-rails" /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-09/06-real-time-broadcasts/" itemprop="url" />
 
 <meta property="og:title" content="">
 <meta
   property="og:description"
   content="
-    
-      Lesson 6 — Real-time updates with Turbo Broadcasts
-    The multi-user problem
-    Everything built so far works perfectly for a single user. When two
-users have the same board open and one adds a card, the other sees
-nothing until they manually refresh.
-Fixing this requires two things: a way for the server to push a signal
-to connected browsers, and a way for those browsers to update their
-view in response. ActionCable handles the push. Turbo Morph handles
-the update.
-    
+    Action cable and turbo broadcasts with Plex-rails
   ">
 <meta
   property="og:type"
@@ -39,13 +28,11 @@ the update.
 
 
   <meta itemprop="name" content="Ruby Field Notes">
-  <meta itemprop="description" content="Lesson 6 — Real-time updates with Turbo Broadcasts The multi-user problem Everything built so far works perfectly for a single user. When two users have the same board open and one adds a card, the other sees nothing until they manually refresh.
-Fixing this requires two things: a way for the server to push a signal to connected browsers, and a way for those browsers to update their view in response. ActionCable handles the push. Turbo Morph handles the update.">
+  <meta itemprop="description" content="Action cable and turbo broadcasts with Plex-rails">
   <meta itemprop="wordCount" content="2099">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
-  <meta name="twitter:description" content="Lesson 6 — Real-time updates with Turbo Broadcasts The multi-user problem Everything built so far works perfectly for a single user. When two users have the same board open and one adds a card, the other sees nothing until they manually refresh.
-Fixing this requires two things: a way for the server to push a signal to connected browsers, and a way for those browsers to update their view in response. ActionCable handles the push. Turbo Morph handles the update.">
+  <meta name="twitter:description" content="Action cable and turbo broadcasts with Plex-rails">
 
     <link rel="preload" href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" as="style" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
     <link href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" rel="stylesheet" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />

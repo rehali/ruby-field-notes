@@ -9,40 +9,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 <title>Ruby Field Notes</title>
-  <meta name="description" content="Lesson 2 — Enabling Turbo Morph The meta tags Turbo Morph is enabled per-page via two meta tags in the &lt;head&gt;:
-1 2 &lt;meta name=&#34;turbo-refresh-method&#34; content=&#34;morph&#34;&gt; &lt;meta name=&#34;turbo-refresh-scroll&#34; content=&#34;preserve&#34;&gt; turbo-refresh-method: morph tells Turbo to diff and patch instead of replacing the body. turbo-refresh-scroll: preserve keeps the page’s scroll position across refreshes — without this the page jumps to the top after every morph." /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-09/02-enabling-turbo-morph/" itemprop="url" />
+  <meta name="description" content="Turbo-morph with Plex-rails" /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-09/02-enabling-turbo-morph/" itemprop="url" />
 
 <meta property="og:title" content="">
 <meta
   property="og:description"
   content="
-    
-      Lesson 2 — Enabling Turbo Morph
-    The meta tags
-    Turbo Morph is enabled per-page via two meta tags in the &lt;head&gt;:
-
-
-
-
-1
-2
-
-
-&lt;meta name=&#34;turbo-refresh-method&#34; content=&#34;morph&#34;&gt;
-&lt;meta name=&#34;turbo-refresh-scroll&#34; content=&#34;preserve&#34;&gt;
-
-
-  
-    
-
-  
-
-
-turbo-refresh-method: morph tells Turbo to diff and patch instead of
-replacing the body. turbo-refresh-scroll: preserve keeps the page&rsquo;s
-scroll position across refreshes — without this the page jumps to the
-top after every morph.
-    
+    Turbo-morph with Plex-rails
   ">
 <meta
   property="og:type"
@@ -55,13 +28,11 @@ top after every morph.
 
 
   <meta itemprop="name" content="Ruby Field Notes">
-  <meta itemprop="description" content="Lesson 2 — Enabling Turbo Morph The meta tags Turbo Morph is enabled per-page via two meta tags in the &lt;head&gt;:
-1 2 &lt;meta name=&#34;turbo-refresh-method&#34; content=&#34;morph&#34;&gt; &lt;meta name=&#34;turbo-refresh-scroll&#34; content=&#34;preserve&#34;&gt; turbo-refresh-method: morph tells Turbo to diff and patch instead of replacing the body. turbo-refresh-scroll: preserve keeps the page’s scroll position across refreshes — without this the page jumps to the top after every morph.">
+  <meta itemprop="description" content="Turbo-morph with Plex-rails">
   <meta itemprop="wordCount" content="479">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
-  <meta name="twitter:description" content="Lesson 2 — Enabling Turbo Morph The meta tags Turbo Morph is enabled per-page via two meta tags in the &lt;head&gt;:
-1 2 &lt;meta name=&#34;turbo-refresh-method&#34; content=&#34;morph&#34;&gt; &lt;meta name=&#34;turbo-refresh-scroll&#34; content=&#34;preserve&#34;&gt; turbo-refresh-method: morph tells Turbo to diff and patch instead of replacing the body. turbo-refresh-scroll: preserve keeps the page’s scroll position across refreshes — without this the page jumps to the top after every morph.">
+  <meta name="twitter:description" content="Turbo-morph with Plex-rails">
 
     <link rel="preload" href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" as="style" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
     <link href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" rel="stylesheet" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />

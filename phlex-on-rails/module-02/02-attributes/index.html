@@ -9,59 +9,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 <title>Ruby Field Notes</title>
-  <meta name="description" content="Lesson 2 — Attributes, booleans, and data attributes Passing attributes to tags Every tag method accepts a hash of attributes as its first argument:
-1 2 3 4 5 6 7 8 9 10 11 12 13 require &#34;phlex&#34; require &#34;date&#34; class AttributeDemo &lt; Phlex::HTML def view_template div(id: &#34;main&#34;, class: &#34;container&#34;) do a(href: &#34;https://phlex.fun&#34;, target: &#34;_blank&#34;) { &#34;Phlex docs&#34; } end end end puts AttributeDemo.new.call # =&gt; &lt;div id=&#34;main&#34; class=&#34;container&#34;&gt;&lt;a href=&#34;https://phlex.fun&#34; target=&#34;_blank&#34;&gt;Phlex docs&lt;/a&gt;&lt;/div&gt; Attribute names map directly to HTML attribute names. Use symbols or strings — both work, though symbols are conventional." /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-02/02-attributes/" itemprop="url" />
+  <meta name="description" content="Attributes, booleans and data attributes" /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-02/02-attributes/" itemprop="url" />
 
 <meta property="og:title" content="">
 <meta
   property="og:description"
   content="
-    
-      Lesson 2 — Attributes, booleans, and data attributes
-    Passing attributes to tags
-    Every tag method accepts a hash of attributes as its first argument:
-
-
-
-
- 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-
-
-require &#34;phlex&#34;
-require &#34;date&#34;
-
-class AttributeDemo &lt; Phlex::HTML
-  def view_template
-    div(id: &#34;main&#34;, class: &#34;container&#34;) do
-      a(href: &#34;https://phlex.fun&#34;, target: &#34;_blank&#34;) { &#34;Phlex docs&#34; }
-    end
-  end
-end
-
-puts AttributeDemo.new.call
-# =&gt; &lt;div id=&#34;main&#34; class=&#34;container&#34;&gt;&lt;a href=&#34;https://phlex.fun&#34; target=&#34;_blank&#34;&gt;Phlex docs&lt;/a&gt;&lt;/div&gt;
-
-
-  
-    
-
-  
-
-
-Attribute names map directly to HTML attribute names. Use symbols or strings — both work, though symbols are conventional.
-    
+    Attributes, booleans and data attributes
   ">
 <meta
   property="og:type"
@@ -74,13 +28,11 @@ Attribute names map directly to HTML attribute names. Use symbols or strings —
 
 
   <meta itemprop="name" content="Ruby Field Notes">
-  <meta itemprop="description" content="Lesson 2 — Attributes, booleans, and data attributes Passing attributes to tags Every tag method accepts a hash of attributes as its first argument:
-1 2 3 4 5 6 7 8 9 10 11 12 13 require &#34;phlex&#34; require &#34;date&#34; class AttributeDemo &lt; Phlex::HTML def view_template div(id: &#34;main&#34;, class: &#34;container&#34;) do a(href: &#34;https://phlex.fun&#34;, target: &#34;_blank&#34;) { &#34;Phlex docs&#34; } end end end puts AttributeDemo.new.call # =&gt; &lt;div id=&#34;main&#34; class=&#34;container&#34;&gt;&lt;a href=&#34;https://phlex.fun&#34; target=&#34;_blank&#34;&gt;Phlex docs&lt;/a&gt;&lt;/div&gt; Attribute names map directly to HTML attribute names. Use symbols or strings — both work, though symbols are conventional.">
+  <meta itemprop="description" content="Attributes, booleans and data attributes">
   <meta itemprop="wordCount" content="1030">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
-  <meta name="twitter:description" content="Lesson 2 — Attributes, booleans, and data attributes Passing attributes to tags Every tag method accepts a hash of attributes as its first argument:
-1 2 3 4 5 6 7 8 9 10 11 12 13 require &#34;phlex&#34; require &#34;date&#34; class AttributeDemo &lt; Phlex::HTML def view_template div(id: &#34;main&#34;, class: &#34;container&#34;) do a(href: &#34;https://phlex.fun&#34;, target: &#34;_blank&#34;) { &#34;Phlex docs&#34; } end end end puts AttributeDemo.new.call # =&gt; &lt;div id=&#34;main&#34; class=&#34;container&#34;&gt;&lt;a href=&#34;https://phlex.fun&#34; target=&#34;_blank&#34;&gt;Phlex docs&lt;/a&gt;&lt;/div&gt; Attribute names map directly to HTML attribute names. Use symbols or strings — both work, though symbols are conventional.">
+  <meta name="twitter:description" content="Attributes, booleans and data attributes">
 
     <link rel="preload" href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" as="style" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
     <link href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" rel="stylesheet" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
@@ -1191,7 +1143,7 @@ Attribute names map directly to HTML attribute names. Use symbols or strings —
 <nav class="hextra-toc hx:order-last hx:hidden hx:w-64 hx:shrink-0 hx:xl:block hx:print:hidden hx:px-4" aria-label="Table of contents">
     <div class="hextra-scrollbar hx:sticky hx:top-16 hx:overflow-y-auto hx:pr-4 hx:pt-6 hx:text-sm [hyphens:auto] hx:max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] hx:ltr:-mr-4 hx:rtl:-ml-4"><p class="hx:mb-4 hx:font-semibold hx:tracking-tight">On this page</p><ul>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#lesson-2--attributes-booleans-and-data-attributes">Lesson 2 — Attributes, booleans, and data attributes
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#lesson-2--attributes-booleans-and-data-attributes">Lesson 2 — Attributes, booleans and data attributes
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
@@ -1243,7 +1195,7 @@ Attribute names map directly to HTML attribute names. Use symbols or strings —
         
         <div class="content">
           
-          <h2>Lesson 2 — Attributes, booleans, and data attributes<span class="hx:absolute hx:-mt-20" id="lesson-2--attributes-booleans-and-data-attributes"></span>
+          <h2>Lesson 2 — Attributes, booleans and data attributes<span class="hx:absolute hx:-mt-20" id="lesson-2--attributes-booleans-and-data-attributes"></span>
     <a href="#lesson-2--attributes-booleans-and-data-attributes" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><h3>Passing attributes to tags<span class="hx:absolute hx:-mt-20" id="passing-attributes-to-tags"></span>
     <a href="#passing-attributes-to-tags" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>Every tag method accepts a hash of attributes as its first argument:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">

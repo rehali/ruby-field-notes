@@ -9,27 +9,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 <title>Ruby Field Notes</title>
-  <meta name="description" content="Lesson 5 — Inline add and edit forms The approach Creating and editing cards and columns currently navigates to a separate page. That works, but it breaks board context — the user loses sight of their board to fill in a one-field form.
-The fix is simple: render the forms inline in the board, hidden by default, and toggle them with Stimulus. No Turbo Frames, no streams, no navigation. The form is already in the DOM — Stimulus shows and hides it. When the form submits successfully the controller redirects back to the board and morph updates it. Validation errors are caught client-side before the form ever submits — no server round-trip needed for a single required field." /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-09/05-inline-edits/" itemprop="url" />
+  <meta name="description" content="Inline edits with Plex-rails" /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-09/05-inline-edits/" itemprop="url" />
 
 <meta property="og:title" content="">
 <meta
   property="og:description"
   content="
-    
-      Lesson 5 — Inline add and edit forms
-    The approach
-    Creating and editing cards and columns currently navigates to a separate
-page. That works, but it breaks board context — the user loses sight of
-their board to fill in a one-field form.
-The fix is simple: render the forms inline in the board, hidden by
-default, and toggle them with Stimulus. No Turbo Frames, no streams, no
-navigation. The form is already in the DOM — Stimulus shows and hides
-it. When the form submits successfully the controller redirects back to
-the board and morph updates it. Validation errors are caught client-side
-before the form ever submits — no server round-trip needed for a single
-required field.
-    
+    Inline edits with Plex-rails
   ">
 <meta
   property="og:type"
@@ -42,13 +28,11 @@ required field.
 
 
   <meta itemprop="name" content="Ruby Field Notes">
-  <meta itemprop="description" content="Lesson 5 — Inline add and edit forms The approach Creating and editing cards and columns currently navigates to a separate page. That works, but it breaks board context — the user loses sight of their board to fill in a one-field form.
-The fix is simple: render the forms inline in the board, hidden by default, and toggle them with Stimulus. No Turbo Frames, no streams, no navigation. The form is already in the DOM — Stimulus shows and hides it. When the form submits successfully the controller redirects back to the board and morph updates it. Validation errors are caught client-side before the form ever submits — no server round-trip needed for a single required field.">
+  <meta itemprop="description" content="Inline edits with Plex-rails">
   <meta itemprop="wordCount" content="2261">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
-  <meta name="twitter:description" content="Lesson 5 — Inline add and edit forms The approach Creating and editing cards and columns currently navigates to a separate page. That works, but it breaks board context — the user loses sight of their board to fill in a one-field form.
-The fix is simple: render the forms inline in the board, hidden by default, and toggle them with Stimulus. No Turbo Frames, no streams, no navigation. The form is already in the DOM — Stimulus shows and hides it. When the form submits successfully the controller redirects back to the board and morph updates it. Validation errors are caught client-side before the form ever submits — no server round-trip needed for a single required field.">
+  <meta name="twitter:description" content="Inline edits with Plex-rails">
 
     <link rel="preload" href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" as="style" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
     <link href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" rel="stylesheet" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />

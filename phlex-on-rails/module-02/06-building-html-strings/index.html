@@ -9,56 +9,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 <title>Ruby Field Notes</title>
-  <meta name="description" content="Lesson 6 — Building HTML strings without a component class When you don’t need a class Sometimes you just want to build a small HTML fragment without the overhead of defining a full component class. Phlex provides two ways to do this.
-Phlex::HTML.new with a block (inline rendering) You can instantiate Phlex::HTML directly and pass a block:
-1 2 3 4 5 6 7 8 9 10 require &#34;phlex&#34; html = Phlex::HTML.new do p { &#34;This is rendered without a named class.&#34; } ul do %w[Apples Bananas Cherries].each { |item| li { item } } end end puts html.call Output:" /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-02/06-building-html-strings/" itemprop="url" />
+  <meta name="description" content="Html strings in phlex" /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-02/06-building-html-strings/" itemprop="url" />
 
 <meta property="og:title" content="">
 <meta
   property="og:description"
   content="
-    
-      Lesson 6 — Building HTML strings without a component class
-    When you don&rsquo;t need a class
-    Sometimes you just want to build a small HTML fragment without the overhead of defining a full component class. Phlex provides two ways to do this.
-Phlex::HTML.new with a block (inline rendering)
-    You can instantiate Phlex::HTML directly and pass a block:
-
-
-
-
- 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-
-
-require &#34;phlex&#34;
-
-html = Phlex::HTML.new do
-  p { &#34;This is rendered without a named class.&#34; }
-  ul do
-    %w[Apples Bananas Cherries].each { |item| li { item } }
-  end
-end
-
-puts html.call
-
-
-  
-    
-
-  
-
-
-Output:
-    
+    Html strings in phlex
   ">
 <meta
   property="og:type"
@@ -71,15 +28,11 @@ Output:
 
 
   <meta itemprop="name" content="Ruby Field Notes">
-  <meta itemprop="description" content="Lesson 6 — Building HTML strings without a component class When you don’t need a class Sometimes you just want to build a small HTML fragment without the overhead of defining a full component class. Phlex provides two ways to do this.
-Phlex::HTML.new with a block (inline rendering) You can instantiate Phlex::HTML directly and pass a block:
-1 2 3 4 5 6 7 8 9 10 require &#34;phlex&#34; html = Phlex::HTML.new do p { &#34;This is rendered without a named class.&#34; } ul do %w[Apples Bananas Cherries].each { |item| li { item } } end end puts html.call Output:">
+  <meta itemprop="description" content="Html strings in phlex">
   <meta itemprop="wordCount" content="1242">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
-  <meta name="twitter:description" content="Lesson 6 — Building HTML strings without a component class When you don’t need a class Sometimes you just want to build a small HTML fragment without the overhead of defining a full component class. Phlex provides two ways to do this.
-Phlex::HTML.new with a block (inline rendering) You can instantiate Phlex::HTML directly and pass a block:
-1 2 3 4 5 6 7 8 9 10 require &#34;phlex&#34; html = Phlex::HTML.new do p { &#34;This is rendered without a named class.&#34; } ul do %w[Apples Bananas Cherries].each { |item| li { item } } end end puts html.call Output:">
+  <meta name="twitter:description" content="Html strings in phlex">
 
     <link rel="preload" href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" as="style" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
     <link href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" rel="stylesheet" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />

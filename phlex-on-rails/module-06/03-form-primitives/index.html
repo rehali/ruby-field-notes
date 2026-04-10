@@ -9,76 +9,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 <title>Ruby Field Notes</title>
-  <meta name="description" content="Lesson 3 — Form primitives As you add each form component, you should add it’s corresponding Lookbook preview so you can check the appearance. (The Lookbook samples are shown below).
-Components::TextInput 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 # app/components/text_input.rb class Components::TextInput &lt; Components::FormField prop :value, _Nilable(String), default: -&gt; { nil } prop :placeholder, _Nilable(String), default: -&gt; { nil } prop :type, String, default: -&gt; { &#34;text&#34; } private def render_input input( type: @type, id: @field, name: @field, value: @value.to_s, placeholder: @placeholder, required: @required, class: input_classes, aria: aria_attrs ) end end Usage:" /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-06/03-form-primitives/" itemprop="url" />
+  <meta name="description" content="Forms using Plex-rails" /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-06/03-form-primitives/" itemprop="url" />
 
 <meta property="og:title" content="">
 <meta
   property="og:description"
   content="
-    
-      Lesson 3 — Form primitives
-    As you add each form component, you should add it&rsquo;s corresponding Lookbook preview so you can
-check the appearance. (The Lookbook samples are shown below).
-Components::TextInput
-    
-
-
-
- 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-
-
-# app/components/text_input.rb
-class Components::TextInput &lt; Components::FormField
-  prop :value,       _Nilable(String), default: -&gt; { nil }
-  prop :placeholder, _Nilable(String), default: -&gt; { nil }
-  prop :type,        String,           default: -&gt; { &#34;text&#34; }
-
-  private
-
-  def render_input
-    input(
-      type:        @type,
-      id:          @field,
-      name:        @field,
-      value:       @value.to_s,
-      placeholder: @placeholder,
-      required:    @required,
-      class:       input_classes,
-      aria:        aria_attrs
-    )
-  end
-end
-
-
-  
-    
-
-  
-
-
-Usage:
-    
+    Forms using Plex-rails
   ">
 <meta
   property="og:type"
@@ -91,13 +28,11 @@ Usage:
 
 
   <meta itemprop="name" content="Ruby Field Notes">
-  <meta itemprop="description" content="Lesson 3 — Form primitives As you add each form component, you should add it’s corresponding Lookbook preview so you can check the appearance. (The Lookbook samples are shown below).
-Components::TextInput 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 # app/components/text_input.rb class Components::TextInput &lt; Components::FormField prop :value, _Nilable(String), default: -&gt; { nil } prop :placeholder, _Nilable(String), default: -&gt; { nil } prop :type, String, default: -&gt; { &#34;text&#34; } private def render_input input( type: @type, id: @field, name: @field, value: @value.to_s, placeholder: @placeholder, required: @required, class: input_classes, aria: aria_attrs ) end end Usage:">
+  <meta itemprop="description" content="Forms using Plex-rails">
   <meta itemprop="wordCount" content="1754">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
-  <meta name="twitter:description" content="Lesson 3 — Form primitives As you add each form component, you should add it’s corresponding Lookbook preview so you can check the appearance. (The Lookbook samples are shown below).
-Components::TextInput 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 # app/components/text_input.rb class Components::TextInput &lt; Components::FormField prop :value, _Nilable(String), default: -&gt; { nil } prop :placeholder, _Nilable(String), default: -&gt; { nil } prop :type, String, default: -&gt; { &#34;text&#34; } private def render_input input( type: @type, id: @field, name: @field, value: @value.to_s, placeholder: @placeholder, required: @required, class: input_classes, aria: aria_attrs ) end end Usage:">
+  <meta name="twitter:description" content="Forms using Plex-rails">
 
     <link rel="preload" href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" as="style" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
     <link href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" rel="stylesheet" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />

@@ -9,27 +9,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 <title>Ruby Field Notes</title>
-  <meta name="description" content="Lesson 5 — Presence What presence means Presence shows which board members are currently viewing the board. Rather than two separate lists — one for all members, one for online members — we use a single row of avatars where online members get a green dot. This mirrors how Slack, Notion, and Linear handle it: one list, two visual states.
-The implementation uses ActionCable with a dedicated presence channel. When a user opens the board, their browser subscribes and announces their arrival. When they leave, the browser unsubscribes and announces their departure. The channel broadcasts the updated online list to all subscribers." /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-11/05-presence/" itemprop="url" />
+  <meta name="description" content="Authorisation with Plex-rails" /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-11/05-presence/" itemprop="url" />
 
 <meta property="og:title" content="">
 <meta
   property="og:description"
   content="
-    
-      Lesson 5 — Presence
-    What presence means
-    Presence shows which board members are currently viewing the board.
-Rather than two separate lists — one for all members, one for online
-members — we use a single row of avatars where online members get a
-green dot. This mirrors how Slack, Notion, and Linear handle it: one
-list, two visual states.
-The implementation uses ActionCable with a dedicated presence channel.
-When a user opens the board, their browser subscribes and announces
-their arrival. When they leave, the browser unsubscribes and announces
-their departure. The channel broadcasts the updated online list to all
-subscribers.
-    
+    Authorisation with Plex-rails
   ">
 <meta
   property="og:type"
@@ -42,13 +28,11 @@ subscribers.
 
 
   <meta itemprop="name" content="Ruby Field Notes">
-  <meta itemprop="description" content="Lesson 5 — Presence What presence means Presence shows which board members are currently viewing the board. Rather than two separate lists — one for all members, one for online members — we use a single row of avatars where online members get a green dot. This mirrors how Slack, Notion, and Linear handle it: one list, two visual states.
-The implementation uses ActionCable with a dedicated presence channel. When a user opens the board, their browser subscribes and announces their arrival. When they leave, the browser unsubscribes and announces their departure. The channel broadcasts the updated online list to all subscribers.">
+  <meta itemprop="description" content="Authorisation with Plex-rails">
   <meta itemprop="wordCount" content="1194">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
-  <meta name="twitter:description" content="Lesson 5 — Presence What presence means Presence shows which board members are currently viewing the board. Rather than two separate lists — one for all members, one for online members — we use a single row of avatars where online members get a green dot. This mirrors how Slack, Notion, and Linear handle it: one list, two visual states.
-The implementation uses ActionCable with a dedicated presence channel. When a user opens the board, their browser subscribes and announces their arrival. When they leave, the browser unsubscribes and announces their departure. The channel broadcasts the updated online list to all subscribers.">
+  <meta name="twitter:description" content="Authorisation with Plex-rails">
 
     <link rel="preload" href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" as="style" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
     <link href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" rel="stylesheet" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />

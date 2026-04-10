@@ -9,72 +9,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 <title>Ruby Field Notes</title>
-  <meta name="description" content="Lesson 4 — Wiring current_user into the app current_user in components With the Authentication concern in ApplicationController, current_user is available in controllers and ERB views via helper_method. In Phlex components it needs to be explicitly made available.
-The correct Phlex v2 approach is to include it as a helper:
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # app/components/base.rb class Components::Base &lt; Phlex::HTML include Phlex::Rails::Helpers::Routes include Phlex::Rails::Helpers::FormWith include Phlex::Rails::Helpers::DOMID include Phlex::Rails::Helpers::TurboStreamFrom extend Literal::Properties # Make current_user available in all components def current_user Current.session&amp;.user end # ... end helpers is available in any Phlex component rendered within a Rails request context — it gives access to all helper_method declarations including current_user." /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-10/04-current-user/" itemprop="url" />
+  <meta name="description" content="Rails 8 authentication and current_user with Plex-rails" /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-10/04-current-user/" itemprop="url" />
 
 <meta property="og:title" content="">
 <meta
   property="og:description"
   content="
-    
-      Lesson 4 — Wiring current_user into the app
-    current_user in components
-    With the Authentication concern in ApplicationController,
-current_user is available in controllers and ERB views via
-helper_method. In Phlex components it needs to be explicitly made
-available.
-The correct Phlex v2 approach is to include it as a helper:
-
-
-
-
- 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-
-
-# app/components/base.rb
-class Components::Base &lt; Phlex::HTML
-  include Phlex::Rails::Helpers::Routes
-  include Phlex::Rails::Helpers::FormWith
-  include Phlex::Rails::Helpers::DOMID
-  include Phlex::Rails::Helpers::TurboStreamFrom
-  extend Literal::Properties
-
-  # Make current_user available in all components
-  def current_user
-    Current.session&amp;.user
-  end
-
-
-  # ...
-end
-
-
-  
-    
-
-  
-
-
-helpers is available in any Phlex component rendered within a Rails
-request context — it gives access to all helper_method declarations
-including current_user.
-    
+    Rails 8 authentication and current_user with Plex-rails
   ">
 <meta
   property="og:type"
@@ -87,15 +28,11 @@ including current_user.
 
 
   <meta itemprop="name" content="Ruby Field Notes">
-  <meta itemprop="description" content="Lesson 4 — Wiring current_user into the app current_user in components With the Authentication concern in ApplicationController, current_user is available in controllers and ERB views via helper_method. In Phlex components it needs to be explicitly made available.
-The correct Phlex v2 approach is to include it as a helper:
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # app/components/base.rb class Components::Base &lt; Phlex::HTML include Phlex::Rails::Helpers::Routes include Phlex::Rails::Helpers::FormWith include Phlex::Rails::Helpers::DOMID include Phlex::Rails::Helpers::TurboStreamFrom extend Literal::Properties # Make current_user available in all components def current_user Current.session&amp;.user end # ... end helpers is available in any Phlex component rendered within a Rails request context — it gives access to all helper_method declarations including current_user.">
+  <meta itemprop="description" content="Rails 8 authentication and current_user with Plex-rails">
   <meta itemprop="wordCount" content="817">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
-  <meta name="twitter:description" content="Lesson 4 — Wiring current_user into the app current_user in components With the Authentication concern in ApplicationController, current_user is available in controllers and ERB views via helper_method. In Phlex components it needs to be explicitly made available.
-The correct Phlex v2 approach is to include it as a helper:
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 # app/components/base.rb class Components::Base &lt; Phlex::HTML include Phlex::Rails::Helpers::Routes include Phlex::Rails::Helpers::FormWith include Phlex::Rails::Helpers::DOMID include Phlex::Rails::Helpers::TurboStreamFrom extend Literal::Properties # Make current_user available in all components def current_user Current.session&amp;.user end # ... end helpers is available in any Phlex component rendered within a Rails request context — it gives access to all helper_method declarations including current_user.">
+  <meta name="twitter:description" content="Rails 8 authentication and current_user with Plex-rails">
 
     <link rel="preload" href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" as="style" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
     <link href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" rel="stylesheet" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />

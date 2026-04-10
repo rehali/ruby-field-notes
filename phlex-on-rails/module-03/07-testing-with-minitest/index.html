@@ -9,19 +9,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 <title>Ruby Field Notes</title>
-  <meta name="description" content="Lesson 7 — Testing with Minitest Why testing Phlex components is different Testing views in a traditional Rails app is painful. To test an ERB partial you need a full Rails environment, a controller context, instance variables set correctly, and a view context that wires it all together. The setup is fragile, the tests are slow, and most teams simply don’t bother. View logic goes untested by default. Phlex changes this completely — and it’s one of the most underappreciated benefits of the component approach. A Phlex component is a plain Ruby object. It has an initialize method that declares exactly what it needs, and a call method that returns an HTML string. That’s it. There’s no implicit state, no controller context, no view environment required. To test it you do exactly what you’d do with any Ruby object:" /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-03/07-testing-with-minitest/" itemprop="url" />
+  <meta name="description" content="Components and testing in Phlex" /><link rel="canonical" href="https://www.rehali.com/phlex-on-rails/module-03/07-testing-with-minitest/" itemprop="url" />
 
 <meta property="og:title" content="">
 <meta
   property="og:description"
   content="
-    
-      Lesson 7 —  Testing with Minitest
-    Why testing Phlex components is different
-    Testing views in a traditional Rails app is painful. To test an ERB partial you need a full Rails environment, a controller context, instance variables set correctly, and a view context that wires it all together. The setup is fragile, the tests are slow, and most teams simply don&rsquo;t bother. View logic goes untested by default.
-Phlex changes this completely — and it&rsquo;s one of the most underappreciated benefits of the component approach.
-A Phlex component is a plain Ruby object. It has an initialize method that declares exactly what it needs, and a call method that returns an HTML string. That&rsquo;s it. There&rsquo;s no implicit state, no controller context, no view environment required. To test it you do exactly what you&rsquo;d do with any Ruby object:
-    
+    Components and testing in Phlex
   ">
 <meta
   property="og:type"
@@ -34,11 +28,11 @@ A Phlex component is a plain Ruby object. It has an initialize method that decla
 
 
   <meta itemprop="name" content="Ruby Field Notes">
-  <meta itemprop="description" content="Lesson 7 — Testing with Minitest Why testing Phlex components is different Testing views in a traditional Rails app is painful. To test an ERB partial you need a full Rails environment, a controller context, instance variables set correctly, and a view context that wires it all together. The setup is fragile, the tests are slow, and most teams simply don’t bother. View logic goes untested by default. Phlex changes this completely — and it’s one of the most underappreciated benefits of the component approach. A Phlex component is a plain Ruby object. It has an initialize method that declares exactly what it needs, and a call method that returns an HTML string. That’s it. There’s no implicit state, no controller context, no view environment required. To test it you do exactly what you’d do with any Ruby object:">
+  <meta itemprop="description" content="Components and testing in Phlex">
   <meta itemprop="wordCount" content="1160">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
-  <meta name="twitter:description" content="Lesson 7 — Testing with Minitest Why testing Phlex components is different Testing views in a traditional Rails app is painful. To test an ERB partial you need a full Rails environment, a controller context, instance variables set correctly, and a view context that wires it all together. The setup is fragile, the tests are slow, and most teams simply don’t bother. View logic goes untested by default. Phlex changes this completely — and it’s one of the most underappreciated benefits of the component approach. A Phlex component is a plain Ruby object. It has an initialize method that declares exactly what it needs, and a call method that returns an HTML string. That’s it. There’s no implicit state, no controller context, no view environment required. To test it you do exactly what you’d do with any Ruby object:">
+  <meta name="twitter:description" content="Components and testing in Phlex">
 
     <link rel="preload" href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" as="style" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
     <link href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" rel="stylesheet" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
