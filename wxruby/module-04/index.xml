@@ -380,8 +380,6 @@
 &lt;li&gt;Read &lt;code&gt;@panel.client_size&lt;/code&gt; inside the paint handler to get the current dimensions&lt;/li&gt;
 &lt;li&gt;Draw order matters — later draws paint over earlier ones; use &lt;code&gt;Wx::TRANSPARENT_BRUSH&lt;/code&gt; for outline-only shapes&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../../module-03/&#34;&gt;Module 3&lt;/a&gt; | Next: &lt;a href=&#34;../02-images-and-bitmaps/&#34;&gt;Images and bitmaps&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -728,8 +726,6 @@
 &lt;li&gt;Save with &lt;code&gt;bitmap.convert_to_image.save_file(path, Wx::BITMAP_TYPE_PNG)&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Fit to a box: &lt;code&gt;scale = [box_w / img.width, box_h / img.height].min&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../01-drawing-with-device-contexts/&#34;&gt;Drawing with device contexts&lt;/a&gt; | Next: &lt;a href=&#34;../03-rich-text/&#34;&gt;Rich text&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -1184,8 +1180,6 @@
 &lt;li&gt;&lt;code&gt;set_style_ex&lt;/code&gt; with &lt;code&gt;Wx::RTC::RichTextAttr&lt;/code&gt; for other selection formatting&lt;/li&gt;
 &lt;li&gt;Always &lt;code&gt;set_focus&lt;/code&gt; after toolbar formatting to return the cursor to the editor&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../02-images/&#34;&gt;Images and bitmaps&lt;/a&gt; | Next: &lt;a href=&#34;../04-html-window/&#34;&gt;HtmlWindow&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -1430,8 +1424,6 @@
 &lt;li&gt;&lt;code&gt;evt_html_link_clicked&lt;/code&gt; to intercept link clicks&lt;/li&gt;
 &lt;li&gt;Good for static formatted content; use WebView when you need CSS, JavaScript, or external pages&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../03-rich-text/&#34;&gt;Rich text&lt;/a&gt; | Next: &lt;a href=&#34;../05-capstone-markdown/&#34;&gt;Project: Markdown editor&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -1626,8 +1618,6 @@
 &lt;li&gt;&lt;strong&gt;Debounced timer&lt;/strong&gt; — a new pattern: &lt;code&gt;Wx::TIMER_ONE_SHOT&lt;/code&gt; for deferred updates&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Module 3 patterns&lt;/strong&gt; — multi-file structure, model/panel separation, &lt;code&gt;@loading&lt;/code&gt; flag, file dialogs, dirty state, confirm on close&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../04-html-window/&#34;&gt;HtmlWindow&lt;/a&gt; | Next: &lt;a href=&#34;../../module-05/&#34;&gt;Module 5 — WebView&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>

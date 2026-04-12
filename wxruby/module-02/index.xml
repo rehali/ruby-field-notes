@@ -395,8 +395,6 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Keep this file open. In the next lesson you will add controls to &lt;code&gt;build_ui&lt;/code&gt; and wire them up in &lt;code&gt;bind_events&lt;/code&gt;, one widget at a time.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../../module-01/04-sampler/&#34;&gt;Exploring the sampler&lt;/a&gt; | Next: &lt;a href=&#34;../02-core-widgets/&#34;&gt;Core widgets&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -1332,8 +1330,6 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;The widgets are laid out with absolute &lt;code&gt;pos:&lt;/code&gt; values — workable, but inflexible. The form does not resize gracefully and the positioning is manual arithmetic. Sizers replace all of that in the next lesson, and you will apply them to this exact app to see the difference.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../01-frames-and-panels/&#34;&gt;Frames and panels&lt;/a&gt; | Next: &lt;a href=&#34;../03-sizers/&#34;&gt;Layout with sizers&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -2106,8 +2102,6 @@
 &lt;p&gt;&lt;strong&gt;Empty StaticText as a spacer.&lt;/strong&gt; The subscribe checkbox and the radio group labels need to occupy the right column, leaving the left column empty. &lt;code&gt;Wx::StaticText.new(@panel, label: &#39;&#39;)&lt;/code&gt; creates an invisible placeholder that occupies the left cell without displaying anything. This is the simplest way to skip a cell in a &lt;code&gt;FlexGridSizer&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;HBoxSizer inside a grid cell.&lt;/strong&gt; The size and colour rows each contain multiple radio buttons side by side. The &lt;code&gt;FlexGridSizer&lt;/code&gt; can only hold one item per cell, so you put an &lt;code&gt;HBoxSizer&lt;/code&gt; in the cell and add the buttons to that. The grid positions the sizer; the sizer positions the buttons within it.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;proportion on the age row.&lt;/strong&gt; The &lt;code&gt;age_row&lt;/code&gt; &lt;code&gt;HBoxSizer&lt;/code&gt; is added to the grid with proportion &lt;code&gt;1&lt;/code&gt; and &lt;code&gt;Wx::EXPAND&lt;/code&gt;, so it stretches to fill the full right column. Inside, the slider has proportion &lt;code&gt;1&lt;/code&gt; (it expands) and the label has proportion &lt;code&gt;0&lt;/code&gt; (it stays fixed). This gives the slider all the growing space while keeping the number label pinned to its right edge.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../02-core-widgets/&#34;&gt;Core widgets&lt;/a&gt; | Next: &lt;a href=&#34;../04-menus-toolbars/&#34;&gt;Menus and toolbars&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -3101,8 +3095,6 @@
   &lt;/button&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../03-sizers/&#34;&gt;Layout with sizers&lt;/a&gt; | Next: &lt;a href=&#34;../05-dialogs/&#34;&gt;Dialogs&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -3951,8 +3943,6 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Add a button for it and wire it up to see it in action.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../04-menus-toolbars/&#34;&gt;Menus and toolbars&lt;/a&gt; | Next: &lt;a href=&#34;../06-preferences-panel/&#34;&gt;Preferences panel&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -5116,8 +5106,6 @@ Wx::App.run { PreferencesFrame.new.show }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&l
 &lt;li&gt;&lt;strong&gt;Dirty state&lt;/strong&gt; — Apply enables only when something has changed, disables after applying&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;The widget-enabling pattern on the Network tab (&lt;code&gt;update_proxy_fields&lt;/code&gt;) is one you will use constantly in real apps — a checkbox or radio button controlling whether related fields are active.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../05-dialogs/&#34;&gt;Dialogs&lt;/a&gt; | Next: &lt;a href=&#34;../../module-03/&#34;&gt;Module 3 — Patterns and Architecture&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>

@@ -408,8 +408,6 @@
 &lt;li&gt;Always check &lt;code&gt;current_url == &#39;about:blank&#39;&lt;/code&gt; in &lt;code&gt;evt_webview_loaded&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;run_script&lt;/code&gt; only after &lt;code&gt;evt_webview_loaded&lt;/code&gt; — never during page load&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../../module-04/&#34;&gt;Module 4&lt;/a&gt; | Next: &lt;a href=&#34;../02-js-bridge/&#34;&gt;The JavaScript bridge&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -865,8 +863,6 @@
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Navigation interception is useful for quick experiments. For anything beyond a few message types, use &lt;code&gt;JsBridge&lt;/code&gt; — it scales cleanly and the Ruby side stays readable.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../01-webview-basics/&#34;&gt;WebView basics&lt;/a&gt; | Next: &lt;a href=&#34;../03-live-data/&#34;&gt;Live data with Chart.js&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -1133,8 +1129,6 @@
 &lt;li&gt;Use &lt;code&gt;chart.update(&#39;none&#39;)&lt;/code&gt; in Chart.js for smooth live updates without animation&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;JsBridge.call&lt;/code&gt; with a callback is the pattern for querying data back from JS&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../02-js-bridge/&#34;&gt;The JavaScript bridge&lt;/a&gt; | Next: &lt;a href=&#34;../04-leaflet-maps/&#34;&gt;Leaflet maps&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -1527,8 +1521,6 @@
 &lt;p&gt;This is the bidirectional state management pattern that all the Module 6 map apps use — JS owns the visual markers, Ruby owns the list, IDs keep them in sync.&lt;/p&gt;
 &lt;h2&gt;What comes next&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;what-comes-next&#34;&gt;&lt;/span&gt;
     &lt;a href=&#34;#what-comes-next&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The Module 6 route planner extends this app significantly — polylines, GeoJSON export, offline tile caching with a thread pool, context menus, and a more sophisticated state model. The architecture is the same: &lt;code&gt;MapPanel&lt;/code&gt; wraps all WebView/Leaflet details, the frame coordinates, and everything talks through clean Ruby interfaces.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../03-live-data/&#34;&gt;Live data with Chart.js&lt;/a&gt; | Next: &lt;a href=&#34;../05-project-markdown/&#34;&gt;Project: Markdown editor with WebView&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -1778,8 +1770,6 @@
 &lt;li&gt;Syntax highlighting with highlight.js — two lines of JS, zero Ruby changes&lt;/li&gt;
 &lt;li&gt;The ready pattern correctly applied&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../04-leaflet-maps/&#34;&gt;Leaflet maps&lt;/a&gt; | Next: &lt;a href=&#34;../06-wrap-up/&#34;&gt;Wrapping up&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -1868,8 +1858,6 @@
     &lt;a href=&#34;#distribution&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;wxRuby3 distribution to non-technical users — people without Ruby installed — is a real and unsolved problem at the time of writing. The tooling exists in principle but does not yet handle wxRuby3&amp;rsquo;s native extension cleanly on all platforms.&lt;/p&gt;
 &lt;p&gt;This is covered honestly in the series conclusion. The short version: wxRuby3 is best suited to audiences that have Ruby, or environments where a one-time setup can be performed. For internal tools and developer utilities — which is where most wxRuby3 apps live — this is entirely acceptable.&lt;/p&gt;
 &lt;p&gt;A dedicated post on distribution will cover the current state of the tooling and what actually works, updated as the ecosystem matures.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Continue to: &lt;a href=&#34;../../conclusion/&#34;&gt;Where to go from here&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>

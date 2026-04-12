@@ -802,8 +802,6 @@
 &lt;li&gt;The event object carries the information you need — &lt;code&gt;event.int&lt;/code&gt;, &lt;code&gt;event.string&lt;/code&gt;, &lt;code&gt;event.checked?&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Custom events (via pending events) are the right way to communicate from background threads to the UI&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../../module-02/&#34;&gt;Module 2 — Building Blocks&lt;/a&gt; | Next: &lt;a href=&#34;../02-app-structure/&#34;&gt;Application structure&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -1535,8 +1533,6 @@
 &lt;li&gt;Inter-panel communication uses keyword argument callbacks&lt;/li&gt;
 &lt;li&gt;Never pass callbacks as blocks to widget constructors — wxRuby3 intercepts them&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../01-event-handling/&#34;&gt;Event handling in depth&lt;/a&gt; | Next: &lt;a href=&#34;../03-data-widgets/&#34;&gt;Data-driven widgets&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -2381,8 +2377,6 @@
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;&lt;code&gt;Wx::ListBox&lt;/code&gt; from Module 2 is appropriate for short, simple lists. Use &lt;code&gt;ListCtrl&lt;/code&gt; once you need columns, sorting, or large numbers of items.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../02-app-structure/&#34;&gt;Application structure&lt;/a&gt; | Next: &lt;a href=&#34;../04-file-io/&#34;&gt;File I/O and preferences&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -3306,8 +3300,6 @@
 &lt;li&gt;&lt;code&gt;Wx::ConfigBase.read&lt;/code&gt; returns strings — always convert with &lt;code&gt;.to_i&lt;/code&gt; as needed&lt;/li&gt;
 &lt;li&gt;Load prefs after &lt;code&gt;layout&lt;/code&gt; and &lt;code&gt;centre&lt;/code&gt;; save prefs in &lt;code&gt;on_close&lt;/code&gt; before &lt;code&gt;event.skip&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../03-data-widgets/&#34;&gt;Data-driven widgets&lt;/a&gt; | Next: &lt;a href=&#34;../05-threading/&#34;&gt;Threading: keeping the UI responsive&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -4311,8 +4303,6 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;The cursor reverts automatically when the block exits.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../04-file-io/&#34;&gt;File I/O and preferences&lt;/a&gt; | Next: &lt;a href=&#34;../06-capstone-file-processor/&#34;&gt;Capstone: file processor&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -4423,8 +4413,6 @@
 &lt;p&gt;&lt;strong&gt;File I/O&lt;/strong&gt; — &lt;code&gt;FileDialog&lt;/code&gt; for browsing and saving, &lt;code&gt;File.read&lt;/code&gt; and &lt;code&gt;File.write&lt;/code&gt; with encoding, error handling with &lt;code&gt;rescue&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Threading&lt;/strong&gt; — conversion runs in a background thread with &lt;code&gt;call_after&lt;/code&gt; posting results to the main thread. The &lt;code&gt;Wx::Timer.every(25) { Thread.pass }&lt;/code&gt; in &lt;code&gt;main.rb&lt;/code&gt; is essential — without it, &lt;code&gt;call_after&lt;/code&gt; blocks would not execute promptly on MRI Ruby.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Data transformation&lt;/strong&gt; — the intermediate array-of-hashes representation, recursive flatten/unflatten, and the clean separation between parsers and serializers in the model.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../05-threading/&#34;&gt;Threading: keeping the UI responsive&lt;/a&gt; | Next: &lt;a href=&#34;../../module-04/&#34;&gt;Module 4 — Rich Output&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>

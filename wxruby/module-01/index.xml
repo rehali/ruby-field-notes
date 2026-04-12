@@ -58,8 +58,6 @@
 &lt;p&gt;If distribution to non-technical end users is a primary concern, Python with PyQt6 or wxPython has better packaging tooling right now. But for internal tools, developer utilities, and personal apps — where you control the environment and can run &lt;code&gt;bundle exec ruby main.rb&lt;/code&gt; — wxRuby3 is a strong choice and lets you stay in the language you know.&lt;/p&gt;
 &lt;h2&gt;A note on this series&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;a-note-on-this-series&#34;&gt;&lt;/span&gt;
     &lt;a href=&#34;#a-note-on-this-series&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The applications built throughout this series are real tools, not toy examples. By the end of Module 6 you will have a route planner that exports valid GeoJSON, a GPS track viewer that filters by date and time, and an image gallery manager that generates Hugo shortcodes. Each is built to be genuinely useful, not just to demonstrate an API.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Next: &lt;a href=&#34;../02-mental-model-shift/&#34;&gt;From Rails to wxRuby: a mental model shift&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -337,8 +335,6 @@
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;None of this is more complex than Rails — it is just different. Once the model clicks, wxRuby3 code reads naturally: a class that sets up a widget tree in &lt;code&gt;initialize&lt;/code&gt;, registers handlers with &lt;code&gt;evt_*&lt;/code&gt; methods, and uses instance variables to maintain state across interactions.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../01-why-desktop/&#34;&gt;Why desktop?&lt;/a&gt; | Next: &lt;a href=&#34;../03-installation/&#34;&gt;Installation and your first window&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -669,8 +665,6 @@ The gem&amp;rsquo;s executables are not on your PATH. Run &lt;code&gt;gem enviro
 You are likely placing controls directly inside the frame rather than inside a panel. Always use &lt;code&gt;Wx::Panel.new(self)&lt;/code&gt; and parent your controls to the panel.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Build fails on Linux with a missing header&lt;/strong&gt;
 The wxWidgets development libraries are not installed. Return to the platform prerequisites section above and install the listed packages for your distribution.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../02-mental-model-shift/&#34;&gt;The mental model shift&lt;/a&gt; | Next: &lt;a href=&#34;../04-the-sampler/&#34;&gt;Exploring the sampler&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -844,8 +838,6 @@ $ ruby sample_name.rb&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;hex
     &lt;a href=&#34;#a-note-on-the-wxwidgets-documentation&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;wxRuby3&amp;rsquo;s API is a Ruby translation of the wxWidgets C++ API. The wxRuby3 API docs at &lt;a href=&#34;https://mcorino.github.io/wxRuby3/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;mcorino.github.io/wxRuby3&lt;/a&gt; cover everything, but when you cannot find an answer there, the wxWidgets C++ documentation at &lt;a href=&#34;https://docs.wxwidgets.org/stable/&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;docs.wxwidgets.org&lt;/a&gt; is an excellent supplement.&lt;/p&gt;
 &lt;p&gt;The C++ and Ruby APIs mirror each other closely. &lt;code&gt;wxFrame::SetTitle&lt;/code&gt; in C++ is &lt;code&gt;set_title&lt;/code&gt; in Ruby. &lt;code&gt;wxBoxSizer::Add&lt;/code&gt; is &lt;code&gt;add&lt;/code&gt;. Once you know to look for the Ruby snake_case equivalent of the C++ PascalCase method, the C++ docs become a reliable reference even when writing Ruby.&lt;/p&gt;
 &lt;p&gt;A useful search trick: when looking for how a specific widget works, prefix your search query with &lt;code&gt;wx&lt;/code&gt; — for example, &lt;code&gt;wxTextCtrl multiline&lt;/code&gt; rather than &lt;code&gt;wxruby text input multiline&lt;/code&gt;. This surfaces the wxWidgets documentation and community discussions alongside the wxRuby3 results.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../03-installation/&#34;&gt;Installation and your first window&lt;/a&gt; | Next: &lt;a href=&#34;../../module-02/&#34;&gt;Module 2 — Building Blocks&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>

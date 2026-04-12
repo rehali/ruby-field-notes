@@ -34,7 +34,7 @@ Sizers are wxRuby3&rsquo;s layout system. Rather than fixing pixel positions, si
   <meta itemprop="name" content="Ruby Field Notes">
   <meta itemprop="description" content="Layout with sizersThe form you built in the previous lesson works, but it looks rough. The widgets are positioned with hardcoded pos: coordinates — manual arithmetic that breaks the moment you resize the window, change a font, or add a new field. This is not how wxRuby3 apps are meant to be laid out.
 Sizers are wxRuby3’s layout system. Rather than fixing pixel positions, sizers describe relationships between widgets — “these two controls should sit side by side”, “this widget should expand to fill available space”, “leave 8 pixels of padding around everything”. The sizer calculates the actual positions at runtime, and recalculates automatically whenever the window is resized.">
-  <meta itemprop="wordCount" content="2220">
+  <meta itemprop="wordCount" content="2212">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
   <meta name="twitter:description" content="Layout with sizersThe form you built in the previous lesson works, but it looks rough. The widgets are positioned with hardcoded pos: coordinates — manual arithmetic that breaks the moment you resize the window, change a font, or add a new field. This is not how wxRuby3 apps are meant to be laid out.
@@ -1420,8 +1420,6 @@ Sizers are wxRuby3’s layout system. Rather than fixing pixel positions, sizers
 <p><strong>Empty StaticText as a spacer.</strong> The subscribe checkbox and the radio group labels need to occupy the right column, leaving the left column empty. <code>Wx::StaticText.new(@panel, label: '')</code> creates an invisible placeholder that occupies the left cell without displaying anything. This is the simplest way to skip a cell in a <code>FlexGridSizer</code>.</p>
 <p><strong>HBoxSizer inside a grid cell.</strong> The size and colour rows each contain multiple radio buttons side by side. The <code>FlexGridSizer</code> can only hold one item per cell, so you put an <code>HBoxSizer</code> in the cell and add the buttons to that. The grid positions the sizer; the sizer positions the buttons within it.</p>
 <p><strong>proportion on the age row.</strong> The <code>age_row</code> <code>HBoxSizer</code> is added to the grid with proportion <code>1</code> and <code>Wx::EXPAND</code>, so it stretches to fill the full right column. Inside, the slider has proportion <code>1</code> (it expands) and the label has proportion <code>0</code> (it stays fixed). This gives the slider all the growing space while keeping the number label pinned to its right edge.</p>
-<hr>
-<p><em>Previous: <a href="../02-core-widgets/">Core widgets</a> | Next: <a href="../04-menus-toolbars/">Menus and toolbars</a></em></p>
 
         </div>
         <div class="hx:mt-16"></div><div class="hx:mb-8 hx:flex hx:items-center hx:border-t hx:pt-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-neutral-400 hx:dark:contrast-more:border-neutral-400 hx:print:hidden"><a

@@ -34,7 +34,7 @@ The solution is to move slow work off the main thread. This lesson explains why 
   <meta itemprop="name" content="Ruby Field Notes">
   <meta itemprop="description" content="Threading: keeping the UI responsiveAny slow operation running on the main thread — a large file read, a network request, image processing, a long calculation — blocks wxRuby3’s event loop for its entire duration. The window stops responding. Buttons don’t click. The window can’t be moved or resized. On macOS the spinning beachball appears. Users assume the app has crashed.
 The solution is to move slow work off the main thread. This lesson explains why that’s harder than it sounds in MRI Ruby, shows the correct approach, and gives you several working patterns to choose from.">
-  <meta itemprop="wordCount" content="2421">
+  <meta itemprop="wordCount" content="2411">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
   <meta name="twitter:description" content="Threading: keeping the UI responsiveAny slow operation running on the main thread — a large file read, a network request, image processing, a long calculation — blocks wxRuby3’s event loop for its entire duration. The window stops responding. Buttons don’t click. The window can’t be moved or resized. On macOS the spinning beachball appears. Users assume the app has crashed.
@@ -1643,8 +1643,6 @@ The solution is to move slow work off the main thread. This lesson explains why 
 </div>
 </div>
 <p>The cursor reverts automatically when the block exits.</p>
-<hr>
-<p><em>Previous: <a href="../04-file-io/">File I/O and preferences</a> | Next: <a href="../06-capstone-file-processor/">Capstone: file processor</a></em></p>
 
         </div>
         <div class="hx:mt-16"></div><div class="hx:mb-8 hx:flex hx:items-center hx:border-t hx:pt-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-neutral-400 hx:dark:contrast-more:border-neutral-400 hx:print:hidden"><a

@@ -34,7 +34,7 @@ The app is genuinely useful. Ruby developers frequently need to move data betwee
   <meta itemprop="name" content="Ruby Field Notes">
   <meta itemprop="description" content="Project: format converterThis project brings together every concept from Module 3 in a single useful application — a desktop tool that converts files between CSV, JSON, and XML formats, with a live preview of both the source and the converted output.
 The app is genuinely useful. Ruby developers frequently need to move data between formats — log files, API responses, spreadsheet exports, configuration files. Having a desktop tool that handles this without requiring a terminal, a script, or an online converter has real everyday value.">
-  <meta itemprop="wordCount" content="1015">
+  <meta itemprop="wordCount" content="1002">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
   <meta name="twitter:description" content="Project: format converterThis project brings together every concept from Module 3 in a single useful application — a desktop tool that converts files between CSV, JSON, and XML formats, with a live preview of both the source and the converted output.
@@ -754,8 +754,6 @@ The app is genuinely useful. Ruby developers frequently need to move data betwee
 <p><strong>File I/O</strong> — <code>FileDialog</code> for browsing and saving, <code>File.read</code> and <code>File.write</code> with encoding, error handling with <code>rescue</code>.</p>
 <p><strong>Threading</strong> — conversion runs in a background thread with <code>call_after</code> posting results to the main thread. The <code>Wx::Timer.every(25) { Thread.pass }</code> in <code>main.rb</code> is essential — without it, <code>call_after</code> blocks would not execute promptly on MRI Ruby.</p>
 <p><strong>Data transformation</strong> — the intermediate array-of-hashes representation, recursive flatten/unflatten, and the clean separation between parsers and serializers in the model.</p>
-<hr>
-<p><em>Previous: <a href="../05-threading/">Threading: keeping the UI responsive</a> | Next: <a href="../../module-04/">Module 4 — Rich Output</a></em></p>
 
         </div>
         <div class="hx:mt-16"></div><div class="hx:mb-8 hx:flex hx:items-center hx:border-t hx:pt-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-neutral-400 hx:dark:contrast-more:border-neutral-400 hx:print:hidden"><a

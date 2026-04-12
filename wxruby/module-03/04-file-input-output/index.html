@@ -52,7 +52,7 @@ Start fresh
   <meta itemprop="name" content="Ruby Field Notes">
   <meta itemprop="description" content="File I/O and preferencesAlmost every useful desktop application reads and writes files. It also needs to remember user preferences between sessions — window size and position, recently opened files, UI settings. This lesson covers both, building a simple text editor step by step using the multi-file structure from lesson 3.2.
 File structure file_io_app/ ├── main.rb └── lib/ ├── app_frame.rb ├── models/ │ └── document.rb └── panels/ └── editor_panel.rb Start fresh Create main.rb:">
-  <meta itemprop="wordCount" content="1704">
+  <meta itemprop="wordCount" content="1694">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
   <meta name="twitter:description" content="File I/O and preferencesAlmost every useful desktop application reads and writes files. It also needs to remember user preferences between sessions — window size and position, recently opened files, UI settings. This lesson covers both, building a simple text editor step by step using the multi-file structure from lesson 3.2.
@@ -1569,8 +1569,6 @@ File structure file_io_app/ ├── main.rb └── lib/ ├── app_frame
 <li><code>Wx::ConfigBase.read</code> returns strings — always convert with <code>.to_i</code> as needed</li>
 <li>Load prefs after <code>layout</code> and <code>centre</code>; save prefs in <code>on_close</code> before <code>event.skip</code></li>
 </ul>
-<hr>
-<p><em>Previous: <a href="../03-data-widgets/">Data-driven widgets</a> | Next: <a href="../05-threading/">Threading: keeping the UI responsive</a></em></p>
 
         </div>
         <div class="hx:mt-16"></div><div class="hx:mb-8 hx:flex hx:items-center hx:border-t hx:pt-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-neutral-400 hx:dark:contrast-more:border-neutral-400 hx:print:hidden"><a

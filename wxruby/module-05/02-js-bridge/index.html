@@ -36,7 +36,7 @@ Demo 1 — Navigation interception
   <meta itemprop="name" content="Ruby Field Notes">
   <meta itemprop="description" content="The JavaScript bridgerun_script handles Ruby→JS communication for simple cases. For JS→Ruby you need a bridge — a mechanism for JavaScript to send messages back to your Ruby code. This lesson covers three approaches, progressively more capable, each demonstrated in a separate working app.
 Demo 1 — Navigation interception The simplest approach requires no setup at all. JavaScript sets window.location to a custom URL scheme. Ruby intercepts the navigation in evt_webview_navigating, cancels it, and handles the message.">
-  <meta itemprop="wordCount" content="733">
+  <meta itemprop="wordCount" content="724">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
   <meta name="twitter:description" content="The JavaScript bridgerun_script handles Ruby→JS communication for simple cases. For JS→Ruby you need a bridge — a mechanism for JavaScript to send messages back to your Ruby code. This lesson covers three approaches, progressively more capable, each demonstrated in a separate working app.
@@ -1089,8 +1089,6 @@ Demo 1 — Navigation interception The simplest approach requires no setup at al
   </tbody>
 </table>
 <p>Navigation interception is useful for quick experiments. For anything beyond a few message types, use <code>JsBridge</code> — it scales cleanly and the Ruby side stays readable.</p>
-<hr>
-<p><em>Previous: <a href="../01-webview-basics/">WebView basics</a> | Next: <a href="../03-live-data/">Live data with Chart.js</a></em></p>
 
         </div>
         <div class="hx:mt-16"></div><div class="hx:mb-8 hx:flex hx:items-center hx:border-t hx:pt-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-neutral-400 hx:dark:contrast-more:border-neutral-400 hx:print:hidden"><a
