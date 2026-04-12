@@ -670,7 +670,7 @@ You are likely placing controls directly inside the frame rather than inside a p
 &lt;p&gt;&lt;strong&gt;Build fails on Linux with a missing header&lt;/strong&gt;
 The wxWidgets development libraries are not installed. Return to the platform prerequisites section above and install the listed packages for your distribution.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../02-mental-model-shift/&#34;&gt;The mental model shift&lt;/a&gt; | Next: &lt;a href=&#34;../04-sampler/&#34;&gt;Exploring the sampler&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../02-mental-model-shift/&#34;&gt;The mental model shift&lt;/a&gt; | Next: &lt;a href=&#34;../04-the-sampler/&#34;&gt;Exploring the sampler&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>
