@@ -381,7 +381,7 @@
 &lt;li&gt;Draw order matters — later draws paint over earlier ones; use &lt;code&gt;Wx::TRANSPARENT_BRUSH&lt;/code&gt; for outline-only shapes&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../../module-03/&#34;&gt;Module 3&lt;/a&gt; | Next: &lt;a href=&#34;../02-images/&#34;&gt;Images and bitmaps&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../../module-03/&#34;&gt;Module 3&lt;/a&gt; | Next: &lt;a href=&#34;../02-images-and-bitmaps/&#34;&gt;Images and bitmaps&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -729,7 +729,7 @@
 &lt;li&gt;Fit to a box: &lt;code&gt;scale = [box_w / img.width, box_h / img.height].min&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../01-drawing/&#34;&gt;Drawing with device contexts&lt;/a&gt; | Next: &lt;a href=&#34;../03-rich-text/&#34;&gt;Rich text&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../01-drawing-with-device-contexts/&#34;&gt;Drawing with device contexts&lt;/a&gt; | Next: &lt;a href=&#34;../03-rich-text/&#34;&gt;Rich text&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -1431,7 +1431,7 @@
 &lt;li&gt;Good for static formatted content; use WebView when you need CSS, JavaScript, or external pages&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../03-rich-text/&#34;&gt;Rich text&lt;/a&gt; | Next: &lt;a href=&#34;../05-capstone-markdown/&#34;&gt;Capstone: Markdown editor&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Previous: &lt;a href=&#34;../03-rich-text/&#34;&gt;Rich text&lt;/a&gt; | Next: &lt;a href=&#34;../05-capstone-markdown/&#34;&gt;Project: Markdown editor&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
       </description>
     </item>

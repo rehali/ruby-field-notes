@@ -34,7 +34,7 @@ This lesson is a guided tour. By the end you will know which samples to study fi
   <meta itemprop="name" content="Ruby Field Notes">
   <meta itemprop="description" content="Exploring the samplerwxRuby3 ships with a large collection of working example applications covering almost every part of the API. Before writing your own apps from scratch, spending time with the sampler pays dividends — you see what is possible, you find widgets you did not know existed, and you get a feel for how wxRuby3 code is structured in practice.
 This lesson is a guided tour. By the end you will know which samples to study first, how to read sample code effectively, and how to use a sample as the starting point for your own work.">
-  <meta itemprop="wordCount" content="1174">
+  <meta itemprop="wordCount" content="1180">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
   <meta name="twitter:description" content="Exploring the samplerwxRuby3 ships with a large collection of working example applications covering almost every part of the API. Before writing your own apps from scratch, spending time with the sampler pays dividends — you see what is possible, you find widgets you did not know existed, and you get a feel for how wxRuby3 code is structured in practice.
@@ -666,14 +666,7 @@ This lesson is a guided tour. By the end you will know which samples to study fi
 <h2>Launching the sampler<span class="hx:absolute hx:-mt-20" id="launching-the-sampler"></span>
     <a href="#launching-the-sampler" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wxruby sampler</span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><pre><code>$ wxruby sampler</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -690,14 +683,7 @@ This lesson is a guided tour. By the end you will know which samples to study fi
 <p>If the <code>wxruby</code> command is not found, see the troubleshooting section of the previous lesson. You can also run the sampler directly:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ruby <span class="k">$(</span>gem contents wxruby3 <span class="p">|</span> grep <span class="s1">&#39;sampler/sampler.rb&#39;</span><span class="k">)</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><pre><code>$ ruby $(gem contents wxruby3 | grep &#39;sampler/sampler.rb&#39;)</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -767,25 +753,14 @@ This lesson is a guided tour. By the end you will know which samples to study fi
 <p><strong>Trace one event handler.</strong> Pick one user interaction — a button click, a menu selection — and follow the chain from the <code>evt_*</code> registration in <code>initialize</code> to the handler method it calls. Tracing one complete path through the code is more illuminating than reading every line.</p>
 <p><strong>Ignore what you do not recognise.</strong> Samples are complete apps, not tutorials. They contain patterns you have not learned yet. That is fine — note them, move on, and they will make sense later.</p>
 <h2>Using a sample as a project starter<span class="hx:absolute hx:-mt-20" id="using-a-sample-as-a-project-starter"></span>
-    <a href="#using-a-sample-as-a-project-starter" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>If a sample does something close to what you want to build, the sampler&rsquo;s Copy button puts the source into a directory of your choice. From there:</p>
+    <a href="#using-a-sample-as-a-project-starter" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>If a sample does something close to what you want to build, you can extract it and run it independantly. Click on &ldquo;Inspect Sample&rdquo;, then &ldquo;Save&rdquo; to a folder e.g. &ldquo;my_project&rdquo;. From there:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> my_project
-</span></span><span class="line"><span class="cl">bundle init
-</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;gem &#34;wxruby3&#34;&#39;</span> &gt;&gt; Gemfile
-</span></span><span class="line"><span class="cl">bundle install
-</span></span><span class="line"><span class="cl">ruby sample_name.rb</span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><pre><code>$ cd my_project
+$ bundle init
+$ echo &#39;gem &#34;wxruby3&#34;&#39; &gt;&gt; Gemfile
+$ bundle install
+$ ruby sample_name.rb</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"

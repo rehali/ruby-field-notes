@@ -2,11 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.rehali.com/echarts/overview/</loc>
+  </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/overview/</loc>
   </url><url>
     <loc>https://www.rehali.com/draft/</loc>
   </url><url>
     <loc>https://www.rehali.com/wxruby/overview/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/echarts/module-00-setup/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-03/01-base-component/</loc>
   </url><url>
@@ -21,6 +25,8 @@
     <loc>https://www.rehali.com/phlex-on-rails/module-09/01-hotwire-mental-model/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-04/01-installation/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/echarts/module-01-foundation/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-05/01-lookbook/</loc>
   </url><url>
@@ -43,6 +49,8 @@
     <loc>https://www.rehali.com/wxruby/module-01/01-the-case-for-desktop/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-02/01-your-first-component/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/echarts/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/</loc>
   </url><url>
@@ -74,6 +82,8 @@
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-03/02-kits/</loc>
   </url><url>
+    <loc>https://www.rehali.com/echarts/module-02-dsl/</loc>
+  </url><url>
     <loc>https://www.rehali.com/wxruby/module-02/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-02/</loc>
@@ -99,6 +109,8 @@
     <loc>https://www.rehali.com/wxruby/module-02/03-layout-with-sizers/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-04/03-layouts-in-phlex/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/echarts/module-03-formatters/</loc>
   </url><url>
     <loc>https://www.rehali.com/wxruby/module-05/03-live-charts/</loc>
   </url><url>
@@ -140,6 +152,8 @@
   </url><url>
     <loc>https://www.rehali.com/wxruby/module-05/04-leaflet-maps/</loc>
   </url><url>
+    <loc>https://www.rehali.com/echarts/module-04-gallery/</loc>
+  </url><url>
     <loc>https://www.rehali.com/wxruby/module-02/04-menus-and-toolbars/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-04/</loc>
@@ -161,6 +175,8 @@
     <loc>https://www.rehali.com/phlex-on-rails/module-05/05-icon-library/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-09/05-inline-edits/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/echarts/module-05-scatter/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-11/05-presence/</loc>
   </url><url>
@@ -237,6 +253,8 @@
     <loc>https://www.rehali.com/phlex-on-rails/module-11/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/bonus-01/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/echarts/attribution/</loc>
   </url><url>
     <loc>https://www.rehali.com/wxruby/module-06/</loc>
   </url><url>

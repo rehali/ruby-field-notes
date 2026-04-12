@@ -34,7 +34,7 @@ This lesson names those assumptions and replaces them with the mental models tha
   <meta itemprop="name" content="Ruby Field Notes">
   <meta itemprop="description" content="From Rails to wxRuby: the mental model shiftIf you have built Rails applications, you already understand MVC, event-driven thinking, and clean separation of concerns. That knowledge transfers. But Rails also builds habits that actively work against you in desktop development — assumptions so deeply embedded that you may not even recognise them as assumptions.
 This lesson names those assumptions and replaces them with the mental models that make wxRuby3 code easy to reason about.">
-  <meta itemprop="wordCount" content="1229">
+  <meta itemprop="wordCount" content="1256">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
   <meta name="twitter:description" content="From Rails to wxRuby: the mental model shiftIf you have built Rails applications, you already understand MVC, event-driven thinking, and clean separation of concerns. That knowledge transfers. But Rails also builds habits that actively work against you in desktop development — assumptions so deeply embedded that you may not even recognise them as assumptions.
@@ -670,7 +670,7 @@ This lesson names those assumptions and replaces them with the mental models tha
 </div>
 </div>
 <p>Events come from everywhere: mouse clicks, keyboard input, window resizes, timer ticks, menu selections, system notifications. The loop picks each one up and routes it to whatever handler you have registered for that event type on that widget.</p>
-<p>Your code does not run continuously. It runs in short bursts, each triggered by an event, and then returns control to the loop. This has an important consequence: <strong>if your handler takes too long, the UI freezes</strong>. The loop cannot process the next event until your handler returns. A slow database query, a large file read, a network request — any of these in a handler will make the app feel broken. This is why Module 3 covers threading: moving slow work off the event loop is not optional polish, it is a basic requirement for a usable app.</p>
+<p>Your code does not run continuously. It runs in short bursts, each triggered by an event, and then returns control to the loop. This has an important consequence: <strong>if your handler takes too long, the UI freezes</strong>. The loop cannot process the next event until your handler returns. A slow database query, a large file read, a network request — any of these in a handler will make the app feel broken. This is why Module 3 covers threading: moving slow work off the event loop can make an app feel more responsive. This is especially true for I/O bound events (API calls, long database queries). WxRuby has a range of solutions here, from fibers to threads and now ractors (coming in the WxRuby 1.8.0 release).</p>
 <h2>How wxRuby3 starts up<span class="hx:absolute hx:-mt-20" id="how-wxruby3-starts-up"></span>
     <a href="#how-wxruby3-starts-up" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Here is the minimal wxRuby3 application:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
