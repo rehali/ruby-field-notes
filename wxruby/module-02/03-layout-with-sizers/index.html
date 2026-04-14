@@ -34,7 +34,7 @@ Sizers are wxRuby3&rsquo;s layout system. Rather than fixing pixel positions, si
   <meta itemprop="name" content="Ruby Field Notes">
   <meta itemprop="description" content="Layout with sizersThe form you built in the previous lesson works, but it looks rough. The widgets are positioned with hardcoded pos: coordinates — manual arithmetic that breaks the moment you resize the window, change a font, or add a new field. This is not how wxRuby3 apps are meant to be laid out.
 Sizers are wxRuby3’s layout system. Rather than fixing pixel positions, sizers describe relationships between widgets — “these two controls should sit side by side”, “this widget should expand to fill available space”, “leave 8 pixels of padding around everything”. The sizer calculates the actual positions at runtime, and recalculates automatically whenever the window is resized.">
-  <meta itemprop="wordCount" content="2212">
+  <meta itemprop="wordCount" content="2239">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
   <meta name="twitter:description" content="Layout with sizersThe form you built in the previous lesson works, but it looks rough. The widgets are positioned with hardcoded pos: coordinates — manual arithmetic that breaks the moment you resize the window, change a font, or add a new field. This is not how wxRuby3 apps are meant to be laid out.
@@ -633,6 +633,10 @@ Sizers are wxRuby3’s layout system. Rather than fixing pixel positions, sizers
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#gridbagsizer">GridBagSizer
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
         <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#replacing-pos-in-your-form">Replacing pos: in your form
         </a>
       </li>
@@ -695,18 +699,9 @@ Sizers are wxRuby3’s layout system. Rather than fixing pixel positions, sizers
 <p>Two calls complete the setup. <code>panel.set_sizer</code> attaches the sizer to the panel — without it the sizer exists but has no effect. Then <code>layout</code> called on the frame tells the frame to resize the panel to fill the window and trigger the sizer calculations. Without <code>layout</code>, the panel stays at its default size and widgets bunch up in the corner.</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">panel</span><span class="o">.</span><span class="n">set_sizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">panel</span><span class="o">.</span><span class="n">set_sizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># ... in initialize, after build_ui:</span>
-</span></span><span class="line"><span class="cl"><span class="n">layout</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+</span></span><span class="line"><span class="cl"><span class="n">layout</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -930,14 +925,7 @@ Sizers are wxRuby3’s layout system. Rather than fixing pixel positions, sizers
     <a href="#flexgridsizer" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><code>Wx::FlexGridSizer</code> arranges widgets in a grid of rows and columns. It is the right tool for forms — the classic &ldquo;label on the left, control on the right&rdquo; layout.</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">grid</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">FlexGridSizer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">vgap</span><span class="p">,</span> <span class="n">hgap</span><span class="p">)</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">grid</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">FlexGridSizer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">vgap</span><span class="p">,</span> <span class="n">hgap</span><span class="p">)</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -958,14 +946,7 @@ Sizers are wxRuby3’s layout system. Rather than fixing pixel positions, sizers
 <p><code>FlexGridSizer</code> differs from the simpler <code>GridSizer</code> in one important way: columns (and rows) can have different widths. You can mark a column as growable, so it expands to fill available space while other columns stay fixed:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">grid</span><span class="o">.</span><span class="n">add_growable_col</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># column 1 (the right column) expands</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">grid</span><span class="o">.</span><span class="n">add_growable_col</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># column 1 (the right column) expands</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -1098,6 +1079,8 @@ Sizers are wxRuby3’s layout system. Rather than fixing pixel positions, sizers
 </div>
 </div>
 <p>The <code>vbox</code> sees one item in that row — the <code>HBoxSizer</code> — and positions it like any other widget. Inside, the <code>HBoxSizer</code> arranges its two buttons horizontally.</p>
+<h2>GridBagSizer<span class="hx:absolute hx:-mt-20" id="gridbagsizer"></span>
+    <a href="#gridbagsizer" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>For even more cmplex layout patterns you can use the <code>GridBagSizer</code> to layout your widgets. Theres a good example of using this layout pattern to build a keypad at <a href="https://github.com/mcorino/wxRuby3/wiki/HowTo-%3A-GridBagSizer"target="_blank" rel="noopener">GridBagSizer Tutorial</a></p>
 <h2>Replacing pos: in your form<span class="hx:absolute hx:-mt-20" id="replacing-pos-in-your-form"></span>
     <a href="#replacing-pos-in-your-form" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Now apply what you have learned. Open <code>app.rb</code> from the previous lesson. You are going to remove every <code>pos:</code> and <code>size:</code> argument and replace the whole layout with sizers.</p>
 <p>The layout goal is a two-column form: labels on the left at fixed width, controls on the right expanding to fill space. Radio button rows need an inner <code>HBoxSizer</code> to arrange the buttons horizontally. The slider row needs an <code>HBoxSizer</code> to put the value label beside the slider.</p>

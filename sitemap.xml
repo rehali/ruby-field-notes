@@ -82,7 +82,7 @@
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-03/02-kits/</loc>
   </url><url>
-    <loc>https://www.rehali.com/echarts/module-02-dsl/</loc>
+    <loc>https://www.rehali.com/echarts/module-02-formatters/</loc>
   </url><url>
     <loc>https://www.rehali.com/wxruby/module-02/</loc>
   </url><url>
@@ -110,7 +110,7 @@
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-04/03-layouts-in-phlex/</loc>
   </url><url>
-    <loc>https://www.rehali.com/echarts/module-03-formatters/</loc>
+    <loc>https://www.rehali.com/echarts/module-03-bar-charts/</loc>
   </url><url>
     <loc>https://www.rehali.com/wxruby/module-05/03-live-charts/</loc>
   </url><url>
@@ -152,7 +152,7 @@
   </url><url>
     <loc>https://www.rehali.com/wxruby/module-05/04-leaflet-maps/</loc>
   </url><url>
-    <loc>https://www.rehali.com/echarts/module-04-gallery/</loc>
+    <loc>https://www.rehali.com/echarts/module-04-scatter/</loc>
   </url><url>
     <loc>https://www.rehali.com/wxruby/module-02/04-menus-and-toolbars/</loc>
   </url><url>
@@ -176,7 +176,7 @@
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-09/05-inline-edits/</loc>
   </url><url>
-    <loc>https://www.rehali.com/echarts/module-05-scatter/</loc>
+    <loc>https://www.rehali.com/echarts/module-05-pie-donut/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-11/05-presence/</loc>
   </url><url>
@@ -216,6 +216,8 @@
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-04/06-kanbanflow-tailwind-views/</loc>
   </url><url>
+    <loc>https://www.rehali.com/echarts/module-06-heatmap/</loc>
+  </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-06/</loc>
   </url><url>
     <loc>https://www.rehali.com/wxruby/module-02/06-preferences-panel/</loc>
@@ -232,6 +234,8 @@
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-08/07-cross-controller-communication/</loc>
   </url><url>
+    <loc>https://www.rehali.com/echarts/module-07-gauges/</loc>
+  </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-07/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-04/07-testing-phlex-views/</loc>
@@ -240,19 +244,37 @@
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-05/08-documentation/</loc>
   </url><url>
+    <loc>https://www.rehali.com/echarts/module-08-realtime/</loc>
+  </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-08/08-lookbook_previews/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-08/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/echarts/module-09-labels/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-09/</loc>
   </url><url>
     <loc>https://www.rehali.com/wxruby/module-05/06-wrap-up/</loc>
   </url><url>
+    <loc>https://www.rehali.com/echarts/module-10-linked-charts/</loc>
+  </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-10/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/echarts/module-11-mixed-charts/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-11/</loc>
   </url><url>
+    <loc>https://www.rehali.com/echarts/module-12-extending-the-series/</loc>
+  </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/bonus-01/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/echarts/appendix-a/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/echarts/appendix-b/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/echarts/appendix-c/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/echarts/appendix-d/</loc>
   </url><url>
     <loc>https://www.rehali.com/echarts/attribution/</loc>
   </url><url>

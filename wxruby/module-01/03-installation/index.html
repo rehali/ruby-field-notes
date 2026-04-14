@@ -9,18 +9,20 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 <title>Ruby Field Notes</title>
-  <meta name="description" content="Installation and your first windowThis lesson gets wxRuby3 installed and running on your machine. The process has a few more steps than a typical gem install — wxRuby3 wraps a C&#43;&#43; toolkit, so there is a build step involved. This lesson walks through it on each platform and makes sure you know what a working installation looks like before moving on.
-Prerequisites Ruby wxRuby3 requires Ruby 3.1 or later. Check your version:" /><link rel="canonical" href="https://www.rehali.com/wxruby/module-01/03-installation/" itemprop="url" />
+  <meta name="description" content="Installation and your first windowIt’s assumed for the purpose of this tutorial that the user is familiar with and already has a working version of Ruby (at least v3.0). If you’re looking to setup a new Ruby version on your system I would recommend:
+On MacOS or Linux - try mise, instructions at Installing Mise On Windows - try RubyInstaller The wxRuby gem is now packaged for Windows, Linux and MacOS. For most users this means that all you need is a simple gem command:" /><link rel="canonical" href="https://www.rehali.com/wxruby/module-01/03-installation/" itemprop="url" />
 
 <meta property="og:title" content="">
 <meta
   property="og:description"
   content="
     
-      Installation and your first windowThis lesson gets wxRuby3 installed and running on your machine. The process has a few more steps than a typical gem install — wxRuby3 wraps a C&#43;&#43; toolkit, so there is a build step involved. This lesson walks through it on each platform and makes sure you know what a working installation looks like before moving on.
-Prerequisites
-    Ruby
-    wxRuby3 requires Ruby 3.1 or later. Check your version:
+      Installation and your first windowIt&rsquo;s assumed for the purpose of this tutorial that the user is familiar with and already has a working version of Ruby (at least v3.0). If you&rsquo;re looking to setup a new Ruby version on your system I would recommend:
+
+On MacOS or Linux - try mise, instructions at Installing Mise
+On Windows - try RubyInstaller
+
+The wxRuby gem is now packaged for Windows, Linux and MacOS. For most users this means that all you need is a simple gem command:
     
   ">
 <meta
@@ -34,13 +36,13 @@ Prerequisites
 
 
   <meta itemprop="name" content="Ruby Field Notes">
-  <meta itemprop="description" content="Installation and your first windowThis lesson gets wxRuby3 installed and running on your machine. The process has a few more steps than a typical gem install — wxRuby3 wraps a C&#43;&#43; toolkit, so there is a build step involved. This lesson walks through it on each platform and makes sure you know what a working installation looks like before moving on.
-Prerequisites Ruby wxRuby3 requires Ruby 3.1 or later. Check your version:">
-  <meta itemprop="wordCount" content="932">
+  <meta itemprop="description" content="Installation and your first windowIt’s assumed for the purpose of this tutorial that the user is familiar with and already has a working version of Ruby (at least v3.0). If you’re looking to setup a new Ruby version on your system I would recommend:
+On MacOS or Linux - try mise, instructions at Installing Mise On Windows - try RubyInstaller The wxRuby gem is now packaged for Windows, Linux and MacOS. For most users this means that all you need is a simple gem command:">
+  <meta itemprop="wordCount" content="660">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
-  <meta name="twitter:description" content="Installation and your first windowThis lesson gets wxRuby3 installed and running on your machine. The process has a few more steps than a typical gem install — wxRuby3 wraps a C&#43;&#43; toolkit, so there is a build step involved. This lesson walks through it on each platform and makes sure you know what a working installation looks like before moving on.
-Prerequisites Ruby wxRuby3 requires Ruby 3.1 or later. Check your version:">
+  <meta name="twitter:description" content="Installation and your first windowIt’s assumed for the purpose of this tutorial that the user is familiar with and already has a working version of Ruby (at least v3.0). If you’re looking to setup a new Ruby version on your system I would recommend:
+On MacOS or Linux - try mise, instructions at Installing Mise On Windows - try RubyInstaller The wxRuby gem is now packaged for Windows, Linux and MacOS. For most users this means that all you need is a simple gem command:">
 
     <link rel="preload" href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" as="style" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
     <link href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" rel="stylesheet" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
@@ -599,30 +601,6 @@ Prerequisites Ruby wxRuby3 requires Ruby 3.1 or later. Check your version:">
 <nav class="hextra-toc hx:order-last hx:hidden hx:w-64 hx:shrink-0 hx:xl:block hx:print:hidden hx:px-4" aria-label="Table of contents">
     <div class="hextra-scrollbar hx:sticky hx:top-16 hx:overflow-y-auto hx:pr-4 hx:pt-6 hx:text-sm [hyphens:auto] hx:max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] hx:ltr:-mr-4 hx:rtl:-ml-4"><p class="hx:mb-4 hx:font-semibold hx:tracking-tight">On this page</p><ul>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#prerequisites">Prerequisites
-        </a>
-      </li>
-      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#ruby">Ruby
-        </a>
-      </li>
-      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#platform-prerequisites">Platform prerequisites
-        </a>
-      </li>
-      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#installing-the-gem">Installing the gem
-        </a>
-      </li>
-      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#verifying-the-installation">Verifying the installation
-        </a>
-      </li>
-      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#exploring-the-bundled-sampler">Exploring the bundled sampler
-        </a>
-      </li>
-      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
         <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#your-first-window">Your first window
         </a>
       </li>
@@ -651,97 +629,13 @@ Prerequisites Ruby wxRuby3 requires Ruby 3.1 or later. Check your version:">
         
         <div class="content">
           
-          <h1>Installation and your first window</h1><p>This lesson gets wxRuby3 installed and running on your machine. The process has a few more steps than a typical gem install — wxRuby3 wraps a C++ toolkit, so there is a build step involved. This lesson walks through it on each platform and makes sure you know what a working installation looks like before moving on.</p>
-<h2>Prerequisites<span class="hx:absolute hx:-mt-20" id="prerequisites"></span>
-    <a href="#prerequisites" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><h3>Ruby<span class="hx:absolute hx:-mt-20" id="ruby"></span>
-    <a href="#ruby" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>wxRuby3 requires Ruby 3.1 or later. Check your version:</p>
+          <h1>Installation and your first window</h1><p>It&rsquo;s assumed for the purpose of this tutorial that the user is familiar with and already has a working version of Ruby (at least v3.0). If you&rsquo;re looking to setup a new Ruby version on your system I would recommend:</p>
+<ul>
+<li>On MacOS or Linux - try <code>mise</code>, instructions at <a href="https://mise.jdx.dev/getting-started.html"target="_blank" rel="noopener">Installing Mise</a></li>
+<li>On Windows - try <a href="https://rubyinstaller.org/"target="_blank" rel="noopener">RubyInstaller</a></li>
+</ul>
+<p>The wxRuby gem is now packaged for Windows, Linux and MacOS. For most users this means that all you need is a simple gem command:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><pre><code>$ ruby --version</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<p>If you are managing Ruby versions with <code>rbenv</code>, <code>mise</code>, or <code>asdf</code>, make sure the version is active before installing the gem. wxRuby3&rsquo;s native extensions are compiled against the Ruby version that was active at install time — mixing versions later causes confusing errors.</p>
-<h3>Platform prerequisites<span class="hx:absolute hx:-mt-20" id="platform-prerequisites"></span>
-    <a href="#platform-prerequisites" class="subheading-anchor" aria-label="Permalink for this section"></a></h3>
-
-
-
-
-
-
-
-<div class="hextra-scrollbar hx:overflow-x-auto hx:overflow-y-hidden hx:overscroll-x-contain">
-  <div class="hx:mt-4 hx:flex hx:w-max hx:min-w-full hx:border-b hx:border-gray-200 hx:pb-px hx:dark:border-neutral-800" role="tablist"><button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-primary-500 hx:data-[state=selected]:text-primary-600 hx:data-[state=selected]:dark:border-primary-500 hx:data-[state=selected]:dark:text-primary-600 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-gray-600 hx:hover:border-gray-200 hx:hover:text-black hx:dark:text-gray-200 hx:dark:hover:border-neutral-800 hx:dark:hover:text-white hx:hextra-focus-visible-inset" id="tabs-tab-tabs-00-0" role="tab" type="button" aria-controls="tabs-panel-tabs-00-0" aria-selected="true" tabindex="0" data-state="selected"><span class="hx:inline-flex hx:items-center hx:gap-1.5"><span>macOS</span></span></button><button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-primary-500 hx:data-[state=selected]:text-primary-600 hx:data-[state=selected]:dark:border-primary-500 hx:data-[state=selected]:dark:text-primary-600 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-gray-600 hx:hover:border-gray-200 hx:hover:text-black hx:dark:text-gray-200 hx:dark:hover:border-neutral-800 hx:dark:hover:text-white hx:hextra-focus-visible-inset" id="tabs-tab-tabs-00-1" role="tab" type="button" aria-controls="tabs-panel-tabs-00-1" aria-selected="false" tabindex="-1"><span class="hx:inline-flex hx:items-center hx:gap-1.5"><span>Linux</span></span></button><button class="hextra-tabs-toggle hx:cursor-pointer hx:data-[state=selected]:border-primary-500 hx:data-[state=selected]:text-primary-600 hx:data-[state=selected]:dark:border-primary-500 hx:data-[state=selected]:dark:text-primary-600 hx:mr-2 hx:rounded-t hx:p-2 hx:font-medium hx:leading-5 hx:transition-colors hx:-mb-0.5 hx:select-none hx:border-b-2 hx:border-transparent hx:text-gray-600 hx:hover:border-gray-200 hx:hover:text-black hx:dark:text-gray-200 hx:dark:hover:border-neutral-800 hx:dark:hover:text-white hx:hextra-focus-visible-inset" id="tabs-tab-tabs-00-2" role="tab" type="button" aria-controls="tabs-panel-tabs-00-2" aria-selected="false" tabindex="-1"><span class="hx:inline-flex hx:items-center hx:gap-1.5"><span>Windows</span></span></button></div>
-</div>
-<div><div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-00-0" role="tabpanel" aria-labelledby="tabs-tab-tabs-00-0" aria-hidden="false" tabindex="0" data-state="selected"><p><strong>macOS</strong></p>
-<p>You need Xcode Command Line Tools:</p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><pre><code>$ xcode-select --install</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<p>If you have Homebrew, that is sufficient — it pulls in the tools wxRuby3 needs. No additional libraries are required on macOS; the setup process uses the system&rsquo;s built-in WebKit and Cocoa frameworks.</p>
-</div><div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-00-1" role="tabpanel" aria-labelledby="tabs-tab-tabs-00-1" aria-hidden="true"><p><strong>Linux (Ubuntu / Debian)</strong></p>
-<p>Install the development libraries wxRuby3&rsquo;s build system expects:</p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><pre><code>$ sudo apt-get install -y \
-  build-essential \
-  libwxgtk3.2-dev \
-  libwxgtk-media3.2-dev \
-  libwxgtk-webview3.2-dev \
-  pkg-config</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<p>On Fedora/RHEL:</p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><pre><code>$ sudo dnf install -y wxGTK-devel webkit2gtk4.1-devel</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<p>The exact package names vary by distribution and wxWidgets version. If <code>wxruby setup</code> fails, the error message will tell you which library is missing.</p>
-</div><div class="hextra-tabs-panel hx:rounded-sm hx:pt-6 hx:hidden hx:data-[state=selected]:block" id="tabs-panel-tabs-00-2" role="tabpanel" aria-labelledby="tabs-tab-tabs-00-2" aria-hidden="true"><p><strong>Windows</strong></p>
-<p>On Windows, wxRuby3 provides pre-built binary gems so there is no compilation step. Install Ruby via <a href="https://rubyinstaller.org/"target="_blank" rel="noopener">RubyInstaller</a> (the DevKit variant — <code>Ruby+Devkit</code>), then proceed directly to the gem install step below.</p>
-</div></div>
-
-<h2>Installing the gem<span class="hx:absolute hx:-mt-20" id="installing-the-gem"></span>
-    <a href="#installing-the-gem" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><pre><code>$ gem install wxruby3</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
@@ -755,71 +649,68 @@ Prerequisites Ruby wxRuby3 requires Ruby 3.1 or later. Check your version:">
   </button>
 </div>
 </div>
-<p>WxRuby3 releases provide prebuilt binary packages for macOS 14 (arm only), macOS15 and macOS 26 (both arm and intel) as well as for a range of the most recent releases of Linux distributions. The binary packages will always be compatible with the latest major Ruby versions and in the case of Linux mostly for the system (distro) supplied Ruby version as well. In such environments executing gem install wxruby3 will result in complete wxRuby3 execution environment.</p>
-<p>To run setup without interactive prompts (useful in CI or scripted environments):</p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><pre><code>$ wxruby setup --autoinstall</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<h2>Verifying the installation<span class="hx:absolute hx:-mt-20" id="verifying-the-installation"></span>
-    <a href="#verifying-the-installation" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><pre><code>$ wxruby check</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<p>A working installation exits silently. If something is wrong, this command tells you what is missing.</p>
-<p>For a more thorough check, run the test suite:</p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><pre><code>$ wxruby test</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<p>This takes a few minutes but confirms that the native extensions are working correctly. You do not need to run this every time — once after initial setup is enough.</p>
-<h2>Exploring the bundled sampler<span class="hx:absolute hx:-mt-20" id="exploring-the-bundled-sampler"></span>
-    <a href="#exploring-the-bundled-sampler" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>wxRuby3 ships with dozens of working example applications. Before writing your own code, it is worth spending a few minutes here:</p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><pre><code>$ wxruby sampler</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<p>This opens a GUI window listing all bundled samples by category. Double-click any sample to run it. You will see menus, toolbars, custom drawing, grids, trees, dialogs — the full range of what wxRuby3 can do. We return to the sampler in the next lesson with more guidance on how to read the code.</p>
+<p>Further instructions on installation can be found at <a href="https://github.com/mcorino/wxRuby3/blob/master/INSTALL.md"target="_blank" rel="noopener">Installation of wxRuby3</a> at the Github home of wxRuby3.</p>
+<p>Bottom line - if you have one of the following OS versions, there is no extra work for you! (table below reproduced from wxRuby INSTALL.md - <strong>mcorino</strong>)</p>
+<table>
+  <thead>
+      <tr>
+          <th>OS</th>
+          <th>Distributions</th>
+          <th>Architectures</th>
+          <th>Rubies</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Linux</td>
+          <td>OpenSuSE Leap (at least latest stable)</td>
+          <td>x86_64 <b>and</b> ARM64</td>
+          <td>Latest stable Ruby</td>
+      </tr>
+      <tr>
+          <td>Linux</td>
+          <td>Fedora (at least latest stable)</td>
+          <td>x86_64 <b>and</b> ARM64</td>
+          <td>Distro provided Ruby <b>and</b> Latest stable Ruby</td>
+      </tr>
+      <tr>
+          <td>Linux</td>
+          <td>Debian (at least latest stable)</td>
+          <td>x86_64 <b>and</b> ARM64</td>
+          <td>Distro provided Ruby <b>and</b> Latest stable Ruby</td>
+      </tr>
+      <tr>
+          <td>Linux</td>
+          <td>Ubuntu (at least latest stable)</td>
+          <td>x86_64 <b>and</b> ARM64</td>
+          <td>Distro provided Ruby <b>and</b> Latest stable Ruby</td>
+      </tr>
+      <tr>
+          <td>Windows</td>
+          <td>NA</td>
+          <td>x86_64</td>
+          <td>Latest stable Ruby</td>
+      </tr>
+      <tr>
+          <td>OSX</td>
+          <td>MacOS 14</td>
+          <td>ARM64</td>
+          <td>Latest stable Ruby</td>
+      </tr>
+      <tr>
+          <td>OSX</td>
+          <td>MacOS 15</td>
+          <td>x86_64 <b>and</b> ARM64</td>
+          <td>Latest stable Ruby</td>
+      </tr>
+      <tr>
+          <td>OSX</td>
+          <td>MacOS 26</td>
+          <td>x86_64 <b>and</b> ARM64</td>
+          <td>Latest stable Ruby</td>
+      </tr>
+  </tbody>
+</table>
 <h2>Your first window<span class="hx:absolute hx:-mt-20" id="your-first-window"></span>
     <a href="#your-first-window" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><img src="/wxruby/module-01/03-installation/hello.png" alt="hello.png"  loading="lazy" /></p>
 <p>Create a file called <code>hello.rb</code>:</p>

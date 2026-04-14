@@ -1,0 +1,2081 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="robots" content="index, follow" />
+  <link rel="icon shortcut" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" id="favicon-svg" />
+<link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
+<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+<link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
+<title>Ruby Field Notes</title>
+  <meta name="description" content="Appendix C — The Components::Chart Base ClassEvery chart component in this series inherits from Components::Chart. This appendix explains what the base class provides, how its props work, and how to extend it.
+C.1 — The Base Class 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 # app/views/components/chart.rb # # Base class for all chart components. # # Props (inherited by every chart component): # # height: String — chart container height (default &#34;400px&#34;) # group: String — ECharts group name for linked charts # color: String — palette override (replaces chart&#39;s own palette) # select_url: String — URL to visit when a data point is clicked # # All props default to safe values — a chart with no extra props renders # as a standalone 400px chart using whatever palette chart_options specifies. class Components::Chart &lt; Components::Base prop :height, String, default: -&gt; { &#34;400px&#34; } prop :group, String, default: -&gt; { &#34;&#34; } prop :color, String, default: -&gt; { &#34;&#34; } prop :select_url, String, default: -&gt; { &#34;&#34; } def view_template options = chart_options.to_h options[:color] = @color if @color.present? div(class: &#34;p-2 rounded-lg bg-white border border-neutral-200&#34;, **@html) do div( data: { controller: &#34;chart&#34;, chart_target: &#34;mount&#34;, chart_options_value: options.to_json, chart_group_value: @group, chart_select_url_value: @select_url }, style: &#34;height: #{@height}; width: 100%;&#34; ) end end private def chart_options raise NotImplementedError, &#34;#{self.class} must implement chart_options&#34; end end Props Prop Type Default Purpose height String &#34;400px&#34; Chart container height group String &#34;&#34; ECharts group for linked charts — see Module 10 color String &#34;&#34; Palette override — replaces component’s own palette select_url String &#34;&#34; URL to visit when a data point is clicked — see Module 10 All props default to safe empty values. A chart rendered with no extra props is standalone, 400px tall, using whatever palette chart_options specifies, with no click behaviour and no group linking." /><link rel="canonical" href="https://www.rehali.com/echarts/appendix-c/" itemprop="url" />
+
+<meta property="og:title" content="">
+<meta
+  property="og:description"
+  content="
+    
+      Appendix C — The Components::Chart Base ClassEvery chart component in this series inherits from Components::Chart. This
+appendix explains what the base class provides, how its props work, and how to
+extend it.
+
+C.1 — The Base Class
+    
+
+
+
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+
+
+# app/views/components/chart.rb
+#
+# Base class for all chart components.
+#
+# Props (inherited by every chart component):
+#
+#   height:     String  — chart container height (default &#34;400px&#34;)
+#   group:      String  — ECharts group name for linked charts
+#   color:      String  — palette override (replaces chart&#39;s own palette)
+#   select_url: String  — URL to visit when a data point is clicked
+#
+# All props default to safe values — a chart with no extra props renders
+# as a standalone 400px chart using whatever palette chart_options specifies.
+
+class Components::Chart &lt; Components::Base
+  prop :height,     String, default: -&gt; { &#34;400px&#34; }
+  prop :group,      String, default: -&gt; { &#34;&#34; }
+  prop :color,      String, default: -&gt; { &#34;&#34; }
+  prop :select_url, String, default: -&gt; { &#34;&#34; }
+
+  def view_template
+    options = chart_options.to_h
+    options[:color] = @color if @color.present?
+
+    div(class: &#34;p-2 rounded-lg bg-white border border-neutral-200&#34;, **@html) do
+      div(
+        data: {
+          controller:             &#34;chart&#34;,
+          chart_target:           &#34;mount&#34;,
+          chart_options_value:    options.to_json,
+          chart_group_value:      @group,
+          chart_select_url_value: @select_url
+        },
+        style: &#34;height: #{@height}; width: 100%;&#34;
+      )
+    end
+  end
+
+  private
+
+  def chart_options
+    raise NotImplementedError, &#34;#{self.class} must implement chart_options&#34;
+  end
+end
+
+
+  
+    
+
+  
+
+
+Props
+    
+  
+      
+          Prop
+          Type
+          Default
+          Purpose
+      
+  
+  
+      
+          height
+          String
+          &quot;400px&quot;
+          Chart container height
+      
+      
+          group
+          String
+          &quot;&quot;
+          ECharts group for linked charts — see Module 10
+      
+      
+          color
+          String
+          &quot;&quot;
+          Palette override — replaces component&rsquo;s own palette
+      
+      
+          select_url
+          String
+          &quot;&quot;
+          URL to visit when a data point is clicked — see Module 10
+      
+  
+
+All props default to safe empty values. A chart rendered with no extra props is
+standalone, 400px tall, using whatever palette chart_options specifies, with
+no click behaviour and no group linking.
+    
+  ">
+<meta
+  property="og:type"
+  content="
+    article
+  ">
+<meta property="og:url" content="https://www.rehali.com/echarts/appendix-c/"><meta property="article:section" content="echarts">
+
+
+
+
+  <meta itemprop="name" content="Ruby Field Notes">
+  <meta itemprop="description" content="Appendix C — The Components::Chart Base ClassEvery chart component in this series inherits from Components::Chart. This appendix explains what the base class provides, how its props work, and how to extend it.
+C.1 — The Base Class 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 # app/views/components/chart.rb # # Base class for all chart components. # # Props (inherited by every chart component): # # height: String — chart container height (default &#34;400px&#34;) # group: String — ECharts group name for linked charts # color: String — palette override (replaces chart&#39;s own palette) # select_url: String — URL to visit when a data point is clicked # # All props default to safe values — a chart with no extra props renders # as a standalone 400px chart using whatever palette chart_options specifies. class Components::Chart &lt; Components::Base prop :height, String, default: -&gt; { &#34;400px&#34; } prop :group, String, default: -&gt; { &#34;&#34; } prop :color, String, default: -&gt; { &#34;&#34; } prop :select_url, String, default: -&gt; { &#34;&#34; } def view_template options = chart_options.to_h options[:color] = @color if @color.present? div(class: &#34;p-2 rounded-lg bg-white border border-neutral-200&#34;, **@html) do div( data: { controller: &#34;chart&#34;, chart_target: &#34;mount&#34;, chart_options_value: options.to_json, chart_group_value: @group, chart_select_url_value: @select_url }, style: &#34;height: #{@height}; width: 100%;&#34; ) end end private def chart_options raise NotImplementedError, &#34;#{self.class} must implement chart_options&#34; end end Props Prop Type Default Purpose height String &#34;400px&#34; Chart container height group String &#34;&#34; ECharts group for linked charts — see Module 10 color String &#34;&#34; Palette override — replaces component’s own palette select_url String &#34;&#34; URL to visit when a data point is clicked — see Module 10 All props default to safe empty values. A chart rendered with no extra props is standalone, 400px tall, using whatever palette chart_options specifies, with no click behaviour and no group linking.">
+  <meta itemprop="wordCount" content="2413">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Ruby Field Notes">
+  <meta name="twitter:description" content="Appendix C — The Components::Chart Base ClassEvery chart component in this series inherits from Components::Chart. This appendix explains what the base class provides, how its props work, and how to extend it.
+C.1 — The Base Class 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 # app/views/components/chart.rb # # Base class for all chart components. # # Props (inherited by every chart component): # # height: String — chart container height (default &#34;400px&#34;) # group: String — ECharts group name for linked charts # color: String — palette override (replaces chart&#39;s own palette) # select_url: String — URL to visit when a data point is clicked # # All props default to safe values — a chart with no extra props renders # as a standalone 400px chart using whatever palette chart_options specifies. class Components::Chart &lt; Components::Base prop :height, String, default: -&gt; { &#34;400px&#34; } prop :group, String, default: -&gt; { &#34;&#34; } prop :color, String, default: -&gt; { &#34;&#34; } prop :select_url, String, default: -&gt; { &#34;&#34; } def view_template options = chart_options.to_h options[:color] = @color if @color.present? div(class: &#34;p-2 rounded-lg bg-white border border-neutral-200&#34;, **@html) do div( data: { controller: &#34;chart&#34;, chart_target: &#34;mount&#34;, chart_options_value: options.to_json, chart_group_value: @group, chart_select_url_value: @select_url }, style: &#34;height: #{@height}; width: 100%;&#34; ) end end private def chart_options raise NotImplementedError, &#34;#{self.class} must implement chart_options&#34; end end Props Prop Type Default Purpose height String &#34;400px&#34; Chart container height group String &#34;&#34; ECharts group for linked charts — see Module 10 color String &#34;&#34; Palette override — replaces component’s own palette select_url String &#34;&#34; URL to visit when a data point is clicked — see Module 10 All props default to safe empty values. A chart rendered with no extra props is standalone, 400px tall, using whatever palette chart_options specifies, with no click behaviour and no group linking.">
+
+    <link rel="preload" href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" as="style" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
+    <link href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" rel="stylesheet" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
+
+  
+
+
+
+
+
+
+<script src="/js/main-head.min.94da6f95b126542222dab3a6e07ffefe1aaf63ec3ca555e827b58b80e7d3f0b7.js" integrity="sha256-lNpvlbEmVCIi2rOm4H/&#43;/hqvY&#43;w8pVXoJ7WLgOfT8Lc="></script>
+
+  
+  
+  </head>
+<body>
+    <a href="#content" class="hx:sr-only hx:focus-visible:not-sr-only hx:focus-visible:fixed hx:focus-visible:z-50 hx:focus-visible:top-2 hx:focus-visible:left-2 hx:focus-visible:bg-primary-500 hx:focus-visible:text-white hx:focus-visible:px-4 hx:focus-visible:py-2 hx:focus-visible:rounded-md hx:focus-visible:text-sm hx:focus-visible:font-medium">Skip to content</a><div class="hextra-nav-container hx:sticky hx:top-0 hx:z-20 hx:w-full hx:bg-transparent hx:print:hidden">
+  <div
+    class="hextra-nav-container-blur hx:pointer-events-none hx:absolute hx:z-[-1] hx:h-full hx:w-full hx:bg-white hx:dark:bg-dark hx:shadow-[0_2px_4px_rgba(0,0,0,.02),0_1px_0_rgba(0,0,0,.06)] hx:contrast-more:shadow-[0_0_0_1px_#000] hx:dark:shadow-[0_-1px_0_rgba(255,255,255,.1)_inset] hx:contrast-more:dark:shadow-[0_0_0_1px_#fff]"
+  ></div>
+
+  <nav class="hextra-max-navbar-width hx:mx-auto hx:flex hx:items-center hx:justify-end hx:gap-2 hx:h-16 hx:px-6">
+    <a class="hx:flex hx:items-center hx:hover:opacity-75 hx:ltr:mr-auto hx:rtl:ml-auto" href="/">
+    <span class="hx:mr-2 hx:font-extrabold hx:inline hx:select-none">Ruby Field Notes</span>
+</a>
+<button type="button" aria-label="Menu" aria-expanded="false" class="hextra-hamburger-menu hx:cursor-pointer hx:-mr-2 hx:rounded-sm hx:p-2 hx:active:bg-gray-400/20 hx:md:hidden hx:hextra-focus-visible-inset"><svg height=24 fill="none" viewBox="0 0 24 24" stroke="currentColor"><g><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8H20"></path></g><g><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16H20"></path></g></svg></button>
+  </nav>
+</div>
+
+  <div class='hx:mx-auto hx:flex hextra-max-page-width'>
+    <aside class="hextra-sidebar-container hx:flex hx:flex-col hx:print:hidden hx:md:top-16 hx:md:shrink-0 hx:md:w-64 hx:md:self-start hx:max-md:[transform:translate3d(0,-100%,0)] hx:md:sticky">
+    <div class="hx:px-4 hx:pt-4 hx:md:hidden">
+      <div class="hextra-search-wrapper hx:relative hx:md:w-64">
+  <div class="hx:relative hx:flex hx:items-center hx:text-gray-900 hx:contrast-more:text-gray-800 hx:dark:text-gray-300 hx:contrast-more:dark:text-gray-300">
+    <input
+      placeholder="Search..."
+      aria-label="Search..."
+      class="hextra-search-input hx:hextra-focus-visible hx:block hx:w-full hx:appearance-none hx:rounded-lg hx:px-3 hx:py-2 hx:transition-colors hx:text-base hx:leading-tight hx:md:text-sm hx:bg-black/[.05] hx:dark:bg-gray-50/10 hx:focus-visible:bg-white hx:dark:focus-visible:bg-dark hx:placeholder:text-gray-500 hx:dark:placeholder:text-gray-400 hx:contrast-more:border hx:contrast-more:border-current"
+      type="search"
+      autocomplete="off"
+      value=""
+      spellcheck="false"
+    />
+    <kbd
+      class="hx:absolute hx:my-1.5 hx:select-none hx:ltr:right-1.5 hx:rtl:left-1.5 hx:h-5 hx:rounded-sm hx:bg-white hx:px-1.5 hx:font-mono hx:text-[10px] hx:font-medium hx:text-gray-500 hx:border hx:border-gray-200 hx:dark:border-gray-100/20 hx:dark:bg-dark/50 hx:contrast-more:border-current hx:contrast-more:text-current hx:contrast-more:dark:border-current hx:items-center hx:gap-1 hx:transition-opacity hx:pointer-events-none hx:hidden hx:sm:flex"
+    >
+      CTRL K
+    </kbd>
+  </div>
+
+  <div>
+    <ul
+      class="hextra-search-results hextra-scrollbar hx:hidden hx:border hx:border-gray-200 hx:bg-white hx:text-gray-100 hx:dark:border-neutral-800 hx:dark:bg-neutral-900 hx:absolute hx:top-full hx:z-20 hx:mt-2 hx:overflow-auto hx:overscroll-contain hx:rounded-xl hx:py-2.5 hx:shadow-xl hx:max-h-[min(calc(50vh-11rem-env(safe-area-inset-bottom)),400px)] hx:md:max-h-[min(calc(100vh-5rem-env(safe-area-inset-bottom)),400px)] hx:inset-x-0 hx:ltr:md:left-auto hx:rtl:md:right-auto hx:contrast-more:border hx:contrast-more:border-gray-900 hx:contrast-more:dark:border-gray-50 hx:w-screen hx:min-h-[100px] hx:max-w-[min(calc(100vw-2rem),calc(100%+20rem))]"
+      aria-label="Search results"
+      style="transition: max-height 0.2s ease 0s;"
+    ></ul>
+    <div class="hextra-search-status hx:sr-only" aria-live="polite" role="status"></div>
+  </div>
+</div>
+
+    </div><div class="hextra-scrollbar hx:overflow-y-auto hx:overflow-x-hidden hx:p-4 hx:grow hx:md:h-[calc(100vh-var(--navbar-height)-var(--menu-height))]">
+    <ul class="hx:flex hx:flex-col hx:gap-1 hx:md:hidden">
+      
+      
+    </ul>
+
+    <ul class="hx:flex hx:flex-col hx:gap-1 hx:max-md:hidden">
+        
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/overview/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Overview</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-00-setup/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Initial Setup</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-01-foundation/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 01 - Foundation</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-02-formatters/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 02 - Formatters and palettes</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-03-bar-charts/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 03 - Bar and Stacked Bar</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-04-scatter/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 04 - Scatter charts</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-05-pie-donut/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 05 - Pie and Donut Charts</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-06-heatmap/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 06 - Heatmaps</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-07-gauges/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 07 - Gauges</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-08-realtime/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 08 - Realtime charts</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-09-labels/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 09 - Advanced Formatting</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-10-linked-charts/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 10 - Linked charts</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-11-mixed-charts/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 11 - Mixed charts</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-12-extending-the-series/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Postscript - Extending the pattern</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/appendix-a/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Appendix A - The Service Layer</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/appendix-b/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Appendix B - The javascript infrastructure</span>
+    </a>
+  </div></li>
+            <li class="open"><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="true">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hextra-sidebar-active-item hx:bg-primary-100 hx:font-semibold hx:text-primary-800 hx:contrast-more:border hx:contrast-more:border-primary-500 hx:dark:bg-primary-400/10 hx:dark:text-primary-600 hx:contrast-more:dark:border-primary-500"
+      href="/echarts/appendix-c/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Appendix C - The base class</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/appendix-d/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Appendix D - Template Library</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/attribution/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">ABS Data Fixtures</span>
+    </a>
+  </div></li>
+        
+      </ul>
+    </div>
+  
+  
+    <div class="  hx:sticky hx:bottom-0 hx:max-h-(--menu-height) hx:bg-white hx:dark:bg-dark hx:mx-4 hx:py-4 hx:shadow-[0_-12px_16px_#fff] hx:flex hx:items-center hx:gap-2 hx:border-gray-200 hx:dark:border-neutral-800 hx:dark:shadow-[0_-12px_16px_#111] hx:contrast-more:border-neutral-400 hx:contrast-more:shadow-none hx:contrast-more:dark:shadow-none hx:border-t" data-toggle-animation="show"><div class="hx:flex hx:grow hx:flex-col"><div class="hx:flex hx:justify-items-start hx:group" data-theme="light">
+  <button
+    title="Change theme"
+    data-state="closed"
+    data-location="bottom"
+    class="hextra-theme-toggle hx:cursor-pointer hx:rounded-md hx:text-left hx:font-medium hx:h-7 hx:px-2 hx:text-xs hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:font-medium hx:text-gray-600 hx:transition-colors hx:dark:text-gray-400 hx:grow"
+    type="button"
+    aria-label="Change theme"
+    aria-expanded="false"
+    aria-haspopup="menu"
+  >
+    <div class="hx:flex hx:items-center hx:gap-2 hx:capitalize"><svg height=12 class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg><span class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden">Light</span><svg height=12 class="hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg><span class="hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden">Dark</span><svg height=12 class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  fill="currentColor">
+  <path d="M 11.996094,2 C 6.4986225,2.0192368 2.03125,6.5024993 2.03125,12 c 0,5.497501 4.4673725,9.980763 9.964844,10 H 12 12.0039 c 5.497471,-0.01924 9.964844,-4.502499 9.964844,-10 0,-5.4975007 -4.467373,-9.9807632 -9.964844,-10 H 12 Z M 12,4 c 4.417218,0.017598 7.96875,3.5822356 7.96875,8 0,4.417764 -3.551532,7.982402 -7.96875,8 z" />
+</svg>
+<span class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden">System</span></div>
+  </button>
+  <ul
+    class="hextra-theme-toggle-options hx:hidden hx:z-20 hx:max-h-64 hx:overflow-auto hx:rounded-lg hx:border hx:border-gray-200 hx:bg-white hx:p-1 hx:text-sm hx:shadow-lg hx:dark:border-neutral-700 hx:dark:bg-neutral-900"
+    style="position: fixed; inset: auto auto 0px 0px; margin: 0px; min-width: 100px;"
+    data-theme="light"
+    role="menu"
+  >
+    <li role="none" class="hx:flex hx:flex-col">
+      <button
+        type="button"
+        role="menuitemradio"
+        aria-checked="true"
+        tabindex="-1"
+        data-item="light"
+        class="hx:text-gray-700 hx:dark:text-gray-300 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:hover:bg-neutral-800 hx:dark:hover:text-gray-100 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:rounded-sm hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9 hx:text-left hx:w-full hx:bg-transparent hx:border-0"
+      >
+        Light
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </button>
+    </li>
+    <li role="none" class="hx:flex hx:flex-col">
+      <button
+        type="button"
+        role="menuitemradio"
+        aria-checked="false"
+        tabindex="-1"
+        data-item="dark"
+        class="hx:text-gray-700 hx:dark:text-gray-300 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:hover:bg-neutral-800 hx:dark:hover:text-gray-100 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:rounded-sm hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9 hx:text-left hx:w-full hx:bg-transparent hx:border-0"
+      >
+        Dark
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </button>
+    </li>
+    <li role="none" class="hx:flex hx:flex-col">
+      <button
+        type="button"
+        role="menuitemradio"
+        aria-checked="false"
+        tabindex="-1"
+        data-item="system"
+        class="hx:text-gray-700 hx:dark:text-gray-300 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:hover:bg-neutral-800 hx:dark:hover:text-gray-100 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:rounded-sm hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9 hx:text-left hx:w-full hx:bg-transparent hx:border-0"
+      >
+        System
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </button>
+    </li>
+  </ul>
+</div>
+</div></div></aside>
+    
+<nav class="hextra-toc hx:order-last hx:hidden hx:w-64 hx:shrink-0 hx:xl:block hx:print:hidden hx:px-4" aria-label="Table of contents">
+    <div class="hextra-scrollbar hx:sticky hx:top-16 hx:overflow-y-auto hx:pr-4 hx:pt-6 hx:text-sm [hyphens:auto] hx:max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] hx:ltr:-mr-4 hx:rtl:-ml-4"><p class="hx:mb-4 hx:font-semibold hx:tracking-tight">On this page</p><ul>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#c1--the-base-class">C.1 — The Base Class
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#props">Props
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#view_template">view_template
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#the-color-override">The color override
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#c2--writing-a-chart-component">C.2 — Writing a Chart Component
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#c3--the-stream_name-extension">C.3 — The stream_name Extension
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#c4--the-ruby-dsl">C.4 — The Ruby DSL
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#chartoptions">Chart::Options
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#chartseries">Chart::Series::*
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#c5--component-props-reference">C.5 — Component Props Reference
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#base-class-props-inherited-by-all-components">Base class props (inherited by all components)
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#usage">Usage
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#c6--the-ruby-dsl">C.6 — The Ruby DSL
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#chartoptions-1">Chart::Options
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#chartseries-1">Chart::Series::*
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#the-to_h--to_json-contract">The to_h / to_json Contract
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#adding-a-new-series-type">Adding a New Series Type
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#why-not-wrap-everything">Why Not Wrap Everything?
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#c7--extending-the-base-class">C.7 — Extending the Base Class
+        </a>
+      </li></ul>
+      <div class="hx:mt-8 hx:border-t hx:bg-white hx:pt-8 hx:shadow-[0_-12px_16px_white] hx:dark:bg-dark hx:dark:shadow-[0_-12px_16px_#111] hx:sticky hx:bottom-0 hx:flex hx:flex-col hx:items-start hx:gap-2 hx:pb-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-t hx:contrast-more:border-neutral-400 hx:contrast-more:shadow-none hx:contrast-more:dark:border-neutral-400">
+        <button id="backToTop" tabindex="-1" onClick="scrollUp();" class="hx:cursor-pointer hx:transition-all hx:duration-75 hx:opacity-0 hx:text-xs hx:font-medium hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-100 hx:contrast-more:text-gray-800 hx:contrast-more:dark:text-gray-50">
+          <span>Scroll to top</span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" focusable="false" class="hx:inline hx:ltr:ml-1 hx:rtl:mr-1 hx:h-3.5 hx:w-3.5 hx:rounded-full hx:border hx:border-gray-500 hx:hover:border-gray-900 hx:dark:border-gray-400 hx:dark:hover:border-gray-100 hx:contrast-more:border-gray-800 hx:contrast-more:dark:border-gray-50">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+
+    <article class="hx:w-full hx:break-words hx:flex hx:min-h-[calc(100vh-var(--navbar-height))] hx:min-w-0 hx:justify-center hx:pb-8 hx:pr-[calc(env(safe-area-inset-right)-1.5rem)]">
+      <main id="content" class="hx:w-full hx:min-w-0 hextra-max-content-width hx:px-6 hx:pt-4 hx:md:px-12">
+        
+        <div class="content">
+          
+          <h1>Appendix C — The <code>Components::Chart</code> Base Class</h1><p>Every chart component in this series inherits from <code>Components::Chart</code>. This
+appendix explains what the base class provides, how its props work, and how to
+extend it.</p>
+<hr>
+<h2>C.1 — The Base Class<span class="hx:absolute hx:-mt-20" id="c1--the-base-class"></span>
+    <a href="#c1--the-base-class" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/views/components/chart.rb</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Base class for all chart components.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Props (inherited by every chart component):</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#   height:     String  — chart container height (default &#34;400px&#34;)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#   group:      String  — ECharts group name for linked charts</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#   color:      String  — palette override (replaces chart&#39;s own palette)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#   select_url: String  — URL to visit when a data point is clicked</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># All props default to safe values — a chart with no extra props renders</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># as a standalone 400px chart using whatever palette chart_options specifies.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Components</span><span class="o">::</span><span class="no">Chart</span> <span class="o">&lt;</span> <span class="no">Components</span><span class="o">::</span><span class="no">Base</span>
+</span></span><span class="line"><span class="cl">  <span class="n">prop</span> <span class="ss">:height</span><span class="p">,</span>     <span class="nb">String</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="s2">&#34;400px&#34;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">prop</span> <span class="ss">:group</span><span class="p">,</span>      <span class="nb">String</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="s2">&#34;&#34;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">prop</span> <span class="ss">:color</span><span class="p">,</span>      <span class="nb">String</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="s2">&#34;&#34;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">prop</span> <span class="ss">:select_url</span><span class="p">,</span> <span class="nb">String</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="s2">&#34;&#34;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">view_template</span>
+</span></span><span class="line"><span class="cl">    <span class="n">options</span> <span class="o">=</span> <span class="n">chart_options</span><span class="o">.</span><span class="n">to_h</span>
+</span></span><span class="line"><span class="cl">    <span class="n">options</span><span class="o">[</span><span class="ss">:color</span><span class="o">]</span> <span class="o">=</span> <span class="vi">@color</span> <span class="k">if</span> <span class="vi">@color</span><span class="o">.</span><span class="n">present?</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">div</span><span class="p">(</span><span class="ss">class</span><span class="p">:</span> <span class="s2">&#34;p-2 rounded-lg bg-white border border-neutral-200&#34;</span><span class="p">,</span> <span class="o">**</span><span class="vi">@html</span><span class="p">)</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">      <span class="n">div</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="ss">data</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">controller</span><span class="p">:</span>             <span class="s2">&#34;chart&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">chart_target</span><span class="p">:</span>           <span class="s2">&#34;mount&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">chart_options_value</span><span class="p">:</span>    <span class="n">options</span><span class="o">.</span><span class="n">to_json</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">chart_group_value</span><span class="p">:</span>      <span class="vi">@group</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">chart_select_url_value</span><span class="p">:</span> <span class="vi">@select_url</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="ss">style</span><span class="p">:</span> <span class="s2">&#34;height: </span><span class="si">#{</span><span class="vi">@height</span><span class="si">}</span><span class="s2">; width: 100%;&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kp">private</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">chart_options</span>
+</span></span><span class="line"><span class="cl">    <span class="k">raise</span> <span class="no">NotImplementedError</span><span class="p">,</span> <span class="s2">&#34;</span><span class="si">#{</span><span class="nb">self</span><span class="o">.</span><span class="n">class</span><span class="si">}</span><span class="s2"> must implement chart_options&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<h3>Props<span class="hx:absolute hx:-mt-20" id="props"></span>
+    <a href="#props" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><table>
+  <thead>
+      <tr>
+          <th>Prop</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Purpose</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>height</code></td>
+          <td>String</td>
+          <td><code>&quot;400px&quot;</code></td>
+          <td>Chart container height</td>
+      </tr>
+      <tr>
+          <td><code>group</code></td>
+          <td>String</td>
+          <td><code>&quot;&quot;</code></td>
+          <td>ECharts group for linked charts — see Module 10</td>
+      </tr>
+      <tr>
+          <td><code>color</code></td>
+          <td>String</td>
+          <td><code>&quot;&quot;</code></td>
+          <td>Palette override — replaces component&rsquo;s own palette</td>
+      </tr>
+      <tr>
+          <td><code>select_url</code></td>
+          <td>String</td>
+          <td><code>&quot;&quot;</code></td>
+          <td>URL to visit when a data point is clicked — see Module 10</td>
+      </tr>
+  </tbody>
+</table>
+<p>All props default to safe empty values. A chart rendered with no extra props is
+standalone, 400px tall, using whatever palette <code>chart_options</code> specifies, with
+no click behaviour and no group linking.</p>
+<h3><code>view_template</code><span class="hx:absolute hx:-mt-20" id="view_template"></span>
+    <a href="#view_template" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>The base <code>view_template</code> renders a two-div structure:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;p-2 rounded-lg bg-white border border-neutral-200&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span>
+</span></span><span class="line"><span class="cl">    <span class="na">data-controller</span><span class="o">=</span><span class="s">&#34;chart&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">data-chart-target</span><span class="o">=</span><span class="s">&#34;mount&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">data-chart-options-value</span><span class="o">=</span><span class="s">&#34;{ ... }&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">data-chart-group-value</span><span class="o">=</span><span class="s">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">style</span><span class="o">=</span><span class="s">&#34;height: 400px; width: 100%;&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>The outer div provides the card-like appearance. The inner div is the ECharts
+mount target — <code>chart_controller.js</code> initialises the ECharts instance on this
+element.</p>
+<p><code>**@html</code> passes any additional HTML attributes through to the outer div — the
+standard Phlex pattern for attribute forwarding.</p>
+<h3>The <code>color</code> override<span class="hx:absolute hx:-mt-20" id="the-color-override"></span>
+    <a href="#the-color-override" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">options</span> <span class="o">=</span> <span class="n">chart_options</span><span class="o">.</span><span class="n">to_h</span>
+</span></span><span class="line"><span class="cl"><span class="n">options</span><span class="o">[</span><span class="ss">:color</span><span class="o">]</span> <span class="o">=</span> <span class="vi">@color</span> <span class="k">if</span> <span class="vi">@color</span><span class="o">.</span><span class="n">present?</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p><code>chart_options</code> sets the palette the component normally uses. When <code>color:</code> is
+passed by the caller, it replaces that palette. This allows any component to be
+used with a different palette in a dashboard context without changing the
+component itself:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># Component uses its own palette</span>
+</span></span><span class="line"><span class="cl"><span class="n">render</span> <span class="no">Components</span><span class="o">::</span><span class="no">Charts</span><span class="o">::</span><span class="no">LabourForce</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">readings</span><span class="p">:</span> <span class="vi">@readings</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Dashboard overrides the palette for consistency</span>
+</span></span><span class="line"><span class="cl"><span class="n">render</span> <span class="no">Components</span><span class="o">::</span><span class="no">Charts</span><span class="o">::</span><span class="no">LabourForce</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">readings</span><span class="p">:</span> <span class="vi">@readings</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">group</span><span class="p">:</span>    <span class="s2">&#34;labour_dashboard&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">color</span><span class="p">:</span>    <span class="s2">&#34;tableau&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>The component&rsquo;s <code>chart_options</code> method is unchanged — the override happens in
+the base class after <code>chart_options</code> returns.</p>
+<hr>
+<h2>C.2 — Writing a Chart Component<span class="hx:absolute hx:-mt-20" id="c2--writing-a-chart-component"></span>
+    <a href="#c2--writing-a-chart-component" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Every chart component follows the same structure:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="k">module</span> <span class="nn">Components</span>
+</span></span><span class="line"><span class="cl">  <span class="k">module</span> <span class="nn">Charts</span>
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">MyChart</span> <span class="o">&lt;</span> <span class="no">Components</span><span class="o">::</span><span class="no">Chart</span>
+</span></span><span class="line"><span class="cl">      <span class="c1"># 1. Declare props</span>
+</span></span><span class="line"><span class="cl">      <span class="n">prop</span> <span class="ss">:data</span><span class="p">,</span> <span class="n">_Any</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="o">[]</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="kp">private</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="c1"># 2. Implement chart_options — returns a Chart::Options instance</span>
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">chart_options</span>
+</span></span><span class="line"><span class="cl">        <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Options</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">color</span><span class="p">:</span>   <span class="s2">&#34;cool&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">tooltip</span><span class="p">:</span> <span class="p">{</span> <span class="ss">trigger</span><span class="p">:</span> <span class="s2">&#34;axis&#34;</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">x_axis</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;category&#34;</span><span class="p">,</span> <span class="ss">data</span><span class="p">:</span> <span class="n">labels</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">y_axis</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">series</span><span class="p">:</span>  <span class="n">build_series</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="c1"># 3. Helper methods — keep chart_options readable</span>
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">build_series</span>
+</span></span><span class="line"><span class="cl">        <span class="vi">@data</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl">          <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Line</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="n">r</span><span class="o">[</span><span class="ss">:label</span><span class="o">]</span><span class="p">,</span> <span class="ss">data</span><span class="p">:</span> <span class="n">r</span><span class="o">[</span><span class="ss">:values</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">labels</span>
+</span></span><span class="line"><span class="cl">        <span class="vi">@data</span><span class="o">.</span><span class="n">first</span><span class="o">&amp;.</span><span class="n">dig</span><span class="p">(</span><span class="ss">:timestamps</span><span class="p">)</span> <span class="o">||</span> <span class="o">[]</span>
+</span></span><span class="line"><span class="cl">      <span class="k">end</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p><strong>Rules:</strong></p>
+<ul>
+<li>Always call <code>super</code> if overriding <code>view_template</code> — or don&rsquo;t override it at all</li>
+<li>Keep <code>chart_options</code> readable — extract helpers for series construction</li>
+<li>Use <code>::</code> prefix for model constants — <code>::GdpReading</code> not <code>GdpReading</code></li>
+<li>Never call services from <code>chart_options</code> — the controller passes data in</li>
+</ul>
+<hr>
+<h2>C.3 — The <code>stream_name</code> Extension<span class="hx:absolute hx:-mt-20" id="c3--the-stream_name-extension"></span>
+    <a href="#c3--the-stream_name-extension" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Real-time chart components add one prop and one data attribute:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="k">module</span> <span class="nn">Components</span>
+</span></span><span class="line"><span class="cl">  <span class="k">module</span> <span class="nn">Charts</span>
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">LiveStocks</span> <span class="o">&lt;</span> <span class="no">Components</span><span class="o">::</span><span class="no">Chart</span>
+</span></span><span class="line"><span class="cl">      <span class="n">prop</span> <span class="ss">:prices</span><span class="p">,</span>      <span class="no">Hash</span><span class="p">,</span>   <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="p">{}</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="n">prop</span> <span class="ss">:stream_name</span><span class="p">,</span> <span class="nb">String</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="s2">&#34;&#34;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="kp">private</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">chart_options</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># ... options with animation: false</span>
+</span></span><span class="line"><span class="cl">      <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">view_template</span>
+</span></span><span class="line"><span class="cl">        <span class="n">options</span> <span class="o">=</span> <span class="n">chart_options</span><span class="o">.</span><span class="n">to_h</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">div</span><span class="p">(</span><span class="ss">class</span><span class="p">:</span> <span class="s2">&#34;p-2 rounded-lg bg-white border border-neutral-200&#34;</span><span class="p">,</span> <span class="o">**</span><span class="vi">@html</span><span class="p">)</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">          <span class="n">div</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">data</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">controller</span><span class="p">:</span>              <span class="s2">&#34;chart&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">chart_target</span><span class="p">:</span>            <span class="s2">&#34;mount&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">chart_options_value</span><span class="p">:</span>     <span class="n">options</span><span class="o">.</span><span class="n">to_json</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">chart_group_value</span><span class="p">:</span>       <span class="vi">@group</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">chart_stream_name_value</span><span class="p">:</span> <span class="vi">@stream_name</span>    <span class="c1"># ← real-time addition</span>
+</span></span><span class="line"><span class="cl">            <span class="p">},</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">style</span><span class="p">:</span> <span class="s2">&#34;height: </span><span class="si">#{</span><span class="vi">@height</span><span class="si">}</span><span class="s2">; width: 100%;&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">end</span>
+</span></span><span class="line"><span class="cl">      <span class="k">end</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>Real-time components override <code>view_template</code> to add <code>chart_stream_name_value</code>.
+The base class <code>view_template</code> does not include it — static charts don&rsquo;t need it.</p>
+<p>An alternative approach is to add <code>stream_name:</code> to the base class alongside
+<code>group:</code> and <code>color:</code>. The tradeoff: simpler for real-time components but adds
+an unused data attribute to every static chart. For this series, real-time
+components override <code>view_template</code> explicitly — making the intent clear.</p>
+<hr>
+<h2>C.4 — The Ruby DSL<span class="hx:absolute hx:-mt-20" id="c4--the-ruby-dsl"></span>
+    <a href="#c4--the-ruby-dsl" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><h3><code>Chart::Options</code><span class="hx:absolute hx:-mt-20" id="chartoptions"></span>
+    <a href="#chartoptions" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Options</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">color</span><span class="p">:</span>   <span class="s2">&#34;tableau&#34;</span><span class="p">,</span>    <span class="c1"># palette name or colour array</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">tooltip</span><span class="p">:</span> <span class="p">{</span> <span class="o">...</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">legend</span><span class="p">:</span>  <span class="p">{</span> <span class="o">...</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">x_axis</span><span class="p">:</span>  <span class="p">{</span> <span class="o">...</span> <span class="p">},</span>      <span class="c1"># maps to xAxis in ECharts JSON</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">y_axis</span><span class="p">:</span>  <span class="p">{</span> <span class="o">...</span> <span class="p">},</span>      <span class="c1"># maps to yAxis in ECharts JSON</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">grid</span><span class="p">:</span>    <span class="p">{</span> <span class="o">...</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">series</span><span class="p">:</span>  <span class="o">[</span> <span class="o">...</span> <span class="o">]</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># Any other ECharts option passes through unchanged</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p><code>Chart::Options</code> converts snake_case Ruby keys to camelCase ECharts keys:
+<code>x_axis</code> → <code>xAxis</code>, <code>y_axis</code> → <code>yAxis</code>. All other keys pass through.</p>
+<p><code>to_h</code> returns the full options hash. <code>to_json</code> serialises it — used in
+<code>view_template</code> for the data attribute.</p>
+<h3><code>Chart::Series::*</code><span class="hx:absolute hx:-mt-20" id="chartseries"></span>
+    <a href="#chartseries" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># Line series</span>
+</span></span><span class="line"><span class="cl"><span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Line</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">name</span><span class="p">:</span>   <span class="s2">&#34;Series Name&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">data</span><span class="p">:</span>   <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">smooth</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">symbol</span><span class="p">:</span> <span class="s2">&#34;none&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Bar series</span>
+</span></span><span class="line"><span class="cl"><span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Bar</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">name</span><span class="p">:</span>  <span class="s2">&#34;Series Name&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">data</span><span class="p">:</span>  <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">stack</span><span class="p">:</span> <span class="s2">&#34;total&#34;</span>         <span class="c1"># optional — for stacked bars</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Scatter series</span>
+</span></span><span class="line"><span class="cl"><span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Scatter</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">name</span><span class="p">:</span> <span class="s2">&#34;Series Name&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">data</span><span class="p">:</span> <span class="o">[[</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="o">]]</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Pie series</span>
+</span></span><span class="line"><span class="cl"><span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Pie</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">name</span><span class="p">:</span>   <span class="s2">&#34;Series Name&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">data</span><span class="p">:</span>   <span class="o">[</span><span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&#34;A&#34;</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="mi">42</span> <span class="p">}</span><span class="o">]</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">radius</span><span class="p">:</span> <span class="o">[</span><span class="s2">&#34;40%&#34;</span><span class="p">,</span> <span class="s2">&#34;70%&#34;</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>All series classes accept <code>**extra</code> — any ECharts series option not explicitly
+modelled passes through unchanged:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Line</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">name</span><span class="p">:</span>      <span class="s2">&#34;GDP&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">data</span><span class="p">:</span>      <span class="n">values</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">markLine</span><span class="p">:</span>  <span class="p">{</span> <span class="o">...</span> <span class="p">},</span>    <span class="c1"># passed through via **extra</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">markArea</span><span class="p">:</span>  <span class="p">{</span> <span class="o">...</span> <span class="p">},</span>    <span class="c1"># passed through via **extra</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">markPoint</span><span class="p">:</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>     <span class="c1"># passed through via **extra</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<hr>
+<h2>C.5 — Component Props Reference<span class="hx:absolute hx:-mt-20" id="c5--component-props-reference"></span>
+    <a href="#c5--component-props-reference" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><h3>Base class props (inherited by all components)<span class="hx:absolute hx:-mt-20" id="base-class-props-inherited-by-all-components"></span>
+    <a href="#base-class-props-inherited-by-all-components" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><table>
+  <thead>
+      <tr>
+          <th>Prop</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Pass as</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>height</code></td>
+          <td>String</td>
+          <td><code>&quot;400px&quot;</code></td>
+          <td><code>height: &quot;600px&quot;</code></td>
+      </tr>
+      <tr>
+          <td><code>group</code></td>
+          <td>String</td>
+          <td><code>&quot;&quot;</code></td>
+          <td><code>group: &quot;my_dashboard&quot;</code></td>
+      </tr>
+      <tr>
+          <td><code>color</code></td>
+          <td>String</td>
+          <td><code>&quot;&quot;</code></td>
+          <td><code>color: &quot;tableau&quot;</code></td>
+      </tr>
+  </tbody>
+</table>
+<h3>Usage<span class="hx:absolute hx:-mt-20" id="usage"></span>
+    <a href="#usage" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><pre><code>&lt;%# Minimal — all defaults %&gt;
+&lt;%= render Components::Charts::GdpByIndustry.new(data: @data) %&gt;
+
+&lt;%# Custom height %&gt;
+&lt;%= render Components::Charts::GdpByIndustry.new(data: @data, height: &#34;600px&#34;) %&gt;
+
+&lt;%# Dashboard — linked and palette-overridden %&gt;
+&lt;%= render Components::Charts::GdpByIndustry.new(
+  data:   @data,
+  group:  &#34;gdp_dashboard&#34;,
+  color:  &#34;tableau&#34;,
+  height: &#34;320px&#34;
+) %&gt;
+
+&lt;%# Real-time %&gt;
+&lt;%= render Components::Charts::LiveStocks.new(
+  prices:      @prices,
+  stream_name: &#34;live_stocks&#34;,
+  height:      &#34;400px&#34;
+) %&gt;</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<hr>
+<h2>C.6 — The Ruby DSL<span class="hx:absolute hx:-mt-20" id="c6--the-ruby-dsl"></span>
+    <a href="#c6--the-ruby-dsl" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>The DSL lives in <code>app/lib/chart/</code> and has one job: produce a Ruby Hash that
+serialises to valid ECharts options JSON. It is not a complete wrapper around
+ECharts — it wraps the most common options and passes everything else through
+unchanged.</p>
+<h3><code>Chart::Options</code><span class="hx:absolute hx:-mt-20" id="chartoptions-1"></span>
+    <a href="#chartoptions-1" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/lib/chart/options.rb</span>
+</span></span><span class="line"><span class="cl"><span class="k">module</span> <span class="nn">Chart</span>
+</span></span><span class="line"><span class="cl">  <span class="k">class</span> <span class="nc">Options</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="ss">title</span><span class="p">:</span>     <span class="kp">nil</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="ss">tooltip</span><span class="p">:</span>   <span class="kp">nil</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="ss">x_axis</span><span class="p">:</span>    <span class="kp">nil</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="ss">y_axis</span><span class="p">:</span>    <span class="kp">nil</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="ss">series</span><span class="p">:</span>    <span class="o">[]</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="ss">legend</span><span class="p">:</span>    <span class="kp">nil</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="ss">grid</span><span class="p">:</span>      <span class="kp">nil</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="ss">color</span><span class="p">:</span>     <span class="kp">nil</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="ss">animation</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="o">**</span><span class="n">extra</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="vi">@title</span>     <span class="o">=</span> <span class="n">title</span>
+</span></span><span class="line"><span class="cl">      <span class="vi">@tooltip</span>   <span class="o">=</span> <span class="n">tooltip</span>
+</span></span><span class="line"><span class="cl">      <span class="vi">@x_axis</span>    <span class="o">=</span> <span class="n">x_axis</span>
+</span></span><span class="line"><span class="cl">      <span class="vi">@y_axis</span>    <span class="o">=</span> <span class="n">y_axis</span>
+</span></span><span class="line"><span class="cl">      <span class="vi">@series</span>    <span class="o">=</span> <span class="nb">Array</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="vi">@legend</span>    <span class="o">=</span> <span class="n">legend</span>
+</span></span><span class="line"><span class="cl">      <span class="vi">@grid</span>      <span class="o">=</span> <span class="n">grid</span>
+</span></span><span class="line"><span class="cl">      <span class="vi">@color</span>     <span class="o">=</span> <span class="n">color</span>
+</span></span><span class="line"><span class="cl">      <span class="vi">@animation</span> <span class="o">=</span> <span class="n">animation</span>
+</span></span><span class="line"><span class="cl">      <span class="vi">@extra</span>     <span class="o">=</span> <span class="n">extra</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">to_h</span>
+</span></span><span class="line"><span class="cl">      <span class="n">h</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="ss">animation</span><span class="p">:</span> <span class="vi">@animation</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="ss">series</span><span class="p">:</span>    <span class="vi">@series</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span> <span class="n">resolve</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="n">h</span><span class="o">[</span><span class="ss">:color</span><span class="o">]</span>   <span class="o">=</span> <span class="vi">@color</span>            <span class="k">if</span> <span class="vi">@color</span>
+</span></span><span class="line"><span class="cl">      <span class="n">h</span><span class="o">[</span><span class="ss">:title</span><span class="o">]</span>   <span class="o">=</span> <span class="n">resolve</span><span class="p">(</span><span class="vi">@title</span><span class="p">)</span>   <span class="k">if</span> <span class="vi">@title</span>
+</span></span><span class="line"><span class="cl">      <span class="n">h</span><span class="o">[</span><span class="ss">:tooltip</span><span class="o">]</span> <span class="o">=</span> <span class="n">resolve</span><span class="p">(</span><span class="vi">@tooltip</span><span class="p">)</span> <span class="k">if</span> <span class="vi">@tooltip</span>
+</span></span><span class="line"><span class="cl">      <span class="n">h</span><span class="o">[</span><span class="ss">:xAxis</span><span class="o">]</span>   <span class="o">=</span> <span class="n">resolve</span><span class="p">(</span><span class="vi">@x_axis</span><span class="p">)</span>  <span class="k">if</span> <span class="vi">@x_axis</span>
+</span></span><span class="line"><span class="cl">      <span class="n">h</span><span class="o">[</span><span class="ss">:yAxis</span><span class="o">]</span>   <span class="o">=</span> <span class="n">resolve</span><span class="p">(</span><span class="vi">@y_axis</span><span class="p">)</span>  <span class="k">if</span> <span class="vi">@y_axis</span>
+</span></span><span class="line"><span class="cl">      <span class="n">h</span><span class="o">[</span><span class="ss">:legend</span><span class="o">]</span>  <span class="o">=</span> <span class="n">resolve</span><span class="p">(</span><span class="vi">@legend</span><span class="p">)</span>  <span class="k">if</span> <span class="vi">@legend</span>
+</span></span><span class="line"><span class="cl">      <span class="n">h</span><span class="o">[</span><span class="ss">:grid</span><span class="o">]</span>    <span class="o">=</span> <span class="n">resolve</span><span class="p">(</span><span class="vi">@grid</span><span class="p">)</span>    <span class="k">if</span> <span class="vi">@grid</span>
+</span></span><span class="line"><span class="cl">      <span class="n">h</span><span class="o">.</span><span class="n">merge!</span><span class="p">(</span><span class="vi">@extra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="n">h</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">to_json</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="o">=</span> <span class="n">to_h</span><span class="o">.</span><span class="n">to_json</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kp">private</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">resolve</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="k">case</span> <span class="n">value</span>
+</span></span><span class="line"><span class="cl">      <span class="k">when</span> <span class="nb">Array</span> <span class="k">then</span> <span class="n">value</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">v</span><span class="o">|</span> <span class="n">resolve</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="k">when</span> <span class="no">Hash</span>  <span class="k">then</span> <span class="n">value</span>
+</span></span><span class="line"><span class="cl">      <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        <span class="n">value</span><span class="o">.</span><span class="n">respond_to?</span><span class="p">(</span><span class="ss">:to_h</span><span class="p">)</span> <span class="p">?</span> <span class="n">value</span><span class="o">.</span><span class="n">to_h</span> <span class="p">:</span> <span class="n">value</span>
+</span></span><span class="line"><span class="cl">      <span class="k">end</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p><strong>Key design decisions:</strong></p>
+<p><strong>Snake_case to camelCase</strong> — <code>x_axis:</code> becomes <code>xAxis</code>, <code>y_axis:</code> becomes
+<code>yAxis</code> in the output hash. This is handled by the explicit key mapping in
+<code>to_h</code>. Only the options explicitly modelled get this treatment — everything
+in <code>**extra</code> passes through with whatever key name you provide.</p>
+<p><strong><code>**extra</code> escape hatch</strong> — any ECharts option not modelled by the DSL passes
+through unchanged via <code>**extra</code>. This is how <code>visualMap:</code>, <code>calendar:</code>,
+<code>toolbox:</code>, <code>graphic:</code>, <code>markLine:</code> etc. are passed — they are not modelled
+but work correctly:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Options</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">color</span><span class="p">:</span>    <span class="s2">&#34;cool&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">series</span><span class="p">:</span>   <span class="n">build_series</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">toolbox</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">feature</span><span class="p">:</span> <span class="p">{</span> <span class="ss">saveAsImage</span><span class="p">:</span> <span class="p">{}</span> <span class="p">}</span> <span class="p">},</span>   <span class="c1"># via **extra</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">visualMap</span><span class="p">:</span> <span class="p">{</span> <span class="o">...</span> <span class="p">},</span>                            <span class="c1"># via **extra</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">calendar</span><span class="p">:</span> <span class="o">[...]</span>                                <span class="c1"># via **extra — array handled by resolve</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p><strong><code>resolve</code></strong> — called on every value before it enters the output hash. Handles
+three cases:</p>
+<ul>
+<li><code>Array</code> — maps over elements, resolving each one. Handles <code>y_axis: [...]</code> for
+dual axes, <code>calendar: [...]</code> for multi-year calendar, <code>series: [...]</code>.</li>
+<li><code>Hash</code> — passes through unchanged. Plain hashes are already in the right format.</li>
+<li>Everything else — calls <code>to_h</code> if available (DSL series objects), otherwise
+passes through as-is (strings, numbers, booleans).</li>
+</ul>
+<p><strong><code>animation: false</code> default</strong> — ECharts animates everything by default. For
+real-time charts this creates visual noise. The DSL defaults to <code>false</code> — you
+can override explicitly:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Options</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">animation</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<hr>
+<h3><code>Chart::Series::*</code><span class="hx:absolute hx:-mt-20" id="chartseries-1"></span>
+    <a href="#chartseries-1" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>Each series type is a thin wrapper that produces a hash with <code>type:</code> set
+correctly and common options named explicitly. Uncommon options pass through
+via <code>**extra</code>.</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/lib/chart/series/base.rb</span>
+</span></span><span class="line"><span class="cl"><span class="k">module</span> <span class="nn">Chart</span>
+</span></span><span class="line"><span class="cl">  <span class="k">module</span> <span class="nn">Series</span>
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">Base</span>
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="o">**</span><span class="n">opts</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="vi">@opts</span> <span class="o">=</span> <span class="n">opts</span>
+</span></span><span class="line"><span class="cl">      <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">to_h</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="n">series_type</span> <span class="p">}</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">resolved_opts</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="kp">private</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">series_type</span> <span class="o">=</span> <span class="k">raise</span> <span class="no">NotImplementedError</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">resolved_opts</span>
+</span></span><span class="line"><span class="cl">        <span class="vi">@opts</span><span class="o">.</span><span class="n">transform_values</span> <span class="k">do</span> <span class="o">|</span><span class="n">v</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl">          <span class="k">case</span> <span class="n">v</span>
+</span></span><span class="line"><span class="cl">          <span class="k">when</span> <span class="nb">Array</span> <span class="k">then</span> <span class="n">v</span>
+</span></span><span class="line"><span class="cl">          <span class="k">when</span> <span class="no">Hash</span>  <span class="k">then</span> <span class="n">v</span>
+</span></span><span class="line"><span class="cl">          <span class="k">else</span> <span class="n">v</span><span class="o">.</span><span class="n">respond_to?</span><span class="p">(</span><span class="ss">:to_h</span><span class="p">)</span> <span class="p">?</span> <span class="n">v</span><span class="o">.</span><span class="n">to_h</span> <span class="p">:</span> <span class="n">v</span>
+</span></span><span class="line"><span class="cl">          <span class="k">end</span>
+</span></span><span class="line"><span class="cl">        <span class="k">end</span>
+</span></span><span class="line"><span class="cl">      <span class="k">end</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/lib/chart/series/line.rb</span>
+</span></span><span class="line"><span class="cl"><span class="k">module</span> <span class="nn">Chart</span>
+</span></span><span class="line"><span class="cl">  <span class="k">module</span> <span class="nn">Series</span>
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">Line</span> <span class="o">&lt;</span> <span class="no">Base</span>
+</span></span><span class="line"><span class="cl">      <span class="kp">private</span>
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">series_type</span> <span class="o">=</span> <span class="s2">&#34;line&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># app/lib/chart/series/bar.rb</span>
+</span></span><span class="line"><span class="cl"><span class="k">module</span> <span class="nn">Chart</span>
+</span></span><span class="line"><span class="cl">  <span class="k">module</span> <span class="nn">Series</span>
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">Bar</span> <span class="o">&lt;</span> <span class="no">Base</span>
+</span></span><span class="line"><span class="cl">      <span class="kp">private</span>
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">series_type</span> <span class="o">=</span> <span class="s2">&#34;bar&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># app/lib/chart/series/scatter.rb</span>
+</span></span><span class="line"><span class="cl"><span class="k">module</span> <span class="nn">Chart</span>
+</span></span><span class="line"><span class="cl">  <span class="k">module</span> <span class="nn">Series</span>
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">Scatter</span> <span class="o">&lt;</span> <span class="no">Base</span>
+</span></span><span class="line"><span class="cl">      <span class="kp">private</span>
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">series_type</span> <span class="o">=</span> <span class="s2">&#34;scatter&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># app/lib/chart/series/pie.rb</span>
+</span></span><span class="line"><span class="cl"><span class="k">module</span> <span class="nn">Chart</span>
+</span></span><span class="line"><span class="cl">  <span class="k">module</span> <span class="nn">Series</span>
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">Pie</span> <span class="o">&lt;</span> <span class="no">Base</span>
+</span></span><span class="line"><span class="cl">      <span class="kp">private</span>
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">series_type</span> <span class="o">=</span> <span class="s2">&#34;pie&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>All series options are passed through <code>**opts</code> and resolved. This means any
+ECharts series option works without being explicitly modelled:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Line</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">name</span><span class="p">:</span>      <span class="s2">&#34;GDP&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">data</span><span class="p">:</span>      <span class="n">values</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">smooth</span><span class="p">:</span>    <span class="kp">true</span><span class="p">,</span>        <span class="c1"># passed through</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">symbol</span><span class="p">:</span>    <span class="s2">&#34;none&#34;</span><span class="p">,</span>      <span class="c1"># passed through</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">markLine</span><span class="p">:</span>  <span class="p">{</span> <span class="o">...</span> <span class="p">},</span>     <span class="c1"># passed through</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">markArea</span><span class="p">:</span>  <span class="p">{</span> <span class="o">...</span> <span class="p">},</span>     <span class="c1"># passed through</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">yAxisIndex</span><span class="p">:</span> <span class="mi">1</span>           <span class="c1"># passed through — dual axis</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<hr>
+<h3>The <code>to_h</code> / <code>to_json</code> Contract<span class="hx:absolute hx:-mt-20" id="the-to_h--to_json-contract"></span>
+    <a href="#the-to_h--to_json-contract" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>Every DSL object implements <code>to_h</code> and <code>to_json</code>. The base component calls
+<code>chart_options.to_h</code> then serialises with <code>.to_json</code>:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># In Components::Chart#view_template</span>
+</span></span><span class="line"><span class="cl"><span class="n">options</span> <span class="o">=</span> <span class="n">chart_options</span><span class="o">.</span><span class="n">to_h</span>
+</span></span><span class="line"><span class="cl"><span class="n">options</span><span class="o">[</span><span class="ss">:color</span><span class="o">]</span> <span class="o">=</span> <span class="vi">@color</span> <span class="k">if</span> <span class="vi">@color</span><span class="o">.</span><span class="n">present?</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="ss">data</span><span class="p">:</span> <span class="p">{</span> <span class="ss">chart_options_value</span><span class="p">:</span> <span class="n">options</span><span class="o">.</span><span class="n">to_json</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p><code>chart_options</code> returns a <code>Chart::Options</code> instance. <code>to_h</code> resolves all nested
+DSL objects. <code>to_json</code> produces the JSON string that becomes the Stimulus value.
+<code>chart_controller.js</code> receives it as a parsed JavaScript object via the Stimulus
+value system.</p>
+<hr>
+<h3>Adding a New Series Type<span class="hx:absolute hx:-mt-20" id="adding-a-new-series-type"></span>
+    <a href="#adding-a-new-series-type" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>To add a <code>Chart::Series::Gauge</code> for use in components:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/lib/chart/series/gauge.rb</span>
+</span></span><span class="line"><span class="cl"><span class="k">module</span> <span class="nn">Chart</span>
+</span></span><span class="line"><span class="cl">  <span class="k">module</span> <span class="nn">Series</span>
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">Gauge</span> <span class="o">&lt;</span> <span class="no">Base</span>
+</span></span><span class="line"><span class="cl">      <span class="kp">private</span>
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">series_type</span> <span class="o">=</span> <span class="s2">&#34;gauge&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>Then use it anywhere:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Gauge</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">name</span><span class="p">:</span> <span class="s2">&#34;GDP&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">min</span><span class="p">:</span>  <span class="mi">300</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">max</span><span class="p">:</span>  <span class="mi">750</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">data</span><span class="p">:</span> <span class="o">[</span><span class="p">{</span> <span class="ss">value</span><span class="p">:</span> <span class="vi">@value</span><span class="p">,</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&#34;GDP&#34;</span> <span class="p">}</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>All gauge-specific options (<code>min:</code>, <code>max:</code>, <code>axisLine:</code>, <code>pointer:</code>, <code>detail:</code>)
+pass through <code>**opts</code> unchanged.</p>
+<hr>
+<h3>Why Not Wrap Everything?<span class="hx:absolute hx:-mt-20" id="why-not-wrap-everything"></span>
+    <a href="#why-not-wrap-everything" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>The DSL deliberately wraps only a small subset of ECharts options. ECharts has
+hundreds of configuration keys — wrapping them all would produce a large, rigid
+abstraction that trails behind ECharts releases.</p>
+<p>The <code>**extra</code> escape hatch means you always have access to the full ECharts API.
+The DSL adds value for the most common options (series types, axis configuration)
+and gets out of the way for everything else.</p>
+<p>If you find yourself repeatedly writing the same <code>**extra</code> hash, that&rsquo;s a signal
+to add it to the DSL. Until then, use the escape hatch.</p>
+<hr>
+<h2>C.7 — Extending the Base Class<span class="hx:absolute hx:-mt-20" id="c7--extending-the-base-class"></span>
+    <a href="#c7--extending-the-base-class" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>To add a new inherited capability — for example, a <code>theme:</code> prop for ECharts
+built-in themes:</p>
+<p><strong>1. Add the prop to the base class:</strong></p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">prop</span> <span class="ss">:theme</span><span class="p">,</span> <span class="nb">String</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="s2">&#34;&#34;</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p><strong>2. Pass it to the mount div:</strong></p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="ss">data</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">controller</span><span class="p">:</span>        <span class="s2">&#34;chart&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">chart_target</span><span class="p">:</span>      <span class="s2">&#34;mount&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">chart_options_value</span><span class="p">:</span> <span class="n">options</span><span class="o">.</span><span class="n">to_json</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">chart_group_value</span><span class="p">:</span>   <span class="vi">@group</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">chart_theme_value</span><span class="p">:</span>   <span class="vi">@theme</span>    <span class="c1"># ← new</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p><strong>3. Add the Stimulus value to <code>chart_controller.js</code>:</strong></p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">static</span> <span class="nx">values</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">options</span><span class="o">:</span>    <span class="p">{</span> <span class="nx">type</span><span class="o">:</span> <span class="nb">Object</span><span class="p">,</span> <span class="k">default</span><span class="o">:</span> <span class="p">{}</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">streamName</span><span class="o">:</span> <span class="p">{</span> <span class="nx">type</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span> <span class="k">default</span><span class="o">:</span> <span class="s2">&#34;&#34;</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">group</span><span class="o">:</span>      <span class="p">{</span> <span class="nx">type</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span> <span class="k">default</span><span class="o">:</span> <span class="s2">&#34;&#34;</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">theme</span><span class="o">:</span>      <span class="p">{</span> <span class="nx">type</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span> <span class="k">default</span><span class="o">:</span> <span class="s2">&#34;&#34;</span> <span class="p">}</span>   <span class="c1">// ← new
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p><strong>4. Use it in <code>#initChart</code>:</strong></p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="err">#</span><span class="nx">initChart</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">theme</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">themeValue</span> <span class="o">||</span> <span class="kc">null</span>
+</span></span><span class="line"><span class="cl">  <span class="k">this</span><span class="p">.</span><span class="nx">chart</span>  <span class="o">=</span> <span class="nx">echarts</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">mountTarget</span><span class="p">,</span> <span class="nx">theme</span><span class="p">,</span> <span class="p">{</span> <span class="nx">renderer</span><span class="o">:</span> <span class="s2">&#34;svg&#34;</span> <span class="p">})</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// ...
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>Every chart in the application gains the <code>theme:</code> prop automatically — no changes
+to individual components. The pattern is identical for any new capability: one prop
+on the base class, one data attribute, one Stimulus value.</p>
+
+        </div>
+        <div class="hx:mt-16"></div><div class="hx:mb-8 hx:flex hx:items-center hx:border-t hx:pt-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-neutral-400 hx:dark:contrast-more:border-neutral-400 hx:print:hidden"><a
+        href="/echarts/appendix-b/"
+        title="Appendix B - The javascript infrastructure"
+        class="hx:flex hx:max-w-[50%] hx:items-center hx:gap-1 hx:py-4 hx:text-base hx:font-medium hx:text-gray-600 hx:transition-colors [word-break:break-word] hx:hover:text-primary-600 hx:dark:text-gray-300 hx:md:text-lg hx:ltr:pr-4 hx:rtl:pl-4"
+      ><svg class="hx:inline hx:h-5 hx:shrink-0 hx:ltr:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>Appendix B - The javascript infrastructure</a><a
+        href="/echarts/appendix-d/"
+        title="Appendix D - Template Library"
+        class="hx:flex hx:max-w-[50%] hx:items-center hx:gap-1 hx:py-4 hx:text-base hx:font-medium hx:text-gray-600 hx:transition-colors [word-break:break-word] hx:hover:text-primary-600 hx:dark:text-gray-300 hx:md:text-lg hx:ltr:ml-auto hx:ltr:pl-4 hx:ltr:text-right hx:rtl:mr-auto hx:rtl:pr-4 hx:rtl:text-left"
+      >Appendix D - Template Library<svg class="hx:inline hx:h-5 hx:shrink-0 hx:rtl:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a></div><script>
+  function getGiscusTheme() {
+    const giscusTheme = '';
+    if (giscusTheme === 'light' || giscusTheme === 'dark') {
+      return giscusTheme;
+    }
+
+    const hugoTheme = localStorage.getItem("color-theme");
+    if (hugoTheme === 'light' || hugoTheme === 'dark') {
+      return hugoTheme;
+    }
+
+    if (hugoTheme === 'system') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    const defaultTheme = '';
+    if (defaultTheme === 'light' || defaultTheme === 'dark') {
+      return defaultTheme;
+    }
+
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function setGiscusTheme() {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+
+    const msg = {
+      giscus: {
+        setConfig: {
+          theme: getGiscusTheme(),
+        },
+      },
+    }
+
+    iframe.contentWindow.postMessage(msg, 'https://giscus.app');
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const giscusAttributes = {
+      "src": "https://giscus.app/client.js",
+      "data-repo": "rehali\/ruby-field-notes",
+      "data-repo-id": "R_kgDOR-q3Ww",
+      "data-category": "General",
+      "data-category-id": "DIC_kwDOR-q3W84C6gUP",
+      "data-mapping": "pathname",
+      "data-strict": "0",
+      "data-reactions-enabled": "1",
+      "data-emit-metadata": "0",
+      "data-input-position": "top",
+      "data-theme": getGiscusTheme(),
+      "data-lang": "en",
+      "crossorigin": "anonymous",
+      "async": "",
+    };
+
+    
+    const giscusScript = document.createElement("script");
+    Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+    
+    document.getElementById('giscus-hextra-bb112b9f807c37c1752e5da6a1652a29').appendChild(giscusScript);
+
+    
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", setGiscusTheme);
+
+    
+    const themeToggleOptions = document.querySelectorAll(".hextra-theme-toggle-options [data-item]");
+    if (themeToggleOptions) {
+      themeToggleOptions.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+          setTimeout(setGiscusTheme, 0);
+        });
+      });
+    }
+  });
+</script>
+
+<div id="giscus-hextra-bb112b9f807c37c1752e5da6a1652a29"></div>
+      </main>
+    </article>
+  </div>
+
+      <footer class="hextra-footer hx:bg-gray-100 hx:pb-[env(safe-area-inset-bottom)] hx:dark:bg-neutral-900 hx:print:bg-transparent"><div class="hextra-custom-footer hextra-max-footer-width hx:pl-[max(env(safe-area-inset-left),1.5rem)] hx:pr-[max(env(safe-area-inset-right),1.5rem)] hx:text-gray-600 hx:dark:text-gray-400"><div class="hx:text-xs hx:text-gray-500 hx:mt-2" style="padding: 6px;">
+  © 2026 rehali — Tutorial content: 
+  <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a>
+  · Code examples: MIT · Built with <a href="https://github.com/imfing/hextra" target="_blank" rel="noopener">Hextra</a>
+</div></div><div
+      class="hextra-max-footer-width hx:mx-auto hx:flex hx:justify-center hx:py-12 hx:pl-[max(env(safe-area-inset-left),1.5rem)] hx:pr-[max(env(safe-area-inset-right),1.5rem)] hx:text-gray-600 hx:dark:text-gray-400 hx:md:justify-start"
+    >
+      <div class="hx:flex hx:w-full hx:flex-col hx:items-center hx:sm:items-start"><div class="hx:mt-6 hx:text-xs">© 2025 Hextra Project.</div></div>
+    </div></footer>
+    
+    <script defer src="/js/main.min.15eb8e58ef474e8764f1b2119666d41ed10d0c0d647ff5a407a86631cd51f0e2.js" integrity="sha256-FeuOWO9HTodk8bIRlmbUHtENDA1kf/WkB6hmMc1R8OI="></script>
+<script defer src="/js/flexsearch.433e941a8a573ebb9931fc16fc75266ab6b93f569ac2fb4f3dc66882e0416f4c.js" integrity="sha256-Qz6UGopXPruZMfwW/HUmara5P1aawvtPPcZoguBBb0w=" crossorigin="anonymous"></script><script defer src="/en.search.min.4fdabdde415d95c82a8107bef7d71e5731f7921501c4d623461053fa33f9fecb.js" integrity="sha256-T9q93kFdlcgqgQe&#43;99ceVzH3khUBxNYjRhBT&#43;jP5/ss="></script>
+  </body>
+</html>

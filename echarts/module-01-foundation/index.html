@@ -9,23 +9,25 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 <title>Ruby Field Notes</title>
-  <meta name="description" content="Module 01 — Foundation: ECharts, Stimulus, and the Phlex BridgeWhat We’re Building This module establishes the architectural foundation the rest of the series builds on. By the end you will have:
-ECharts 5.x pinned via importmap A chart_controller.js Stimulus controller that owns the full ECharts instance lifecycle A minimal Components::Chart Phlex base class that renders a correctly-structured container A working proof-of-concept: a hard-coded chart rendered in a Rails view No abstraction yet. This module deliberately exposes every seam before we cover it." /><link rel="canonical" href="https://www.rehali.com/echarts/module-01-foundation/" itemprop="url" />
+  <meta name="description" content="Module 01 — Foundation: Getting StartedWhat We’re Building This module gets the chart library installed and your first chart working. By the end you will have:
+The chart library installed and configured A working first chart rendered from real ABS data A gallery index to showcase charts as you build them The JavaScript infrastructure — chart_controller.js, the formatter and palette registries — is a black box you install once and never touch again. Appendix B explains how it works if you’re curious. For now: install it, trust it, use it." /><link rel="canonical" href="https://www.rehali.com/echarts/module-01-foundation/" itemprop="url" />
 
 <meta property="og:title" content="">
 <meta
   property="og:description"
   content="
     
-      Module 01 — Foundation: ECharts, Stimulus, and the Phlex BridgeWhat We&rsquo;re Building
-    This module establishes the architectural foundation the rest of the series builds on. By the end you will have:
+      Module 01 — Foundation: Getting StartedWhat We&rsquo;re Building
+    This module gets the chart library installed and your first chart working. By
+the end you will have:
 
-ECharts 5.x pinned via importmap
-A chart_controller.js Stimulus controller that owns the full ECharts instance lifecycle
-A minimal Components::Chart Phlex base class that renders a correctly-structured container
-A working proof-of-concept: a hard-coded chart rendered in a Rails view
+The chart library installed and configured
+A working first chart rendered from real ABS data
+A gallery index to showcase charts as you build them
 
-No abstraction yet. This module deliberately exposes every seam before we cover it.
+The JavaScript infrastructure — chart_controller.js, the formatter and palette
+registries — is a black box you install once and never touch again. Appendix B
+explains how it works if you&rsquo;re curious. For now: install it, trust it, use it.
     
   ">
 <meta
@@ -39,13 +41,13 @@ No abstraction yet. This module deliberately exposes every seam before we cover 
 
 
   <meta itemprop="name" content="Ruby Field Notes">
-  <meta itemprop="description" content="Module 01 — Foundation: ECharts, Stimulus, and the Phlex BridgeWhat We’re Building This module establishes the architectural foundation the rest of the series builds on. By the end you will have:
-ECharts 5.x pinned via importmap A chart_controller.js Stimulus controller that owns the full ECharts instance lifecycle A minimal Components::Chart Phlex base class that renders a correctly-structured container A working proof-of-concept: a hard-coded chart rendered in a Rails view No abstraction yet. This module deliberately exposes every seam before we cover it.">
-  <meta itemprop="wordCount" content="1644">
+  <meta itemprop="description" content="Module 01 — Foundation: Getting StartedWhat We’re Building This module gets the chart library installed and your first chart working. By the end you will have:
+The chart library installed and configured A working first chart rendered from real ABS data A gallery index to showcase charts as you build them The JavaScript infrastructure — chart_controller.js, the formatter and palette registries — is a black box you install once and never touch again. Appendix B explains how it works if you’re curious. For now: install it, trust it, use it.">
+  <meta itemprop="wordCount" content="1122">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
-  <meta name="twitter:description" content="Module 01 — Foundation: ECharts, Stimulus, and the Phlex BridgeWhat We’re Building This module establishes the architectural foundation the rest of the series builds on. By the end you will have:
-ECharts 5.x pinned via importmap A chart_controller.js Stimulus controller that owns the full ECharts instance lifecycle A minimal Components::Chart Phlex base class that renders a correctly-structured container A working proof-of-concept: a hard-coded chart rendered in a Rails view No abstraction yet. This module deliberately exposes every seam before we cover it.">
+  <meta name="twitter:description" content="Module 01 — Foundation: Getting StartedWhat We’re Building This module gets the chart library installed and your first chart working. By the end you will have:
+The chart library installed and configured A working first chart rendered from real ABS data A gallery index to showcase charts as you build them The JavaScript infrastructure — chart_controller.js, the formatter and palette registries — is a black box you install once and never touch again. Appendix B explains how it works if you’re curious. For now: install it, trust it, use it.">
 
     <link rel="preload" href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" as="style" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
     <link href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" rel="stylesheet" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
@@ -153,10 +155,10 @@ ECharts 5.x pinned via importmap A chart_controller.js Stimulus controller that 
       class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
       hx:hextra-focus-visible-inset
         hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
-      href="/echarts/module-02-dsl/"
+      href="/echarts/module-02-formatters/"
       
     >
-      <span class="hx:min-w-0 [word-break:break-word]">Lesson 02 - DSL</span>
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 02 - Formatters and palettes</span>
     </a>
   </div></li>
             <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
@@ -164,10 +166,10 @@ ECharts 5.x pinned via importmap A chart_controller.js Stimulus controller that 
       class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
       hx:hextra-focus-visible-inset
         hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
-      href="/echarts/module-03-formatters/"
+      href="/echarts/module-03-bar-charts/"
       
     >
-      <span class="hx:min-w-0 [word-break:break-word]">Lesson 03 - Formatters</span>
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 03 - Bar and Stacked Bar</span>
     </a>
   </div></li>
             <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
@@ -175,10 +177,10 @@ ECharts 5.x pinned via importmap A chart_controller.js Stimulus controller that 
       class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
       hx:hextra-focus-visible-inset
         hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
-      href="/echarts/module-04-gallery/"
+      href="/echarts/module-04-scatter/"
       
     >
-      <span class="hx:min-w-0 [word-break:break-word]">Lesson 04 - Bar and Stacked Bar</span>
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 04 - Scatter charts</span>
     </a>
   </div></li>
             <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
@@ -186,10 +188,131 @@ ECharts 5.x pinned via importmap A chart_controller.js Stimulus controller that 
       class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
       hx:hextra-focus-visible-inset
         hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
-      href="/echarts/module-05-scatter/"
+      href="/echarts/module-05-pie-donut/"
       
     >
-      <span class="hx:min-w-0 [word-break:break-word]">Lesson 05 - Scatter charts</span>
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 05 - Pie and Donut Charts</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-06-heatmap/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 06 - Heatmaps</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-07-gauges/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 07 - Gauges</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-08-realtime/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 08 - Realtime charts</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-09-labels/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 09 - Advanced Formatting</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-10-linked-charts/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 10 - Linked charts</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-11-mixed-charts/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 11 - Mixed charts</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-12-extending-the-series/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Postscript - Extending the pattern</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/appendix-a/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Appendix A - The Service Layer</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/appendix-b/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Appendix B - The javascript infrastructure</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/appendix-c/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Appendix C - The base class</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/appendix-d/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Appendix D - Template Library</span>
     </a>
   </div></li>
             <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
@@ -280,47 +403,59 @@ ECharts 5.x pinned via importmap A chart_controller.js Stimulus controller that 
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#11--pinning-echarts-via-importmap-background">1.1 — Pinning ECharts via Importmap (Background)
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#11--setup">1.1 — Setup
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#12--the-chart_controllerjs-stimulus-controller">1.2 — The chart_controller.js Stimulus Controller
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#following-the-tutorial-in-the-provided-repo">Following the tutorial in the provided repo
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#why-svg-renderer">Why SVG renderer?
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#adding-to-your-own-rails-8-project">Adding to your own Rails 8 project
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#why--notmerge-true-">Why { notMerge: true }?
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#12--seed-the-database">1.2 — Seed the Database
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#the-resizeobserver">The ResizeObserver
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#13--what-was-installed">1.3 — What Was Installed
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#13--the-componentschart-phlex-base-class">1.3 — The Components::Chart Phlex Base Class
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#14--your-first-chart">1.4 — Your First Chart
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#14--proof-of-concept-a-hard-coded-chart">1.4 — Proof of Concept: A Hard-Coded Chart
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#controller">Controller
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#15--turbo-navigation-correctness">1.5 — Turbo Navigation Correctness
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#service">Service
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#16--what-we-have-not-done-yet">1.6 — What We Have Not Done Yet
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#component">Component
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#17--module-summary">1.7 — Module Summary
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#view">View
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#whats-next">What’s Next
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#15--the-data-flow">1.5 — The Data Flow
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#16--the-gallery">1.6 — The Gallery
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#17--troubleshooting">1.7 — Troubleshooting
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#18--module-summary">1.8 — Module Summary
         </a>
       </li></ul>
       <div class="hx:mt-8 hx:border-t hx:bg-white hx:pt-8 hx:shadow-[0_-12px_16px_white] hx:dark:bg-dark hx:dark:shadow-[0_-12px_16px_#111] hx:sticky hx:bottom-0 hx:flex hx:flex-col hx:items-start hx:gap-2 hx:pb-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-t hx:contrast-more:border-neutral-400 hx:contrast-more:shadow-none hx:contrast-more:dark:border-neutral-400">
@@ -340,28 +475,34 @@ ECharts 5.x pinned via importmap A chart_controller.js Stimulus controller that 
         
         <div class="content">
           
-          <h1>Module 01 — Foundation: ECharts, Stimulus, and the Phlex Bridge</h1><h2>What We&rsquo;re Building<span class="hx:absolute hx:-mt-20" id="what-were-building"></span>
-    <a href="#what-were-building" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>This module establishes the architectural foundation the rest of the series builds on. By the end you will have:</p>
+          <h1>Module 01 — Foundation: Getting Started</h1><h2>What We&rsquo;re Building<span class="hx:absolute hx:-mt-20" id="what-were-building"></span>
+    <a href="#what-were-building" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>This module gets the chart library installed and your first chart working. By
+the end you will have:</p>
 <ul>
-<li>ECharts 5.x pinned via importmap</li>
-<li>A <code>chart_controller.js</code> Stimulus controller that owns the full ECharts instance lifecycle</li>
-<li>A minimal <code>Components::Chart</code> Phlex base class that renders a correctly-structured container</li>
-<li>A working proof-of-concept: a hard-coded chart rendered in a Rails view</li>
+<li>The chart library installed and configured</li>
+<li>A working first chart rendered from real ABS data</li>
+<li>A gallery index to showcase charts as you build them</li>
 </ul>
-<p>No abstraction yet. This module deliberately exposes every seam before we cover it.</p>
+<p>The JavaScript infrastructure — <code>chart_controller.js</code>, the formatter and palette
+registries — is a black box you install once and never touch again. Appendix B
+explains how it works if you&rsquo;re curious. For now: install it, trust it, use it.</p>
 <hr>
-<h2>1.1 — Pinning ECharts via Importmap (Background)<span class="hx:absolute hx:-mt-20" id="11--pinning-echarts-via-importmap-background"></span>
-    <a href="#11--pinning-echarts-via-importmap-background" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>If you&rsquo;ve followed the <a href="../initial_setup">Initial Setup</a>, then you will already have a working <code>echarts</code> setup  The following provides some general setup instructions for <code>echarts</code> if you&rsquo;re working from scratch.</p>
-<p>ECharts ships a full build and several partial builds. The full build is ~1MB minified — fine for an internal tool, too large for a public-facing app. We will use the full build now and revisit tree-shaking in Module 11.</p>
-<p>ECharts 5.x is available on jsDelivr as an ESM bundle:</p>
+<h2>1.1 — Setup<span class="hx:absolute hx:-mt-20" id="11--setup"></span>
+    <a href="#11--setup" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Choose the path that matches your situation:</p>
+<h3>Following the tutorial in the provided repo<span class="hx:absolute hx:-mt-20" id="following-the-tutorial-in-the-provided-repo"></span>
+    <a href="#following-the-tutorial-in-the-provided-repo" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>Clone the tutorial repo — everything is pre-installed:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">bin/importmap pin echarts --from jsdelivr</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/your-org/phlex-echarts-tutorial
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> phlex-echarts-tutorial
+</span></span><span class="line"><span class="cl">bundle install</span></span></code></pre></td></tr></table>
 </div>
 </div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
@@ -375,7 +516,10 @@ ECharts 5.x pinned via importmap A chart_controller.js Stimulus controller that 
   </button>
 </div>
 </div>
-<p>This will resolve to something like:</p>
+<p>The library files are already in place. Skip to section 1.2.</p>
+<h3>Adding to your own Rails 8 project<span class="hx:absolute hx:-mt-20" id="adding-to-your-own-rails-8-project"></span>
+    <a href="#adding-to-your-own-rails-8-project" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>Download <code>echarts-generator.zip</code> from the link below, extract it into your
+project root, and run the generator:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
@@ -384,8 +528,8 @@ ECharts 5.x pinned via importmap A chart_controller.js Stimulus controller that 
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># config/importmap.rb</span>
-</span></span><span class="line"><span class="cl"><span class="n">pin</span> <span class="s2">&#34;echarts&#34;</span><span class="p">,</span> <span class="ss">to</span><span class="p">:</span> <span class="s2">&#34;https://cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.esm.min.js&#34;</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Extract the zip — this adds lib/generators/echarts/ to your project</span>
+</span></span><span class="line"><span class="cl">rails generate echarts:install</span></span></code></pre></td></tr></table>
 </div>
 </div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
@@ -399,19 +543,60 @@ ECharts 5.x pinned via importmap A chart_controller.js Stimulus controller that 
   </button>
 </div>
 </div>
+<p>The generator installs all JavaScript and Ruby library files, adds importmap
+pins, and registers the Stimulus controller. Then continue from section 1.2.</p>
 <blockquote>
-  <p><strong>Version note:</strong> Pin to a specific version, not <code>@latest</code>. ECharts has introduced breaking option changes between minor versions. Check the <a href="https://github.com/apache/echarts/blob/master/CHANGELOG.md"target="_blank" rel="noopener">ECharts changelog</a> before upgrading.</p>
+  <p><strong>Download:</strong> <a href="#">echarts-generator.zip</a> ← link to zip in Module 01 resources</p>
 
 </blockquote>
-<p>Verify the pin resolves correctly:</p>
+<hr>
+<h2>1.2 — Seed the Database<span class="hx:absolute hx:-mt-20" id="12--seed-the-database"></span>
+    <a href="#12--seed-the-database" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>The tutorial uses real ABS open data — seven datasets covering Australia&rsquo;s
+economy from 2000–2024. Fetch and seed:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">bin/importmap audit</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ruby db/seeds/fetch_abs_data.rb          <span class="c1"># fetches real ABS data (~2 mins)</span>
+</span></span><span class="line"><span class="cl">ruby db/seeds/generate_daily_activity.rb <span class="c1"># generates daily activity index</span>
+</span></span><span class="line"><span class="cl">rails db:migrate db:seed</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>Confirm the seed completed:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rails runner <span class="s2">&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">  puts GdpReading.count
+</span></span></span><span class="line"><span class="cl"><span class="s2">  puts LabourForceReading.count
+</span></span></span><span class="line"><span class="cl"><span class="s2">  puts DailyActivityReading.count
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Should output: 1900, 1248, 2557</span></span></span></code></pre></td></tr></table>
 </div>
 </div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
@@ -426,17 +611,156 @@ ECharts 5.x pinned via importmap A chart_controller.js Stimulus controller that 
 </div>
 </div>
 <hr>
-<h2>1.2 — The <code>chart_controller.js</code> Stimulus Controller<span class="hx:absolute hx:-mt-20" id="12--the-chart_controllerjs-stimulus-controller"></span>
-    <a href="#12--the-chart_controllerjs-stimulus-controller" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Create the controller at <code>app/javascript/controllers/chart_controller.js</code>.</p>
-<p>Before writing any code, let&rsquo;s be clear about what this controller is responsible for:</p>
-<ul>
-<li><strong>Initialising</strong> the ECharts instance when the element connects</li>
-<li><strong>Disposing</strong> the instance when the element disconnects (Turbo navigation away, element removal)</li>
-<li><strong>Resizing</strong> the instance when the container dimensions change</li>
-<li><strong>Responding to option changes</strong> when the <code>optionsValue</code> Stimulus value changes</li>
-<li><strong>Surviving Turbo navigation</strong> — specifically, not leaving orphaned ECharts instances</li>
-</ul>
+<h2>1.3 — What Was Installed<span class="hx:absolute hx:-mt-20" id="13--what-was-installed"></span>
+    <a href="#13--what-was-installed" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Open these directories to see what the library provides:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><pre><code>app/javascript/
+  controllers/
+    chart_controller.js          ← owns the ECharts instance lifecycle
+  charts/
+    chart_formatters.js          ← base formatter registry
+    chart_palettes.js            ← 9 colour palettes
+    custom_chart_formatters.js   ← your additions go here
+    custom_chart_palettes.js     ← your additions go here
+  channels/
+    consumer.js                  ← ActionCable consumer
+
+app/lib/chart/
+  options.rb                     ← builds ECharts option hashes
+  series/
+    base.rb / line.rb / bar.rb / scatter.rb / pie.rb
+
+app/views/components/
+  chart.rb                       ← base Phlex chart component</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>You will not need to modify any of these files during the tutorial. Appendix B
+covers the JavaScript infrastructure in detail. Appendix C covers the Ruby DSL
+and base component.</p>
+<hr>
+<h2>1.4 — Your First Chart<span class="hx:absolute hx:-mt-20" id="14--your-first-chart"></span>
+    <a href="#14--your-first-chart" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Building a chart is three steps: a service that shapes data, a component that
+builds chart options, and a view that renders it. The controller fetches the
+data and passes it to the service.</p>
+<h3>Controller<span class="hx:absolute hx:-mt-20" id="controller"></span>
+    <a href="#controller" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/controllers/charts_controller.rb</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ChartsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">gdp_by_industry</span>
+</span></span><span class="line"><span class="cl">    <span class="vi">@data</span> <span class="o">=</span> <span class="no">Stats</span><span class="o">::</span><span class="no">GdpByIndustry</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="no">GdpReading</span><span class="o">.</span><span class="n">ordered</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># config/routes.rb</span>
+</span></span><span class="line"><span class="cl"><span class="n">get</span> <span class="s2">&#34;charts/gdp_by_industry&#34;</span><span class="p">,</span> <span class="ss">to</span><span class="p">:</span> <span class="s2">&#34;charts#gdp_by_industry&#34;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<h3>Service<span class="hx:absolute hx:-mt-20" id="service"></span>
+    <a href="#service" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/services/stats/gdp_by_industry.rb</span>
+</span></span><span class="line"><span class="cl"><span class="k">module</span> <span class="nn">Stats</span>
+</span></span><span class="line"><span class="cl">  <span class="k">module</span> <span class="nn">GdpByIndustry</span>
+</span></span><span class="line"><span class="cl">    <span class="kp">extend</span> <span class="nb">self</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="n">readings</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="n">readings</span>
+</span></span><span class="line"><span class="cl">        <span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:industry</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="o">.</span><span class="n">transform_values</span> <span class="k">do</span> <span class="o">|</span><span class="n">rows</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl">          <span class="n">rows</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span> <span class="ss">year</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="ss">quarter</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">quarter</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">value_billions</span><span class="o">.</span><span class="n">to_f</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">end</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<h3>Component<span class="hx:absolute hx:-mt-20" id="component"></span>
+    <a href="#component" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -484,188 +808,49 @@ ECharts 5.x pinned via importmap A chart_controller.js Stimulus controller that 
 </span><span class="lnt">42
 </span><span class="lnt">43
 </span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// app/javascript/controllers/chart_controller.js
-</span></span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Controller</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&#34;@hotwired/stimulus&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">echarts</span> <span class="nx">from</span> <span class="s2">&#34;echarts&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="kr">class</span> <span class="kr">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="kr">static</span> <span class="nx">values</span> <span class="o">=</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">options</span><span class="o">:</span> <span class="p">{</span> <span class="nx">type</span><span class="o">:</span> <span class="nb">Object</span><span class="p">,</span> <span class="k">default</span><span class="o">:</span> <span class="p">{}</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">connect</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">initChart</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">disconnect</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">disposeChart</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">optionsValueChanged</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">chart</span><span class="p">)</span> <span class="k">return</span>
-</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">chart</span><span class="p">.</span><span class="nx">setOption</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="p">{</span> <span class="nx">notMerge</span><span class="o">:</span> <span class="kc">true</span> <span class="p">})</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="c1">// — Private ————————————————————————————————————————
-</span></span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="err">#</span><span class="nx">initChart</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">chart</span> <span class="o">=</span> <span class="nx">echarts</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">renderer</span><span class="o">:</span> <span class="s2">&#34;svg&#34;</span>   <span class="c1">// SVG renderer: accessible, printable, no pixel ratio issues
-</span></span></span><span class="line"><span class="cl">    <span class="p">})</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">chart</span><span class="p">.</span><span class="nx">setOption</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">optionsValue</span><span class="p">,</span> <span class="p">{</span> <span class="nx">notMerge</span><span class="o">:</span> <span class="kc">true</span> <span class="p">})</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">startResizeObserver</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="err">#</span><span class="nx">disposeChart</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">stopResizeObserver</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">chart</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">chart</span><span class="p">.</span><span class="nx">dispose</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">chart</span> <span class="o">=</span> <span class="kc">null</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="err">#</span><span class="nx">startResizeObserver</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">resizeObserver</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ResizeObserver</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">chart</span><span class="o">?</span><span class="p">.</span><span class="nx">resize</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="p">})</span>
-</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">resizeObserver</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">element</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="err">#</span><span class="nx">stopResizeObserver</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">resizeObserver</span><span class="o">?</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">resizeObserver</span> <span class="o">=</span> <span class="kc">null</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<p>Register the controller in <code>app/javascript/controllers/index.js</code> — if you are using the <code>eagerLoadControllersFrom</code> pattern from the main series, this happens automatically.</p>
-<h3>Why SVG renderer?<span class="hx:absolute hx:-mt-20" id="why-svg-renderer"></span>
-    <a href="#why-svg-renderer" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>ECharts supports both Canvas and SVG rendering. Canvas is the default and performs better with very large datasets (tens of thousands of points). SVG is preferable for most use cases because:</p>
-<ul>
-<li>It is accessible — screen readers can traverse SVG elements</li>
-<li>It prints correctly without pixel ratio issues</li>
-<li>It exports cleanly via CSS print stylesheets</li>
-<li>It scales correctly on high-DPI displays without configuration</li>
-</ul>
-<p>We will revisit Canvas rendering in Module 11 when we cover large dataset performance.</p>
-<h3>Why <code>{ notMerge: true }</code>?<span class="hx:absolute hx:-mt-20" id="why--notmerge-true-"></span>
-    <a href="#why--notmerge-true-" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>ECharts&rsquo; <code>setOption</code> merges by default — new options are merged into the existing option state. This is useful for incremental updates (Module 09) but dangerous for full replacements: old series, axes, and visual maps can bleed through into the new configuration. Passing <code>notMerge: true</code> ensures a full replacement. We will override this deliberately in Module 09 for real-time updates.</p>
-<h3>The ResizeObserver<span class="hx:absolute hx:-mt-20" id="the-resizeobserver"></span>
-    <a href="#the-resizeobserver" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>Do not use a <code>window</code> resize event listener. It fires for <em>any</em> window resize, not just resizes that affect your chart container. A <code>ResizeObserver</code> on the element itself fires only when the observed element&rsquo;s dimensions change — which is exactly what you need when charts are in sidebars, tabs, or collapsible panels.</p>
-<p>The observer is started in <code>#initChart</code> and stopped in <code>#disposeChart</code>. There is no memory leak.</p>
-<hr>
-<h2>1.3 — The <code>Components::Chart</code> Phlex Base Class<span class="hx:absolute hx:-mt-20" id="13--the-componentschart-phlex-base-class"></span>
-    <a href="#13--the-componentschart-phlex-base-class" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>The Phlex component has one job: render a container element with the correct data attributes. It does not know what chart type it is rendering. It does not transform data. It renders a <code>div</code>.</p>
-<p>Make sure your <code>Components::Base</code> class has the <code>extend Literal::Properties</code> so that we can use the <code>prop</code> calls in our components.</p>
-<p>A minimum <code>Components::Base</code> would be:</p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Components</span><span class="o">::</span><span class="no">Base</span> <span class="o">&lt;</span> <span class="no">Phlex</span><span class="o">::</span><span class="no">HTML</span>
-</span></span><span class="line"><span class="cl">  <span class="kp">extend</span> <span class="no">Literal</span><span class="o">::</span><span class="no">Properties</span>
-</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<p>Now we can build our first Chart component.</p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/views/components/chart.rb</span>
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/views/components/charts/gdp_by_industry.rb</span>
 </span></span><span class="line"><span class="cl"><span class="k">module</span> <span class="nn">Components</span>
-</span></span><span class="line"><span class="cl">  <span class="k">class</span> <span class="nc">Chart</span> <span class="o">&lt;</span> <span class="no">Components</span><span class="o">::</span><span class="no">Base</span>
-</span></span><span class="line"><span class="cl">    <span class="n">prop</span> <span class="ss">:options</span><span class="p">,</span> <span class="no">Hash</span><span class="p">,</span>   <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="p">{}</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="n">prop</span> <span class="ss">:height</span><span class="p">,</span>  <span class="nb">String</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="s2">&#34;400px&#34;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="n">prop</span> <span class="ss">:html</span><span class="p">,</span>    <span class="no">Hash</span><span class="p">,</span>   <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="p">{}</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">module</span> <span class="nn">Charts</span>
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">GdpByIndustry</span> <span class="o">&lt;</span> <span class="no">Components</span><span class="o">::</span><span class="no">Chart</span>
+</span></span><span class="line"><span class="cl">      <span class="n">prop</span> <span class="ss">:data</span><span class="p">,</span> <span class="n">_Any</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="p">{}</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">view_template</span>
-</span></span><span class="line"><span class="cl">      <span class="n">div</span><span class="p">(</span><span class="ss">class</span><span class="p">:</span> <span class="s2">&#34;p-4 rounded-lg bg-red-50/50 border border-neutral-200&#34;</span><span class="p">,</span> <span class="o">**</span><span class="vi">@html</span><span class="p">)</span> <span class="k">do</span>
-</span></span><span class="line"><span class="cl">        <span class="n">div</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">data</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="ss">controller</span><span class="p">:</span> <span class="s2">&#34;chart&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">            <span class="ss">chart_options_value</span><span class="p">:</span> <span class="n">chart_options</span><span class="o">.</span><span class="n">to_json</span>
+</span></span><span class="line"><span class="cl">      <span class="kp">private</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">chart_options</span>
+</span></span><span class="line"><span class="cl">        <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Options</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">color</span><span class="p">:</span>   <span class="s2">&#34;cool&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">tooltip</span><span class="p">:</span> <span class="p">{</span> <span class="ss">trigger</span><span class="p">:</span> <span class="s2">&#34;axis&#34;</span><span class="p">,</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;billions&#34;</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">legend</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;scroll&#34;</span><span class="p">,</span> <span class="ss">bottom</span><span class="p">:</span> <span class="mi">5</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">x_axis</span><span class="p">:</span>  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">type</span><span class="p">:</span>      <span class="s2">&#34;category&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">data</span><span class="p">:</span>      <span class="n">quarters</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">axisLabel</span><span class="p">:</span> <span class="p">{</span> <span class="ss">interval</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="ss">rotate</span><span class="p">:</span> <span class="mi">30</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">          <span class="p">},</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">style</span><span class="p">:</span> <span class="s2">&#34;height: </span><span class="si">#{</span><span class="vi">@height</span><span class="si">}</span><span class="s2">; width: 100%;&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">y_axis</span><span class="p">:</span>  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">type</span><span class="p">:</span>      <span class="s2">&#34;value&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">axisLabel</span><span class="p">:</span> <span class="p">{</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;billions&#34;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">          <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">grid</span><span class="p">:</span>    <span class="p">{</span> <span class="ss">left</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="ss">right</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="ss">bottom</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span> <span class="ss">containLabel</span><span class="p">:</span> <span class="kp">true</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">series</span><span class="p">:</span>  <span class="n">build_series</span>
 </span></span><span class="line"><span class="cl">        <span class="p">)</span>
 </span></span><span class="line"><span class="cl">      <span class="k">end</span>
-</span></span><span class="line"><span class="cl">    <span class="k">end</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kp">private</span>
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">build_series</span>
+</span></span><span class="line"><span class="cl">        <span class="vi">@data</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">industry</span><span class="p">,</span> <span class="n">rows</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl">          <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Line</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">name</span><span class="p">:</span>   <span class="n">industry</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">data</span><span class="p">:</span>   <span class="n">rows</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">[</span><span class="ss">:value</span><span class="o">]</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">smooth</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">symbol</span><span class="p">:</span> <span class="s2">&#34;none&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">end</span>
+</span></span><span class="line"><span class="cl">      <span class="k">end</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">chart_options</span>
-</span></span><span class="line"><span class="cl">      <span class="p">{</span> <span class="ss">animation</span><span class="p">:</span> <span class="kp">false</span> <span class="p">}</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="vi">@options</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">quarters</span>
+</span></span><span class="line"><span class="cl">        <span class="vi">@data</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">first</span><span class="o">&amp;.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="s2">&#34;</span><span class="si">#{</span><span class="n">r</span><span class="o">[</span><span class="ss">:year</span><span class="o">]</span><span class="si">}</span><span class="s2"> Q</span><span class="si">#{</span><span class="n">r</span><span class="o">[</span><span class="ss">:quarter</span><span class="o">]</span><span class="si">}</span><span class="s2">&#34;</span> <span class="p">}</span> <span class="o">||</span> <span class="o">[]</span>
+</span></span><span class="line"><span class="cl">      <span class="k">end</span>
 </span></span><span class="line"><span class="cl">    <span class="k">end</span>
 </span></span><span class="line"><span class="cl">  <span class="k">end</span>
 </span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
@@ -682,26 +867,18 @@ ECharts 5.x pinned via importmap A chart_controller.js Stimulus controller that 
   </button>
 </div>
 </div>
-<p>A few things worth noting:</p>
-<p><strong><code>options.to_json</code></strong> — The Stimulus value system expects a JSON string for <code>Object</code>-typed values. We serialise here in Ruby; <code>chart_controller.js</code> receives a parsed object automatically via the Stimulus value API.</p>
-<p><strong><code>height</code> as an inline style</strong> — ECharts requires the container element to have explicit dimensions at initialisation time. It reads <code>offsetWidth</code> and <code>offsetHeight</code> from the DOM. If those are zero, ECharts initialises with a zero-size canvas and subsequent <code>resize()</code> calls may not recover correctly. An inline style guarantees dimensions are present regardless of CSS load order.</p>
-<p><strong><code>html</code> prop</strong> — A pass-through for arbitrary HTML attributes (class, id, aria-label, etc.), following the same pattern as other components in the main series.</p>
-<hr>
-<h2>1.4 — Proof of Concept: A Hard-Coded Chart<span class="hx:absolute hx:-mt-20" id="14--proof-of-concept-a-hard-coded-chart"></span>
-    <a href="#14--proof-of-concept-a-hard-coded-chart" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Let&rsquo;s verify the entire stack works before adding any abstraction.</p>
-<p>Add a route and controller action:</p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+<h3>View<span class="hx:absolute hx:-mt-20" id="view"></span>
+    <a href="#view" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># config/routes.rb</span>
-</span></span><span class="line"><span class="cl"><span class="n">get</span> <span class="s2">&#34;charts/demo&#34;</span><span class="p">,</span> <span class="ss">to</span><span class="p">:</span> <span class="s2">&#34;charts#demo&#34;</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><pre><code>&lt;%# app/views/charts/gdp_by_industry.html.erb %&gt;
+&lt;h1 class=&#34;text-2xl font-bold mb-4&#34;&gt;GDP by Industry&lt;/h1&gt;
+&lt;p class=&#34;text-neutral-500 text-sm mb-6&#34;&gt;
+  Chain volume measures, seasonally adjusted. Source: ABS, CC BY 4.0.
+&lt;/p&gt;
+&lt;%= render Components::Charts::GdpByIndustry.new(
+  data:   @data,
+  height: &#34;480px&#34;
+) %&gt;</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -713,51 +890,55 @@ ECharts 5.x pinned via importmap A chart_controller.js Stimulus controller that 
   </button>
 </div>
 </div>
+<p>Visit <code>/charts/gdp_by_industry</code>. You should see a multi-series line chart with
+19 industry lines, a scrollable legend, and formatted tooltips.</p>
+<hr>
+<h2>1.5 — The Data Flow<span class="hx:absolute hx:-mt-20" id="15--the-data-flow"></span>
+    <a href="#15--the-data-flow" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><pre><code>GdpReading.ordered              ← ActiveRecord query in the controller
+  ↓
+Stats::GdpByIndustry.call(...)  ← service transforms to plain Ruby hash
+  ↓
+Components::Charts::GdpByIndustry.new(data: @data)
+  ↓                               ← component builds Chart::Options
+Chart::Options#to_json            ← serialised to JSON
+  ↓
+data-chart-options-value=&#34;...&#34;    ← data attribute on the mount div
+  ↓
+chart_controller.js               ← resolves palette &#43; formatters, calls setOption
+  ↓
+ECharts renders the chart</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>Each layer has one job. The controller fetches. The service transforms. The
+component configures. The controller renders. Nothing crosses boundaries.</p>
+<p>This pattern is consistent across every module in the series — the chart types
+and data shapes change, the architecture does not.</p>
+<hr>
+<h2>1.6 — The Gallery<span class="hx:absolute hx:-mt-20" id="16--the-gallery"></span>
+    <a href="#16--the-gallery" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Add a gallery index to showcase charts as you build them. Each module adds
+cards as new charts are completed.</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/controllers/charts_controller.rb</span>
-</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ChartsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
-</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">demo</span>
-</span></span><span class="line"><span class="cl">    <span class="vi">@chart_options</span> <span class="o">=</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="ss">title</span><span class="p">:</span> <span class="p">{</span> <span class="ss">text</span><span class="p">:</span> <span class="s2">&#34;Australia GDP Growth Rate&#34;</span><span class="p">,</span> <span class="ss">subtext</span><span class="p">:</span> <span class="s2">&#34;Source: ABS National Accounts&#34;</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">      <span class="ss">tooltip</span><span class="p">:</span> <span class="p">{</span> <span class="ss">trigger</span><span class="p">:</span> <span class="s2">&#34;axis&#34;</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">      <span class="ss">xAxis</span><span class="p">:</span> <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;category&#34;</span><span class="p">,</span> <span class="ss">data</span><span class="p">:</span> <span class="o">[</span><span class="s2">&#34;2019&#34;</span><span class="p">,</span> <span class="s2">&#34;2020&#34;</span><span class="p">,</span> <span class="s2">&#34;2021&#34;</span><span class="p">,</span> <span class="s2">&#34;2022&#34;</span><span class="p">,</span> <span class="s2">&#34;2023&#34;</span><span class="p">,</span> <span class="s2">&#34;2024&#34;</span><span class="o">]</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">      <span class="ss">yAxis</span><span class="p">:</span> <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span> <span class="ss">axisLabel</span><span class="p">:</span> <span class="p">{</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;{value}%&#34;</span> <span class="p">}</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">      <span class="ss">series</span><span class="p">:</span> <span class="o">[</span>
-</span></span><span class="line"><span class="cl">        <span class="p">{</span>
-</span></span><span class="line"><span class="cl">          <span class="nb">name</span><span class="p">:</span> <span class="s2">&#34;GDP Growth&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;line&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">data</span><span class="p">:</span> <span class="o">[</span><span class="mi">1</span><span class="o">.</span><span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span><span class="o">]</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">smooth</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">markLine</span><span class="p">:</span> <span class="p">{</span> <span class="ss">data</span><span class="p">:</span> <span class="o">[</span><span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;average&#34;</span><span class="p">,</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&#34;Average&#34;</span> <span class="p">}</span><span class="o">]</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">      <span class="o">]</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">index</span>
 </span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
 </div>
 </div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
@@ -772,7 +953,6 @@ ECharts 5.x pinned via importmap A chart_controller.js Stimulus controller that 
   </button>
 </div>
 </div>
-<p>In the view, construct a raw ECharts option hash and pass it directly to the component:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
@@ -780,19 +960,11 @@ ECharts 5.x pinned via importmap A chart_controller.js Stimulus controller that 
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="err">&lt;</span>%# app/views/charts/demo.html.erb %&gt;
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;text-2xl font-bold mb-6&#34;</span><span class="p">&gt;</span>ECharts Demo<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="err">&lt;</span>%= render Components::Chart.new(
-</span></span><span class="line"><span class="cl">  options: @chart_options,
-</span></span><span class="line"><span class="cl">  height: &#34;400px&#34;
-</span></span><span class="line"><span class="cl">) %&gt;</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># config/routes.rb</span>
+</span></span><span class="line"><span class="cl"><span class="n">root</span> <span class="s2">&#34;charts#index&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">get</span> <span class="s2">&#34;charts/gdp_by_industry&#34;</span><span class="p">,</span> <span class="ss">to</span><span class="p">:</span> <span class="s2">&#34;charts#gdp_by_industry&#34;</span></span></span></code></pre></td></tr></table>
 </div>
 </div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
@@ -806,68 +978,149 @@ ECharts 5.x pinned via importmap A chart_controller.js Stimulus controller that 
   </button>
 </div>
 </div>
-<p>Start the server and visit <code>/charts/demo</code>. You should see a rendered line chart.</p>
-<blockquote>
-  <p><strong>If the chart container is visible but empty:</strong> Open the browser console. The most common causes are (1) ECharts failed to import — check the importmap pin, (2) the container has zero height — check that the inline style is present in the rendered HTML, or (3) a JavaScript error in <code>chart_controller.js</code> — check for a missing <code>controllers/index.js</code> registration.</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-</blockquote>
+<div><pre><code>&lt;%# app/views/charts/index.html.erb %&gt;
+&lt;div class=&#34;max-w-5xl mx-auto px-4 py-8&#34;&gt;
+  &lt;h1 class=&#34;text-3xl font-bold mb-2&#34;&gt;Chart Gallery&lt;/h1&gt;
+  &lt;p class=&#34;text-neutral-500 text-sm mb-8&#34;&gt;
+    Built with Phlex, ECharts, and real ABS data.
+  &lt;/p&gt;
+  &lt;div class=&#34;grid grid-cols-2 gap-4&#34;&gt;
+    &lt;%= render &#34;charts/gallery_card&#34;,
+      title:       &#34;GDP by Industry&#34;,
+      description: &#34;Chain volume measures by industry, 2000–2024.&#34;,
+      path:        charts_gdp_by_industry_path %&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><pre><code>&lt;%# app/views/charts/_gallery_card.html.erb %&gt;
+&lt;div class=&#34;border border-neutral-200 rounded-lg p-4
+            hover:border-neutral-400 transition-colors&#34;&gt;
+  &lt;%= link_to path, class: &#34;block&#34; do %&gt;
+    &lt;h2 class=&#34;font-semibold mb-1&#34;&gt;&lt;%= title %&gt;&lt;/h2&gt;
+    &lt;p class=&#34;text-sm text-neutral-500&#34;&gt;&lt;%= description %&gt;&lt;/p&gt;
+  &lt;% end %&gt;
+&lt;/div&gt;</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
 <hr>
-<h2>1.5 — Turbo Navigation Correctness<span class="hx:absolute hx:-mt-20" id="15--turbo-navigation-correctness"></span>
-    <a href="#15--turbo-navigation-correctness" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>The <code>connect</code>/<code>disconnect</code> lifecycle in Stimulus handles Turbo navigation automatically — when Turbo replaces the page body, Stimulus disconnects controllers on the outgoing page (triggering <code>disconnect()</code> → <code>#disposeChart()</code>) and connects controllers on the incoming page (triggering <code>connect()</code> → <code>#initChart()</code>).</p>
-<p>However, there is one case to be aware of: <strong><code>data-turbo-permanent</code></strong>. If you mark the chart container as permanent, Stimulus will <em>not</em> call <code>disconnect</code> and <code>connect</code> on navigation. The ECharts instance will persist across pages, which is usually not what you want for a chart (the container dimensions or options may be stale).</p>
-<p>As established in the main series, <code>data-turbo-permanent</code> belongs on the <code>&lt;html&gt;</code> element for theme persistence. Do not apply it to chart containers.</p>
-<p>Verify correct disposal by navigating away from <code>/charts/demo</code> and back. Each navigation should produce a fresh ECharts instance. You can confirm this in the browser console by temporarily adding a <code>console.log</code> to <code>#initChart</code> and <code>#disposeChart</code>.</p>
-<hr>
-<h2>1.6 — What We Have Not Done Yet<span class="hx:absolute hx:-mt-20" id="16--what-we-have-not-done-yet"></span>
-    <a href="#16--what-we-have-not-done-yet" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>This module has deliberately omitted:</p>
+<h2>1.7 — Troubleshooting<span class="hx:absolute hx:-mt-20" id="17--troubleshooting"></span>
+    <a href="#17--troubleshooting" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><strong>Chart container visible but empty:</strong></p>
 <ul>
-<li><strong>Data transformation</strong> — the option hash is built inline in the view. Module 03 introduces <code>Chart::Dataset</code> presenter objects.</li>
-<li><strong>The Ruby DSL</strong> — we are using raw Ruby hashes. Module 02 introduces typed builder objects.</li>
-<li><strong>Multiple chart types</strong> — the <code>Components::Chart</code> base class is chart-type-agnostic. Subclasses arrive in Modules 03–08.</li>
-<li><strong>Real data</strong> — the demo uses hard-coded values. The ABS seed data is introduced in Module 03.</li>
-<li><strong>Lookbook previews</strong> — deferred to Module 03 once the component hierarchy has enough shape to preview meaningfully.</li>
+<li>Check the browser console for JavaScript errors</li>
+<li>Verify ECharts imported — <code>bin/importmap audit</code></li>
+<li>Check the mount div has an explicit height in the rendered HTML</li>
 </ul>
-<p>The architecture is intentionally thin. The goal of this module is to establish one thing with confidence: <strong>the contract between Ruby and JavaScript is a JSON object delivered via a Stimulus value, and the JavaScript side owns the ECharts instance completely.</strong></p>
+<p><strong><code>undefined method 'chart_options'</code>:</strong></p>
+<ul>
+<li>The component must implement <code>chart_options</code> as a private method</li>
+<li>Check the class inherits from <code>Components::Chart</code></li>
+</ul>
+<p><strong>Palette or formatter not resolving:</strong></p>
+<ul>
+<li>Names are case-sensitive — <code>&quot;cool&quot;</code> not <code>&quot;Cool&quot;</code></li>
+<li>Check the relevant file is pinned in <code>config/importmap.rb</code></li>
+<li>Restart the Rails server after changing importmap</li>
+</ul>
 <hr>
-<h2>1.7 — Module Summary<span class="hx:absolute hx:-mt-20" id="17--module-summary"></span>
-    <a href="#17--module-summary" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><table>
+<h2>1.8 — Module Summary<span class="hx:absolute hx:-mt-20" id="18--module-summary"></span>
+    <a href="#18--module-summary" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><strong>The chart library provides:</strong></p>
+<table>
   <thead>
       <tr>
-          <th>Concern</th>
-          <th>Where it lives</th>
+          <th>File</th>
+          <th>Purpose</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td>ECharts instance</td>
-          <td><code>chart_controller.js</code> — created in <code>connect</code>, disposed in <code>disconnect</code></td>
+          <td><code>chart_controller.js</code></td>
+          <td>ECharts lifecycle — install once, never touch</td>
       </tr>
       <tr>
-          <td>Container dimensions</td>
-          <td>Inline style on the component&rsquo;s root <code>div</code></td>
+          <td><code>chart_formatters.js</code></td>
+          <td>Named formatters for axis labels and tooltips</td>
       </tr>
       <tr>
-          <td>Resize handling</td>
-          <td><code>ResizeObserver</code> in <code>chart_controller.js</code></td>
+          <td><code>chart_palettes.js</code></td>
+          <td>9 named colour palettes</td>
       </tr>
       <tr>
-          <td>Option delivery</td>
-          <td><code>data-chart-options-value</code> JSON attribute</td>
+          <td><code>custom_chart_formatters.js</code></td>
+          <td>Your application-specific formatters</td>
       </tr>
       <tr>
-          <td>Turbo compatibility</td>
-          <td>Stimulus <code>connect</code>/<code>disconnect</code> lifecycle — no extra work required</td>
+          <td><code>custom_chart_palettes.js</code></td>
+          <td>Your application-specific palettes</td>
       </tr>
       <tr>
-          <td>Chart configuration</td>
-          <td>Ruby hash in the view (for now)</td>
+          <td><code>app/lib/chart/options.rb</code></td>
+          <td>DSL for building ECharts option hashes</td>
+      </tr>
+      <tr>
+          <td><code>app/lib/chart/series/*.rb</code></td>
+          <td>Typed series builders</td>
+      </tr>
+      <tr>
+          <td><code>app/views/components/chart.rb</code></td>
+          <td>Base Phlex chart component</td>
       </tr>
   </tbody>
 </table>
+<p><strong>First chart pattern:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Layer</th>
+          <th>Responsibility</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Controller</td>
+          <td>Fetch raw data, call service, pass result to view</td>
+      </tr>
+      <tr>
+          <td>Service</td>
+          <td>Transform raw data into a clean Ruby hash</td>
+      </tr>
+      <tr>
+          <td>Component</td>
+          <td>Build <code>Chart::Options</code> from the hash</td>
+      </tr>
+      <tr>
+          <td>View</td>
+          <td>Render the component</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>For your own projects:</strong>
+Download <code>echarts-generator.zip</code> and run <code>rails generate echarts:install</code> in
+any Rails 8 application.</p>
 <hr>
-<h2>What&rsquo;s Next<span class="hx:absolute hx:-mt-20" id="whats-next"></span>
-    <a href="#whats-next" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Module 02 confronts the question this module deliberately avoided: what should the Ruby side of the option hash look like? Raw hashes work, but they offer no type safety, no reuse, and no testability. Module 02 designs the DSL — and makes a deliberate decision about how much of ECharts to wrap.</p>
-<p><em>Next: Module 02 — The Ruby DSL: Building ECharts Options in Ruby</em></p>
+<p><em>Next: Module 02 — Formatters and Colour Palettes</em></p>
 
         </div>
         <div class="hx:mt-16"></div><div class="hx:mb-8 hx:flex hx:items-center hx:border-t hx:pt-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-neutral-400 hx:dark:contrast-more:border-neutral-400 hx:print:hidden"><a
@@ -875,10 +1128,10 @@ ECharts 5.x pinned via importmap A chart_controller.js Stimulus controller that 
         title="Initial Setup"
         class="hx:flex hx:max-w-[50%] hx:items-center hx:gap-1 hx:py-4 hx:text-base hx:font-medium hx:text-gray-600 hx:transition-colors [word-break:break-word] hx:hover:text-primary-600 hx:dark:text-gray-300 hx:md:text-lg hx:ltr:pr-4 hx:rtl:pl-4"
       ><svg class="hx:inline hx:h-5 hx:shrink-0 hx:ltr:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>Initial Setup</a><a
-        href="/echarts/module-02-dsl/"
-        title="Lesson 02 - DSL"
+        href="/echarts/module-02-formatters/"
+        title="Lesson 02 - Formatters and palettes"
         class="hx:flex hx:max-w-[50%] hx:items-center hx:gap-1 hx:py-4 hx:text-base hx:font-medium hx:text-gray-600 hx:transition-colors [word-break:break-word] hx:hover:text-primary-600 hx:dark:text-gray-300 hx:md:text-lg hx:ltr:ml-auto hx:ltr:pl-4 hx:ltr:text-right hx:rtl:mr-auto hx:rtl:pr-4 hx:rtl:text-left"
-      >Lesson 02 - DSL<svg class="hx:inline hx:h-5 hx:shrink-0 hx:rtl:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a></div><script>
+      >Lesson 02 - Formatters and palettes<svg class="hx:inline hx:h-5 hx:shrink-0 hx:rtl:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a></div><script>
   function getGiscusTheme() {
     const giscusTheme = '';
     if (giscusTheme === 'light' || giscusTheme === 'dark') {

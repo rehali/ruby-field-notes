@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="robots" content="index, follow" />
+  <link rel="icon shortcut" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" id="favicon-svg" />
+<link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
+<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+<link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
+<title>Ruby Field Notes</title>
+  <meta name="description" content="Module 06 — Calendar Heatmap: Daily Economic ActivityWhat We’re Building The calendar heatmap maps values onto a calendar grid — each cell is one day, colour encodes the value. Seasonal patterns, weekly rhythms, and one-off events are immediately readable.
+This module also establishes the correct data flow pattern that applies from here forward: the controller calls the service and passes data to the component.
+By the end of this module you will have:" /><link rel="canonical" href="https://www.rehali.com/echarts/module-06-heatmap/" itemprop="url" />
+
+<meta property="og:title" content="">
+<meta
+  property="og:description"
+  content="
+    
+      Module 06 — Calendar Heatmap: Daily Economic ActivityWhat We&rsquo;re Building
+    The calendar heatmap maps values onto a calendar grid — each cell is one day,
+colour encodes the value. Seasonal patterns, weekly rhythms, and one-off events
+are immediately readable.
+This module also establishes the correct data flow pattern that applies from here
+forward: the controller calls the service and passes data to the component.
+By the end of this module you will have:
+    
+  ">
+<meta
+  property="og:type"
+  content="
+    article
+  ">
+<meta property="og:url" content="https://www.rehali.com/echarts/module-06-heatmap/"><meta property="article:section" content="echarts">
+
+
+
+
+  <meta itemprop="name" content="Ruby Field Notes">
+  <meta itemprop="description" content="Module 06 — Calendar Heatmap: Daily Economic ActivityWhat We’re Building The calendar heatmap maps values onto a calendar grid — each cell is one day, colour encodes the value. Seasonal patterns, weekly rhythms, and one-off events are immediately readable.
+This module also establishes the correct data flow pattern that applies from here forward: the controller calls the service and passes data to the component.
+By the end of this module you will have:">
+  <meta itemprop="wordCount" content="1163">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Ruby Field Notes">
+  <meta name="twitter:description" content="Module 06 — Calendar Heatmap: Daily Economic ActivityWhat We’re Building The calendar heatmap maps values onto a calendar grid — each cell is one day, colour encodes the value. Seasonal patterns, weekly rhythms, and one-off events are immediately readable.
+This module also establishes the correct data flow pattern that applies from here forward: the controller calls the service and passes data to the component.
+By the end of this module you will have:">
+
+    <link rel="preload" href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" as="style" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
+    <link href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" rel="stylesheet" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
+
+  
+
+
+
+
+
+
+<script src="/js/main-head.min.94da6f95b126542222dab3a6e07ffefe1aaf63ec3ca555e827b58b80e7d3f0b7.js" integrity="sha256-lNpvlbEmVCIi2rOm4H/&#43;/hqvY&#43;w8pVXoJ7WLgOfT8Lc="></script>
+
+  
+  
+  </head>
+<body>
+    <a href="#content" class="hx:sr-only hx:focus-visible:not-sr-only hx:focus-visible:fixed hx:focus-visible:z-50 hx:focus-visible:top-2 hx:focus-visible:left-2 hx:focus-visible:bg-primary-500 hx:focus-visible:text-white hx:focus-visible:px-4 hx:focus-visible:py-2 hx:focus-visible:rounded-md hx:focus-visible:text-sm hx:focus-visible:font-medium">Skip to content</a><div class="hextra-nav-container hx:sticky hx:top-0 hx:z-20 hx:w-full hx:bg-transparent hx:print:hidden">
+  <div
+    class="hextra-nav-container-blur hx:pointer-events-none hx:absolute hx:z-[-1] hx:h-full hx:w-full hx:bg-white hx:dark:bg-dark hx:shadow-[0_2px_4px_rgba(0,0,0,.02),0_1px_0_rgba(0,0,0,.06)] hx:contrast-more:shadow-[0_0_0_1px_#000] hx:dark:shadow-[0_-1px_0_rgba(255,255,255,.1)_inset] hx:contrast-more:dark:shadow-[0_0_0_1px_#fff]"
+  ></div>
+
+  <nav class="hextra-max-navbar-width hx:mx-auto hx:flex hx:items-center hx:justify-end hx:gap-2 hx:h-16 hx:px-6">
+    <a class="hx:flex hx:items-center hx:hover:opacity-75 hx:ltr:mr-auto hx:rtl:ml-auto" href="/">
+    <span class="hx:mr-2 hx:font-extrabold hx:inline hx:select-none">Ruby Field Notes</span>
+</a>
+<button type="button" aria-label="Menu" aria-expanded="false" class="hextra-hamburger-menu hx:cursor-pointer hx:-mr-2 hx:rounded-sm hx:p-2 hx:active:bg-gray-400/20 hx:md:hidden hx:hextra-focus-visible-inset"><svg height=24 fill="none" viewBox="0 0 24 24" stroke="currentColor"><g><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8H20"></path></g><g><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16H20"></path></g></svg></button>
+  </nav>
+</div>
+
+  <div class='hx:mx-auto hx:flex hextra-max-page-width'>
+    <aside class="hextra-sidebar-container hx:flex hx:flex-col hx:print:hidden hx:md:top-16 hx:md:shrink-0 hx:md:w-64 hx:md:self-start hx:max-md:[transform:translate3d(0,-100%,0)] hx:md:sticky">
+    <div class="hx:px-4 hx:pt-4 hx:md:hidden">
+      <div class="hextra-search-wrapper hx:relative hx:md:w-64">
+  <div class="hx:relative hx:flex hx:items-center hx:text-gray-900 hx:contrast-more:text-gray-800 hx:dark:text-gray-300 hx:contrast-more:dark:text-gray-300">
+    <input
+      placeholder="Search..."
+      aria-label="Search..."
+      class="hextra-search-input hx:hextra-focus-visible hx:block hx:w-full hx:appearance-none hx:rounded-lg hx:px-3 hx:py-2 hx:transition-colors hx:text-base hx:leading-tight hx:md:text-sm hx:bg-black/[.05] hx:dark:bg-gray-50/10 hx:focus-visible:bg-white hx:dark:focus-visible:bg-dark hx:placeholder:text-gray-500 hx:dark:placeholder:text-gray-400 hx:contrast-more:border hx:contrast-more:border-current"
+      type="search"
+      autocomplete="off"
+      value=""
+      spellcheck="false"
+    />
+    <kbd
+      class="hx:absolute hx:my-1.5 hx:select-none hx:ltr:right-1.5 hx:rtl:left-1.5 hx:h-5 hx:rounded-sm hx:bg-white hx:px-1.5 hx:font-mono hx:text-[10px] hx:font-medium hx:text-gray-500 hx:border hx:border-gray-200 hx:dark:border-gray-100/20 hx:dark:bg-dark/50 hx:contrast-more:border-current hx:contrast-more:text-current hx:contrast-more:dark:border-current hx:items-center hx:gap-1 hx:transition-opacity hx:pointer-events-none hx:hidden hx:sm:flex"
+    >
+      CTRL K
+    </kbd>
+  </div>
+
+  <div>
+    <ul
+      class="hextra-search-results hextra-scrollbar hx:hidden hx:border hx:border-gray-200 hx:bg-white hx:text-gray-100 hx:dark:border-neutral-800 hx:dark:bg-neutral-900 hx:absolute hx:top-full hx:z-20 hx:mt-2 hx:overflow-auto hx:overscroll-contain hx:rounded-xl hx:py-2.5 hx:shadow-xl hx:max-h-[min(calc(50vh-11rem-env(safe-area-inset-bottom)),400px)] hx:md:max-h-[min(calc(100vh-5rem-env(safe-area-inset-bottom)),400px)] hx:inset-x-0 hx:ltr:md:left-auto hx:rtl:md:right-auto hx:contrast-more:border hx:contrast-more:border-gray-900 hx:contrast-more:dark:border-gray-50 hx:w-screen hx:min-h-[100px] hx:max-w-[min(calc(100vw-2rem),calc(100%+20rem))]"
+      aria-label="Search results"
+      style="transition: max-height 0.2s ease 0s;"
+    ></ul>
+    <div class="hextra-search-status hx:sr-only" aria-live="polite" role="status"></div>
+  </div>
+</div>
+
+    </div><div class="hextra-scrollbar hx:overflow-y-auto hx:overflow-x-hidden hx:p-4 hx:grow hx:md:h-[calc(100vh-var(--navbar-height)-var(--menu-height))]">
+    <ul class="hx:flex hx:flex-col hx:gap-1 hx:md:hidden">
+      
+      
+    </ul>
+
+    <ul class="hx:flex hx:flex-col hx:gap-1 hx:max-md:hidden">
+        
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/overview/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Overview</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-00-setup/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Initial Setup</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-01-foundation/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 01 - Foundation</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-02-formatters/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 02 - Formatters and palettes</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-03-bar-charts/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 03 - Bar and Stacked Bar</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-04-scatter/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 04 - Scatter charts</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-05-pie-donut/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 05 - Pie and Donut Charts</span>
+    </a>
+  </div></li>
+            <li class="open"><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="true">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hextra-sidebar-active-item hx:bg-primary-100 hx:font-semibold hx:text-primary-800 hx:contrast-more:border hx:contrast-more:border-primary-500 hx:dark:bg-primary-400/10 hx:dark:text-primary-600 hx:contrast-more:dark:border-primary-500"
+      href="/echarts/module-06-heatmap/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 06 - Heatmaps</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-07-gauges/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 07 - Gauges</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-08-realtime/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 08 - Realtime charts</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-09-labels/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 09 - Advanced Formatting</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-10-linked-charts/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 10 - Linked charts</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-11-mixed-charts/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 11 - Mixed charts</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/module-12-extending-the-series/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Postscript - Extending the pattern</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/appendix-a/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Appendix A - The Service Layer</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/appendix-b/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Appendix B - The javascript infrastructure</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/appendix-c/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Appendix C - The base class</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/appendix-d/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">Appendix D - Template Library</span>
+    </a>
+  </div></li>
+            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+    <a
+      class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
+      hx:hextra-focus-visible-inset
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+      href="/echarts/attribution/"
+      
+    >
+      <span class="hx:min-w-0 [word-break:break-word]">ABS Data Fixtures</span>
+    </a>
+  </div></li>
+        
+      </ul>
+    </div>
+  
+  
+    <div class="  hx:sticky hx:bottom-0 hx:max-h-(--menu-height) hx:bg-white hx:dark:bg-dark hx:mx-4 hx:py-4 hx:shadow-[0_-12px_16px_#fff] hx:flex hx:items-center hx:gap-2 hx:border-gray-200 hx:dark:border-neutral-800 hx:dark:shadow-[0_-12px_16px_#111] hx:contrast-more:border-neutral-400 hx:contrast-more:shadow-none hx:contrast-more:dark:shadow-none hx:border-t" data-toggle-animation="show"><div class="hx:flex hx:grow hx:flex-col"><div class="hx:flex hx:justify-items-start hx:group" data-theme="light">
+  <button
+    title="Change theme"
+    data-state="closed"
+    data-location="bottom"
+    class="hextra-theme-toggle hx:cursor-pointer hx:rounded-md hx:text-left hx:font-medium hx:h-7 hx:px-2 hx:text-xs hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:font-medium hx:text-gray-600 hx:transition-colors hx:dark:text-gray-400 hx:grow"
+    type="button"
+    aria-label="Change theme"
+    aria-expanded="false"
+    aria-haspopup="menu"
+  >
+    <div class="hx:flex hx:items-center hx:gap-2 hx:capitalize"><svg height=12 class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg><span class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden">Light</span><svg height=12 class="hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg><span class="hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden">Dark</span><svg height=12 class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  fill="currentColor">
+  <path d="M 11.996094,2 C 6.4986225,2.0192368 2.03125,6.5024993 2.03125,12 c 0,5.497501 4.4673725,9.980763 9.964844,10 H 12 12.0039 c 5.497471,-0.01924 9.964844,-4.502499 9.964844,-10 0,-5.4975007 -4.467373,-9.9807632 -9.964844,-10 H 12 Z M 12,4 c 4.417218,0.017598 7.96875,3.5822356 7.96875,8 0,4.417764 -3.551532,7.982402 -7.96875,8 z" />
+</svg>
+<span class="hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden">System</span></div>
+  </button>
+  <ul
+    class="hextra-theme-toggle-options hx:hidden hx:z-20 hx:max-h-64 hx:overflow-auto hx:rounded-lg hx:border hx:border-gray-200 hx:bg-white hx:p-1 hx:text-sm hx:shadow-lg hx:dark:border-neutral-700 hx:dark:bg-neutral-900"
+    style="position: fixed; inset: auto auto 0px 0px; margin: 0px; min-width: 100px;"
+    data-theme="light"
+    role="menu"
+  >
+    <li role="none" class="hx:flex hx:flex-col">
+      <button
+        type="button"
+        role="menuitemradio"
+        aria-checked="true"
+        tabindex="-1"
+        data-item="light"
+        class="hx:text-gray-700 hx:dark:text-gray-300 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:hover:bg-neutral-800 hx:dark:hover:text-gray-100 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:rounded-sm hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9 hx:text-left hx:w-full hx:bg-transparent hx:border-0"
+      >
+        Light
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=dark]:hidden hx:group-data-[theme=system]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </button>
+    </li>
+    <li role="none" class="hx:flex hx:flex-col">
+      <button
+        type="button"
+        role="menuitemradio"
+        aria-checked="false"
+        tabindex="-1"
+        data-item="dark"
+        class="hx:text-gray-700 hx:dark:text-gray-300 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:hover:bg-neutral-800 hx:dark:hover:text-gray-100 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:rounded-sm hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9 hx:text-left hx:w-full hx:bg-transparent hx:border-0"
+      >
+        Dark
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=light]:hidden hx:group-data-[theme=system]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </button>
+    </li>
+    <li role="none" class="hx:flex hx:flex-col">
+      <button
+        type="button"
+        role="menuitemradio"
+        aria-checked="false"
+        tabindex="-1"
+        data-item="system"
+        class="hx:text-gray-700 hx:dark:text-gray-300 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:hover:bg-neutral-800 hx:dark:hover:text-gray-100 hx:relative hx:cursor-pointer hx:whitespace-nowrap hx:rounded-sm hx:py-1.5 hx:transition-colors hx:ltr:pl-3 hx:ltr:pr-9 hx:rtl:pr-3 hx:rtl:pl-9 hx:text-left hx:w-full hx:bg-transparent hx:border-0"
+      >
+        System
+         <span class="hx:absolute hx:inset-y-0 hx:flex hx:items-center hx:ltr:right-3 hx:rtl:left-3 hx:group-data-[theme=dark]:hidden hx:group-data-[theme=light]:hidden"><svg height=1em width=1em xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+      </button>
+    </li>
+  </ul>
+</div>
+</div></div></aside>
+    
+<nav class="hextra-toc hx:order-last hx:hidden hx:w-64 hx:shrink-0 hx:xl:block hx:print:hidden hx:px-4" aria-label="Table of contents">
+    <div class="hextra-scrollbar hx:sticky hx:top-16 hx:overflow-y-auto hx:pr-4 hx:pt-6 hx:text-sm [hyphens:auto] hx:max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] hx:ltr:-mr-4 hx:rtl:-ml-4"><p class="hx:mb-4 hx:font-semibold hx:tracking-tight">On this page</p><ul>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#what-were-building">What We’re Building
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#61--the-service">6.1 — The Service
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#62--the-calendar-coordinate-system">6.2 — The Calendar Coordinate System
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#63--the-component">6.3 — The Component
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#64--tooltip-formatter">6.4 — Tooltip Formatter
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#65--controller-and-views">6.5 — Controller and Views
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#66--module-summary">6.6 — Module Summary
+        </a>
+      </li></ul>
+      <div class="hx:mt-8 hx:border-t hx:bg-white hx:pt-8 hx:shadow-[0_-12px_16px_white] hx:dark:bg-dark hx:dark:shadow-[0_-12px_16px_#111] hx:sticky hx:bottom-0 hx:flex hx:flex-col hx:items-start hx:gap-2 hx:pb-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-t hx:contrast-more:border-neutral-400 hx:contrast-more:shadow-none hx:contrast-more:dark:border-neutral-400">
+        <button id="backToTop" tabindex="-1" onClick="scrollUp();" class="hx:cursor-pointer hx:transition-all hx:duration-75 hx:opacity-0 hx:text-xs hx:font-medium hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-100 hx:contrast-more:text-gray-800 hx:contrast-more:dark:text-gray-50">
+          <span>Scroll to top</span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" focusable="false" class="hx:inline hx:ltr:ml-1 hx:rtl:mr-1 hx:h-3.5 hx:w-3.5 hx:rounded-full hx:border hx:border-gray-500 hx:hover:border-gray-900 hx:dark:border-gray-400 hx:dark:hover:border-gray-100 hx:contrast-more:border-gray-800 hx:contrast-more:dark:border-gray-50">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+
+    <article class="hx:w-full hx:break-words hx:flex hx:min-h-[calc(100vh-var(--navbar-height))] hx:min-w-0 hx:justify-center hx:pb-8 hx:pr-[calc(env(safe-area-inset-right)-1.5rem)]">
+      <main id="content" class="hx:w-full hx:min-w-0 hextra-max-content-width hx:px-6 hx:pt-4 hx:md:px-12">
+        
+        <div class="content">
+          
+          <h1>Module 06 — Calendar Heatmap: Daily Economic Activity</h1><h2>What We&rsquo;re Building<span class="hx:absolute hx:-mt-20" id="what-were-building"></span>
+    <a href="#what-were-building" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>The calendar heatmap maps values onto a calendar grid — each cell is one day,
+colour encodes the value. Seasonal patterns, weekly rhythms, and one-off events
+are immediately readable.</p>
+<p>This module also establishes the correct data flow pattern that applies from here
+forward: the controller calls the service and passes data to the component.</p>
+<p>By the end of this module you will have:</p>
+<ul>
+<li>A single-year calendar heatmap</li>
+<li>A multi-year calendar heatmap using the same component</li>
+<li><code>visualMap</code> for the colour scale</li>
+</ul>
+<p>Here&rsquo;s what we&rsquo;ll be building:</p>
+<p><img src="/echarts/module-06-heatmap/daily_calendar.png" alt="daily_calendar.png"  loading="lazy" /></p>
+<h2>6.1 — The Service<span class="hx:absolute hx:-mt-20" id="61--the-service"></span>
+    <a href="#61--the-service" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/services/stats/daily_activity.rb</span>
+</span></span><span class="line"><span class="cl"><span class="k">module</span> <span class="nn">Stats</span>
+</span></span><span class="line"><span class="cl">  <span class="k">module</span> <span class="nn">DailyActivity</span>
+</span></span><span class="line"><span class="cl">    <span class="kp">extend</span> <span class="nb">self</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Returns data shaped for ECharts calendar series:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># [[&#34;2022-01-01&#34;, 94.15], [&#34;2022-01-02&#34;, 97.67], ...]</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># year_range: [from_year] or [from_year, to_year]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="ss">year_range</span><span class="p">:)</span>
+</span></span><span class="line"><span class="cl">      <span class="n">from</span> <span class="o">=</span> <span class="n">year_range</span><span class="o">.</span><span class="n">first</span>
+</span></span><span class="line"><span class="cl">      <span class="n">to</span>   <span class="o">=</span> <span class="n">year_range</span><span class="o">.</span><span class="n">last</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="no">DailyActivityReading</span>
+</span></span><span class="line"><span class="cl">        <span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">date</span><span class="p">:</span> <span class="no">Date</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">from</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">..</span><span class="no">Date</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">to</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">31</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="o">.</span><span class="n">ordered</span>
+</span></span><span class="line"><span class="cl">        <span class="o">.</span><span class="n">pluck</span><span class="p">(</span><span class="ss">:date</span><span class="p">,</span> <span class="ss">:value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">date</span><span class="p">,</span> <span class="n">value</span><span class="o">|</span> <span class="o">[</span><span class="n">date</span><span class="o">.</span><span class="n">to_s</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">to_f</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">]</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p><code>pluck</code> retrieves only the two columns needed — no full ActiveRecord objects
+for 2,557 rows. The result is an array of <code>[date_string, value]</code> pairs — the
+exact format ECharts calendar series expects.</p>
+<hr>
+<h2>6.2 — The Calendar Coordinate System<span class="hx:absolute hx:-mt-20" id="62--the-calendar-coordinate-system"></span>
+    <a href="#62--the-calendar-coordinate-system" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>ECharts&rsquo; calendar coordinate system is unlike any other. Instead of X/Y axes,
+data is plotted onto a calendar grid. Two options work together:</p>
+<p><strong><code>calendar</code></strong> — defines the grid:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="ss">calendar</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">range</span><span class="p">:</span>      <span class="s2">&#34;2022&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">top</span><span class="p">:</span>        <span class="mi">60</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">left</span><span class="p">:</span>       <span class="mi">30</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">right</span><span class="p">:</span>      <span class="mi">30</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">cellSize</span><span class="p">:</span>   <span class="o">[</span><span class="s2">&#34;auto&#34;</span><span class="p">,</span> <span class="mi">13</span><span class="o">]</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">yearLabel</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">show</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">position</span><span class="p">:</span> <span class="s2">&#34;top&#34;</span><span class="p">,</span> <span class="ss">margin</span><span class="p">:</span> <span class="mi">8</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">monthLabel</span><span class="p">:</span> <span class="p">{</span> <span class="ss">nameMap</span><span class="p">:</span> <span class="s2">&#34;en&#34;</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">dayLabel</span><span class="p">:</span>   <span class="p">{</span> <span class="ss">firstDay</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="ss">nameMap</span><span class="p">:</span> <span class="s2">&#34;en&#34;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p><strong>The series</strong> — references the calendar:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">type</span><span class="p">:</span>             <span class="s2">&#34;heatmap&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">coordinateSystem</span><span class="p">:</span> <span class="s2">&#34;calendar&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">data</span><span class="p">:</span>             <span class="n">data</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p><code>range</code> accepts a year string (<code>&quot;2022&quot;</code>), a month (<code>&quot;2022-03&quot;</code>), or a date
+range (<code>[&quot;2022-01-01&quot;, &quot;2022-06-30&quot;]</code>).</p>
+<p><code>dayLabel.firstDay: 1</code> starts weeks on Monday — correct for Australian calendars.</p>
+<hr>
+<h2>6.3 — The Component<span class="hx:absolute hx:-mt-20" id="63--the-component"></span>
+    <a href="#63--the-component" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>A single year is a special case of a multi-year range. One component handles
+both by building arrays of calendar grids and series:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/views/components/charts/activity_calendar.rb</span>
+</span></span><span class="line"><span class="cl"><span class="k">module</span> <span class="nn">Components</span>
+</span></span><span class="line"><span class="cl">  <span class="k">module</span> <span class="nn">Charts</span>
+</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">ActivityCalendar</span> <span class="o">&lt;</span> <span class="no">Components</span><span class="o">::</span><span class="no">Chart</span>
+</span></span><span class="line"><span class="cl">      <span class="n">prop</span> <span class="ss">:data</span><span class="p">,</span>       <span class="n">_Any</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="o">[]</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="n">prop</span> <span class="ss">:year_range</span><span class="p">,</span> <span class="n">_Any</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="o">[</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">2023</span><span class="o">]</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="kp">private</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">chart_options</span>
+</span></span><span class="line"><span class="cl">        <span class="n">years</span>    <span class="o">=</span> <span class="p">(</span><span class="vi">@year_range</span><span class="o">.</span><span class="n">first</span><span class="o">..</span><span class="vi">@year_range</span><span class="o">.</span><span class="n">last</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span>
+</span></span><span class="line"><span class="cl">        <span class="n">by_year</span>  <span class="o">=</span> <span class="vi">@data</span><span class="o">.</span><span class="n">group_by</span> <span class="p">{</span> <span class="o">|</span><span class="n">date</span><span class="p">,</span> <span class="n">_</span><span class="o">|</span> <span class="n">date</span><span class="o">[</span><span class="mi">0</span><span class="o">..</span><span class="mi">3</span><span class="o">].</span><span class="n">to_i</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">all_vals</span> <span class="o">=</span> <span class="vi">@data</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:last</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">min</span>      <span class="o">=</span> <span class="n">all_vals</span><span class="o">.</span><span class="n">min</span><span class="o">&amp;.</span><span class="n">floor</span> <span class="o">||</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">        <span class="n">max</span>      <span class="o">=</span> <span class="n">all_vals</span><span class="o">.</span><span class="n">max</span><span class="o">&amp;.</span><span class="n">ceil</span>  <span class="o">||</span> <span class="mi">100</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Options</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">toolbox</span><span class="p">:</span>   <span class="p">{</span> <span class="ss">feature</span><span class="p">:</span> <span class="p">{</span> <span class="ss">saveAsImage</span><span class="p">:</span> <span class="p">{}</span> <span class="p">}</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">tooltip</span><span class="p">:</span>   <span class="p">{</span> <span class="ss">trigger</span><span class="p">:</span> <span class="s2">&#34;item&#34;</span><span class="p">,</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;calendarDay&#34;</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">visualMap</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">min</span><span class="p">:</span>        <span class="n">min</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">max</span><span class="p">:</span>        <span class="n">max</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">calculable</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">orient</span><span class="p">:</span>     <span class="s2">&#34;horizontal&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">left</span><span class="p">:</span>       <span class="s2">&#34;center&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">bottom</span><span class="p">:</span>      <span class="mi">10</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">inRange</span><span class="p">:</span>    <span class="p">{</span> <span class="ss">color</span><span class="p">:</span> <span class="o">[</span><span class="s2">&#34;#ebedf0&#34;</span><span class="p">,</span> <span class="s2">&#34;#216e39&#34;</span><span class="o">]</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">          <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">calendar</span><span class="p">:</span> <span class="n">years</span><span class="o">.</span><span class="n">each_with_index</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">year</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">range</span><span class="p">:</span>      <span class="n">year</span><span class="o">.</span><span class="n">to_s</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">top</span><span class="p">:</span>        <span class="mi">60</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mi">160</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">left</span><span class="p">:</span>       <span class="mi">30</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">right</span><span class="p">:</span>      <span class="mi">30</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">cellSize</span><span class="p">:</span>   <span class="o">[</span><span class="s2">&#34;auto&#34;</span><span class="p">,</span> <span class="mi">13</span><span class="o">]</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">yearLabel</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">show</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">position</span><span class="p">:</span> <span class="s2">&#34;top&#34;</span><span class="p">,</span> <span class="ss">margin</span><span class="p">:</span> <span class="mi">8</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">monthLabel</span><span class="p">:</span> <span class="p">{</span> <span class="ss">nameMap</span><span class="p">:</span> <span class="s2">&#34;en&#34;</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">dayLabel</span><span class="p">:</span>   <span class="p">{</span> <span class="ss">firstDay</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="ss">nameMap</span><span class="p">:</span> <span class="s2">&#34;en&#34;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">          <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">series</span><span class="p">:</span> <span class="n">years</span><span class="o">.</span><span class="n">each_with_index</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">year</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">type</span><span class="p">:</span>             <span class="s2">&#34;heatmap&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">coordinateSystem</span><span class="p">:</span> <span class="s2">&#34;calendar&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">calendarIndex</span><span class="p">:</span>    <span class="n">i</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">data</span><span class="p">:</span>             <span class="n">by_year</span><span class="o">[</span><span class="n">year</span><span class="o">]</span> <span class="o">||</span> <span class="o">[]</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">view_template</span>
+</span></span><span class="line"><span class="cl">        <span class="n">div</span><span class="p">(</span><span class="ss">class</span><span class="p">:</span> <span class="s2">&#34;p-2 rounded-lg bg-white border border-neutral-200&#34;</span><span class="p">,</span> <span class="o">**</span><span class="vi">@html</span><span class="p">)</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">          <span class="n">div</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">data</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">controller</span><span class="p">:</span>          <span class="s2">&#34;chart&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">chart_target</span><span class="p">:</span>        <span class="s2">&#34;mount&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">chart_options_value</span><span class="p">:</span> <span class="n">chart_options</span><span class="o">.</span><span class="n">to_json</span>
+</span></span><span class="line"><span class="cl">            <span class="p">},</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">style</span><span class="p">:</span> <span class="s2">&#34;height: </span><span class="si">#{</span><span class="n">dynamic_height</span><span class="si">}</span><span class="s2">; width: 100%;&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">end</span>
+</span></span><span class="line"><span class="cl">      <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">dynamic_height</span>
+</span></span><span class="line"><span class="cl">        <span class="n">years</span> <span class="o">=</span> <span class="vi">@year_range</span><span class="o">.</span><span class="n">last</span> <span class="o">-</span> <span class="vi">@year_range</span><span class="o">.</span><span class="n">first</span> <span class="o">+</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;</span><span class="si">#{</span><span class="mi">60</span> <span class="o">+</span> <span class="p">(</span><span class="n">years</span> <span class="o">*</span> <span class="mi">160</span><span class="p">)</span><span class="si">}</span><span class="s2">px&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="k">end</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>When <code>year_range: [2022, 2022]</code> — one grid, one series, height 220px.
+When <code>year_range: [2019, 2021]</code> — three grids, three series, height 540px.
+The logic is identical — only the number of iterations changes.</p>
+<p><strong><code>calendarIndex</code></strong> assigns each series to the correct grid. Without it all
+series plot on the first grid.</p>
+<p><strong>Shared <code>visualMap</code></strong> — this is the key advantage over rendering multiple
+single-year components in a loop. All years share one colour scale, so the
+COVID dip in 2020 is visually comparable to 2019 and 2021.</p>
+<p><strong><code>dynamic_height</code></strong> — the component calculates its own height from the year
+range, overriding the base <code>height</code> prop.</p>
+<hr>
+<h2>6.4 — Tooltip Formatter<span class="hx:absolute hx:-mt-20" id="64--tooltip-formatter"></span>
+    <a href="#64--tooltip-formatter" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Add to <code>custom_chart_formatters.js</code>:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="s2">&#34;item:calendarDay&#34;</span><span class="o">:</span> <span class="nx">params</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="p">[</span><span class="nx">date</span><span class="p">,</span> <span class="nx">value</span><span class="p">]</span> <span class="o">=</span> <span class="nx">params</span><span class="p">.</span><span class="nx">value</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">d</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">date</span> <span class="o">+</span> <span class="s2">&#34;T00:00:00&#34;</span><span class="p">)</span>  <span class="c1">// force local time, not UTC
+</span></span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">formatted</span> <span class="o">=</span> <span class="nx">d</span><span class="p">.</span><span class="nx">toLocaleDateString</span><span class="p">(</span><span class="s2">&#34;en-AU&#34;</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">weekday</span><span class="o">:</span> <span class="s2">&#34;short&#34;</span><span class="p">,</span> <span class="nx">day</span><span class="o">:</span> <span class="s2">&#34;numeric&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">month</span><span class="o">:</span>   <span class="s2">&#34;long&#34;</span><span class="p">,</span>  <span class="nx">year</span><span class="o">:</span> <span class="s2">&#34;numeric&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">})</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="sb">`</span><span class="si">${</span><span class="nx">formatted</span><span class="si">}</span><span class="sb">&lt;br/&gt;&lt;strong&gt;Activity Index: </span><span class="si">${</span><span class="nx">value</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="sb">&lt;/strong&gt;`</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<blockquote>
+  <p>Note: the &ldquo;item:xxx&rdquo; prefix for the custom formatter. Since the tooltip is for
+a single item, we differentiate it from our tabular (axis) based tooltips'</p>
+
+</blockquote>
+<blockquote>
+  <p>The <code>+ &quot;T00:00:00&quot;</code> is important — <code>new Date(&quot;2022-01-15&quot;)</code> parses as UTC
+midnight, which displays as January 14 in Australian timezones. Appending the
+time forces local time parsing.</p>
+
+</blockquote>
+<hr>
+<h2>6.5 — Controller and Views<span class="hx:absolute hx:-mt-20" id="65--controller-and-views"></span>
+    <a href="#65--controller-and-views" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/controllers/charts_controller.rb</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">single_year_calendar</span>
+</span></span><span class="line"><span class="cl">  <span class="vi">@data</span> <span class="o">=</span> <span class="no">Stats</span><span class="o">::</span><span class="no">DailyActivity</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="ss">year_range</span><span class="p">:</span> <span class="o">[</span><span class="mi">2022</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">multi_year_calendar</span>
+</span></span><span class="line"><span class="cl">  <span class="vi">@data</span> <span class="o">=</span> <span class="no">Stats</span><span class="o">::</span><span class="no">DailyActivity</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="ss">year_range</span><span class="p">:</span> <span class="o">[</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">2021</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># config/routes.rb</span>
+</span></span><span class="line"><span class="cl"><span class="n">get</span> <span class="s2">&#34;charts/single_year_calendar&#34;</span><span class="p">,</span> <span class="ss">to</span><span class="p">:</span> <span class="s2">&#34;charts#single_year_calendar&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">get</span> <span class="s2">&#34;charts/multi_year_calendar&#34;</span><span class="p">,</span>  <span class="ss">to</span><span class="p">:</span> <span class="s2">&#34;charts#multi_year_calendar&#34;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><pre><code>&lt;%# app/views/charts/single_year_calendar.html.erb %&gt;
+&lt;h1 class=&#34;text-2xl font-bold mb-2&#34;&gt;Daily Activity — 2022&lt;/h1&gt;
+&lt;p class=&#34;text-neutral-500 text-sm mb-6&#34;&gt;
+  Illustrative daily index — generated data, not real ABS statistics.
+&lt;/p&gt;
+&lt;%= render Components::Charts::ActivityCalendar.new(
+  data:       @data,
+  year_range: [2022, 2022]
+) %&gt;</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><pre><code>&lt;%# app/views/charts/multi_year_calendar.html.erb %&gt;
+&lt;h1 class=&#34;text-2xl font-bold mb-2&#34;&gt;Daily Activity — COVID Years&lt;/h1&gt;
+&lt;p class=&#34;text-neutral-500 text-sm mb-6&#34;&gt;
+  The COVID shock of 2020 is simulated as a sustained period of low activity
+  from March through December, followed by gradual recovery through 2021.
+  All three years share the same colour scale for direct comparison.
+&lt;/p&gt;
+&lt;%= render Components::Charts::ActivityCalendar.new(
+  data:       @data,
+  year_range: [2019, 2021]
+) %&gt;</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>And add the cards to the index:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="err">&lt;</span>%= render &#34;charts/gallery_card&#34;,
+</span></span><span class="line"><span class="cl">  title:       &#34;Daily Activity — Single Year&#34;,
+</span></span><span class="line"><span class="cl">  description: &#34;Calendar heatmap for 2022.&#34;,
+</span></span><span class="line"><span class="cl">  path:        charts_single_year_calendar_path %&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">&lt;</span>%= render &#34;charts/gallery_card&#34;,
+</span></span><span class="line"><span class="cl">  title:       &#34;Daily Activity — COVID Years&#34;,
+</span></span><span class="line"><span class="cl">  description: &#34;Multi-year calendar heatmap 2019–2021 on a shared colour scale.&#34;,
+</span></span><span class="line"><span class="cl">  path:        charts_multi_year_calendar_path %&gt;</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<hr>
+<h2>6.6 — Module Summary<span class="hx:absolute hx:-mt-20" id="66--module-summary"></span>
+    <a href="#66--module-summary" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><strong>New files:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>File</th>
+          <th>Purpose</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>app/services/stats/daily_activity.rb</code></td>
+          <td>Query and shape for calendar series</td>
+      </tr>
+      <tr>
+          <td><code>app/services/stats/daily_activity_monthly.rb</code></td>
+          <td>groupdate monthly bucketing</td>
+      </tr>
+      <tr>
+          <td><code>app/views/components/charts/activity_calendar.rb</code></td>
+          <td>Single and multi-year heatmap</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Patterns introduced:</strong></p>
+<ul>
+<li>ECharts calendar coordinate system — <code>calendar</code> + <code>coordinateSystem: &quot;calendar&quot;</code></li>
+<li>Multi-year calendar — arrays of <code>calendar</code> and <code>series</code> with <code>calendarIndex</code></li>
+<li>Single component as general case — single year is <code>[2022, 2022]</code></li>
+<li>Shared <code>visualMap</code> — one colour scale across all years for direct comparison</li>
+<li>Dynamic height — component calculates its own height from the year range</li>
+<li>UTC date fix in JavaScript tooltip formatters</li>
+</ul>
+<p><strong>calendar option reference:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Key</th>
+          <th>Purpose</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>range</code></td>
+          <td><code>&quot;2022&quot;</code> (year), <code>&quot;2022-03&quot;</code> (month), date range array</td>
+      </tr>
+      <tr>
+          <td><code>cellSize</code></td>
+          <td><code>[width, height]</code> — use <code>&quot;auto&quot;</code> for responsive width</td>
+      </tr>
+      <tr>
+          <td><code>dayLabel.firstDay</code></td>
+          <td><code>0</code> = Sunday, <code>1</code> = Monday</td>
+      </tr>
+      <tr>
+          <td><code>calendarIndex</code></td>
+          <td>Which grid a series plots on — multi-year only</td>
+      </tr>
+  </tbody>
+</table>
+
+        </div>
+        <div class="hx:mt-16"></div><div class="hx:mb-8 hx:flex hx:items-center hx:border-t hx:pt-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-neutral-400 hx:dark:contrast-more:border-neutral-400 hx:print:hidden"><a
+        href="/echarts/module-05-pie-donut/"
+        title="Lesson 05 - Pie and Donut Charts"
+        class="hx:flex hx:max-w-[50%] hx:items-center hx:gap-1 hx:py-4 hx:text-base hx:font-medium hx:text-gray-600 hx:transition-colors [word-break:break-word] hx:hover:text-primary-600 hx:dark:text-gray-300 hx:md:text-lg hx:ltr:pr-4 hx:rtl:pl-4"
+      ><svg class="hx:inline hx:h-5 hx:shrink-0 hx:ltr:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>Lesson 05 - Pie and Donut Charts</a><a
+        href="/echarts/module-07-gauges/"
+        title="Lesson 07 - Gauges"
+        class="hx:flex hx:max-w-[50%] hx:items-center hx:gap-1 hx:py-4 hx:text-base hx:font-medium hx:text-gray-600 hx:transition-colors [word-break:break-word] hx:hover:text-primary-600 hx:dark:text-gray-300 hx:md:text-lg hx:ltr:ml-auto hx:ltr:pl-4 hx:ltr:text-right hx:rtl:mr-auto hx:rtl:pr-4 hx:rtl:text-left"
+      >Lesson 07 - Gauges<svg class="hx:inline hx:h-5 hx:shrink-0 hx:rtl:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a></div><script>
+  function getGiscusTheme() {
+    const giscusTheme = '';
+    if (giscusTheme === 'light' || giscusTheme === 'dark') {
+      return giscusTheme;
+    }
+
+    const hugoTheme = localStorage.getItem("color-theme");
+    if (hugoTheme === 'light' || hugoTheme === 'dark') {
+      return hugoTheme;
+    }
+
+    if (hugoTheme === 'system') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    const defaultTheme = '';
+    if (defaultTheme === 'light' || defaultTheme === 'dark') {
+      return defaultTheme;
+    }
+
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function setGiscusTheme() {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+
+    const msg = {
+      giscus: {
+        setConfig: {
+          theme: getGiscusTheme(),
+        },
+      },
+    }
+
+    iframe.contentWindow.postMessage(msg, 'https://giscus.app');
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const giscusAttributes = {
+      "src": "https://giscus.app/client.js",
+      "data-repo": "rehali\/ruby-field-notes",
+      "data-repo-id": "R_kgDOR-q3Ww",
+      "data-category": "General",
+      "data-category-id": "DIC_kwDOR-q3W84C6gUP",
+      "data-mapping": "pathname",
+      "data-strict": "0",
+      "data-reactions-enabled": "1",
+      "data-emit-metadata": "0",
+      "data-input-position": "top",
+      "data-theme": getGiscusTheme(),
+      "data-lang": "en",
+      "crossorigin": "anonymous",
+      "async": "",
+    };
+
+    
+    const giscusScript = document.createElement("script");
+    Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+    
+    document.getElementById('giscus-hextra-bb112b9f807c37c1752e5da6a1652a29').appendChild(giscusScript);
+
+    
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", setGiscusTheme);
+
+    
+    const themeToggleOptions = document.querySelectorAll(".hextra-theme-toggle-options [data-item]");
+    if (themeToggleOptions) {
+      themeToggleOptions.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+          setTimeout(setGiscusTheme, 0);
+        });
+      });
+    }
+  });
+</script>
+
+<div id="giscus-hextra-bb112b9f807c37c1752e5da6a1652a29"></div>
+      </main>
+    </article>
+  </div>
+
+      <footer class="hextra-footer hx:bg-gray-100 hx:pb-[env(safe-area-inset-bottom)] hx:dark:bg-neutral-900 hx:print:bg-transparent"><div class="hextra-custom-footer hextra-max-footer-width hx:pl-[max(env(safe-area-inset-left),1.5rem)] hx:pr-[max(env(safe-area-inset-right),1.5rem)] hx:text-gray-600 hx:dark:text-gray-400"><div class="hx:text-xs hx:text-gray-500 hx:mt-2" style="padding: 6px;">
+  © 2026 rehali — Tutorial content: 
+  <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a>
+  · Code examples: MIT · Built with <a href="https://github.com/imfing/hextra" target="_blank" rel="noopener">Hextra</a>
+</div></div><div
+      class="hextra-max-footer-width hx:mx-auto hx:flex hx:justify-center hx:py-12 hx:pl-[max(env(safe-area-inset-left),1.5rem)] hx:pr-[max(env(safe-area-inset-right),1.5rem)] hx:text-gray-600 hx:dark:text-gray-400 hx:md:justify-start"
+    >
+      <div class="hx:flex hx:w-full hx:flex-col hx:items-center hx:sm:items-start"><div class="hx:mt-6 hx:text-xs">© 2025 Hextra Project.</div></div>
+    </div></footer>
+    
+    <script defer src="/js/main.min.15eb8e58ef474e8764f1b2119666d41ed10d0c0d647ff5a407a86631cd51f0e2.js" integrity="sha256-FeuOWO9HTodk8bIRlmbUHtENDA1kf/WkB6hmMc1R8OI="></script>
+<script defer src="/js/flexsearch.433e941a8a573ebb9931fc16fc75266ab6b93f569ac2fb4f3dc66882e0416f4c.js" integrity="sha256-Qz6UGopXPruZMfwW/HUmara5P1aawvtPPcZoguBBb0w=" crossorigin="anonymous"></script><script defer src="/en.search.min.4fdabdde415d95c82a8107bef7d71e5731f7921501c4d623461053fa33f9fecb.js" integrity="sha256-T9q93kFdlcgqgQe&#43;99ceVzH3khUBxNYjRhBT&#43;jP5/ss="></script>
+  </body>
+</html>
