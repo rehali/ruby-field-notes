@@ -577,7 +577,7 @@ The gem&amp;rsquo;s executables are not on your PATH. Run &lt;code&gt;gem enviro
 &lt;p&gt;&lt;strong&gt;The window appears but looks wrong (wrong colours, misaligned controls)&lt;/strong&gt;
 You are likely placing controls directly inside the frame rather than inside a panel. Always use &lt;code&gt;Wx::Panel.new(self)&lt;/code&gt; and parent your controls to the panel.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Build fails on Linux with a missing header&lt;/strong&gt;
-The wxWidgets development libraries are not installed. Return to the platform prerequisites section above and install the listed packages for your distribution.&lt;/p&gt;
+The wxWidgets development libraries are not installed. You can find further instructions at &lt;a href=&#34;https://mcorino.github.io/wxRuby3/file.INSTALL.html&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Installation of wxRuby3&lt;/a&gt;&lt;/p&gt;
 
       </description>
     </item>
