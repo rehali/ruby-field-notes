@@ -9,23 +9,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 <title>Ruby Field Notes</title>
-  <meta name="description" content="Module 04 — Scatter Charts: Labour Force AnalysisWhat We’re Building This module introduces scatter charts and a pattern that matters beyond chart mechanics: charts as supporting evidence for prose. Real dashboards and data pages rarely show a chart in isolation — they surround it with context, explanation, and narrative.
-We build a single page that tells a story about the Australian labour market using three charts interspersed with text. The page is driven by one controller action, one service, and three Phlex chart components." /><link rel="canonical" href="https://www.rehali.com/echarts/module-04-scatter/" itemprop="url" />
+  <meta name="description" content="Creating Scatter Charts using ECharts with Ruby on Rails and Phlex." /><link rel="canonical" href="https://www.rehali.com/echarts/module-04-scatter/" itemprop="url" />
 
 <meta property="og:title" content="">
 <meta
   property="og:description"
   content="
-    
-      Module 04 — Scatter Charts: Labour Force AnalysisWhat We&rsquo;re Building
-    This module introduces scatter charts and a pattern that matters beyond chart
-mechanics: charts as supporting evidence for prose. Real dashboards and data
-pages rarely show a chart in isolation — they surround it with context, explanation,
-and narrative.
-We build a single page that tells a story about the Australian labour market using
-three charts interspersed with text. The page is driven by one controller action,
-one service, and three Phlex chart components.
-    
+    Creating Scatter Charts using ECharts with Ruby on Rails and Phlex.
   ">
 <meta
   property="og:type"
@@ -38,13 +28,11 @@ one service, and three Phlex chart components.
 
 
   <meta itemprop="name" content="Ruby Field Notes">
-  <meta itemprop="description" content="Module 04 — Scatter Charts: Labour Force AnalysisWhat We’re Building This module introduces scatter charts and a pattern that matters beyond chart mechanics: charts as supporting evidence for prose. Real dashboards and data pages rarely show a chart in isolation — they surround it with context, explanation, and narrative.
-We build a single page that tells a story about the Australian labour market using three charts interspersed with text. The page is driven by one controller action, one service, and three Phlex chart components.">
-  <meta itemprop="wordCount" content="2969">
+  <meta itemprop="description" content="Creating Scatter Charts using ECharts with Ruby on Rails and Phlex.">
+  <meta itemprop="wordCount" content="2059">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
-  <meta name="twitter:description" content="Module 04 — Scatter Charts: Labour Force AnalysisWhat We’re Building This module introduces scatter charts and a pattern that matters beyond chart mechanics: charts as supporting evidence for prose. Real dashboards and data pages rarely show a chart in isolation — they surround it with context, explanation, and narrative.
-We build a single page that tells a story about the Australian labour market using three charts interspersed with text. The page is driven by one controller action, one service, and three Phlex chart components.">
+  <meta name="twitter:description" content="Creating Scatter Charts using ECharts with Ruby on Rails and Phlex.">
 
     <link rel="preload" href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" as="style" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
     <link href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" rel="stylesheet" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
@@ -177,7 +165,7 @@ We build a single page that tells a story about the Australian labour market usi
       href="/echarts/module-04-scatter/"
       
     >
-      <span class="hx:min-w-0 [word-break:break-word]">Lesson 04 - Scatter charts</span>
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 04 - Scatter Charts</span>
     </a>
   </div></li>
             <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
@@ -400,55 +388,47 @@ We build a single page that tells a story about the Australian labour market usi
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#41--the-data-story">4.1 — The Data Story
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#41--chartseriesscatter">4.1 — Chart::Series::Scatter
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#42--the-service">4.2 — The Service
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#42--chart-1-participation-vs-unemployment-scatter">4.2 — Chart 1: Participation vs Unemployment Scatter
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#43--chart-1-participation-vs-unemployment-scatter">4.3 — Chart 1: Participation vs Unemployment Scatter
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#visualmap">visualMap
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#visualmap--encoding-year-as-colour">visualMap — encoding year as colour
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#the-component">The component
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#custom-tooltip-for-scatter">Custom tooltip for scatter
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#custom-tooltip-formatter">Custom tooltip formatter
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#44--chart-2-employment-volume-over-time">4.4 — Chart 2: Employment Volume Over Time
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#43--chart-2-employment-volume-over-time">4.3 — Chart 2: Employment Volume Over Time
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#45--chart-3-participation-rate-trends">4.5 — Chart 3: Participation Rate Trends
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#44--chart-3-participation-rate-trends">4.4 — Chart 3: Participation Rate Trends
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#markline--statistical-annotations">markLine — statistical annotations
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#45--colour-correspondence">4.5 — Colour Correspondence
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#46--controller-and-view">4.6 — Controller and View
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#46--testing">4.6 — Testing
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#47--colour-correspondence-across-charts">4.7 — Colour Correspondence Across Charts
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#47--the-plumbing">4.7 — The Plumbing
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#48--testing-chart-configuration">4.8 — Testing Chart Configuration
-        </a>
-      </li>
-      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#49--routes-and-gallery">4.9 — Routes and Gallery
-        </a>
-      </li>
-      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#410--module-summary">4.10 — Module Summary
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#48--module-summary">4.8 — Module Summary
         </a>
       </li></ul>
       <div class="hx:mt-8 hx:border-t hx:bg-white hx:pt-8 hx:shadow-[0_-12px_16px_white] hx:dark:bg-dark hx:dark:shadow-[0_-12px_16px_#111] hx:sticky hx:bottom-0 hx:flex hx:flex-col hx:items-start hx:gap-2 hx:pb-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-t hx:contrast-more:border-neutral-400 hx:contrast-more:shadow-none hx:contrast-more:dark:border-neutral-400">
@@ -468,204 +448,29 @@ We build a single page that tells a story about the Australian labour market usi
         
         <div class="content">
           
-          <h1>Module 04 — Scatter Charts: Labour Force Analysis</h1><h2>What We&rsquo;re Building<span class="hx:absolute hx:-mt-20" id="what-were-building"></span>
+          <h1>Module 04 — Scatter Charts: Labour Market Analysis</h1><h2>What We&rsquo;re Building<span class="hx:absolute hx:-mt-20" id="what-were-building"></span>
     <a href="#what-were-building" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>This module introduces scatter charts and a pattern that matters beyond chart
-mechanics: <strong>charts as supporting evidence for prose</strong>. Real dashboards and data
-pages rarely show a chart in isolation — they surround it with context, explanation,
-and narrative.</p>
+mechanics: <strong>charts as supporting evidence for prose</strong>. Real pages rarely show a
+chart in isolation — they surround it with context, explanation, and narrative.</p>
 <p>We build a single page that tells a story about the Australian labour market using
-three charts interspersed with text. The page is driven by one controller action,
-one service, and three Phlex chart components.</p>
+three charts interspersed with text. One controller action, one service, three
+components.</p>
 <p>By the end of this module you will have:</p>
 <ul>
-<li>A service that shapes Labour Force data for scatter charts</li>
-<li>Three chart components consuming the same service differently</li>
-<li>A data story page that mixes prose and charts</li>
-<li>Consistent colour correspondence across all three charts using a shared palette</li>
-<li><code>visualMap</code> for encoding a third dimension as colour</li>
-<li><code>markLine</code> for reference lines</li>
+<li><code>Chart::Series::Scatter</code> — a new series type</li>
+<li><code>visualMap</code> — encoding a third dimension as colour</li>
+<li><code>markLine</code> — reference line annotations</li>
+<li>A data story page mixing prose and charts</li>
+<li>Colour correspondence across multiple charts on the same page</li>
 </ul>
+<p>No new service — all three charts reuse <code>Stats::LabourForce</code> from Module 03.</p>
+<p>Here&rsquo;s what we&rsquo;re building:</p>
+<p><img src="/echarts/module-04-scatter/scatter_chart.png" alt="scatter_chart.png"  loading="lazy" /></p>
 <hr>
-<h2>4.1 — The Data Story<span class="hx:absolute hx:-mt-20" id="41--the-data-story"></span>
-    <a href="#41--the-data-story" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Australia&rsquo;s labour market varies significantly by state. The ACT consistently leads
-on participation rate — a high-income, public-sector dominated economy keeps more
-people in the workforce. Tasmania and South Australia have historically higher
-unemployment. The COVID-19 pandemic of 2020 disrupted all states but unevenly —
-the speed of recovery differed markedly.</p>
-<p>Three questions worth charting:</p>
-<ol>
-<li>
-<p><strong>How do participation rate and unemployment rate relate across states?</strong>
-A scatter chart — one point per state per year — reveals the structural
-differences and the COVID disruption.</p>
-</li>
-<li>
-<p><strong>How has employment volume changed over time?</strong>
-A line chart per state shows the absolute numbers and the different scales
-of state economies.</p>
-</li>
-<li>
-<p><strong>How have participation rates trended?</strong>
-A multi-series line chart shows which states are improving, stagnating, or
-declining in workforce engagement.</p>
-</li>
-</ol>
-<p>One service. Three charts. One page.</p>
-<hr>
-<h2>4.2 — The Service<span class="hx:absolute hx:-mt-20" id="42--the-service"></span>
-    <a href="#42--the-service" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>This module reuses <code>Stats::LabourForce</code> from Module 04 — unchanged. All three
-charts consume the same service call:</p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="o">::</span><span class="no">Stats</span><span class="o">::</span><span class="no">LabourForce</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="vi">@readings</span><span class="p">)</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<p>This is the service layer principle in practice. <code>Stats::LabourForce</code> transforms
-raw monthly readings into annual averages per state. It has no knowledge of how
-that data will be used — whether as a bar chart, a scatter chart, or a line chart.
-The same hash structure feeds all three visualisations on this page.</p>
-<p>The service already returns everything we need:</p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;New South Wales&#34;</span> <span class="o">=&gt;</span> <span class="o">[</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span> <span class="ss">year</span><span class="p">:</span> <span class="mi">2012</span><span class="p">,</span> <span class="ss">employed</span><span class="p">:</span> <span class="mi">3562</span><span class="o">.</span><span class="mi">4</span><span class="p">,</span> <span class="ss">rate</span><span class="p">:</span> <span class="mi">5</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="ss">participation</span><span class="p">:</span> <span class="mi">62</span><span class="o">.</span><span class="mi">3</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">    <span class="o">...</span>
-</span></span><span class="line"><span class="cl">  <span class="o">]</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="o">...</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<p>No new service file. No duplication. Three charts, one service call per component.</p>
-<hr>
-<h2>4.3 — Chart 1: Participation vs Unemployment Scatter<span class="hx:absolute hx:-mt-20" id="43--chart-1-participation-vs-unemployment-scatter"></span>
-    <a href="#43--chart-1-participation-vs-unemployment-scatter" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Each point is one state in one year. X axis is participation rate, Y axis is
-unemployment rate. Each state is a separate series so it gets its own colour and
-can be toggled in the legend.</p>
-<p>The trajectory of each state traces a path through the chart over 12 years — in
-a healthy economy, points move right (higher participation) and down (lower
-unemployment). The COVID year appears as an outlier point for every state.</p>
-<h3>visualMap — encoding year as colour<span class="hx:absolute hx:-mt-20" id="visualmap--encoding-year-as-colour"></span>
-    <a href="#visualmap--encoding-year-as-colour" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>Adding <code>visualMap</code> encodes the year dimension as colour intensity within each
-series — earlier years appear lighter, recent years darker. This makes the time
-progression visible without adding a separate series per year:</p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Options</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">  <span class="ss">color</span><span class="p">:</span>   <span class="s2">&#34;tableau&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="ss">toolbox</span><span class="p">:</span> <span class="p">{</span> <span class="ss">feature</span><span class="p">:</span> <span class="p">{</span> <span class="ss">saveAsImage</span><span class="p">:</span> <span class="p">{},</span> <span class="ss">restore</span><span class="p">:</span> <span class="p">{}</span> <span class="p">}</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">  <span class="ss">tooltip</span><span class="p">:</span> <span class="p">{</span> <span class="ss">trigger</span><span class="p">:</span> <span class="s2">&#34;item&#34;</span><span class="p">,</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;participationScatter&#34;</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">  <span class="ss">legend</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;scroll&#34;</span><span class="p">,</span> <span class="ss">bottom</span><span class="p">:</span> <span class="mi">5</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">  <span class="ss">visualMap</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="ss">show</span><span class="p">:</span>       <span class="kp">false</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="ss">dimension</span><span class="p">:</span>  <span class="mi">2</span><span class="p">,</span>        <span class="c1"># the third value in each data point [x, y, year]</span>
-</span></span><span class="line"><span class="cl">    <span class="ss">min</span><span class="p">:</span>        <span class="mi">2012</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="ss">max</span><span class="p">:</span>        <span class="mi">2024</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="ss">inRange</span><span class="p">:</span>    <span class="p">{</span> <span class="ss">colorLightness</span><span class="p">:</span> <span class="o">[</span><span class="mi">0</span><span class="o">.</span><span class="mi">35</span><span class="p">,</span> <span class="mi">0</span><span class="o">.</span><span class="mi">85</span><span class="o">]</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">},</span>
-</span></span><span class="line"><span class="cl">  <span class="ss">x_axis</span><span class="p">:</span>  <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">name</span><span class="p">:</span> <span class="s2">&#34;Participation Rate (%)&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="ss">nameLocation</span><span class="p">:</span> <span class="s2">&#34;middle&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="ss">nameGap</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="ss">axisLabel</span><span class="p">:</span> <span class="p">{</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;rate&#34;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">},</span>
-</span></span><span class="line"><span class="cl">  <span class="ss">y_axis</span><span class="p">:</span>  <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">name</span><span class="p">:</span> <span class="s2">&#34;Unemployment Rate (%)&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="ss">nameLocation</span><span class="p">:</span> <span class="s2">&#34;middle&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="ss">nameGap</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="ss">axisLabel</span><span class="p">:</span> <span class="p">{</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;rate&#34;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">},</span>
-</span></span><span class="line"><span class="cl">  <span class="ss">grid</span><span class="p">:</span>    <span class="p">{</span> <span class="ss">bottom</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span> <span class="ss">left</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span> <span class="ss">right</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span> <span class="ss">containLabel</span><span class="p">:</span> <span class="kp">true</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">  <span class="ss">series</span><span class="p">:</span>  <span class="n">build_series</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<p>With <code>visualMap</code>, each data point becomes <code>[participation, rate, year]</code> — a
-three-element array where the third element drives the colour lightness:</p>
+<h2>4.1 — <code>Chart::Series::Scatter</code><span class="hx:absolute hx:-mt-20" id="41--chartseriesscatter"></span>
+    <a href="#41--chartseriesscatter" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Scatter charts plot points at <code>[x, y]</code> coordinates. Each series is a collection
+of points — one per state, one per year in our case.</p>
+<p>The equivalent JavaScript:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
@@ -680,14 +485,14 @@ three-element array where the third element drives the colour lightness:</p>
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">build_series</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="n">data</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">state</span><span class="p">,</span> <span class="n">rows</span><span class="o">|</span>
-</span></span><span class="line"><span class="cl">    <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Scatter</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">      <span class="nb">name</span><span class="p">:</span> <span class="n">state</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="ss">data</span><span class="p">:</span> <span class="n">rows</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="o">[</span><span class="n">r</span><span class="o">[</span><span class="ss">:participation</span><span class="o">]</span><span class="p">,</span> <span class="n">r</span><span class="o">[</span><span class="ss">:rate</span><span class="o">]</span><span class="p">,</span> <span class="n">r</span><span class="o">[</span><span class="ss">:year</span><span class="o">]]</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="k">end</span>
-</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">series</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">type</span><span class="o">:</span> <span class="s2">&#34;scatter&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">name</span><span class="o">:</span> <span class="s2">&#34;New South Wales&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">data</span><span class="o">:</span> <span class="p">[[</span><span class="mf">63.2</span><span class="p">,</span> <span class="mf">5.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">63.4</span><span class="p">,</span> <span class="mf">5.1</span><span class="p">],</span> <span class="p">...]</span>  <span class="c1">// [participation, unemployment]
+</span></span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span></span></span></code></pre></td></tr></table>
 </div>
 </div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
@@ -701,12 +506,134 @@ three-element array where the third element drives the colour lightness:</p>
   </button>
 </div>
 </div>
-<p><code>dimension: 2</code> tells <code>visualMap</code> to use the third element (index 2) of each data
-point. <code>colorLightness: [0.35, 0.85]</code> maps the min year to a darker shade and the
-max year to a lighter shade — or reverse the array to invert the mapping.</p>
-<p><code>show: false</code> hides the visual map control widget. Since the legend already
-identifies states by colour, a second colour scale widget would be confusing.</p>
+<p>In Ruby:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Scatter</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">name</span><span class="p">:</span> <span class="s2">&#34;New South Wales&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">data</span><span class="p">:</span> <span class="o">[[</span><span class="mi">63</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="o">.</span><span class="mi">3</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="mi">63</span><span class="o">.</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="o">.</span><span class="mi">1</span><span class="o">]</span><span class="p">,</span> <span class="o">...]</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p><code>Chart::Series::Scatter</code> adds <code>type: &quot;scatter&quot;</code> automatically. The data is an
+array of <code>[x, y]</code> pairs — or <code>[x, y, z]</code> if a third dimension is needed.</p>
+<p><strong>Value axes — start from the data, not zero.</strong> Scatter charts use <code>type: &quot;value&quot;</code>
+on both axes. ECharts defaults to starting value axes at zero — which bunches all
+points into one corner when your data doesn&rsquo;t go near zero. Set <code>min: &quot;dataMin&quot;</code>
+on both axes to fit the scale to the actual data range:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="ss">x_axis</span><span class="p">:</span> <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span> <span class="ss">min</span><span class="p">:</span> <span class="s2">&#34;dataMin&#34;</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="ss">y_axis</span><span class="p">:</span> <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span> <span class="ss">min</span><span class="p">:</span> <span class="s2">&#34;dataMin&#34;</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<hr>
+<h2>4.2 — Chart 1: Participation vs Unemployment Scatter<span class="hx:absolute hx:-mt-20" id="42--chart-1-participation-vs-unemployment-scatter"></span>
+    <a href="#42--chart-1-participation-vs-unemployment-scatter" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Each point is one state in one year. X axis is participation rate, Y axis is
+unemployment rate. Each state is its own series — its own colour, its own legend
+entry, toggleable independently.</p>
+<h3>visualMap<span class="hx:absolute hx:-mt-20" id="visualmap"></span>
+    <a href="#visualmap" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p><code>visualMap</code> encodes a third dimension as a visual property — in this case, year
+as colour lightness. Earlier years appear darker, recent years lighter. The time
+progression becomes visible without adding a separate series per year.</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="ss">visualMap</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">show</span><span class="p">:</span>      <span class="kp">false</span><span class="p">,</span>      <span class="c1"># hide the control widget</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">dimension</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>          <span class="c1"># use the third element of each [x, y, year] point</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">min</span><span class="p">:</span>       <span class="mi">2012</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">max</span><span class="p">:</span>       <span class="mi">2024</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">inRange</span><span class="p">:</span>   <span class="p">{</span> <span class="ss">colorLightness</span><span class="p">:</span> <span class="o">[</span><span class="mi">0</span><span class="o">.</span><span class="mi">35</span><span class="p">,</span> <span class="mi">0</span><span class="o">.</span><span class="mi">85</span><span class="o">]</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p><code>dimension: 2</code> — array index 2, the third element. <code>colorLightness</code> maps the
+min year to shade 0.35 (darker) and the max year to 0.85 (lighter). Reverse
+the array to invert.</p>
+<p><code>show: false</code> — the legend already identifies states by colour. A second colour
+scale widget would be confusing.</p>
+<p>With <code>visualMap</code> active, each data point needs the third dimension:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">rows</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="o">[</span><span class="n">r</span><span class="o">[</span><span class="ss">:participation</span><span class="o">]</span><span class="p">,</span> <span class="n">r</span><span class="o">[</span><span class="ss">:rate</span><span class="o">]</span><span class="p">,</span> <span class="n">r</span><span class="o">[</span><span class="ss">:year</span><span class="o">]]</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<h3>The component<span class="hx:absolute hx:-mt-20" id="the-component"></span>
+    <a href="#the-component" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -769,18 +696,16 @@ identifies states by colour, a second colour scale widget would be confusing.</p
 </span></span><span class="line"><span class="cl"><span class="k">module</span> <span class="nn">Components</span>
 </span></span><span class="line"><span class="cl">  <span class="k">module</span> <span class="nn">Charts</span>
 </span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">ParticipationScatter</span> <span class="o">&lt;</span> <span class="no">Components</span><span class="o">::</span><span class="no">Chart</span>
-</span></span><span class="line"><span class="cl">      <span class="n">prop</span> <span class="ss">:readings</span><span class="p">,</span> <span class="n">_Any</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="o">[]</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="n">prop</span> <span class="ss">:data</span><span class="p">,</span> <span class="n">_Any</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="p">{}</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="kp">private</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">chart_options</span>
-</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="o">::</span><span class="no">Stats</span><span class="o">::</span><span class="no">LabourForce</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="vi">@readings</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Options</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">color</span><span class="p">:</span>   <span class="s2">&#34;tableau&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">toolbox</span><span class="p">:</span> <span class="p">{</span> <span class="ss">feature</span><span class="p">:</span> <span class="p">{</span> <span class="ss">saveAsImage</span><span class="p">:</span> <span class="p">{},</span> <span class="ss">restore</span><span class="p">:</span> <span class="p">{}</span> <span class="p">}</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">tooltip</span><span class="p">:</span> <span class="p">{</span> <span class="ss">trigger</span><span class="p">:</span> <span class="s2">&#34;item&#34;</span><span class="p">,</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;participationScatter&#34;</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">legend</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;scroll&#34;</span><span class="p">,</span> <span class="ss">bottom</span><span class="p">:</span> <span class="mi">5</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">color</span><span class="p">:</span>     <span class="s2">&#34;tableau&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">toolbox</span><span class="p">:</span>   <span class="p">{</span> <span class="ss">feature</span><span class="p">:</span> <span class="p">{</span> <span class="ss">saveAsImage</span><span class="p">:</span> <span class="p">{},</span> <span class="ss">restore</span><span class="p">:</span> <span class="p">{}</span> <span class="p">}</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">tooltip</span><span class="p">:</span>   <span class="p">{</span> <span class="ss">trigger</span><span class="p">:</span> <span class="s2">&#34;item&#34;</span><span class="p">,</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;participationScatter&#34;</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">legend</span><span class="p">:</span>    <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;scroll&#34;</span><span class="p">,</span> <span class="ss">bottom</span><span class="p">:</span> <span class="mi">5</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">visualMap</span><span class="p">:</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="ss">show</span><span class="p">:</span>      <span class="kp">false</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">            <span class="ss">dimension</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
@@ -790,6 +715,7 @@ identifies states by colour, a second colour scale widget would be confusing.</p
 </span></span><span class="line"><span class="cl">          <span class="p">},</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">x_axis</span><span class="p">:</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="ss">type</span><span class="p">:</span>         <span class="s2">&#34;value&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">min</span><span class="p">:</span>          <span class="s2">&#34;dataMin&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">            <span class="nb">name</span><span class="p">:</span>         <span class="s2">&#34;Participation Rate (%)&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">            <span class="ss">nameLocation</span><span class="p">:</span> <span class="s2">&#34;middle&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">            <span class="ss">nameGap</span><span class="p">:</span>      <span class="mi">30</span><span class="p">,</span>
@@ -797,18 +723,19 @@ identifies states by colour, a second colour scale widget would be confusing.</p
 </span></span><span class="line"><span class="cl">          <span class="p">},</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">y_axis</span><span class="p">:</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="ss">type</span><span class="p">:</span>         <span class="s2">&#34;value&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">min</span><span class="p">:</span>          <span class="s2">&#34;dataMin&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">            <span class="nb">name</span><span class="p">:</span>         <span class="s2">&#34;Unemployment Rate (%)&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">            <span class="ss">nameLocation</span><span class="p">:</span> <span class="s2">&#34;middle&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">            <span class="ss">nameGap</span><span class="p">:</span>      <span class="mi">40</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">            <span class="ss">axisLabel</span><span class="p">:</span>    <span class="p">{</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;rate&#34;</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">          <span class="p">},</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">grid</span><span class="p">:</span>   <span class="p">{</span> <span class="ss">bottom</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span> <span class="ss">left</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span> <span class="ss">right</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span> <span class="ss">containLabel</span><span class="p">:</span> <span class="kp">true</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">series</span><span class="p">:</span> <span class="n">build_series</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">series</span><span class="p">:</span> <span class="n">build_series</span>
 </span></span><span class="line"><span class="cl">        <span class="p">)</span>
 </span></span><span class="line"><span class="cl">      <span class="k">end</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">build_series</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">data</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">state</span><span class="p">,</span> <span class="n">rows</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">build_series</span>
+</span></span><span class="line"><span class="cl">        <span class="vi">@data</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">state</span><span class="p">,</span> <span class="n">rows</span><span class="o">|</span>
 </span></span><span class="line"><span class="cl">          <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Scatter</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">            <span class="nb">name</span><span class="p">:</span> <span class="n">state</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">            <span class="ss">data</span><span class="p">:</span> <span class="n">rows</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="o">[</span><span class="n">r</span><span class="o">[</span><span class="ss">:participation</span><span class="o">]</span><span class="p">,</span> <span class="n">r</span><span class="o">[</span><span class="ss">:rate</span><span class="o">]</span><span class="p">,</span> <span class="n">r</span><span class="o">[</span><span class="ss">:year</span><span class="o">]]</span> <span class="p">}</span>
@@ -831,13 +758,9 @@ identifies states by colour, a second colour scale widget would be confusing.</p
   </button>
 </div>
 </div>
-<blockquote>
-  <p>Note: Axis minimum for scatter charts: ECharts defaults to starting value axes at zero. For scatter charts this almost always produces a chart where all points are bunched into one corner. Set min: &ldquo;dataMin&rdquo; on both axes to fit the scale to your data. Use an explicit value like min: 55 if you want a fixed lower bound rather than a dynamic one.</p>
-
-</blockquote>
-<h3>Custom tooltip for scatter<span class="hx:absolute hx:-mt-20" id="custom-tooltip-for-scatter"></span>
-    <a href="#custom-tooltip-for-scatter" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>The default <code>&quot;item&quot;</code> formatter shows the raw array — not readable. Add a custom
-formatter to <code>custom_chart_formatters.js</code>:</p>
+<h3>Custom tooltip formatter<span class="hx:absolute hx:-mt-20" id="custom-tooltip-formatter"></span>
+    <a href="#custom-tooltip-formatter" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>The default item formatter shows a raw array — not readable. Add to
+<code>custom_chart_formatters.js</code>:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
@@ -855,7 +778,7 @@ formatter to <code>custom_chart_formatters.js</code>:</p>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// app/javascript/charts/custom_chart_formatters.js
 </span></span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">participationScatter</span><span class="o">:</span> <span class="nx">params</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;item:participationScatter&#34;</span><span class="o">:</span> <span class="nx">params</span> <span class="p">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="p">[</span><span class="nx">participation</span><span class="p">,</span> <span class="nx">rate</span><span class="p">,</span> <span class="nx">year</span><span class="p">]</span> <span class="o">=</span> <span class="nx">params</span><span class="p">.</span><span class="nx">value</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="sb">`</span><span class="si">${</span><span class="nx">params</span><span class="p">.</span><span class="nx">marker</span><span class="si">}${</span><span class="nx">params</span><span class="p">.</span><span class="nx">seriesName</span><span class="si">}</span><span class="sb"> (</span><span class="si">${</span><span class="nx">year</span><span class="si">}</span><span class="sb">)&lt;br/&gt;
 </span></span></span><span class="line"><span class="cl"><span class="sb">      Participation: &lt;strong&gt;</span><span class="si">${</span><span class="nx">participation</span><span class="si">}</span><span class="sb">%&lt;/strong&gt;&lt;br/&gt;
@@ -875,16 +798,16 @@ formatter to <code>custom_chart_formatters.js</code>:</p>
   </button>
 </div>
 </div>
-<blockquote>
-  <p>Note: This is our first example of using the <code>custom_chart_formatters.js</code> that we introduced
-back in <code>Lesson 02</code>.</p>
-
-</blockquote>
+<p>The key is <code>&quot;item:participationScatter&quot;</code> — the <code>item:</code> prefix matches the
+<code>trigger: &quot;item&quot;</code> on the tooltip. The resolver in <code>chart_controller.js</code> qualifies
+the lookup automatically when you write <code>formatter: &quot;participationScatter&quot;</code> in
+Ruby. Custom formatters were introduced in Module 02 — this is the first one we
+add to <code>custom_chart_formatters.js</code>.</p>
 <hr>
-<h2>4.4 — Chart 2: Employment Volume Over Time<span class="hx:absolute hx:-mt-20" id="44--chart-2-employment-volume-over-time"></span>
-    <a href="#44--chart-2-employment-volume-over-time" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>A line chart showing absolute employment numbers per state. This answers a
-different question — not the ratio of workers to population, but the raw scale
-of each state&rsquo;s economy.</p>
+<h2>4.3 — Chart 2: Employment Volume Over Time<span class="hx:absolute hx:-mt-20" id="43--chart-2-employment-volume-over-time"></span>
+    <a href="#43--chart-2-employment-volume-over-time" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>A line chart showing absolute employment numbers per state. Same service, same
+data structure, different question: not the ratio of workers to population, but
+the raw scale of each state&rsquo;s economy.</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
@@ -932,41 +855,37 @@ of each state&rsquo;s economy.</p>
 </span><span class="lnt">41
 </span><span class="lnt">42
 </span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/views/components/charts/employment_trends.rb</span>
 </span></span><span class="line"><span class="cl"><span class="k">module</span> <span class="nn">Components</span>
 </span></span><span class="line"><span class="cl">  <span class="k">module</span> <span class="nn">Charts</span>
 </span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">EmploymentTrends</span> <span class="o">&lt;</span> <span class="no">Components</span><span class="o">::</span><span class="no">Chart</span>
-</span></span><span class="line"><span class="cl">      <span class="n">prop</span> <span class="ss">:readings</span><span class="p">,</span> <span class="n">_Any</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="o">[]</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="n">prop</span> <span class="ss">:data</span><span class="p">,</span> <span class="n">_Any</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="p">{}</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="kp">private</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">chart_options</span>
-</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="o">::</span><span class="no">Stats</span><span class="o">::</span><span class="no">LabourForce</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="vi">@readings</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Options</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">color</span><span class="p">:</span>   <span class="s2">&#34;tableau&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">toolbox</span><span class="p">:</span> <span class="p">{</span> <span class="ss">feature</span><span class="p">:</span> <span class="p">{</span> <span class="ss">saveAsImage</span><span class="p">:</span> <span class="p">{},</span> <span class="ss">restore</span><span class="p">:</span> <span class="p">{}</span> <span class="p">}</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">tooltip</span><span class="p">:</span> <span class="p">{</span> <span class="ss">trigger</span><span class="p">:</span> <span class="s2">&#34;axis&#34;</span><span class="p">,</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;thousands&#34;</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">legend</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;scroll&#34;</span><span class="p">,</span> <span class="ss">bottom</span><span class="p">:</span> <span class="mi">5</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">x_axis</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;category&#34;</span><span class="p">,</span> <span class="ss">data</span><span class="p">:</span> <span class="n">years</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">x_axis</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;category&#34;</span><span class="p">,</span> <span class="ss">data</span><span class="p">:</span> <span class="n">years</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">y_axis</span><span class="p">:</span>  <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">            <span class="nb">name</span><span class="p">:</span> <span class="s2">&#34;Employed (&#39;000)&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">type</span><span class="p">:</span>         <span class="s2">&#34;value&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">name</span><span class="p">:</span>         <span class="s2">&#34;Employed (&#39;000)&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">            <span class="ss">nameLocation</span><span class="p">:</span> <span class="s2">&#34;middle&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">            <span class="ss">nameGap</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">            <span class="ss">axisLabel</span><span class="p">:</span> <span class="p">{</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;thousands&#34;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">nameGap</span><span class="p">:</span>      <span class="mi">50</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">axisLabel</span><span class="p">:</span>    <span class="p">{</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;thousands&#34;</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">          <span class="p">},</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">grid</span><span class="p">:</span>    <span class="p">{</span> <span class="ss">bottom</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span> <span class="ss">left</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span> <span class="ss">right</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="ss">containLabel</span><span class="p">:</span> <span class="kp">true</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">series</span><span class="p">:</span>  <span class="n">build_series</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">series</span><span class="p">:</span>  <span class="n">build_series</span>
 </span></span><span class="line"><span class="cl">        <span class="p">)</span>
 </span></span><span class="line"><span class="cl">      <span class="k">end</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">build_series</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">data</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">state</span><span class="p">,</span> <span class="n">rows</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">build_series</span>
+</span></span><span class="line"><span class="cl">        <span class="vi">@data</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">state</span><span class="p">,</span> <span class="n">rows</span><span class="o">|</span>
 </span></span><span class="line"><span class="cl">          <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Line</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">            <span class="nb">name</span><span class="p">:</span>   <span class="n">state</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">            <span class="ss">data</span><span class="p">:</span>   <span class="n">rows</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">[</span><span class="ss">:employed</span><span class="o">]</span> <span class="p">},</span>
@@ -975,8 +894,8 @@ of each state&rsquo;s economy.</p>
 </span></span><span class="line"><span class="cl">        <span class="k">end</span>
 </span></span><span class="line"><span class="cl">      <span class="k">end</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">years</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">first</span><span class="o">&amp;.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">[</span><span class="ss">:year</span><span class="o">].</span><span class="n">to_s</span> <span class="p">}</span> <span class="o">||</span> <span class="o">[]</span>
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">years</span>
+</span></span><span class="line"><span class="cl">        <span class="vi">@data</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">first</span><span class="o">&amp;.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">[</span><span class="ss">:year</span><span class="o">].</span><span class="n">to_s</span> <span class="p">}</span> <span class="o">||</span> <span class="o">[]</span>
 </span></span><span class="line"><span class="cl">      <span class="k">end</span>
 </span></span><span class="line"><span class="cl">    <span class="k">end</span>
 </span></span><span class="line"><span class="cl">  <span class="k">end</span>
@@ -995,102 +914,10 @@ of each state&rsquo;s economy.</p>
 </div>
 </div>
 <hr>
-<h2>4.5 — Chart 3: Participation Rate Trends<span class="hx:absolute hx:-mt-20" id="45--chart-3-participation-rate-trends"></span>
-    <a href="#45--chart-3-participation-rate-trends" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>The third chart shows participation rate over time. A <code>markLine</code> draws the national
-average — this is more semantically correct than adding a fake series, and ECharts
-renders it as a distinct annotation rather than a legend entry.</p>
-<h3>markLine — statistical annotations<span class="hx:absolute hx:-mt-20" id="markline--statistical-annotations"></span>
-    <a href="#markline--statistical-annotations" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p><code>markLine</code> adds reference lines to any series. We add it to the first series only
-to avoid duplicating the line eight times:</p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">build_series</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="n">national_avg</span> <span class="o">=</span> <span class="n">compute_national_avg</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">data</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">with_index</span> <span class="k">do</span> <span class="o">|</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">rows</span><span class="p">),</span> <span class="n">i</span><span class="o">|</span>
-</span></span><span class="line"><span class="cl">    <span class="n">opts</span> <span class="o">=</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nb">name</span><span class="p">:</span>   <span class="n">state</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="ss">data</span><span class="p">:</span>   <span class="n">rows</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">[</span><span class="ss">:participation</span><span class="o">]</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">      <span class="ss">smooth</span><span class="p">:</span> <span class="kp">true</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1"># Add markLine to first series only</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span>
-</span></span><span class="line"><span class="cl">      <span class="n">opts</span><span class="o">[</span><span class="ss">:markLine</span><span class="o">]</span> <span class="o">=</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="ss">silent</span><span class="p">:</span>    <span class="kp">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="ss">symbol</span><span class="p">:</span>    <span class="s2">&#34;none&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="ss">lineStyle</span><span class="p">:</span> <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;dashed&#34;</span><span class="p">,</span> <span class="ss">color</span><span class="p">:</span> <span class="s2">&#34;#999&#34;</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">        <span class="ss">label</span><span class="p">:</span>     <span class="p">{</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;National Avg&#34;</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">        <span class="ss">data</span><span class="p">:</span>      <span class="n">national_avg</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">year</span><span class="p">,</span> <span class="n">val</span><span class="o">|</span>
-</span></span><span class="line"><span class="cl">          <span class="p">{</span> <span class="ss">xAxis</span><span class="p">:</span> <span class="n">year</span><span class="o">.</span><span class="n">to_s</span><span class="p">,</span> <span class="ss">yAxis</span><span class="p">:</span> <span class="n">val</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="k">end</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Line</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">**</span><span class="n">opts</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="k">end</span>
-</span></span><span class="line"><span class="cl"><span class="k">end</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">compute_national_avg</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="n">all_years</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span>
-</span></span><span class="line"><span class="cl">  <span class="n">all_years</span>
-</span></span><span class="line"><span class="cl">    <span class="o">.</span><span class="n">group_by</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">[</span><span class="ss">:year</span><span class="o">]</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="o">.</span><span class="n">transform_values</span> <span class="p">{</span> <span class="o">|</span><span class="n">rows</span><span class="o">|</span>
-</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="n">rows</span><span class="o">.</span><span class="n">sum</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">[</span><span class="ss">:participation</span><span class="o">]</span> <span class="p">}</span> <span class="o">/</span> <span class="n">rows</span><span class="o">.</span><span class="n">size</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
+<h2>4.4 — Chart 3: Participation Rate Trends<span class="hx:absolute hx:-mt-20" id="44--chart-3-participation-rate-trends"></span>
+    <a href="#44--chart-3-participation-rate-trends" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>The third chart shows participation rate over time. A clean multi-series line
+chart with <code>min: &quot;dataMin&quot;</code> on the Y axis — participation rates range from
+roughly 60–76%, so starting at zero wastes most of the chart height.</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
@@ -1139,106 +966,48 @@ to avoid duplicating the line eight times:</p>
 </span><span class="lnt">42
 </span><span class="lnt">43
 </span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span><span class="lnt">60
-</span><span class="lnt">61
-</span><span class="lnt">62
-</span><span class="lnt">63
-</span><span class="lnt">64
-</span><span class="lnt">65
-</span><span class="lnt">66
-</span><span class="lnt">67
-</span><span class="lnt">68
-</span><span class="lnt">69
-</span><span class="lnt">70
-</span><span class="lnt">71
-</span><span class="lnt">72
-</span><span class="lnt">73
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/views/components/charts/participation_trends.rb</span>
 </span></span><span class="line"><span class="cl"><span class="k">module</span> <span class="nn">Components</span>
 </span></span><span class="line"><span class="cl">  <span class="k">module</span> <span class="nn">Charts</span>
 </span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">ParticipationTrends</span> <span class="o">&lt;</span> <span class="no">Components</span><span class="o">::</span><span class="no">Chart</span>
-</span></span><span class="line"><span class="cl">      <span class="n">prop</span> <span class="ss">:readings</span><span class="p">,</span> <span class="n">_Any</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="o">[]</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="n">prop</span> <span class="ss">:data</span><span class="p">,</span> <span class="n">_Any</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="p">{}</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="kp">private</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">chart_options</span>
-</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="o">::</span><span class="no">Stats</span><span class="o">::</span><span class="no">LabourForce</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="vi">@readings</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Options</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">color</span><span class="p">:</span>   <span class="s2">&#34;tableau&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">toolbox</span><span class="p">:</span> <span class="p">{</span> <span class="ss">feature</span><span class="p">:</span> <span class="p">{</span> <span class="ss">saveAsImage</span><span class="p">:</span> <span class="p">{},</span> <span class="ss">restore</span><span class="p">:</span> <span class="p">{}</span> <span class="p">}</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">tooltip</span><span class="p">:</span> <span class="p">{</span> <span class="ss">trigger</span><span class="p">:</span> <span class="s2">&#34;axis&#34;</span><span class="p">,</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;rate&#34;</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">legend</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;scroll&#34;</span><span class="p">,</span> <span class="ss">bottom</span><span class="p">:</span> <span class="mi">5</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">x_axis</span><span class="p">:</span>  <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;category&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">            <span class="ss">data</span><span class="p">:</span> <span class="n">years</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">          <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">x_axis</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;category&#34;</span><span class="p">,</span> <span class="ss">data</span><span class="p">:</span> <span class="n">years</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">y_axis</span><span class="p">:</span>  <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="ss">type</span><span class="p">:</span>         <span class="s2">&#34;value&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">min</span><span class="p">:</span>          <span class="s2">&#34;dataMin&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">            <span class="nb">name</span><span class="p">:</span>         <span class="s2">&#34;Participation Rate (%)&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">            <span class="ss">nameLocation</span><span class="p">:</span> <span class="s2">&#34;middle&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">            <span class="ss">nameGap</span><span class="p">:</span>      <span class="mi">40</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">            <span class="ss">axisLabel</span><span class="p">:</span>    <span class="p">{</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;rate&#34;</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">          <span class="p">},</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">grid</span><span class="p">:</span>    <span class="p">{</span> <span class="ss">bottom</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span> <span class="ss">left</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span> <span class="ss">right</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="ss">containLabel</span><span class="p">:</span> <span class="kp">true</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">series</span><span class="p">:</span>  <span class="n">build_series</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">series</span><span class="p">:</span>  <span class="n">build_series</span>
 </span></span><span class="line"><span class="cl">        <span class="p">)</span>
 </span></span><span class="line"><span class="cl">      <span class="k">end</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">build_series</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">national_avg</span> <span class="o">=</span> <span class="n">compute_national_avg</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="n">data</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">with_index</span> <span class="k">do</span> <span class="o">|</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">rows</span><span class="p">),</span> <span class="n">i</span><span class="o">|</span>
-</span></span><span class="line"><span class="cl">          <span class="n">opts</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">build_series</span>
+</span></span><span class="line"><span class="cl">        <span class="vi">@data</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">state</span><span class="p">,</span> <span class="n">rows</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl">          <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Line</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">            <span class="nb">name</span><span class="p">:</span>   <span class="n">state</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">            <span class="ss">data</span><span class="p">:</span>   <span class="n">rows</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">[</span><span class="ss">:participation</span><span class="o">]</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">            <span class="ss">smooth</span><span class="p">:</span> <span class="kp">true</span>
-</span></span><span class="line"><span class="cl">          <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">          <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span>
-</span></span><span class="line"><span class="cl">            <span class="n">opts</span><span class="o">[</span><span class="ss">:markLine</span><span class="o">]</span> <span class="o">=</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">              <span class="ss">silent</span><span class="p">:</span>    <span class="kp">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">              <span class="ss">symbol</span><span class="p">:</span>    <span class="s2">&#34;none&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">              <span class="ss">lineStyle</span><span class="p">:</span> <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;dashed&#34;</span><span class="p">,</span> <span class="ss">color</span><span class="p">:</span> <span class="s2">&#34;#999&#34;</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">              <span class="ss">label</span><span class="p">:</span>     <span class="p">{</span> <span class="ss">position</span><span class="p">:</span> <span class="s2">&#34;insideEndTop&#34;</span><span class="p">,</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;National Avg&#34;</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">              <span class="ss">data</span><span class="p">:</span>      <span class="o">[[</span>
-</span></span><span class="line"><span class="cl">                <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;min&#34;</span><span class="p">,</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&#34;National Avg&#34;</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">                <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;max&#34;</span><span class="p">,</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&#34;National Avg&#34;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">              <span class="o">]]</span>
-</span></span><span class="line"><span class="cl">            <span class="p">}</span>
-</span></span><span class="line"><span class="cl">          <span class="k">end</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">          <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Line</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">**</span><span class="n">opts</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="k">end</span>
 </span></span><span class="line"><span class="cl">      <span class="k">end</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">compute_national_avg</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span>
-</span></span><span class="line"><span class="cl">          <span class="o">.</span><span class="n">group_by</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">[</span><span class="ss">:year</span><span class="o">]</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">          <span class="o">.</span><span class="n">transform_values</span> <span class="p">{</span> <span class="o">|</span><span class="n">rows</span><span class="o">|</span>
-</span></span><span class="line"><span class="cl">            <span class="p">(</span><span class="n">rows</span><span class="o">.</span><span class="n">sum</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">[</span><span class="ss">:participation</span><span class="o">]</span> <span class="p">}</span> <span class="o">/</span> <span class="n">rows</span><span class="o">.</span><span class="n">size</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">          <span class="p">}</span>
-</span></span><span class="line"><span class="cl">      <span class="k">end</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">years</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">first</span><span class="o">&amp;.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">[</span><span class="ss">:year</span><span class="o">].</span><span class="n">to_s</span> <span class="p">}</span> <span class="o">||</span> <span class="o">[]</span>
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">years</span>
+</span></span><span class="line"><span class="cl">        <span class="vi">@data</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">first</span><span class="o">&amp;.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">[</span><span class="ss">:year</span><span class="o">].</span><span class="n">to_s</span> <span class="p">}</span> <span class="o">||</span> <span class="o">[]</span>
 </span></span><span class="line"><span class="cl">      <span class="k">end</span>
 </span></span><span class="line"><span class="cl">    <span class="k">end</span>
 </span></span><span class="line"><span class="cl">  <span class="k">end</span>
@@ -1256,193 +1025,25 @@ to avoid duplicating the line eight times:</p>
   </button>
 </div>
 </div>
-<blockquote>
-  <p><strong>Note:</strong> <code>markLine</code> with <code>type: &quot;average&quot;</code> draws a horizontal average line
-across the entire series. Here we want the national average across states, not
-the average of one state&rsquo;s values — so we compute it separately and pass it as
-a custom data point. The <code>markLine</code> is attached to the first series (<code>i == 0</code>)
-to avoid rendering it eight times.</p>
-
-</blockquote>
+<p><code>markLine</code> — for adding reference lines such as a national average — is covered
+in Module 09 with a dedicated example.</p>
 <hr>
-<h2>4.6 — Controller and View<span class="hx:absolute hx:-mt-20" id="46--controller-and-view"></span>
-    <a href="#46--controller-and-view" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>One action loads the data once. The view renders three charts interspersed with
-prose.</p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/controllers/charts_controller.rb</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">labour_market_analysis</span>
-</span></span><span class="line"><span class="cl">  <span class="vi">@readings</span> <span class="o">=</span> <span class="no">LabourForceReading</span><span class="o">.</span><span class="n">ordered</span>
-</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># config/routes.rb</span>
-</span></span><span class="line"><span class="cl"><span class="n">get</span> <span class="s2">&#34;charts/labour_market_analysis&#34;</span><span class="p">,</span> <span class="ss">to</span><span class="p">:</span> <span class="s2">&#34;charts#labour_market_analysis&#34;</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><pre><code>&lt;%# app/views/charts/labour_market_analysis.html.erb %&gt;
-
-&lt;div class=&#34;max-w-4xl mx-auto px-4 py-8&#34;&gt;
-
-  &lt;h1 class=&#34;text-3xl font-bold mb-2&#34;&gt;Australian Labour Market by State&lt;/h1&gt;
-  &lt;p class=&#34;text-neutral-500 text-sm mb-8&#34;&gt;
-    Annual averages, seasonally adjusted, 2012–2024.
-    Source: &lt;a href=&#34;https://www.abs.gov.au&#34; class=&#34;underline&#34;&gt;Australian Bureau of Statistics&lt;/a&gt;,
-    Labour Force (ABS catalogue 6202.0), CC BY 4.0.
-  &lt;/p&gt;
-
-  &lt;%# ── Chart 1 ────────────────────────────────────────────────── %&gt;
-
-  &lt;h2 class=&#34;text-xl font-semibold mb-2&#34;&gt;Participation vs Unemployment&lt;/h2&gt;
-  &lt;p class=&#34;text-neutral-600 mb-4&#34;&gt;
-    Each point represents one state in one year. States that perform well tend to
-    cluster toward the bottom-right — high participation, low unemployment. The
-    ACT consistently occupies this position, reflecting its high-income public
-    sector workforce. Tasmania and South Australia sit toward the upper-left.
-    The COVID-19 disruption of 2020 appears as a visible break in each state&#39;s
-    trajectory — unemployment spiked as participation fell.
-  &lt;/p&gt;
-
-  &lt;%= render Components::Charts::ParticipationScatter.new(
-    readings: @readings,
-    height:   &#34;420px&#34;
-  ) %&gt;
-
-  &lt;p class=&#34;text-neutral-500 text-xs mt-2 mb-10&#34;&gt;
-    Each point is one state&#39;s annual average. Hover for details. Toggle states
-    using the legend.
-  &lt;/p&gt;
-
-  &lt;%# ── Chart 2 ────────────────────────────────────────────────── %&gt;
-
-  &lt;h2 class=&#34;text-xl font-semibold mb-2&#34;&gt;Employment Volume&lt;/h2&gt;
-  &lt;p class=&#34;text-neutral-600 mb-4&#34;&gt;
-    The scale differences between states are striking. New South Wales and Victoria
-    together employ more than the other six states combined. The long-run growth
-    trend is visible across all states, with the brief COVID dip in 2020 followed
-    by a sharp recovery. Western Australia shows the most volatility — driven by
-    the resources sector&#39;s sensitivity to commodity cycles.
-  &lt;/p&gt;
-
-  &lt;%= render Components::Charts::EmploymentTrends.new(
-    readings: @readings,
-    height:   &#34;380px&#34;
-  ) %&gt;
-
-  &lt;p class=&#34;text-neutral-500 text-xs mt-2 mb-10&#34;&gt;
-    Annual average employed persons (&#39;000). Hover to compare states at a given year.
-  &lt;/p&gt;
-
-  &lt;%# ── Chart 3 ────────────────────────────────────────────────── %&gt;
-
-  &lt;h2 class=&#34;text-xl font-semibold mb-2&#34;&gt;Participation Rate Trends&lt;/h2&gt;
-  &lt;p class=&#34;text-neutral-600 mb-4&#34;&gt;
-    Participation rate — the share of the working-age population either employed
-    or actively seeking work — tells a different story to headline unemployment.
-    The ACT&#39;s rate is structurally higher due to its demographic profile. The
-    national average has been broadly flat over the period, masking diverging
-    trends: Queensland and Western Australia have lifted, while South Australia
-    and Tasmania have lagged. The dashed line shows the national average across
-    all states.
-  &lt;/p&gt;
-
-  &lt;%= render Components::Charts::ParticipationTrends.new(
-    readings: @readings,
-    height:   &#34;380px&#34;
-  ) %&gt;
-
-  &lt;p class=&#34;text-neutral-500 text-xs mt-2 mb-10&#34;&gt;
-    Annual average participation rate (%)
-  &lt;/p&gt;
-
-  &lt;%# ── Attribution ────────────────────────────────────────────── %&gt;
-
-  &lt;div class=&#34;border-t border-neutral-200 pt-6 mt-4&#34;&gt;
-    &lt;p class=&#34;text-neutral-400 text-xs&#34;&gt;
-      Data: Australian Bureau of Statistics, Labour Force, Australia (ABS cat. 6202.0).
-      Accessed via ABS Data API. Licensed under
-      &lt;a href=&#34;https://www.abs.gov.au/website-privacy-copyright-and-disclaimer&#34;
-         class=&#34;underline&#34;&gt;CC BY 4.0&lt;/a&gt;.
-    &lt;/p&gt;
-  &lt;/div&gt;
-
-&lt;/div&gt;</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<p>And we can add an extra card to our index page:</p>
-<p>&lt;%= render &ldquo;charts/gallery_card&rdquo;,
-title:       &ldquo;Labour Market Analysis&rdquo;,
-description: &ldquo;Three charts with prose commentary — participation rate, employment volume, and unemployment trends by state, 2012–2024.&rdquo;,
-path:        charts_labour_market_analysis_path %&gt;</p>
+<h2>4.5 — Colour Correspondence<span class="hx:absolute hx:-mt-20" id="45--colour-correspondence"></span>
+    <a href="#45--colour-correspondence" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>All three charts use <code>color: &quot;tableau&quot;</code>. The service returns states in
+alphabetical order — <code>Stats::LabourForce</code> uses <code>group_by</code> which preserves
+insertion order, and <code>LabourForceReading.ordered</code> orders by state name. ECharts
+assigns colours from the palette in series order.</p>
+<p>The result: ACT is always the first tableau colour, NSW always the second — across
+the scatter chart, the line chart, and the participation chart. A reader identifies
+Queensland by colour on Chart 1 and finds Queensland immediately on Charts 2 and 3
+without reading the legend again.</p>
+<p><strong>The rule:</strong> same palette + same series order = same colour mapping. The service
+guarantees the order. You guarantee the palette by using the same <code>color:</code> value
+on all charts on the page.</p>
 <hr>
-<h2>4.7 — Colour Correspondence Across Charts<span class="hx:absolute hx:-mt-20" id="47--colour-correspondence-across-charts"></span>
-    <a href="#47--colour-correspondence-across-charts" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>All three charts on this page use <code>color: &quot;tableau&quot;</code>. Because the service returns
-states in the same alphabetical order, and ECharts assigns colours from the palette
-in series order, ACT always gets the first tableau colour, NSW the second, and so
-on — across all three charts on this page.</p>
-<p>This is the palette consistency principle from Module 03 in action. A reader can
-identify &ldquo;Queensland&rdquo; in Chart 1 and immediately find Queensland in Charts 2 and 3
-by colour without reading the legend again.</p>
-<p>The rule: <strong>if charts on the same page share the same palette and the same series
-order, they will share the same colour mapping</strong>. The service guarantees consistent
-ordering by sorting states alphabetically.</p>
-<p>Note that Module 04 uses a different palette (<code>&quot;cool&quot;</code>) — that is fine. Colour
-consistency is a within-page concern. There is no requirement for the bar chart
-from Module 04 to match the scatter chart on this page.</p>
-<hr>
-<h2>4.8 — Testing Chart Configuration<span class="hx:absolute hx:-mt-20" id="48--testing-chart-configuration"></span>
-    <a href="#48--testing-chart-configuration" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Scatter chart option generation is pure Ruby — no browser, no JavaScript, no Rails
-required. The service and component produce plain hashes that are entirely
-inspectable in a unit test.</p>
+<h2>4.6 — Testing<span class="hx:absolute hx:-mt-20" id="46--testing"></span>
+    <a href="#46--testing" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Chart option generation is pure Ruby — no browser, no JavaScript, no Rails. Pass
+plain model objects built with <code>.new</code>, call <code>chart_options</code>, assert on the hash:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
@@ -1489,44 +1090,46 @@ inspectable in a unit test.</p>
 </span><span class="lnt">40
 </span><span class="lnt">41
 </span><span class="lnt">42
+</span><span class="lnt">43
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># test/views/components/charts/participation_scatter_test.rb</span>
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># test/components/participation_scatter_test.rb</span>
+</span></span><span class="line"><span class="cl"><span class="nb">require</span> <span class="s2">&#34;test_helper&#34;</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ParticipationScatterTest</span> <span class="o">&lt;</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">TestCase</span>
-</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">readings</span>
-</span></span><span class="line"><span class="cl">    <span class="o">[</span>
-</span></span><span class="line"><span class="cl">      <span class="no">LabourForceReading</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">state</span><span class="p">:</span> <span class="s2">&#34;New South Wales&#34;</span><span class="p">,</span> <span class="ss">year</span><span class="p">:</span> <span class="mi">2022</span><span class="p">,</span> <span class="ss">month</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="ss">employed_thousands</span><span class="p">:</span> <span class="mi">4100</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="ss">unemployment_rate</span><span class="p">:</span> <span class="mi">3</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span> <span class="ss">participation_rate</span><span class="p">:</span> <span class="mi">63</span><span class="o">.</span><span class="mi">2</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">      <span class="no">LabourForceReading</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">state</span><span class="p">:</span> <span class="s2">&#34;New South Wales&#34;</span><span class="p">,</span> <span class="ss">year</span><span class="p">:</span> <span class="mi">2022</span><span class="p">,</span> <span class="ss">month</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="ss">employed_thousands</span><span class="p">:</span> <span class="mi">4110</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="ss">unemployment_rate</span><span class="p">:</span> <span class="mi">3</span><span class="o">.</span><span class="mi">7</span><span class="p">,</span> <span class="ss">participation_rate</span><span class="p">:</span> <span class="mi">63</span><span class="o">.</span><span class="mi">4</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">      <span class="no">LabourForceReading</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">state</span><span class="p">:</span> <span class="s2">&#34;Victoria&#34;</span><span class="p">,</span> <span class="ss">year</span><span class="p">:</span> <span class="mi">2022</span><span class="p">,</span> <span class="ss">month</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="ss">employed_thousands</span><span class="p">:</span> <span class="mi">3400</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="ss">unemployment_rate</span><span class="p">:</span> <span class="mi">4</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="ss">participation_rate</span><span class="p">:</span> <span class="mi">65</span><span class="o">.</span><span class="mi">1</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">      <span class="no">LabourForceReading</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">state</span><span class="p">:</span> <span class="s2">&#34;Victoria&#34;</span><span class="p">,</span> <span class="ss">year</span><span class="p">:</span> <span class="mi">2022</span><span class="p">,</span> <span class="ss">month</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="ss">employed_thousands</span><span class="p">:</span> <span class="mi">3410</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="ss">unemployment_rate</span><span class="p">:</span> <span class="mi">4</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="ss">participation_rate</span><span class="p">:</span> <span class="mi">65</span><span class="o">.</span><span class="mi">3</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="k">def</span> <span class="nf">sample_data</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;New South Wales&#34;</span> <span class="o">=&gt;</span> <span class="o">[</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> <span class="ss">year</span><span class="p">:</span> <span class="mi">2022</span><span class="p">,</span> <span class="ss">employed</span><span class="p">:</span> <span class="mi">4100</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="ss">rate</span><span class="p">:</span> <span class="mi">3</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">participation</span><span class="p">:</span> <span class="mi">63</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="ss">unemployed</span><span class="p">:</span> <span class="mi">158</span><span class="o">.</span><span class="mi">0</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="o">]</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;Victoria&#34;</span> <span class="o">=&gt;</span> <span class="o">[</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> <span class="ss">year</span><span class="p">:</span> <span class="mi">2022</span><span class="p">,</span> <span class="ss">employed</span><span class="p">:</span> <span class="mi">3400</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="ss">rate</span><span class="p">:</span> <span class="mi">4</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">participation</span><span class="p">:</span> <span class="mi">65</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="ss">unemployed</span><span class="p">:</span> <span class="mi">140</span><span class="o">.</span><span class="mi">0</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="o">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="k">end</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="nb">test</span> <span class="s2">&#34;produces one series per state&#34;</span> <span class="k">do</span>
-</span></span><span class="line"><span class="cl">    <span class="n">component</span> <span class="o">=</span> <span class="no">Components</span><span class="o">::</span><span class="no">Charts</span><span class="o">::</span><span class="no">ParticipationScatter</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">readings</span><span class="p">:</span> <span class="n">readings</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">component</span> <span class="o">=</span> <span class="no">Components</span><span class="o">::</span><span class="no">Charts</span><span class="o">::</span><span class="no">ParticipationScatter</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">data</span><span class="p">:</span> <span class="n">sample_data</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">options</span>   <span class="o">=</span> <span class="n">component</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:chart_options</span><span class="p">)</span><span class="o">.</span><span class="n">to_h</span>
-</span></span><span class="line"><span class="cl">    <span class="n">series</span>    <span class="o">=</span> <span class="n">options</span><span class="o">[</span><span class="ss">:series</span><span class="o">]</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">assert_equal</span> <span class="mi">2</span><span class="p">,</span> <span class="n">series</span><span class="o">.</span><span class="n">size</span>
-</span></span><span class="line"><span class="cl">    <span class="n">assert_equal</span> <span class="s2">&#34;scatter&#34;</span><span class="p">,</span> <span class="n">series</span><span class="o">.</span><span class="n">first</span><span class="o">[</span><span class="ss">:type</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">assert_equal</span> <span class="mi">2</span><span class="p">,</span> <span class="n">options</span><span class="o">[</span><span class="ss">:series</span><span class="o">].</span><span class="n">size</span>
+</span></span><span class="line"><span class="cl">    <span class="n">assert_equal</span> <span class="s2">&#34;scatter&#34;</span><span class="p">,</span> <span class="n">options</span><span class="o">[</span><span class="ss">:series</span><span class="o">].</span><span class="n">first</span><span class="o">[</span><span class="ss">:type</span><span class="o">]</span>
 </span></span><span class="line"><span class="cl">  <span class="k">end</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="nb">test</span> <span class="s2">&#34;each data point is [participation, rate, year]&#34;</span> <span class="k">do</span>
-</span></span><span class="line"><span class="cl">    <span class="n">component</span> <span class="o">=</span> <span class="no">Components</span><span class="o">::</span><span class="no">Charts</span><span class="o">::</span><span class="no">ParticipationScatter</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">readings</span><span class="p">:</span> <span class="n">readings</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">component</span> <span class="o">=</span> <span class="no">Components</span><span class="o">::</span><span class="no">Charts</span><span class="o">::</span><span class="no">ParticipationScatter</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">data</span><span class="p">:</span> <span class="n">sample_data</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">options</span>   <span class="o">=</span> <span class="n">component</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:chart_options</span><span class="p">)</span><span class="o">.</span><span class="n">to_h</span>
 </span></span><span class="line"><span class="cl">    <span class="n">nsw</span>       <span class="o">=</span> <span class="n">options</span><span class="o">[</span><span class="ss">:series</span><span class="o">].</span><span class="n">find</span> <span class="p">{</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span> <span class="n">s</span><span class="o">[</span><span class="ss">:name</span><span class="o">]</span> <span class="o">==</span> <span class="s2">&#34;New South Wales&#34;</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="n">point</span> <span class="o">=</span> <span class="n">nsw</span><span class="o">[</span><span class="ss">:data</span><span class="o">].</span><span class="n">first</span>
-</span></span><span class="line"><span class="cl">    <span class="n">assert_equal</span> <span class="mi">3</span><span class="p">,</span> <span class="n">point</span><span class="o">.</span><span class="n">size</span>          <span class="c1"># [participation, rate, year]</span>
-</span></span><span class="line"><span class="cl">    <span class="n">assert_equal</span> <span class="mi">2022</span><span class="p">,</span> <span class="n">point</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span>         <span class="c1"># year is third element</span>
+</span></span><span class="line"><span class="cl">    <span class="n">assert_equal</span> <span class="mi">3</span><span class="p">,</span>    <span class="n">point</span><span class="o">.</span><span class="n">size</span>
+</span></span><span class="line"><span class="cl">    <span class="n">assert_equal</span> <span class="mi">2022</span><span class="p">,</span> <span class="n">point</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span>
 </span></span><span class="line"><span class="cl">  <span class="k">end</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nb">test</span> <span class="s2">&#34;includes visualMap&#34;</span> <span class="k">do</span>
-</span></span><span class="line"><span class="cl">    <span class="n">component</span> <span class="o">=</span> <span class="no">Components</span><span class="o">::</span><span class="no">Charts</span><span class="o">::</span><span class="no">ParticipationScatter</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">readings</span><span class="p">:</span> <span class="n">readings</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">test</span> <span class="s2">&#34;includes visualMap on dimension 2&#34;</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">    <span class="n">component</span> <span class="o">=</span> <span class="no">Components</span><span class="o">::</span><span class="no">Charts</span><span class="o">::</span><span class="no">ParticipationScatter</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">data</span><span class="p">:</span> <span class="n">sample_data</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">options</span>   <span class="o">=</span> <span class="n">component</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:chart_options</span><span class="p">)</span><span class="o">.</span><span class="n">to_h</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="n">assert</span> <span class="n">options</span><span class="o">[</span><span class="ss">:visualMap</span><span class="o">].</span><span class="n">present?</span>
@@ -1546,17 +1149,27 @@ inspectable in a unit test.</p>
   </button>
 </div>
 </div>
-<p>Running these tests requires no database, no browser, and no ECharts. The component
-is instantiated with plain <code>LabourForceReading</code> objects built with <code>.new</code> — no
-persistence needed.</p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+<p>The component now receives <code>data:</code> directly — no service call inside the
+component — so the test passes shaped data straight in. No database, no fixtures,
+no ActiveRecord.</p>
+<hr>
+<h2>4.7 — The Plumbing<span class="hx:absolute hx:-mt-20" id="47--the-plumbing"></span>
+    <a href="#47--the-plumbing" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rails <span class="nb">test</span> test/views/components/charts/participation_scatter_test.rb</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/controllers/charts_controller.rb</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">labour_market_analysis</span>
+</span></span><span class="line"><span class="cl">  <span class="n">readings</span> <span class="o">=</span> <span class="no">LabourForceReading</span><span class="o">.</span><span class="n">ordered</span>
+</span></span><span class="line"><span class="cl">  <span class="vi">@data</span>    <span class="o">=</span> <span class="no">Stats</span><span class="o">::</span><span class="no">LabourForce</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">readings</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
 </div>
 </div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
@@ -1570,9 +1183,7 @@ persistence needed.</p>
   </button>
 </div>
 </div>
-<hr>
-<h2>4.9 — Routes and Gallery<span class="hx:absolute hx:-mt-20" id="49--routes-and-gallery"></span>
-    <a href="#49--routes-and-gallery" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1599,13 +1210,92 @@ persistence needed.</p>
   </button>
 </div>
 </div>
-<p>Add to the gallery index:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><pre><code>&lt;%# app/views/charts/labour_market_analysis.html.erb %&gt;
+&lt;div class=&#34;max-w-4xl mx-auto px-4 py-8&#34;&gt;
+
+  &lt;h1 class=&#34;text-3xl font-bold mb-2&#34;&gt;Australian Labour Market by State&lt;/h1&gt;
+  &lt;p class=&#34;text-neutral-500 text-sm mb-8&#34;&gt;
+    Annual averages, seasonally adjusted, 2012–2024.
+    Source: &lt;a href=&#34;https://www.abs.gov.au&#34; class=&#34;underline&#34;&gt;
+      Australian Bureau of Statistics
+    &lt;/a&gt;, Labour Force (ABS cat. 6202.0), CC BY 4.0.
+  &lt;/p&gt;
+
+  &lt;h2 class=&#34;text-xl font-semibold mb-2&#34;&gt;Participation vs Unemployment&lt;/h2&gt;
+  &lt;p class=&#34;text-neutral-600 mb-4&#34;&gt;
+    Each point represents one state in one year. States that perform well cluster
+    toward the bottom-right — high participation, low unemployment. The ACT
+    consistently occupies this position. Tasmania and South Australia sit toward
+    the upper-left. The COVID-19 disruption of 2020 appears as a visible break
+    in each state&#39;s trajectory.
+  &lt;/p&gt;
+  &lt;%= render Components::Charts::ParticipationScatter.new(
+    data:   @data,
+    height: &#34;420px&#34;
+  ) %&gt;
+  &lt;p class=&#34;text-neutral-500 text-xs mt-2 mb-10&#34;&gt;
+    Each point is one state&#39;s annual average. Hover for details.
+    Toggle states using the legend.
+  &lt;/p&gt;
+
+  &lt;h2 class=&#34;text-xl font-semibold mb-2&#34;&gt;Employment Volume&lt;/h2&gt;
+  &lt;p class=&#34;text-neutral-600 mb-4&#34;&gt;
+    New South Wales and Victoria together employ more than the other six states
+    combined. The COVID dip in 2020 is followed by a sharp recovery across all
+    states. Western Australia shows the most volatility — the resources sector
+    is sensitive to commodity cycles.
+  &lt;/p&gt;
+  &lt;%= render Components::Charts::EmploymentTrends.new(
+    data:   @data,
+    height: &#34;380px&#34;
+  ) %&gt;
+  &lt;p class=&#34;text-neutral-500 text-xs mt-2 mb-10&#34;&gt;
+    Annual average employed persons (&#39;000). Hover to compare states at a given year.
+  &lt;/p&gt;
+
+  &lt;h2 class=&#34;text-xl font-semibold mb-2&#34;&gt;Participation Rate Trends&lt;/h2&gt;
+  &lt;p class=&#34;text-neutral-600 mb-4&#34;&gt;
+    The ACT&#39;s participation rate is structurally higher due to its demographic
+    profile. The national average has been broadly flat, masking diverging trends:
+    Queensland and Western Australia have lifted, while South Australia and
+    Tasmania have lagged.
+  &lt;/p&gt;
+  &lt;%= render Components::Charts::ParticipationTrends.new(
+    data:   @data,
+    height: &#34;380px&#34;
+  ) %&gt;
+  &lt;p class=&#34;text-neutral-500 text-xs mt-2 mb-10&#34;&gt;
+    Annual average participation rate (%).
+  &lt;/p&gt;
+
+  &lt;div class=&#34;border-t border-neutral-200 pt-6 mt-4&#34;&gt;
+    &lt;p class=&#34;text-neutral-400 text-xs&#34;&gt;
+      Data: ABS Labour Force, Australia (cat. 6202.0).
+      Accessed via ABS Data API. CC BY 4.0.
+    &lt;/p&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p><strong>Gallery card:</strong></p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><pre><code>&lt;%= render &#34;charts/gallery_card&#34;,
   title:       &#34;Labour Market Analysis&#34;,
-  description: &#34;Participation rate, unemployment, and employment trends by state. &#34;\
-               &#34;Three charts with prose commentary.&#34;,
+  description: &#34;Three charts with prose commentary — participation, &#34;\
+               &#34;employment volume, and unemployment trends by state.&#34;,
   path:        charts_labour_market_analysis_path %&gt;</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
@@ -1619,8 +1309,8 @@ persistence needed.</p>
 </div>
 </div>
 <hr>
-<h2>4.10 — Module Summary<span class="hx:absolute hx:-mt-20" id="410--module-summary"></span>
-    <a href="#410--module-summary" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><strong>New files:</strong></p>
+<h2>4.8 — Module Summary<span class="hx:absolute hx:-mt-20" id="48--module-summary"></span>
+    <a href="#48--module-summary" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><strong>New files:</strong></p>
 <table>
   <thead>
       <tr>
@@ -1639,7 +1329,7 @@ persistence needed.</p>
       </tr>
       <tr>
           <td><code>app/views/components/charts/participation_trends.rb</code></td>
-          <td>Line — participation rate with national average</td>
+          <td>Line — participation rate trends</td>
       </tr>
       <tr>
           <td><code>app/views/charts/labour_market_analysis.html.erb</code></td>
@@ -1647,46 +1337,19 @@ persistence needed.</p>
       </tr>
   </tbody>
 </table>
-<p>No new service — all three charts reuse <code>Stats::LabourForce</code> from Module 04.</p>
+<p>No new service — <code>Stats::LabourForce</code> from Module 03 feeds all three components.</p>
 <p><strong>Patterns introduced:</strong></p>
 <ul>
-<li>Scatter chart with per-series data (<code>[x, y, z]</code> arrays)</li>
-<li><code>visualMap</code> encoding a third dimension (year) as colour lightness</li>
-<li><code>markLine</code> for statistical annotations — national average reference line</li>
-<li>Multiple charts on one page sharing a palette for colour correspondence</li>
-<li>Charts interspersed with prose — the data story pattern</li>
-<li>Custom tooltip formatter for scatter data including the year dimension</li>
-<li>Service reuse — <code>Stats::LabourForce</code> feeds three different chart types</li>
-<li>Unit testing chart components in plain Ruby with no database or browser</li>
+<li><code>Chart::Series::Scatter</code> — <code>[x, y]</code> or <code>[x, y, z]</code> data points</li>
+<li><code>visualMap</code> — third dimension encoded as colour lightness</li>
+<li><code>min: &quot;dataMin&quot;</code> — fit axis scale to data, avoid bunching</li>
+<li>Custom tooltip formatter for scatter — <code>&quot;item:participationScatter&quot;</code></li>
+<li>Data story pattern — prose → chart → caption → repeat</li>
+<li>Colour correspondence — same palette + same series order across all page charts</li>
+<li>Testing with shaped data — no database, no service call in the component</li>
 </ul>
-<p><strong>The data story pattern:</strong></p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><pre><code>Heading
-↓
-Prose — what to look for, why it matters
-↓
-Chart — the visual evidence
-↓
-Caption — what the chart shows
-↓
-(repeat)
-↓
-Attribution</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<p>This pattern works for any data-driven page. The prose gives readers the
-interpretive frame before they encounter the chart — making the chart more legible
-and more persuasive.</p>
+<hr>
+<p><em>Next: Module 05 — Pie, Donut and Rose: Industry Composition</em></p>
 
         </div>
         <div class="hx:mt-16"></div><div class="hx:mb-8 hx:flex hx:items-center hx:border-t hx:pt-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-neutral-400 hx:dark:contrast-more:border-neutral-400 hx:print:hidden"><a

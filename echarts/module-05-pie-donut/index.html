@@ -9,24 +9,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 <title>Ruby Field Notes</title>
-  <meta name="description" content="Module 05 — Pie, Donut, and Rose Charts: Industry Sales CompositionWhat We’re Building Pie and donut charts show composition — how a whole divides into parts. They work best with a small number of meaningful slices (ideally 5–10) where the proportional differences matter. With too many slices they become unreadable; with too few they are trivial.
-This module uses quarterly business sales by industry from the ABS Business Indicators dataset. The composition of Australian business sales by industry is genuinely surprising — and the differences between industries are large enough to make the proportions visually clear." /><link rel="canonical" href="https://www.rehali.com/echarts/module-05-pie-donut/" itemprop="url" />
+  <meta name="description" content="Creating Pie, Donut and Rose Charts using ECharts with Ruby on Rails and Phlex." /><link rel="canonical" href="https://www.rehali.com/echarts/module-05-pie-donut/" itemprop="url" />
 
 <meta property="og:title" content="">
 <meta
   property="og:description"
   content="
-    
-      Module 05 — Pie, Donut, and Rose Charts: Industry Sales CompositionWhat We&rsquo;re Building
-    Pie and donut charts show composition — how a whole divides into parts. They work
-best with a small number of meaningful slices (ideally 5–10) where the proportional
-differences matter. With too many slices they become unreadable; with too few they
-are trivial.
-This module uses quarterly business sales by industry from the ABS Business
-Indicators dataset. The composition of Australian business sales by industry is
-genuinely surprising — and the differences between industries are large enough to
-make the proportions visually clear.
-    
+    Creating Pie, Donut and Rose Charts using ECharts with Ruby on Rails and Phlex.
   ">
 <meta
   property="og:type"
@@ -39,13 +28,11 @@ make the proportions visually clear.
 
 
   <meta itemprop="name" content="Ruby Field Notes">
-  <meta itemprop="description" content="Module 05 — Pie, Donut, and Rose Charts: Industry Sales CompositionWhat We’re Building Pie and donut charts show composition — how a whole divides into parts. They work best with a small number of meaningful slices (ideally 5–10) where the proportional differences matter. With too many slices they become unreadable; with too few they are trivial.
-This module uses quarterly business sales by industry from the ABS Business Indicators dataset. The composition of Australian business sales by industry is genuinely surprising — and the differences between industries are large enough to make the proportions visually clear.">
-  <meta itemprop="wordCount" content="2275">
+  <meta itemprop="description" content="Creating Pie, Donut and Rose Charts using ECharts with Ruby on Rails and Phlex.">
+  <meta itemprop="wordCount" content="2113">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
-  <meta name="twitter:description" content="Module 05 — Pie, Donut, and Rose Charts: Industry Sales CompositionWhat We’re Building Pie and donut charts show composition — how a whole divides into parts. They work best with a small number of meaningful slices (ideally 5–10) where the proportional differences matter. With too many slices they become unreadable; with too few they are trivial.
-This module uses quarterly business sales by industry from the ABS Business Indicators dataset. The composition of Australian business sales by industry is genuinely surprising — and the differences between industries are large enough to make the proportions visually clear.">
+  <meta name="twitter:description" content="Creating Pie, Donut and Rose Charts using ECharts with Ruby on Rails and Phlex.">
 
     <link rel="preload" href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" as="style" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
     <link href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" rel="stylesheet" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
@@ -178,7 +165,7 @@ This module uses quarterly business sales by industry from the ABS Business Indi
       href="/echarts/module-04-scatter/"
       
     >
-      <span class="hx:min-w-0 [word-break:break-word]">Lesson 04 - Scatter charts</span>
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 04 - Scatter Charts</span>
     </a>
   </div></li>
             <li class="open"><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="true">
@@ -401,47 +388,47 @@ This module uses quarterly business sales by industry from the ABS Business Indi
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#51--the-data">5.1 — The Data
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#51--chartseriespie">5.1 — Chart::Series::Pie
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#52--custom-tooltip-formatter">5.2 — Custom Tooltip Formatter
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#the-extra-escape-hatch">The **extra escape hatch
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#53--the-service-call-helper">5.3 — The Service Call Helper
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#item-trigger-tooltips">Item trigger tooltips
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#54--chart-1-basic-pie-chart">5.4 — Chart 1: Basic Pie Chart
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#echarts-label-template-variables">ECharts label template variables
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#55--chart-2-donut-with-centre-label">5.5 — Chart 2: Donut with Centre Label
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#52--the-service">5.2 — The Service
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#56--chart-3-rose-chart">5.6 — Chart 3: Rose Chart
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#53--chart-1-basic-pie-chart">5.3 — Chart 1: Basic Pie Chart
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#57--chart-4-half-donut">5.7 — Chart 4: Half Donut
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#54--chart-2-donut-with-centre-label">5.4 — Chart 2: Donut with Centre Label
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#58--controller-and-view">5.8 — Controller and View
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#55--chart-3-rose-chart">5.5 — Chart 3: Rose Chart
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#59--chartseriespie-updates">5.9 — Chart::Series::Pie Updates
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#56--chart-4-half-donut">5.6 — Chart 4: Half Donut
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#510--gallery">5.10 — Gallery
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#57--the-plumbing">5.7 — The Plumbing
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#511--module-summary">5.11 — Module Summary
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#58--module-summary">5.8 — Module Summary
         </a>
       </li></ul>
       <div class="hx:mt-8 hx:border-t hx:bg-white hx:pt-8 hx:shadow-[0_-12px_16px_white] hx:dark:bg-dark hx:dark:shadow-[0_-12px_16px_#111] hx:sticky hx:bottom-0 hx:flex hx:flex-col hx:items-start hx:gap-2 hx:pb-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-t hx:contrast-more:border-neutral-400 hx:contrast-more:shadow-none hx:contrast-more:dark:border-neutral-400">
@@ -462,29 +449,171 @@ This module uses quarterly business sales by industry from the ABS Business Indi
         <div class="content">
           
           <h1>Module 05 — Pie, Donut, and Rose Charts: Industry Sales Composition</h1><h2>What We&rsquo;re Building<span class="hx:absolute hx:-mt-20" id="what-were-building"></span>
-    <a href="#what-were-building" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Pie and donut charts show composition — how a whole divides into parts. They work
-best with a small number of meaningful slices (ideally 5–10) where the proportional
-differences matter. With too many slices they become unreadable; with too few they
-are trivial.</p>
-<p>This module uses quarterly business sales by industry from the ABS Business
-Indicators dataset. The composition of Australian business sales by industry is
-genuinely surprising — and the differences between industries are large enough to
-make the proportions visually clear.</p>
+    <a href="#what-were-building" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Pie and donut charts show composition — how a whole divides into parts. This
+module builds four variants of the same chart from one dataset and one service,
+demonstrating how much variety is available from a single <code>Chart::Series::Pie</code>
+configuration.</p>
 <p>By the end of this module you will have:</p>
 <ul>
-<li>A basic pie chart with a rich custom tooltip</li>
-<li>A donut chart with a centre label showing the total</li>
-<li>A rose chart showing variation in a different dimension</li>
-<li>A half-donut dashboard gauge variant</li>
-<li>A data story page showcasing all four variants with explanatory prose</li>
-<li>Custom tooltip formatters for item-trigger charts</li>
+<li><code>Chart::Series::Pie</code> — a new series type</li>
+<li>A basic pie chart</li>
+<li>A donut chart with a centre label</li>
+<li>A rose (nightingale) chart</li>
+<li>A half-donut dashboard variant</li>
+<li>Rich item-trigger tooltip formatters</li>
+<li>The <code>**extra</code> escape hatch in practice</li>
 </ul>
+<p>Here&rsquo;s what we&rsquo;re building:</p>
+<p><img src="/echarts/module-05-pie-donut/pie_donut_charts.png" alt="pie_donut_charts.png"  loading="lazy" /></p>
 <hr>
-<h2>5.1 — The Data<span class="hx:absolute hx:-mt-20" id="51--the-data"></span>
-    <a href="#51--the-data" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>The <code>business_indicator_readings</code> table has quarterly sales figures by industry from
-2005–2024. For composition charts we want a single point in time — the most recent
-complete quarter. The service selects the latest quarter and returns industries with
-their sales values sorted descending.</p>
+<h2>5.1 — <code>Chart::Series::Pie</code><span class="hx:absolute hx:-mt-20" id="51--chartseriespie"></span>
+    <a href="#51--chartseriespie" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Pie charts use a single series. The data is an array of <code>{ name:, value: }</code> hashes
+— not parallel arrays like line and bar charts.</p>
+<p>The equivalent JavaScript:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">series</span><span class="o">:</span> <span class="p">[{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">type</span><span class="o">:</span>   <span class="s2">&#34;pie&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span><span class="o">:</span>   <span class="s2">&#34;Industry Sales&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">radius</span><span class="o">:</span> <span class="s2">&#34;65%&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&#34;Mining&#34;</span><span class="p">,</span>        <span class="nx">value</span><span class="o">:</span> <span class="mf">142.3</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&#34;Construction&#34;</span><span class="p">,</span>  <span class="nx">value</span><span class="o">:</span> <span class="mf">98.7</span>  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}]</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>In Ruby:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Pie</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">name</span><span class="p">:</span>   <span class="s2">&#34;Industry Sales&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">radius</span><span class="p">:</span> <span class="s2">&#34;65%&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">data</span><span class="p">:</span>   <span class="o">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&#34;Mining&#34;</span><span class="p">,</span>       <span class="ss">value</span><span class="p">:</span> <span class="mi">142</span><span class="o">.</span><span class="mi">3</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">&#34;Construction&#34;</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="mi">98</span><span class="o">.</span><span class="mi">7</span>  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p><code>Chart::Series::Pie</code> adds <code>type: &quot;pie&quot;</code> automatically. <code>radius:</code>, <code>center:</code>,
+<code>label:</code>, and <code>emphasis:</code> are common options that pass through unchanged.</p>
+<h3>The <code>**extra</code> escape hatch<span class="hx:absolute hx:-mt-20" id="the-extra-escape-hatch"></span>
+    <a href="#the-extra-escape-hatch" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>Some pie chart variants require options not in everyday use — <code>roseType:</code>,
+<code>startAngle:</code>, <code>endAngle:</code>. These are not modelled explicitly in the DSL. They
+pass through <code>**opts</code> in <code>Chart::Series::Base</code> unchanged:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Pie</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">name</span><span class="p">:</span>       <span class="s2">&#34;Industry Sales&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">data</span><span class="p">:</span>       <span class="n">series_data</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">roseType</span><span class="p">:</span>   <span class="s2">&#34;radius&#34;</span><span class="p">,</span>   <span class="c1"># not modelled — passes through</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">startAngle</span><span class="p">:</span> <span class="mi">180</span><span class="p">,</span>        <span class="c1"># not modelled — passes through</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">endAngle</span><span class="p">:</span>   <span class="mi">360</span>         <span class="c1"># not modelled — passes through</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>This is the intended use of the escape hatch — ECharts has hundreds of series
+options. The DSL models the most common ones; everything else just works.</p>
+<h3>Item trigger tooltips<span class="hx:absolute hx:-mt-20" id="item-trigger-tooltips"></span>
+    <a href="#item-trigger-tooltips" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>Pie charts use <code>trigger: &quot;item&quot;</code> — the tooltip fires on a single slice, not on
+a cross-axis position. The <code>params</code> object contains the slice name, value, and
+ECharts&rsquo; calculated percentage:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="ss">tooltip</span><span class="p">:</span> <span class="p">{</span> <span class="ss">trigger</span><span class="p">:</span> <span class="s2">&#34;item&#34;</span><span class="p">,</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;industrySlice&#34;</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>The resolver qualifies <code>&quot;industrySlice&quot;</code> with the trigger automatically —
+it looks up <code>&quot;item:industrySlice&quot;</code> in the formatter registry. Add to
+<code>custom_chart_formatters.js</code>:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
@@ -517,38 +646,36 @@ their sales values sorted descending.</p>
 </span><span class="lnt">26
 </span><span class="lnt">27
 </span><span class="lnt">28
-</span><span class="lnt">29
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/services/stats/business_composition.rb</span>
-</span></span><span class="line"><span class="cl"><span class="k">module</span> <span class="nn">Stats</span>
-</span></span><span class="line"><span class="cl">  <span class="k">module</span> <span class="nn">BusinessComposition</span>
-</span></span><span class="line"><span class="cl">    <span class="kp">extend</span> <span class="nb">self</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1"># Returns industries sorted by sales descending for the latest quarter.</span>
-</span></span><span class="line"><span class="cl">    <span class="c1"># [</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">#   { industry: &#34;Mining&#34;, sales: 142.3, share: 18.4 },</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">#   ...</span>
-</span></span><span class="line"><span class="cl">    <span class="c1"># ]</span>
-</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="n">readings</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">      <span class="n">latest</span> <span class="o">=</span> <span class="n">readings</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="ss">:year</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">readings</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="ss">:quarter</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="n">latest_readings</span> <span class="o">=</span> <span class="n">readings</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">.</span><span class="n">year</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">quarter</span> <span class="o">==</span> <span class="n">latest</span><span class="p">}</span>
-</span></span><span class="line"><span class="cl">                        <span class="o">.</span><span class="n">reject</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">.</span><span class="n">industry</span> <span class="o">==</span> <span class="s2">&#34;Total&#34;</span> <span class="o">||</span> <span class="n">r</span><span class="o">.</span><span class="n">sales_billions</span><span class="o">.</span><span class="n">to_f</span><span class="o">.</span><span class="n">zero?</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">                        <span class="o">.</span><span class="n">sort_by</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="o">-</span><span class="n">r</span><span class="o">.</span><span class="n">sales_billions</span><span class="o">.</span><span class="n">to_f</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="n">total</span> <span class="o">=</span> <span class="n">latest_readings</span><span class="o">.</span><span class="n">sum</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">.</span><span class="n">sales_billions</span><span class="o">.</span><span class="n">to_f</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="n">latest_readings</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span>
-</span></span><span class="line"><span class="cl">        <span class="p">{</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">industry</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">industry</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">sales</span><span class="p">:</span>    <span class="n">r</span><span class="o">.</span><span class="n">sales_billions</span><span class="o">.</span><span class="n">to_f</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">share</span><span class="p">:</span>    <span class="p">((</span><span class="n">r</span><span class="o">.</span><span class="n">sales_billions</span><span class="o">.</span><span class="n">to_f</span> <span class="o">/</span> <span class="n">total</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">      <span class="k">end</span>
-</span></span><span class="line"><span class="cl">    <span class="k">end</span>
-</span></span><span class="line"><span class="cl">  <span class="k">end</span>
-</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="s2">&#34;item:industrySlice&#34;</span><span class="o">:</span> <span class="nx">params</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">rank</span> <span class="o">=</span> <span class="nx">params</span><span class="p">.</span><span class="nx">dataIndex</span> <span class="o">+</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="sb">`
+</span></span></span><span class="line"><span class="cl"><span class="sb">    &lt;div style=&#34;min-width:200px&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">      &lt;div style=&#34;font-weight:600;margin-bottom:4px&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">        </span><span class="si">${</span><span class="nx">params</span><span class="p">.</span><span class="nx">marker</span><span class="si">}${</span><span class="nx">params</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">      &lt;/div&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">      &lt;table style=&#34;width:100%;border-collapse:collapse&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">        &lt;tr&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">          &lt;td style=&#34;color:#999;padding-right:12px&#34;&gt;Sales&lt;/td&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">          &lt;td style=&#34;text-align:right;font-weight:600&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">            $</span><span class="si">${</span><span class="nx">params</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">toLocaleString</span><span class="p">()</span><span class="si">}</span><span class="sb">B
+</span></span></span><span class="line"><span class="cl"><span class="sb">          &lt;/td&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">        &lt;/tr&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">        &lt;tr&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">          &lt;td style=&#34;color:#999;padding-right:12px&#34;&gt;Share&lt;/td&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">          &lt;td style=&#34;text-align:right;font-weight:600&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">            </span><span class="si">${</span><span class="nx">params</span><span class="p">.</span><span class="nx">percent</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="sb">%
+</span></span></span><span class="line"><span class="cl"><span class="sb">          &lt;/td&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">        &lt;/tr&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">        &lt;tr&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">          &lt;td style=&#34;color:#999;padding-right:12px&#34;&gt;Rank&lt;/td&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">          &lt;td style=&#34;text-align:right;font-weight:600&#34;&gt;#</span><span class="si">${</span><span class="nx">rank</span><span class="si">}</span><span class="sb">&lt;/td&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">        &lt;/tr&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">      &lt;/table&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">    &lt;/div&gt;
+</span></span></span><span class="line"><span class="cl"><span class="sb">  `</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
@@ -562,15 +689,66 @@ their sales values sorted descending.</p>
   </button>
 </div>
 </div>
-<p>The <code>share</code> field — percentage of total — is computed in the service. ECharts
-calculates its own <code>percent</code> value for tooltips, but having it in the data means
-we can use it in custom formatters and test it independently.</p>
+<p><code>params.dataIndex</code> is the zero-based position of the slice in the data array —
+adding 1 gives the rank. <code>params.percent</code> is ECharts&rsquo; calculated percentage —
+you don&rsquo;t need to compute it yourself.</p>
+<h3>ECharts label template variables<span class="hx:absolute hx:-mt-20" id="echarts-label-template-variables"></span>
+    <a href="#echarts-label-template-variables" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>The <code>label.formatter</code> string supports template variables that ECharts resolves
+before rendering:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Variable</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>{a}</code></td>
+          <td>Series name</td>
+      </tr>
+      <tr>
+          <td><code>{b}</code></td>
+          <td>Slice name</td>
+      </tr>
+      <tr>
+          <td><code>{c}</code></td>
+          <td>Value</td>
+      </tr>
+      <tr>
+          <td><code>{d}</code></td>
+          <td>Percentage (calculated by ECharts)</td>
+      </tr>
+  </tbody>
+</table>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="ss">label</span><span class="p">:</span> <span class="p">{</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;{b}</span><span class="se">\n</span><span class="s2">{d}%&#34;</span> <span class="p">}</span>   <span class="c1"># &#34;Mining\n18.4%&#34;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>These pass through the formatter resolver unchanged — they are not in the
+registry and ECharts handles them natively.</p>
 <hr>
-<h2>5.2 — Custom Tooltip Formatter<span class="hx:absolute hx:-mt-20" id="52--custom-tooltip-formatter"></span>
-    <a href="#52--custom-tooltip-formatter" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Pie and donut charts use <code>trigger: &quot;item&quot;</code> — the tooltip fires on a single slice,
-not on a cross-axis position. The <code>params</code> object contains the slice name, value,
-and ECharts&rsquo; calculated percentage.</p>
-<p>Add a rich formatter to <code>custom_chart_formatters.js</code>:</p>
+<h2>5.2 — The Service<span class="hx:absolute hx:-mt-20" id="52--the-service"></span>
+    <a href="#52--the-service" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>The service selects the latest quarter&rsquo;s data, rejects zero-value and total
+rows, and computes the percentage share for each industry. All transformation
+happens in the service — components receive clean data.</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
@@ -608,41 +786,45 @@ and ECharts&rsquo; calculated percentage.</p>
 </span><span class="lnt">31
 </span><span class="lnt">32
 </span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// app/javascript/charts/custom_chart_formatters.js
-</span></span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="c1">// ... existing formatters
-</span></span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">industrySlice</span><span class="o">:</span> <span class="nx">params</span> <span class="p">=&gt;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">rank</span> <span class="o">=</span> <span class="nx">params</span><span class="p">.</span><span class="nx">dataIndex</span> <span class="o">+</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="sb">`
-</span></span></span><span class="line"><span class="cl"><span class="sb">      &lt;div style=&#34;min-width:200px&#34;&gt;
-</span></span></span><span class="line"><span class="cl"><span class="sb">        &lt;div style=&#34;font-weight:600;margin-bottom:4px&#34;&gt;
-</span></span></span><span class="line"><span class="cl"><span class="sb">          </span><span class="si">${</span><span class="nx">params</span><span class="p">.</span><span class="nx">marker</span><span class="si">}${</span><span class="nx">params</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">
-</span></span></span><span class="line"><span class="cl"><span class="sb">        &lt;/div&gt;
-</span></span></span><span class="line"><span class="cl"><span class="sb">        &lt;table style=&#34;width:100%;border-collapse:collapse&#34;&gt;
-</span></span></span><span class="line"><span class="cl"><span class="sb">          &lt;tr&gt;
-</span></span></span><span class="line"><span class="cl"><span class="sb">            &lt;td style=&#34;color:#999;padding-right:12px&#34;&gt;Sales&lt;/td&gt;
-</span></span></span><span class="line"><span class="cl"><span class="sb">            &lt;td style=&#34;text-align:right;font-weight:600&#34;&gt;
-</span></span></span><span class="line"><span class="cl"><span class="sb">              $</span><span class="si">${</span><span class="nx">params</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">toLocaleString</span><span class="p">()</span><span class="si">}</span><span class="sb">B
-</span></span></span><span class="line"><span class="cl"><span class="sb">            &lt;/td&gt;
-</span></span></span><span class="line"><span class="cl"><span class="sb">          &lt;/tr&gt;
-</span></span></span><span class="line"><span class="cl"><span class="sb">          &lt;tr&gt;
-</span></span></span><span class="line"><span class="cl"><span class="sb">            &lt;td style=&#34;color:#999;padding-right:12px&#34;&gt;Share&lt;/td&gt;
-</span></span></span><span class="line"><span class="cl"><span class="sb">            &lt;td style=&#34;text-align:right;font-weight:600&#34;&gt;
-</span></span></span><span class="line"><span class="cl"><span class="sb">              </span><span class="si">${</span><span class="nx">params</span><span class="p">.</span><span class="nx">percent</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="sb">%
-</span></span></span><span class="line"><span class="cl"><span class="sb">            &lt;/td&gt;
-</span></span></span><span class="line"><span class="cl"><span class="sb">          &lt;/tr&gt;
-</span></span></span><span class="line"><span class="cl"><span class="sb">          &lt;tr&gt;
-</span></span></span><span class="line"><span class="cl"><span class="sb">            &lt;td style=&#34;color:#999;padding-right:12px&#34;&gt;Rank&lt;/td&gt;
-</span></span></span><span class="line"><span class="cl"><span class="sb">            &lt;td style=&#34;text-align:right;font-weight:600&#34;&gt;#</span><span class="si">${</span><span class="nx">rank</span><span class="si">}</span><span class="sb">&lt;/td&gt;
-</span></span></span><span class="line"><span class="cl"><span class="sb">          &lt;/tr&gt;
-</span></span></span><span class="line"><span class="cl"><span class="sb">        &lt;/table&gt;
-</span></span></span><span class="line"><span class="cl"><span class="sb">      &lt;/div&gt;
-</span></span></span><span class="line"><span class="cl"><span class="sb">    `</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/services/stats/business_composition.rb</span>
+</span></span><span class="line"><span class="cl"><span class="k">module</span> <span class="nn">Stats</span>
+</span></span><span class="line"><span class="cl">  <span class="k">module</span> <span class="nn">BusinessComposition</span>
+</span></span><span class="line"><span class="cl">    <span class="kp">extend</span> <span class="nb">self</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Returns industries for the latest quarter, sorted by sales descending:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># [</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#   { industry: &#34;Mining&#34;,       sales: 142.3, share: 18.4 },</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#   { industry: &#34;Construction&#34;, sales: 98.7,  share: 12.6 },</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#   ...</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># ]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">call</span>
+</span></span><span class="line"><span class="cl">      <span class="n">latest_year</span>    <span class="o">=</span> <span class="no">BusinessIndicatorReading</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="ss">:year</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="n">latest_quarter</span> <span class="o">=</span> <span class="no">BusinessIndicatorReading</span>
+</span></span><span class="line"><span class="cl">                         <span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="n">latest_year</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                         <span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="ss">:quarter</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="n">readings</span> <span class="o">=</span> <span class="no">BusinessIndicatorReading</span>
+</span></span><span class="line"><span class="cl">                   <span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="ss">year</span><span class="p">:</span> <span class="n">latest_year</span><span class="p">,</span> <span class="ss">quarter</span><span class="p">:</span> <span class="n">latest_quarter</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                   <span class="o">.</span><span class="n">where</span><span class="o">.</span><span class="n">not</span><span class="p">(</span><span class="ss">industry</span><span class="p">:</span> <span class="s2">&#34;Total&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                   <span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s2">&#34;sales_billions &gt; 0&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                   <span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="ss">sales_billions</span><span class="p">:</span> <span class="ss">:desc</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="n">total</span> <span class="o">=</span> <span class="n">readings</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="ss">:sales_billions</span><span class="p">)</span><span class="o">.</span><span class="n">to_f</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="n">readings</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">industry</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">industry</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">sales</span><span class="p">:</span>    <span class="n">r</span><span class="o">.</span><span class="n">sales_billions</span><span class="o">.</span><span class="n">to_f</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">share</span><span class="p">:</span>    <span class="p">((</span><span class="n">r</span><span class="o">.</span><span class="n">sales_billions</span><span class="o">.</span><span class="n">to_f</span> <span class="o">/</span> <span class="n">total</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="k">end</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
 </div>
 </div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
@@ -656,103 +838,15 @@ and ECharts&rsquo; calculated percentage.</p>
   </button>
 </div>
 </div>
-<p>Reference from Ruby:</p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="ss">tooltip</span><span class="p">:</span> <span class="p">{</span> <span class="ss">trigger</span><span class="p">:</span> <span class="s2">&#34;item&#34;</span><span class="p">,</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;industrySlice&#34;</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<p>Because the trigger is <code>&quot;item&quot;</code>, the resolver qualifies this as <code>&quot;item:industrySlice&quot;</code>.
-Add the qualified key to <code>custom_chart_formatters.js</code>:</p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="s2">&#34;item:industrySlice&#34;</span><span class="o">:</span> <span class="nx">params</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
+<p>The service takes no arguments — it always returns the latest quarter. The
+database does the filtering and ordering. No Ruby-side <code>.select</code> or <code>.reject</code>
+on a loaded collection.</p>
+<p><strong>Why pre-compute <code>share</code>?</strong> ECharts calculates <code>params.percent</code> for tooltips,
+but having <code>share</code> in the data means it is available for tests, CSV exports,
+and any other consumer of this service without recomputing it.</p>
 <hr>
-<h2>5.3 — The Service Call Helper<span class="hx:absolute hx:-mt-20" id="53--the-service-call-helper"></span>
-    <a href="#53--the-service-call-helper" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>All four components call the same service. To avoid repeating the call in each
-component, add a private helper to <code>Components::Chart</code> — or simply call it in each
-component. The latter is simpler and keeps components independent:</p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="o">::</span><span class="no">Stats</span><span class="o">::</span><span class="no">BusinessComposition</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="vi">@readings</span><span class="p">)</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<p>The service result is an array of hashes — not grouped by a key — so it maps
-directly to ECharts <code>data</code> format:</p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">series_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="n">r</span><span class="o">[</span><span class="ss">:industry</span><span class="o">]</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="n">r</span><span class="o">[</span><span class="ss">:sales</span><span class="o">]</span> <span class="p">}</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<hr>
-<h2>5.4 — Chart 1: Basic Pie Chart<span class="hx:absolute hx:-mt-20" id="54--chart-1-basic-pie-chart"></span>
-    <a href="#54--chart-1-basic-pie-chart" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+<h2>5.3 — Chart 1: Basic Pie Chart<span class="hx:absolute hx:-mt-20" id="53--chart-1-basic-pie-chart"></span>
+    <a href="#53--chart-1-basic-pie-chart" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -786,19 +880,19 @@ directly to ECharts <code>data</code> format:</p>
 </span><span class="lnt">28
 </span><span class="lnt">29
 </span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/views/components/charts/industry_pie.rb</span>
 </span></span><span class="line"><span class="cl"><span class="k">module</span> <span class="nn">Components</span>
 </span></span><span class="line"><span class="cl">  <span class="k">module</span> <span class="nn">Charts</span>
 </span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">IndustryPie</span> <span class="o">&lt;</span> <span class="no">Components</span><span class="o">::</span><span class="no">Chart</span>
-</span></span><span class="line"><span class="cl">      <span class="n">prop</span> <span class="ss">:readings</span><span class="p">,</span> <span class="n">_Any</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="o">[]</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="n">prop</span> <span class="ss">:data</span><span class="p">,</span> <span class="n">_Any</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="o">[]</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="kp">private</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">chart_options</span>
-</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="o">::</span><span class="no">Stats</span><span class="o">::</span><span class="no">BusinessComposition</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="vi">@readings</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Options</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">color</span><span class="p">:</span>   <span class="s2">&#34;vivid&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">toolbox</span><span class="p">:</span> <span class="p">{</span> <span class="ss">feature</span><span class="p">:</span> <span class="p">{</span> <span class="ss">saveAsImage</span><span class="p">:</span> <span class="p">{}</span> <span class="p">}</span> <span class="p">},</span>
@@ -807,13 +901,17 @@ directly to ECharts <code>data</code> format:</p>
 </span></span><span class="line"><span class="cl">          <span class="ss">series</span><span class="p">:</span> <span class="o">[</span>
 </span></span><span class="line"><span class="cl">            <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Pie</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">              <span class="nb">name</span><span class="p">:</span>   <span class="s2">&#34;Industry Sales&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">              <span class="ss">data</span><span class="p">:</span>   <span class="n">data</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="n">r</span><span class="o">[</span><span class="ss">:industry</span><span class="o">]</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="n">r</span><span class="o">[</span><span class="ss">:sales</span><span class="o">]</span> <span class="p">}</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">data</span><span class="p">:</span>   <span class="n">series_data</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">              <span class="ss">radius</span><span class="p">:</span> <span class="s2">&#34;65%&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">              <span class="ss">center</span><span class="p">:</span> <span class="o">[</span><span class="s2">&#34;50%&#34;</span><span class="p">,</span> <span class="s2">&#34;45%&#34;</span><span class="o">]</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">              <span class="ss">label</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;{b}</span><span class="se">\n</span><span class="s2">{d}%&#34;</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">            <span class="p">)</span>
 </span></span><span class="line"><span class="cl">          <span class="o">]</span>
 </span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">series_data</span>
+</span></span><span class="line"><span class="cl">        <span class="vi">@data</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="n">r</span><span class="o">[</span><span class="ss">:industry</span><span class="o">]</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="n">r</span><span class="o">[</span><span class="ss">:sales</span><span class="o">]</span> <span class="p">}</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">      <span class="k">end</span>
 </span></span><span class="line"><span class="cl">    <span class="k">end</span>
 </span></span><span class="line"><span class="cl">  <span class="k">end</span>
@@ -831,21 +929,15 @@ directly to ECharts <code>data</code> format:</p>
   </button>
 </div>
 </div>
-<p><code>label: { formatter: &quot;{b}\n{d}%&quot; }</code> uses ECharts string template syntax:</p>
-<ul>
-<li><code>{b}</code> — the slice name</li>
-<li><code>{d}</code> — the percentage (calculated by ECharts)</li>
-<li><code>{c}</code> — the value</li>
-<li><code>{a}</code> — the series name</li>
-</ul>
-<p>These are ECharts&rsquo; own template variables and pass through the resolver unchanged.</p>
+<p><code>series_data</code> is extracted into a private method — all four components use the
+same mapping. Keeping it named makes <code>chart_options</code> readable.</p>
 <hr>
-<h2>5.5 — Chart 2: Donut with Centre Label<span class="hx:absolute hx:-mt-20" id="55--chart-2-donut-with-centre-label"></span>
-    <a href="#55--chart-2-donut-with-centre-label" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>A donut chart is a pie chart with an inner radius. The hole creates space for a
-centre label showing the total — a common dashboard pattern.</p>
-<p>ECharts does not have a native &ldquo;centre label&rdquo; feature. The label is rendered using
-the <code>graphic</code> option — ECharts&rsquo; drawing API for arbitrary SVG elements overlaid on
-the chart.</p>
+<h2>5.4 — Chart 2: Donut with Centre Label<span class="hx:absolute hx:-mt-20" id="54--chart-2-donut-with-centre-label"></span>
+    <a href="#54--chart-2-donut-with-centre-label" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>A donut is a pie with an inner radius. <code>radius: [&quot;40%&quot;, &quot;68%&quot;]</code> — the first
+value is the inner radius, the second the outer. The gap between them is the
+donut hole.</p>
+<p>ECharts has no native centre label. The <code>graphic</code> option overlays arbitrary
+elements on the chart canvas:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
@@ -898,19 +990,21 @@ the chart.</p>
 </span><span class="lnt">46
 </span><span class="lnt">47
 </span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/views/components/charts/industry_donut.rb</span>
 </span></span><span class="line"><span class="cl"><span class="k">module</span> <span class="nn">Components</span>
 </span></span><span class="line"><span class="cl">  <span class="k">module</span> <span class="nn">Charts</span>
 </span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">IndustryDonut</span> <span class="o">&lt;</span> <span class="no">Components</span><span class="o">::</span><span class="no">Chart</span>
-</span></span><span class="line"><span class="cl">      <span class="n">prop</span> <span class="ss">:readings</span><span class="p">,</span> <span class="n">_Any</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="o">[]</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="n">prop</span> <span class="ss">:data</span><span class="p">,</span> <span class="n">_Any</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="o">[]</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="kp">private</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">chart_options</span>
-</span></span><span class="line"><span class="cl">        <span class="n">data</span>  <span class="o">=</span> <span class="o">::</span><span class="no">Stats</span><span class="o">::</span><span class="no">BusinessComposition</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="vi">@readings</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">total</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">sum</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">[</span><span class="ss">:sales</span><span class="o">]</span> <span class="p">}</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">total</span> <span class="o">=</span> <span class="vi">@data</span><span class="o">.</span><span class="n">sum</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">[</span><span class="ss">:sales</span><span class="o">]</span> <span class="p">}</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Options</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">color</span><span class="p">:</span>   <span class="s2">&#34;vivid&#34;</span><span class="p">,</span>
@@ -923,9 +1017,9 @@ the chart.</p>
 </span></span><span class="line"><span class="cl">              <span class="ss">left</span><span class="p">:</span>  <span class="s2">&#34;center&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">              <span class="ss">top</span><span class="p">:</span>   <span class="s2">&#34;middle&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">              <span class="ss">style</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">                <span class="ss">text</span><span class="p">:</span>     <span class="s2">&#34;$</span><span class="si">#{</span><span class="n">total</span><span class="si">}</span><span class="s2">B</span><span class="se">\n</span><span class="s2">Total Sales&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">                <span class="ss">textAlign</span><span class="p">:</span> <span class="s2">&#34;center&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">                <span class="ss">fontSize</span><span class="p">:</span>  <span class="mi">14</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="ss">text</span><span class="p">:</span>       <span class="s2">&#34;$</span><span class="si">#{</span><span class="n">total</span><span class="si">}</span><span class="s2">B</span><span class="se">\n</span><span class="s2">Total Sales&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="ss">textAlign</span><span class="p">:</span>  <span class="s2">&#34;center&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="ss">fontSize</span><span class="p">:</span>   <span class="mi">14</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                <span class="ss">fontWeight</span><span class="p">:</span> <span class="s2">&#34;bold&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                <span class="ss">lineHeight</span><span class="p">:</span> <span class="mi">20</span>
 </span></span><span class="line"><span class="cl">              <span class="p">}</span>
@@ -933,17 +1027,21 @@ the chart.</p>
 </span></span><span class="line"><span class="cl">          <span class="o">]</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">series</span><span class="p">:</span> <span class="o">[</span>
 </span></span><span class="line"><span class="cl">            <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Pie</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">              <span class="nb">name</span><span class="p">:</span>   <span class="s2">&#34;Industry Sales&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">              <span class="ss">data</span><span class="p">:</span>   <span class="n">data</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="n">r</span><span class="o">[</span><span class="ss">:industry</span><span class="o">]</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="n">r</span><span class="o">[</span><span class="ss">:sales</span><span class="o">]</span> <span class="p">}</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">              <span class="ss">radius</span><span class="p">:</span> <span class="o">[</span><span class="s2">&#34;40%&#34;</span><span class="p">,</span> <span class="s2">&#34;68%&#34;</span><span class="o">]</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">              <span class="ss">center</span><span class="p">:</span> <span class="o">[</span><span class="s2">&#34;50%&#34;</span><span class="p">,</span> <span class="s2">&#34;45%&#34;</span><span class="o">]</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">              <span class="ss">label</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">show</span><span class="p">:</span> <span class="kp">false</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">              <span class="nb">name</span><span class="p">:</span>     <span class="s2">&#34;Industry Sales&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">data</span><span class="p">:</span>     <span class="n">series_data</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">radius</span><span class="p">:</span>   <span class="o">[</span><span class="s2">&#34;40%&#34;</span><span class="p">,</span> <span class="s2">&#34;68%&#34;</span><span class="o">]</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">center</span><span class="p">:</span>   <span class="o">[</span><span class="s2">&#34;50%&#34;</span><span class="p">,</span> <span class="s2">&#34;45%&#34;</span><span class="o">]</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">label</span><span class="p">:</span>    <span class="p">{</span> <span class="ss">show</span><span class="p">:</span> <span class="kp">false</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">              <span class="ss">emphasis</span><span class="p">:</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">                <span class="ss">label</span><span class="p">:</span> <span class="p">{</span> <span class="ss">show</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">fontSize</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span> <span class="ss">fontWeight</span><span class="p">:</span> <span class="s2">&#34;bold&#34;</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">              <span class="p">}</span>
 </span></span><span class="line"><span class="cl">            <span class="p">)</span>
 </span></span><span class="line"><span class="cl">          <span class="o">]</span>
 </span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">series_data</span>
+</span></span><span class="line"><span class="cl">        <span class="vi">@data</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="n">r</span><span class="o">[</span><span class="ss">:industry</span><span class="o">]</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="n">r</span><span class="o">[</span><span class="ss">:sales</span><span class="o">]</span> <span class="p">}</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">      <span class="k">end</span>
 </span></span><span class="line"><span class="cl">    <span class="k">end</span>
 </span></span><span class="line"><span class="cl">  <span class="k">end</span>
@@ -961,18 +1059,16 @@ the chart.</p>
   </button>
 </div>
 </div>
-<p><code>radius: [&quot;40%&quot;, &quot;68%&quot;]</code> sets inner radius to 40% and outer to 68% — the gap
-creates the donut hole. <code>label: { show: false }</code> hides slice labels on the donut
-itself; <code>emphasis.label</code> shows a label only when a slice is hovered.</p>
-<p>The <code>graphic</code> option positions arbitrary text over the chart. <code>left: &quot;center&quot;</code> and
-<code>top: &quot;middle&quot;</code> centre it in the chart container — which aligns with the donut hole
-because <code>center: [&quot;50%&quot;, &quot;45%&quot;]</code> positions the donut centrally.</p>
+<p><code>label: { show: false }</code> hides slice labels — the graphic overlay replaces
+them. <code>emphasis.label</code> shows a label when a slice is hovered.</p>
+<p><code>left: &quot;center&quot;</code> and <code>top: &quot;middle&quot;</code> centre the graphic in the chart container.
+This aligns with the donut hole because the donut is also centred at <code>[&quot;50%&quot;, &quot;45%&quot;]</code>.</p>
 <hr>
-<h2>5.6 — Chart 3: Rose Chart<span class="hx:absolute hx:-mt-20" id="56--chart-3-rose-chart"></span>
-    <a href="#56--chart-3-rose-chart" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>A rose chart (also called a nightingale chart) uses varying radius rather than
-varying angle to encode value — each slice spans an equal angle but its radius
-varies with its value. This makes small differences between slices more visible
-than a standard pie chart.</p>
+<h2>5.5 — Chart 3: Rose Chart<span class="hx:absolute hx:-mt-20" id="55--chart-3-rose-chart"></span>
+    <a href="#55--chart-3-rose-chart" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>A rose (nightingale) chart gives each slice an equal angle but varies the radius
+by value. Differences between similar-sized industries are more visible than in
+a standard pie.</p>
+<p><code>roseType: &quot;radius&quot;</code> is not modelled in the DSL — it passes through via <code>**extra</code>:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
@@ -1009,19 +1105,19 @@ than a standard pie chart.</p>
 </span><span class="lnt">30
 </span><span class="lnt">31
 </span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/views/components/charts/industry_rose.rb</span>
 </span></span><span class="line"><span class="cl"><span class="k">module</span> <span class="nn">Components</span>
 </span></span><span class="line"><span class="cl">  <span class="k">module</span> <span class="nn">Charts</span>
 </span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">IndustryRose</span> <span class="o">&lt;</span> <span class="no">Components</span><span class="o">::</span><span class="no">Chart</span>
-</span></span><span class="line"><span class="cl">      <span class="n">prop</span> <span class="ss">:readings</span><span class="p">,</span> <span class="n">_Any</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="o">[]</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="n">prop</span> <span class="ss">:data</span><span class="p">,</span> <span class="n">_Any</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="o">[]</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="kp">private</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">chart_options</span>
-</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="o">::</span><span class="no">Stats</span><span class="o">::</span><span class="no">BusinessComposition</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="vi">@readings</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Options</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">color</span><span class="p">:</span>   <span class="s2">&#34;vivid&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">toolbox</span><span class="p">:</span> <span class="p">{</span> <span class="ss">feature</span><span class="p">:</span> <span class="p">{</span> <span class="ss">saveAsImage</span><span class="p">:</span> <span class="p">{}</span> <span class="p">}</span> <span class="p">},</span>
@@ -1029,16 +1125,20 @@ than a standard pie chart.</p>
 </span></span><span class="line"><span class="cl">          <span class="ss">legend</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;scroll&#34;</span><span class="p">,</span> <span class="ss">bottom</span><span class="p">:</span> <span class="mi">5</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">series</span><span class="p">:</span> <span class="o">[</span>
 </span></span><span class="line"><span class="cl">            <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Pie</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">              <span class="nb">name</span><span class="p">:</span>     <span class="s2">&#34;Industry Sales&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">              <span class="ss">data</span><span class="p">:</span>     <span class="n">data</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="n">r</span><span class="o">[</span><span class="ss">:industry</span><span class="o">]</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="n">r</span><span class="o">[</span><span class="ss">:sales</span><span class="o">]</span> <span class="p">}</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">              <span class="ss">radius</span><span class="p">:</span>   <span class="o">[</span><span class="s2">&#34;15%&#34;</span><span class="p">,</span> <span class="s2">&#34;70%&#34;</span><span class="o">]</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">              <span class="ss">center</span><span class="p">:</span>   <span class="o">[</span><span class="s2">&#34;50%&#34;</span><span class="p">,</span> <span class="s2">&#34;45%&#34;</span><span class="o">]</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">              <span class="ss">roseType</span><span class="p">:</span> <span class="s2">&#34;radius&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">              <span class="ss">label</span><span class="p">:</span>    <span class="p">{</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;{b}&#34;</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">              <span class="nb">name</span><span class="p">:</span>      <span class="s2">&#34;Industry Sales&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">data</span><span class="p">:</span>      <span class="n">series_data</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">radius</span><span class="p">:</span>    <span class="o">[</span><span class="s2">&#34;15%&#34;</span><span class="p">,</span> <span class="s2">&#34;70%&#34;</span><span class="o">]</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">center</span><span class="p">:</span>    <span class="o">[</span><span class="s2">&#34;50%&#34;</span><span class="p">,</span> <span class="s2">&#34;45%&#34;</span><span class="o">]</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">roseType</span><span class="p">:</span>  <span class="s2">&#34;radius&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">label</span><span class="p">:</span>     <span class="p">{</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;{b}&#34;</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">              <span class="ss">itemStyle</span><span class="p">:</span> <span class="p">{</span> <span class="ss">borderRadius</span><span class="p">:</span> <span class="mi">6</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">            <span class="p">)</span>
 </span></span><span class="line"><span class="cl">          <span class="o">]</span>
 </span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">series_data</span>
+</span></span><span class="line"><span class="cl">        <span class="vi">@data</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="n">r</span><span class="o">[</span><span class="ss">:industry</span><span class="o">]</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="n">r</span><span class="o">[</span><span class="ss">:sales</span><span class="o">]</span> <span class="p">}</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">      <span class="k">end</span>
 </span></span><span class="line"><span class="cl">    <span class="k">end</span>
 </span></span><span class="line"><span class="cl">  <span class="k">end</span>
@@ -1056,14 +1156,16 @@ than a standard pie chart.</p>
   </button>
 </div>
 </div>
-<p><code>roseType: &quot;radius&quot;</code> switches from standard pie to rose mode. <code>itemStyle: { borderRadius: 6 }</code> rounds the corners of each slice — a subtle refinement that improves readability when slices are narrow.</p>
-<p><code>radius: [&quot;15%&quot;, &quot;70%&quot;]</code> gives the rose chart an inner radius — combining donut
-and rose modes — which prevents the smallest slices from collapsing to a point at
-the centre.</p>
+<p><code>radius: [&quot;15%&quot;, &quot;70%&quot;]</code> gives the rose an inner radius — combining donut and
+rose modes. Without it the smallest slices collapse to a point at the centre.</p>
+<p><code>itemStyle: { borderRadius: 6 }</code> rounds the corners of each slice — a subtle
+refinement that improves readability when slices are narrow. Passed through
+<code>**extra</code>.</p>
 <hr>
-<h2>5.7 — Chart 4: Half Donut<span class="hx:absolute hx:-mt-20" id="57--chart-4-half-donut"></span>
-    <a href="#57--chart-4-half-donut" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>A half donut uses <code>startAngle</code> and <code>endAngle</code> to render only the top half of the
-chart — a compact format suited to dashboards where vertical space is limited.</p>
+<h2>5.6 — Chart 4: Half Donut<span class="hx:absolute hx:-mt-20" id="56--chart-4-half-donut"></span>
+    <a href="#56--chart-4-half-donut" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><code>startAngle: 180</code> and <code>endAngle: 360</code> render only the top semicircle. The
+smaller industries are grouped into &ldquo;Other&rdquo; in the service helper — a half
+donut with 15 slices is unreadable.</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
@@ -1106,25 +1208,20 @@ chart — a compact format suited to dashboards where vertical space is limited.
 </span><span class="lnt">36
 </span><span class="lnt">37
 </span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/views/components/charts/industry_half_donut.rb</span>
 </span></span><span class="line"><span class="cl"><span class="k">module</span> <span class="nn">Components</span>
 </span></span><span class="line"><span class="cl">  <span class="k">module</span> <span class="nn">Charts</span>
 </span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">IndustryHalfDonut</span> <span class="o">&lt;</span> <span class="no">Components</span><span class="o">::</span><span class="no">Chart</span>
-</span></span><span class="line"><span class="cl">      <span class="n">prop</span> <span class="ss">:readings</span><span class="p">,</span> <span class="n">_Any</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="o">[]</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="n">prop</span> <span class="ss">:data</span><span class="p">,</span> <span class="n">_Any</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="o">[]</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="kp">private</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">chart_options</span>
-</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="o">::</span><span class="no">Stats</span><span class="o">::</span><span class="no">BusinessComposition</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="vi">@readings</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1"># Top 6 industries only — half donut gets crowded quickly</span>
-</span></span><span class="line"><span class="cl">        <span class="n">top6</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">first</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">other_sales</span> <span class="o">=</span> <span class="n">data</span><span class="o">[</span><span class="mi">6</span><span class="o">..].</span><span class="n">sum</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">[</span><span class="ss">:sales</span><span class="o">]</span> <span class="p">}</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">top6</span> <span class="o">&lt;&lt;</span> <span class="p">{</span> <span class="ss">industry</span><span class="p">:</span> <span class="s2">&#34;Other&#34;</span><span class="p">,</span> <span class="ss">sales</span><span class="p">:</span> <span class="n">other_sales</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">                  <span class="ss">share</span><span class="p">:</span> <span class="p">(</span><span class="n">other_sales</span> <span class="o">/</span> <span class="n">data</span><span class="o">.</span><span class="n">sum</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">[</span><span class="ss">:sales</span><span class="o">]</span> <span class="p">}</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Options</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">color</span><span class="p">:</span>   <span class="s2">&#34;vivid&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">toolbox</span><span class="p">:</span> <span class="p">{</span> <span class="ss">feature</span><span class="p">:</span> <span class="p">{</span> <span class="ss">saveAsImage</span><span class="p">:</span> <span class="p">{}</span> <span class="p">}</span> <span class="p">},</span>
@@ -1133,7 +1230,7 @@ chart — a compact format suited to dashboards where vertical space is limited.
 </span></span><span class="line"><span class="cl">          <span class="ss">series</span><span class="p">:</span> <span class="o">[</span>
 </span></span><span class="line"><span class="cl">            <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Pie</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">              <span class="nb">name</span><span class="p">:</span>       <span class="s2">&#34;Industry Sales&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">              <span class="ss">data</span><span class="p">:</span>       <span class="n">top6</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="n">r</span><span class="o">[</span><span class="ss">:industry</span><span class="o">]</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="n">r</span><span class="o">[</span><span class="ss">:sales</span><span class="o">]</span> <span class="p">}</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">data</span><span class="p">:</span>       <span class="n">series_data</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">              <span class="ss">radius</span><span class="p">:</span>     <span class="o">[</span><span class="s2">&#34;45%&#34;</span><span class="p">,</span> <span class="s2">&#34;72%&#34;</span><span class="o">]</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">              <span class="ss">center</span><span class="p">:</span>     <span class="o">[</span><span class="s2">&#34;50%&#34;</span><span class="p">,</span> <span class="s2">&#34;72%&#34;</span><span class="o">]</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">              <span class="ss">startAngle</span><span class="p">:</span> <span class="mi">180</span><span class="p">,</span>
@@ -1142,6 +1239,17 @@ chart — a compact format suited to dashboards where vertical space is limited.
 </span></span><span class="line"><span class="cl">            <span class="p">)</span>
 </span></span><span class="line"><span class="cl">          <span class="o">]</span>
 </span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">series_data</span>
+</span></span><span class="line"><span class="cl">        <span class="n">top6</span>  <span class="o">=</span> <span class="vi">@data</span><span class="o">.</span><span class="n">first</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">other</span> <span class="o">=</span> <span class="vi">@data</span><span class="o">[</span><span class="mi">6</span><span class="o">..]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">top6</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="n">r</span><span class="o">[</span><span class="ss">:industry</span><span class="o">]</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="n">r</span><span class="o">[</span><span class="ss">:sales</span><span class="o">]</span> <span class="p">}</span> <span class="p">}</span> <span class="k">if</span> <span class="n">other</span><span class="o">.</span><span class="n">empty?</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">other_sales</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">sum</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">[</span><span class="ss">:sales</span><span class="o">]</span> <span class="p">}</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="n">top6</span> <span class="o">+</span> <span class="o">[</span><span class="p">{</span> <span class="ss">industry</span><span class="p">:</span> <span class="s2">&#34;Other&#34;</span><span class="p">,</span> <span class="ss">sales</span><span class="p">:</span> <span class="n">other_sales</span> <span class="p">}</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="p">{</span> <span class="nb">name</span><span class="p">:</span> <span class="n">r</span><span class="o">[</span><span class="ss">:industry</span><span class="o">]</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="n">r</span><span class="o">[</span><span class="ss">:sales</span><span class="o">]</span> <span class="p">}</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">      <span class="k">end</span>
 </span></span><span class="line"><span class="cl">    <span class="k">end</span>
 </span></span><span class="line"><span class="cl">  <span class="k">end</span>
@@ -1159,14 +1267,16 @@ chart — a compact format suited to dashboards where vertical space is limited.
   </button>
 </div>
 </div>
-<p><code>center: [&quot;50%&quot;, &quot;72%&quot;]</code> shifts the centre point down so the flat edge of the
-half-donut sits near the bottom of the chart area, using the space efficiently.
-<code>startAngle: 180</code> and <code>endAngle: 360</code> render only the top semicircle.</p>
-<p>Grouping smaller industries into &ldquo;Other&rdquo; is important — a half donut with 15 slices
-is unreadable. Six meaningful slices plus &ldquo;Other&rdquo; is the practical limit.</p>
+<p><code>center: [&quot;50%&quot;, &quot;72%&quot;]</code> shifts the centre point down so the flat edge sits
+near the bottom of the chart area. <code>startAngle: 180</code> and <code>endAngle: 360</code> pass
+through via <code>**extra</code>.</p>
+<p>The &ldquo;Other&rdquo; grouping is a presentation concern — it belongs in <code>series_data</code>,
+not in the service. The service returns all industries; the component decides
+how many to show.</p>
 <hr>
-<h2>5.8 — Controller and View<span class="hx:absolute hx:-mt-20" id="58--controller-and-view"></span>
-    <a href="#58--controller-and-view" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+<h2>5.7 — The Plumbing<span class="hx:absolute hx:-mt-20" id="57--the-plumbing"></span>
+    <a href="#57--the-plumbing" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>The service takes no arguments — the controller simply calls it:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1178,7 +1288,7 @@ is unreadable. Six meaningful slices plus &ldquo;Other&rdquo; is the practical l
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/controllers/charts_controller.rb</span>
 </span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">industry_composition</span>
-</span></span><span class="line"><span class="cl">  <span class="vi">@readings</span> <span class="o">=</span> <span class="no">BusinessIndicatorReading</span><span class="o">.</span><span class="n">ordered</span>
+</span></span><span class="line"><span class="cl">  <span class="vi">@data</span> <span class="o">=</span> <span class="no">Stats</span><span class="o">::</span><span class="no">BusinessComposition</span><span class="o">.</span><span class="n">call</span>
 </span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
 </div>
 </div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
@@ -1223,17 +1333,16 @@ is unreadable. Six meaningful slices plus &ldquo;Other&rdquo; is the practical l
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><pre><code>&lt;%# app/views/charts/industry_composition.html.erb %&gt;
-
 &lt;div class=&#34;max-w-5xl mx-auto px-4 py-8&#34;&gt;
 
   &lt;h1 class=&#34;text-3xl font-bold mb-2&#34;&gt;Australian Business Sales by Industry&lt;/h1&gt;
   &lt;p class=&#34;text-neutral-500 text-sm mb-8&#34;&gt;
     Latest quarter, seasonally adjusted.
-    Source: &lt;a href=&#34;https://www.abs.gov.au&#34; class=&#34;underline&#34;&gt;Australian Bureau of Statistics&lt;/a&gt;,
-    Business Indicators (ABS cat. 5676.0), CC BY 4.0.
+    Source: &lt;a href=&#34;https://www.abs.gov.au&#34; class=&#34;underline&#34;&gt;
+      Australian Bureau of Statistics
+    &lt;/a&gt;, Business Indicators (ABS cat. 5676.0), CC BY 4.0.
   &lt;/p&gt;
 
-  &lt;%# ── Pie &#43; Donut side by side ───────────────────────────────── %&gt;
   &lt;div class=&#34;grid grid-cols-2 gap-6 mb-8&#34;&gt;
     &lt;div&gt;
       &lt;h2 class=&#34;text-lg font-semibold mb-1&#34;&gt;Pie Chart&lt;/h2&gt;
@@ -1241,93 +1350,51 @@ is unreadable. Six meaningful slices plus &ldquo;Other&rdquo; is the practical l
         Area encodes share of total. Hover a slice for details.
       &lt;/p&gt;
       &lt;%= render Components::Charts::IndustryPie.new(
-        readings: @readings,
-        height:   &#34;360px&#34;
+        data:   @data,
+        height: &#34;360px&#34;
       ) %&gt;
     &lt;/div&gt;
     &lt;div&gt;
       &lt;h2 class=&#34;text-lg font-semibold mb-1&#34;&gt;Donut Chart&lt;/h2&gt;
       &lt;p class=&#34;text-neutral-500 text-sm mb-3&#34;&gt;
-        The hollow centre carries a summary value — a common dashboard pattern.
+        The hollow centre carries a summary value.
       &lt;/p&gt;
       &lt;%= render Components::Charts::IndustryDonut.new(
-        readings: @readings,
-        height:   &#34;360px&#34;
+        data:   @data,
+        height: &#34;360px&#34;
       ) %&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 
-  &lt;%# ── Rose &#43; Half Donut side by side ─────────────────────────── %&gt;
   &lt;div class=&#34;grid grid-cols-2 gap-6 mb-8&#34;&gt;
     &lt;div&gt;
       &lt;h2 class=&#34;text-lg font-semibold mb-1&#34;&gt;Rose Chart&lt;/h2&gt;
       &lt;p class=&#34;text-neutral-500 text-sm mb-3&#34;&gt;
         Radius encodes value rather than angle — small differences between
-        industries are more visible than in a standard pie chart.
+        industries are more visible.
       &lt;/p&gt;
       &lt;%= render Components::Charts::IndustryRose.new(
-        readings: @readings,
-        height:   &#34;360px&#34;
+        data:   @data,
+        height: &#34;360px&#34;
       ) %&gt;
     &lt;/div&gt;
     &lt;div&gt;
       &lt;h2 class=&#34;text-lg font-semibold mb-1&#34;&gt;Half Donut&lt;/h2&gt;
       &lt;p class=&#34;text-neutral-500 text-sm mb-3&#34;&gt;
-        A compact format for dashboards. Smaller industries are grouped into
-        &#34;Other&#34; to keep the chart readable.
+        A compact format for dashboards. Smaller industries are grouped
+        into &#34;Other&#34;.
       &lt;/p&gt;
       &lt;%= render Components::Charts::IndustryHalfDonut.new(
-        readings: @readings,
-        height:   &#34;360px&#34;
+        data:   @data,
+        height: &#34;360px&#34;
       ) %&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-
-  &lt;%# ── Guidance ────────────────────────────────────────────────── %&gt;
-  &lt;div class=&#34;bg-neutral-50 rounded-lg p-6 mb-8&#34;&gt;
-    &lt;h2 class=&#34;text-lg font-semibold mb-3&#34;&gt;Choosing Between Variants&lt;/h2&gt;
-    &lt;div class=&#34;grid grid-cols-2 gap-6 text-sm text-neutral-600&#34;&gt;
-      &lt;div&gt;
-        &lt;p class=&#34;font-medium text-neutral-800 mb-1&#34;&gt;Use a pie chart when:&lt;/p&gt;
-        &lt;ul class=&#34;list-disc list-inside space-y-1&#34;&gt;
-          &lt;li&gt;You have 5–8 categories&lt;/li&gt;
-          &lt;li&gt;Proportions are the primary message&lt;/li&gt;
-          &lt;li&gt;One slice is clearly dominant&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/div&gt;
-      &lt;div&gt;
-        &lt;p class=&#34;font-medium text-neutral-800 mb-1&#34;&gt;Use a donut chart when:&lt;/p&gt;
-        &lt;ul class=&#34;list-disc list-inside space-y-1&#34;&gt;
-          &lt;li&gt;You want a summary value in the centre&lt;/li&gt;
-          &lt;li&gt;The chart sits in a dashboard layout&lt;/li&gt;
-          &lt;li&gt;You want to reduce visual weight&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/div&gt;
-      &lt;div&gt;
-        &lt;p class=&#34;font-medium text-neutral-800 mb-1&#34;&gt;Use a rose chart when:&lt;/p&gt;
-        &lt;ul class=&#34;list-disc list-inside space-y-1&#34;&gt;
-          &lt;li&gt;Values are similar in magnitude&lt;/li&gt;
-          &lt;li&gt;You want to emphasise relative differences&lt;/li&gt;
-          &lt;li&gt;Visual impact matters more than precision&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/div&gt;
-      &lt;div&gt;
-        &lt;p class=&#34;font-medium text-neutral-800 mb-1&#34;&gt;Use a half donut when:&lt;/p&gt;
-        &lt;ul class=&#34;list-disc list-inside space-y-1&#34;&gt;
-          &lt;li&gt;Vertical space is constrained&lt;/li&gt;
-          &lt;li&gt;You are building a dashboard widget&lt;/li&gt;
-          &lt;li&gt;You have 6 or fewer categories&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 
   &lt;div class=&#34;border-t border-neutral-200 pt-6&#34;&gt;
     &lt;p class=&#34;text-neutral-400 text-xs&#34;&gt;
-      Data: Australian Bureau of Statistics, Business Indicators, Australia
-      (ABS cat. 5676.0). Accessed via ABS Data API. Licensed under
-      &lt;a href=&#34;https://www.abs.gov.au/website-privacy-copyright-and-disclaimer&#34;
-         class=&#34;underline&#34;&gt;CC BY 4.0&lt;/a&gt;.
+      Data: ABS Business Indicators, Australia (cat. 5676.0).
+      Accessed via ABS Data API. CC BY 4.0.
     &lt;/p&gt;
   &lt;/div&gt;
 
@@ -1343,48 +1410,7 @@ is unreadable. Six meaningful slices plus &ldquo;Other&rdquo; is the practical l
   </button>
 </div>
 </div>
-<hr>
-<h2>5.9 — Chart::Series::Pie Updates<span class="hx:absolute hx:-mt-20" id="59--chartseriespie-updates"></span>
-    <a href="#59--chartseriespie-updates" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>The <code>IndustryRose</code> and <code>IndustryHalfDonut</code> components pass <code>roseType:</code>,
-<code>startAngle:</code>, <code>endAngle:</code>, and <code>itemStyle:</code> options. These are not modelled
-in <code>Chart::Series::Pie</code> — they pass through via <code>**extra</code> in <code>Chart::Series::Base</code>.</p>
-<p>No DSL changes needed. The escape hatch handles them:</p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Pie</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">  <span class="ss">roseType</span><span class="p">:</span>   <span class="s2">&#34;radius&#34;</span><span class="p">,</span>   <span class="c1"># passed through via **extra</span>
-</span></span><span class="line"><span class="cl">  <span class="ss">startAngle</span><span class="p">:</span> <span class="mi">180</span><span class="p">,</span>        <span class="c1"># passed through via **extra</span>
-</span></span><span class="line"><span class="cl">  <span class="ss">endAngle</span><span class="p">:</span>   <span class="mi">360</span><span class="p">,</span>        <span class="c1"># passed through via **extra</span>
-</span></span><span class="line"><span class="cl">  <span class="ss">itemStyle</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">borderRadius</span><span class="p">:</span> <span class="mi">6</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<p>This is the intended use of <code>**extra</code> — ECharts has hundreds of series options,
-and the DSL models only the most common ones.</p>
-<hr>
-<h2>5.10 — Gallery<span class="hx:absolute hx:-mt-20" id="510--gallery"></span>
-    <a href="#510--gallery" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Add to <code>app/views/charts/index.html.erb</code>:</p>
+<p><strong>Gallery card:</strong></p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><pre><code>&lt;%= render &#34;charts/gallery_card&#34;,
@@ -1404,8 +1430,8 @@ and the DSL models only the most common ones.</p>
 </div>
 </div>
 <hr>
-<h2>5.11 — Module Summary<span class="hx:absolute hx:-mt-20" id="511--module-summary"></span>
-    <a href="#511--module-summary" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><strong>New files:</strong></p>
+<h2>5.8 — Module Summary<span class="hx:absolute hx:-mt-20" id="58--module-summary"></span>
+    <a href="#58--module-summary" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><strong>New files:</strong></p>
 <table>
   <thead>
       <tr>
@@ -1416,7 +1442,7 @@ and the DSL models only the most common ones.</p>
   <tbody>
       <tr>
           <td><code>app/services/stats/business_composition.rb</code></td>
-          <td>Latest quarter sales by industry with shares</td>
+          <td>Latest quarter sales by industry</td>
       </tr>
       <tr>
           <td><code>app/views/components/charts/industry_pie.rb</code></td>
@@ -1434,59 +1460,58 @@ and the DSL models only the most common ones.</p>
           <td><code>app/views/components/charts/industry_half_donut.rb</code></td>
           <td>Half donut dashboard variant</td>
       </tr>
-      <tr>
-          <td><code>app/views/charts/industry_composition.html.erb</code></td>
-          <td>Four-chart showcase page</td>
-      </tr>
   </tbody>
 </table>
 <p><strong>Patterns introduced:</strong></p>
 <ul>
-<li><code>trigger: &quot;item&quot;</code> tooltip for single-slice charts</li>
-<li>Custom rich tooltip formatter for pie/donut slices</li>
-<li><code>radius: [&quot;inner%&quot;, &quot;outer%&quot;]</code> for donut charts</li>
-<li><code>graphic</code> option for centre label text overlay</li>
-<li><code>roseType: &quot;radius&quot;</code> for nightingale/rose charts</li>
-<li><code>startAngle</code> / <code>endAngle</code> for half donut</li>
-<li><code>emphasis.label</code> for hover-activated slice labels</li>
-<li>ECharts label template variables — <code>{b}</code>, <code>{c}</code>, <code>{d}</code>, <code>{a}</code></li>
-<li>Grouping small slices into &ldquo;Other&rdquo; for readability</li>
-<li>Side-by-side chart layout with Tailwind grid</li>
+<li><code>Chart::Series::Pie</code> — <code>{ name:, value: }</code> data format</li>
+<li><code>radius: [&quot;inner%&quot;, &quot;outer%&quot;]</code> — creates the donut hole</li>
+<li><code>graphic</code> option — arbitrary text overlay for centre labels</li>
+<li><code>roseType: &quot;radius&quot;</code> — nightingale/rose mode via <code>**extra</code></li>
+<li><code>startAngle</code> / <code>endAngle</code> — half donut via <code>**extra</code></li>
+<li><code>emphasis.label</code> — hover-activated slice labels</li>
+<li><code>trigger: &quot;item&quot;</code> tooltip — single slice, not cross-axis</li>
+<li><code>item:</code> prefix — qualifier for item-trigger formatters</li>
+<li>ECharts label template variables — <code>{b}</code>, <code>{c}</code>, <code>{d}</code></li>
+<li><code>**extra</code> escape hatch — passing options not modelled in the DSL</li>
+<li>&ldquo;Other&rdquo; grouping as a presentation concern in <code>series_data</code></li>
 </ul>
-<p><strong>Label template variables:</strong></p>
+<p><strong>When to use each variant:</strong></p>
 <table>
   <thead>
       <tr>
-          <th>Variable</th>
-          <th>Value</th>
+          <th>Variant</th>
+          <th>Use when</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td><code>{a}</code></td>
-          <td>Series name</td>
+          <td>Pie</td>
+          <td>5–8 categories, proportions are the message</td>
       </tr>
       <tr>
-          <td><code>{b}</code></td>
-          <td>Data item name (slice label)</td>
+          <td>Donut</td>
+          <td>Summary value in centre, dashboard layout</td>
       </tr>
       <tr>
-          <td><code>{c}</code></td>
-          <td>Data value</td>
+          <td>Rose</td>
+          <td>Similar-magnitude values, visual impact over precision</td>
       </tr>
       <tr>
-          <td><code>{d}</code></td>
-          <td>Percentage (calculated by ECharts)</td>
+          <td>Half donut</td>
+          <td>Vertical space constrained, 6 or fewer categories</td>
       </tr>
   </tbody>
 </table>
+<hr>
+<p><em>Next: Module 06 — Calendar Heatmap: Daily Activity</em></p>
 
         </div>
         <div class="hx:mt-16"></div><div class="hx:mb-8 hx:flex hx:items-center hx:border-t hx:pt-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-neutral-400 hx:dark:contrast-more:border-neutral-400 hx:print:hidden"><a
         href="/echarts/module-04-scatter/"
-        title="Lesson 04 - Scatter charts"
+        title="Lesson 04 - Scatter Charts"
         class="hx:flex hx:max-w-[50%] hx:items-center hx:gap-1 hx:py-4 hx:text-base hx:font-medium hx:text-gray-600 hx:transition-colors [word-break:break-word] hx:hover:text-primary-600 hx:dark:text-gray-300 hx:md:text-lg hx:ltr:pr-4 hx:rtl:pl-4"
-      ><svg class="hx:inline hx:h-5 hx:shrink-0 hx:ltr:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>Lesson 04 - Scatter charts</a><a
+      ><svg class="hx:inline hx:h-5 hx:shrink-0 hx:ltr:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>Lesson 04 - Scatter Charts</a><a
         href="/echarts/module-06-heatmap/"
         title="Lesson 06 - Heatmaps"
         class="hx:flex hx:max-w-[50%] hx:items-center hx:gap-1 hx:py-4 hx:text-base hx:font-medium hx:text-gray-600 hx:transition-colors [word-break:break-word] hx:hover:text-primary-600 hx:dark:text-gray-300 hx:md:text-lg hx:ltr:ml-auto hx:ltr:pl-4 hx:ltr:text-right hx:rtl:mr-auto hx:rtl:pr-4 hx:rtl:text-left"

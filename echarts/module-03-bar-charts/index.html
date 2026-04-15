@@ -9,21 +9,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 <title>Ruby Field Notes</title>
-  <meta name="description" content="Module 03 — Bar and Stacked Bar: Labour Force by StateWhat We’re Building The Labour Force dataset gives us monthly employment figures across 8 Australian states from 2012–2024 — 1,248 records covering employed persons, unemployed persons, participation rate, and unemployment rate. It is richer than the GDP data and has a monthly cadence that requires bucketing before charting.
-By the end of this module you will have:" /><link rel="canonical" href="https://www.rehali.com/echarts/module-03-bar-charts/" itemprop="url" />
+  <meta name="description" content="Creating Bar and Stacked Bar charts using ECharts with Ruby on Rails and Phlex." /><link rel="canonical" href="https://www.rehali.com/echarts/module-03-bar-charts/" itemprop="url" />
 
 <meta property="og:title" content="">
 <meta
   property="og:description"
   content="
-    
-      Module 03 — Bar and Stacked Bar: Labour Force by StateWhat We&rsquo;re Building
-    The Labour Force dataset gives us monthly employment figures across 8 Australian
-states from 2012–2024 — 1,248 records covering employed persons, unemployed persons,
-participation rate, and unemployment rate. It is richer than the GDP data and has
-a monthly cadence that requires bucketing before charting.
-By the end of this module you will have:
-    
+    Creating Bar and Stacked Bar charts using ECharts with Ruby on Rails and Phlex.
   ">
 <meta
   property="og:type"
@@ -36,13 +28,11 @@ By the end of this module you will have:
 
 
   <meta itemprop="name" content="Ruby Field Notes">
-  <meta itemprop="description" content="Module 03 — Bar and Stacked Bar: Labour Force by StateWhat We’re Building The Labour Force dataset gives us monthly employment figures across 8 Australian states from 2012–2024 — 1,248 records covering employed persons, unemployed persons, participation rate, and unemployment rate. It is richer than the GDP data and has a monthly cadence that requires bucketing before charting.
-By the end of this module you will have:">
-  <meta itemprop="wordCount" content="1651">
+  <meta itemprop="description" content="Creating Bar and Stacked Bar charts using ECharts with Ruby on Rails and Phlex.">
+  <meta itemprop="wordCount" content="1718">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
-  <meta name="twitter:description" content="Module 03 — Bar and Stacked Bar: Labour Force by StateWhat We’re Building The Labour Force dataset gives us monthly employment figures across 8 Australian states from 2012–2024 — 1,248 records covering employed persons, unemployed persons, participation rate, and unemployment rate. It is richer than the GDP data and has a monthly cadence that requires bucketing before charting.
-By the end of this module you will have:">
+  <meta name="twitter:description" content="Creating Bar and Stacked Bar charts using ECharts with Ruby on Rails and Phlex.">
 
     <link rel="preload" href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" as="style" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
     <link href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" rel="stylesheet" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
@@ -175,7 +165,7 @@ By the end of this module you will have:">
       href="/echarts/module-04-scatter/"
       
     >
-      <span class="hx:min-w-0 [word-break:break-word]">Lesson 04 - Scatter charts</span>
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 04 - Scatter Charts</span>
     </a>
   </div></li>
             <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
@@ -398,15 +388,7 @@ By the end of this module you will have:">
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#31--the-data-problem-monthly-granularity">3.1 — The Data Problem: Monthly Granularity
-        </a>
-      </li>
-      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#the-naive-approach">The naive approach
-        </a>
-      </li>
-      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#introducing-groupdate">Introducing groupdate
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#31--chartseriesbar">3.1 — Chart::Series::Bar
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
@@ -414,35 +396,27 @@ By the end of this module you will have:">
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#33--controller-and-routes">3.3 — Controller and Routes
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#33--the-grouped-bar-chart">3.3 — The Grouped Bar Chart
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#34--grouped-bar-chart">3.4 — Grouped Bar Chart
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#the-toolbox">The toolbox
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#35--the-toolbox">3.5 — The Toolbox
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#34--the-horizontal-bar-chart">3.4 — The Horizontal Bar Chart
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#36--horizontal-bar-chart">3.6 — Horizontal Bar Chart
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#35--the-unemployment-rate-chart">3.5 — The Unemployment Rate Chart
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#37--unemployment-rate-chart">3.7 — Unemployment Rate Chart
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#36--the-plumbing">3.6 — The Plumbing
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#38--gallery-index">3.8 — Gallery Index
-        </a>
-      </li>
-      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#39--what-groupdate-does-for-us">3.9 — What groupdate Does For Us
-        </a>
-      </li>
-      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#310--module-summary">3.10 — Module Summary
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#37--module-summary">3.7 — Module Summary
         </a>
       </li></ul>
       <div class="hx:mt-8 hx:border-t hx:bg-white hx:pt-8 hx:shadow-[0_-12px_16px_white] hx:dark:bg-dark hx:dark:shadow-[0_-12px_16px_#111] hx:sticky hx:bottom-0 hx:flex hx:flex-col hx:items-start hx:gap-2 hx:pb-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-t hx:contrast-more:border-neutral-400 hx:contrast-more:shadow-none hx:contrast-more:dark:border-neutral-400">
@@ -464,35 +438,39 @@ By the end of this module you will have:">
           
           <h1>Module 03 — Bar and Stacked Bar: Labour Force by State</h1><h2>What We&rsquo;re Building<span class="hx:absolute hx:-mt-20" id="what-were-building"></span>
     <a href="#what-were-building" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>The Labour Force dataset gives us monthly employment figures across 8 Australian
-states from 2012–2024 — 1,248 records covering employed persons, unemployed persons,
-participation rate, and unemployment rate. It is richer than the GDP data and has
-a monthly cadence that requires bucketing before charting.</p>
+states from 2012–2024. It is richer than the GDP data — multiple metrics per
+record and a monthly cadence that requires bucketing before charting.</p>
 <p>By the end of this module you will have:</p>
 <ul>
 <li>A service that buckets monthly data into annual averages</li>
-<li>A grouped bar chart showing employment by state with ECharts&rsquo; native toolbox</li>
-<li>A horizontal bar chart showing the latest year&rsquo;s employment snapshot</li>
-<li>An unemployment rate line chart demonstrating that one service can feed multiple
-chart types</li>
+<li>A grouped bar chart showing employment by state</li>
+<li>A horizontal bar chart showing the latest year as a snapshot</li>
+<li>An unemployment rate line/bar chart — demonstrating one service feeding multiple chart types</li>
 </ul>
+<p>Three charts, one service, three new component patterns.</p>
+<p>Here&rsquo;s what we&rsquo;ll be building:</p>
+<p><img src="/echarts/module-03-bar-charts/bar_horizontal.png" alt="bar_horizontal.png"  loading="lazy" /></p>
 <hr>
-<h2>3.1 — The Data Problem: Monthly Granularity<span class="hx:absolute hx:-mt-20" id="31--the-data-problem-monthly-granularity"></span>
-    <a href="#31--the-data-problem-monthly-granularity" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>The <code>labour_force_readings</code> table has 1,248 records — one per state per month.
-Charting all 156 months per state produces an illegible chart. We need to bucket
-monthly data into annual averages before passing it to ECharts.</p>
-<h3>The naive approach<span class="hx:absolute hx:-mt-20" id="the-naive-approach"></span>
-    <a href="#the-naive-approach" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+<h2>3.1 — <code>Chart::Series::Bar</code><span class="hx:absolute hx:-mt-20" id="31--chartseriesbar"></span>
+    <a href="#31--chartseriesbar" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Module 01 introduced <code>Chart::Series::Line</code>. This module introduces
+<code>Chart::Series::Bar</code> — the same pattern, different series type.</p>
+<p>The equivalent raw JavaScript:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">readings</span>
-</span></span><span class="line"><span class="cl">  <span class="o">.</span><span class="n">group_by</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="o">[</span><span class="n">r</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">year</span><span class="o">]</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="o">.</span><span class="n">transform_values</span> <span class="p">{</span> <span class="o">|</span><span class="n">rows</span><span class="o">|</span> <span class="p">(</span><span class="n">rows</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:employed_thousands</span><span class="p">)</span> <span class="o">/</span> <span class="n">rows</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">to_f</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">series</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&#34;bar&#34;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&#34;New South Wales&#34;</span><span class="p">,</span> <span class="nx">data</span><span class="o">:</span> <span class="p">[</span><span class="mf">3562.4</span><span class="p">,</span> <span class="mf">3601.2</span><span class="p">,</span> <span class="p">...]</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&#34;bar&#34;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&#34;Victoria&#34;</span><span class="p">,</span>        <span class="nx">data</span><span class="o">:</span> <span class="p">[</span><span class="mf">2891.2</span><span class="p">,</span> <span class="mf">2934.8</span><span class="p">,</span> <span class="p">...]</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span></span></span></code></pre></td></tr></table>
 </div>
 </div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
@@ -506,19 +484,21 @@ monthly data into annual averages before passing it to ECharts.</p>
   </button>
 </div>
 </div>
-<p>This works but has edge cases — partial years at the start or end of the date range
-produce lower averages because fewer months contribute to the sum. Writing robust
-time-series bucketing by hand is tedious.</p>
-<h3>Introducing <code>groupdate</code><span class="hx:absolute hx:-mt-20" id="introducing-groupdate"></span>
-    <a href="#introducing-groupdate" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p><code>groupdate</code> solves time-series bucketing cleanly. Add it to the Gemfile:</p>
+<p>In Ruby:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">gem</span> <span class="s2">&#34;groupdate&#34;</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Bar</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">name</span><span class="p">:</span> <span class="s2">&#34;New South Wales&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">data</span><span class="p">:</span> <span class="o">[</span><span class="mi">3562</span><span class="o">.</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3601</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="o">...]</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre></td></tr></table>
 </div>
 </div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
@@ -532,14 +512,20 @@ time-series bucketing by hand is tedious.</p>
   </button>
 </div>
 </div>
+<p><code>Chart::Series::Bar</code> adds <code>type: &quot;bar&quot;</code> automatically. Everything else — <code>name:</code>,
+<code>data:</code>, <code>stack:</code>, <code>itemStyle:</code> — passes through unchanged.</p>
+<p><strong>Stacking</strong> is one option away. Add <code>stack:</code> with a shared name and ECharts
+stacks all series with the same value:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">bundle install</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Bar</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&#34;NSW&#34;</span><span class="p">,</span> <span class="ss">data</span><span class="p">:</span> <span class="n">values</span><span class="p">,</span> <span class="ss">stack</span><span class="p">:</span> <span class="s2">&#34;total&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Bar</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">&#34;VIC&#34;</span><span class="p">,</span> <span class="ss">data</span><span class="p">:</span> <span class="n">values</span><span class="p">,</span> <span class="ss">stack</span><span class="p">:</span> <span class="s2">&#34;total&#34;</span><span class="p">)</span></span></span></code></pre></td></tr></table>
 </div>
 </div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
@@ -553,17 +539,15 @@ time-series bucketing by hand is tedious.</p>
   </button>
 </div>
 </div>
-<p><code>groupdate</code> adds scopes to ActiveRecord — <code>group_by_year</code>, <code>group_by_month</code>,
-<code>group_by_quarter</code> — and handles partial periods, timezones, and sparse data
-correctly.</p>
-<p>Our <code>labour_force_readings</code> table uses integer <code>year</code> and <code>month</code> columns rather
-than a single <code>date</code> column, so we cannot use <code>group_by_year</code> directly on this
-model. We bucket by the <code>year</code> integer instead. The <code>daily_activity_readings</code> table
-in Module 07 uses a proper <code>date</code> column — that is where <code>groupdate</code> earns its
-place fully.</p>
+<p>Both bars share <code>stack: &quot;total&quot;</code> — ECharts stacks them. The ECharts toolbox
+<code>magicType</code> with <code>&quot;stack&quot;</code> toggles this on and off interactively. More on
+the toolbox in section 3.3.</p>
 <hr>
 <h2>3.2 — The Service<span class="hx:absolute hx:-mt-20" id="32--the-service"></span>
-    <a href="#32--the-service" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+    <a href="#32--the-service" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>The <code>labour_force_readings</code> table has 1,248 records — one per state per month.
+Charting monthly data produces an illegible chart. The service buckets monthly
+readings into annual averages:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -608,6 +592,7 @@ place fully.</p>
 </span><span class="lnt">39
 </span><span class="lnt">40
 </span><span class="lnt">41
+</span><span class="lnt">42
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/services/stats/labour_force.rb</span>
@@ -618,7 +603,8 @@ place fully.</p>
 </span></span><span class="line"><span class="cl">    <span class="c1"># Returns annual averages per state:</span>
 </span></span><span class="line"><span class="cl">    <span class="c1"># {</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">#   &#34;New South Wales&#34; =&gt; [</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">#     { year: 2012, employed: 3562.4, unemployed: 198.1, participation: 62.3, rate: 5.3 },</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#     { year: 2012, employed: 3562.4, unemployed: 198.1,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#       participation: 62.3, rate: 5.3 },</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">#     ...</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">#   ],</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">#   ...</span>
@@ -664,110 +650,19 @@ place fully.</p>
   </button>
 </div>
 </div>
-<p>The service groups by state, then by year, computing averages across all months
-in each year. Zeros are excluded from averages — a missing month should not drag
-down the annual figure.</p>
+<p><strong>Two things worth noting:</strong></p>
+<p><code>r.send(attr)</code> — calling a method by name. When <code>attr</code> is <code>:employed_thousands</code>,
+<code>r.send(:employed_thousands)</code> is equivalent to <code>r.employed_thousands</code>. This
+avoids writing four separate average calculations for four metrics — one <code>avg</code>
+helper handles all of them.</p>
+<p><code>.reject(&amp;:zero?)</code> — zeros are excluded from averages. A missing month is stored
+as zero; including it would drag the annual average down incorrectly.</p>
+<p>The service returns the same data structure regardless of which chart type will
+consume it. The controller calls it once per action and passes the result to the
+component.</p>
 <hr>
-<h2>3.3 — Controller and Routes<span class="hx:absolute hx:-mt-20" id="33--controller-and-routes"></span>
-    <a href="#33--controller-and-routes" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/controllers/charts_controller.rb</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">labour_force</span>
-</span></span><span class="line"><span class="cl">  <span class="vi">@readings</span> <span class="o">=</span> <span class="no">LabourForceReading</span><span class="o">.</span><span class="n">ordered</span>
-</span></span><span class="line"><span class="cl"><span class="k">end</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">labour_force_horizontal</span>
-</span></span><span class="line"><span class="cl">  <span class="vi">@readings</span> <span class="o">=</span> <span class="no">LabourForceReading</span><span class="o">.</span><span class="n">ordered</span>
-</span></span><span class="line"><span class="cl"><span class="k">end</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">unemployment_rate</span>
-</span></span><span class="line"><span class="cl">  <span class="vi">@readings</span> <span class="o">=</span> <span class="no">LabourForceReading</span><span class="o">.</span><span class="n">ordered</span>
-</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<p>Add to <code>config/routes.rb</code>:</p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">get</span> <span class="s2">&#34;charts/labour_force&#34;</span><span class="p">,</span>            <span class="ss">to</span><span class="p">:</span> <span class="s2">&#34;charts#labour_force&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="n">get</span> <span class="s2">&#34;charts/labour_force_horizontal&#34;</span><span class="p">,</span> <span class="ss">to</span><span class="p">:</span> <span class="s2">&#34;charts#labour_force_horizontal&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="n">get</span> <span class="s2">&#34;charts/unemployment_rate&#34;</span><span class="p">,</span>       <span class="ss">to</span><span class="p">:</span> <span class="s2">&#34;charts#unemployment_rate&#34;</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<p>Add a scope to the model if not already present:</p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/models/labour_force_reading.rb</span>
-</span></span><span class="line"><span class="cl"><span class="n">scope</span> <span class="ss">:ordered</span><span class="p">,</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="n">order</span><span class="p">(</span><span class="ss">:state</span><span class="p">,</span> <span class="ss">:year</span><span class="p">,</span> <span class="ss">:month</span><span class="p">)</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<hr>
-<h2>3.4 — Grouped Bar Chart<span class="hx:absolute hx:-mt-20" id="34--grouped-bar-chart"></span>
-    <a href="#34--grouped-bar-chart" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>The main chart shows annual average employment by state. The ECharts toolbox
-provides stack/unstack, line/bar toggle, and save as image — no custom JavaScript
-needed.</p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+<h2>3.3 — The Grouped Bar Chart<span class="hx:absolute hx:-mt-20" id="33--the-grouped-bar-chart"></span>
+    <a href="#33--the-grouped-bar-chart" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -813,21 +708,17 @@ needed.</p>
 </span><span class="lnt">40
 </span><span class="lnt">41
 </span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/views/components/charts/labour_force.rb</span>
 </span></span><span class="line"><span class="cl"><span class="k">module</span> <span class="nn">Components</span>
 </span></span><span class="line"><span class="cl">  <span class="k">module</span> <span class="nn">Charts</span>
 </span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">LabourForce</span> <span class="o">&lt;</span> <span class="no">Components</span><span class="o">::</span><span class="no">Chart</span>
-</span></span><span class="line"><span class="cl">      <span class="n">prop</span> <span class="ss">:readings</span><span class="p">,</span> <span class="n">_Any</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="o">[]</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="n">prop</span> <span class="ss">:data</span><span class="p">,</span> <span class="n">_Any</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="p">{}</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="kp">private</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">chart_options</span>
-</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="o">::</span><span class="no">Stats</span><span class="o">::</span><span class="no">LabourForce</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="vi">@readings</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Options</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">color</span><span class="p">:</span>   <span class="s2">&#34;cool&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">toolbox</span><span class="p">:</span> <span class="p">{</span>
@@ -839,15 +730,15 @@ needed.</p>
 </span></span><span class="line"><span class="cl">          <span class="p">},</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">tooltip</span><span class="p">:</span> <span class="p">{</span> <span class="ss">trigger</span><span class="p">:</span> <span class="s2">&#34;axis&#34;</span><span class="p">,</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;thousands&#34;</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">legend</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;scroll&#34;</span><span class="p">,</span> <span class="ss">bottom</span><span class="p">:</span> <span class="mi">5</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">x_axis</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;category&#34;</span><span class="p">,</span> <span class="ss">data</span><span class="p">:</span> <span class="n">years</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">x_axis</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;category&#34;</span><span class="p">,</span> <span class="ss">data</span><span class="p">:</span> <span class="n">years</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">y_axis</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span> <span class="ss">axisLabel</span><span class="p">:</span> <span class="p">{</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;thousands&#34;</span> <span class="p">}</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">grid</span><span class="p">:</span>    <span class="p">{</span> <span class="ss">bottom</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span> <span class="ss">left</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="ss">right</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="ss">containLabel</span><span class="p">:</span> <span class="kp">true</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">series</span><span class="p">:</span>  <span class="n">build_series</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">series</span><span class="p">:</span>  <span class="n">build_series</span>
 </span></span><span class="line"><span class="cl">        <span class="p">)</span>
 </span></span><span class="line"><span class="cl">      <span class="k">end</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">build_series</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">data</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">state</span><span class="p">,</span> <span class="n">rows</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">build_series</span>
+</span></span><span class="line"><span class="cl">        <span class="vi">@data</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">state</span><span class="p">,</span> <span class="n">rows</span><span class="o">|</span>
 </span></span><span class="line"><span class="cl">          <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Bar</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">            <span class="nb">name</span><span class="p">:</span> <span class="n">state</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">            <span class="ss">data</span><span class="p">:</span> <span class="n">rows</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">[</span><span class="ss">:employed</span><span class="o">]</span> <span class="p">}</span>
@@ -855,8 +746,8 @@ needed.</p>
 </span></span><span class="line"><span class="cl">        <span class="k">end</span>
 </span></span><span class="line"><span class="cl">      <span class="k">end</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">years</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">first</span><span class="o">&amp;.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">[</span><span class="ss">:year</span><span class="o">].</span><span class="n">to_s</span> <span class="p">}</span> <span class="o">||</span> <span class="o">[]</span>
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">years</span>
+</span></span><span class="line"><span class="cl">        <span class="vi">@data</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">first</span><span class="o">&amp;.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">[</span><span class="ss">:year</span><span class="o">].</span><span class="n">to_s</span> <span class="p">}</span> <span class="o">||</span> <span class="o">[]</span>
 </span></span><span class="line"><span class="cl">      <span class="k">end</span>
 </span></span><span class="line"><span class="cl">    <span class="k">end</span>
 </span></span><span class="line"><span class="cl">  <span class="k">end</span>
@@ -874,32 +765,9 @@ needed.</p>
   </button>
 </div>
 </div>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><pre><code>&lt;%# app/views/charts/labour_force.html.erb %&gt;
-&lt;h1 class=&#34;text-2xl font-bold mb-6&#34;&gt;Labour Force by State&lt;/h1&gt;
-&lt;p class=&#34;text-neutral-500 mb-6 text-sm&#34;&gt;
-  Annual average employed persons (&#39;000), seasonally adjusted. Source: ABS Labour Force.
-&lt;/p&gt;
-&lt;%= render Components::Charts::LabourForce.new(readings: @readings) %&gt;</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<p>The toolbox sits inside the chart canvas — no custom buttons needed. Clicking the
-stack icon stacks the bars; clicking again unstacks them. The line icon switches
-between bar and line chart. Save as image downloads a PNG.</p>
-<hr>
-<h2>3.5 — The Toolbox<span class="hx:absolute hx:-mt-20" id="35--the-toolbox"></span>
-    <a href="#35--the-toolbox" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>The ECharts toolbox is configured via the <code>toolbox:</code> option in <code>Chart::Options</code>.
-All features use ECharts&rsquo; native icons and interactions:</p>
+<h3>The toolbox<span class="hx:absolute hx:-mt-20" id="the-toolbox"></span>
+    <a href="#the-toolbox" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>The <code>toolbox:</code> option adds a row of icons to the top-right of the chart. All
+interactions are handled natively by ECharts — no JavaScript needed:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
@@ -911,15 +779,13 @@ All features use ECharts&rsquo; native icons and interactions:</p>
 </span><span class="lnt">5
 </span><span class="lnt">6
 </span><span class="lnt">7
-</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="ss">toolbox</span><span class="p">:</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="ss">feature</span><span class="p">:</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="ss">magicType</span><span class="p">:</span>   <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="o">[</span><span class="s2">&#34;bar&#34;</span><span class="p">,</span> <span class="s2">&#34;line&#34;</span><span class="p">,</span> <span class="s2">&#34;stack&#34;</span><span class="o">]</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">    <span class="ss">saveAsImage</span><span class="p">:</span> <span class="p">{},</span>
-</span></span><span class="line"><span class="cl">    <span class="ss">restore</span><span class="p">:</span>     <span class="p">{},</span>
-</span></span><span class="line"><span class="cl">    <span class="ss">dataView</span><span class="p">:</span>    <span class="p">{</span> <span class="ss">readOnly</span><span class="p">:</span> <span class="kp">true</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="ss">restore</span><span class="p">:</span>     <span class="p">{}</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
@@ -945,7 +811,7 @@ All features use ECharts&rsquo; native icons and interactions:</p>
   <tbody>
       <tr>
           <td><code>magicType: [&quot;bar&quot;, &quot;line&quot;]</code></td>
-          <td>Toggles between bar and line chart</td>
+          <td>Toggles between bar and line series</td>
       </tr>
       <tr>
           <td><code>magicType: [&quot;stack&quot;]</code></td>
@@ -953,25 +819,57 @@ All features use ECharts&rsquo; native icons and interactions:</p>
       </tr>
       <tr>
           <td><code>saveAsImage</code></td>
-          <td>Downloads the chart as PNG</td>
+          <td>Downloads the chart as a PNG</td>
       </tr>
       <tr>
           <td><code>restore</code></td>
-          <td>Resets to the original chart state</td>
-      </tr>
-      <tr>
-          <td><code>dataView</code></td>
-          <td>Shows raw data in a table (read-only)</td>
+          <td>Resets the chart to its original configuration</td>
       </tr>
   </tbody>
 </table>
-<p>Include only the features relevant to each chart — a pie chart has no use for
+<p><code>restore</code> is important when <code>magicType</code> is present — without it the user has
+no way to return to the original chart type after toggling. Include them together.</p>
+<p>Only include the features relevant to each chart. A pie chart has no use for
 <code>magicType: [&quot;bar&quot;, &quot;line&quot;]</code>.</p>
 <hr>
-<h2>3.6 — Horizontal Bar Chart<span class="hx:absolute hx:-mt-20" id="36--horizontal-bar-chart"></span>
-    <a href="#36--horizontal-bar-chart" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Horizontal bars suit state comparisons where the category labels are more readable
-on the Y axis. In ECharts, horizontal orientation is achieved by swapping the axis
-types — no other changes needed.</p>
+<h2>3.4 — The Horizontal Bar Chart<span class="hx:absolute hx:-mt-20" id="34--the-horizontal-bar-chart"></span>
+    <a href="#34--the-horizontal-bar-chart" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Horizontal bars suit state comparisons where category labels read more naturally
+on the Y axis. In ECharts, horizontal orientation is achieved by swapping the
+axis types:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># Vertical bars — category on X, value on Y</span>
+</span></span><span class="line"><span class="cl"><span class="ss">x_axis</span><span class="p">:</span> <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;category&#34;</span><span class="p">,</span> <span class="ss">data</span><span class="p">:</span> <span class="n">states</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="ss">y_axis</span><span class="p">:</span> <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Horizontal bars — value on X, category on Y</span>
+</span></span><span class="line"><span class="cl"><span class="ss">x_axis</span><span class="p">:</span> <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="ss">y_axis</span><span class="p">:</span> <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;category&#34;</span><span class="p">,</span> <span class="ss">data</span><span class="p">:</span> <span class="n">states</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p>That is the only change. ECharts infers orientation from the axis types.</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
@@ -1006,20 +904,18 @@ types — no other changes needed.</p>
 </span><span class="lnt">28
 </span><span class="lnt">29
 </span><span class="lnt">30
-</span><span class="lnt">31
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/views/components/charts/labour_force_horizontal.rb</span>
 </span></span><span class="line"><span class="cl"><span class="k">module</span> <span class="nn">Components</span>
 </span></span><span class="line"><span class="cl">  <span class="k">module</span> <span class="nn">Charts</span>
 </span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">LabourForceHorizontal</span> <span class="o">&lt;</span> <span class="no">Components</span><span class="o">::</span><span class="no">Chart</span>
-</span></span><span class="line"><span class="cl">      <span class="n">prop</span> <span class="ss">:readings</span><span class="p">,</span> <span class="n">_Any</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="o">[]</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="n">prop</span> <span class="ss">:data</span><span class="p">,</span> <span class="n">_Any</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="p">{}</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="kp">private</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">chart_options</span>
-</span></span><span class="line"><span class="cl">        <span class="n">data</span>   <span class="o">=</span> <span class="o">::</span><span class="no">Stats</span><span class="o">::</span><span class="no">LabourForce</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="vi">@readings</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">latest</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">transform_values</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:last</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">latest</span> <span class="o">=</span> <span class="vi">@data</span><span class="o">.</span><span class="n">transform_values</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:last</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Options</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">color</span><span class="p">:</span>   <span class="s2">&#34;cool&#34;</span><span class="p">,</span>
@@ -1053,30 +949,17 @@ types — no other changes needed.</p>
   </button>
 </div>
 </div>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><pre><code>&lt;%# app/views/charts/labour_force_horizontal.html.erb %&gt;
-&lt;h1 class=&#34;text-2xl font-bold mb-6&#34;&gt;Employment by State — Latest Year&lt;/h1&gt;
-&lt;p class=&#34;text-neutral-500 mb-6 text-sm&#34;&gt;
-  Annual average employed persons (&#39;000), seasonally adjusted. Source: ABS Labour Force.
-&lt;/p&gt;
-&lt;%= render Components::Charts::LabourForceHorizontal.new(readings: @readings) %&gt;</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
+<p><code>@data.transform_values(&amp;:last)</code> — the service returns an array of annual records
+per state. <code>.last</code> takes the most recent year&rsquo;s record. The result is a hash of
+<code>{ state =&gt; latest_year_record }</code> — one value per state, the current snapshot.</p>
+<p><code>latest.values.first&amp;.dig(:year)</code> — extracts the year from the first state&rsquo;s
+latest record to use in the series name. <code>&amp;.</code> (safe navigation) handles the
+case where data is empty.</p>
 <hr>
-<h2>3.7 — Unemployment Rate Chart<span class="hx:absolute hx:-mt-20" id="37--unemployment-rate-chart"></span>
-    <a href="#37--unemployment-rate-chart" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>The same service feeds a completely different chart type. The unemployment rate
-series demonstrates that services are chart-agnostic — they transform data, nothing
-more.</p>
+<h2>3.5 — The Unemployment Rate Chart<span class="hx:absolute hx:-mt-20" id="35--the-unemployment-rate-chart"></span>
+    <a href="#35--the-unemployment-rate-chart" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>The same service, a different chart type. This is the principle: services
+transform data, components visualise it. The service doesn&rsquo;t know or care what
+chart will consume it.</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
@@ -1124,21 +1007,17 @@ more.</p>
 </span><span class="lnt">41
 </span><span class="lnt">42
 </span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/views/components/charts/unemployment_rate.rb</span>
 </span></span><span class="line"><span class="cl"><span class="k">module</span> <span class="nn">Components</span>
 </span></span><span class="line"><span class="cl">  <span class="k">module</span> <span class="nn">Charts</span>
 </span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">UnemploymentRate</span> <span class="o">&lt;</span> <span class="no">Components</span><span class="o">::</span><span class="no">Chart</span>
-</span></span><span class="line"><span class="cl">      <span class="n">prop</span> <span class="ss">:readings</span><span class="p">,</span> <span class="n">_Any</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="o">[]</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="n">prop</span> <span class="ss">:data</span><span class="p">,</span> <span class="n">_Any</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="p">{}</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="kp">private</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">chart_options</span>
-</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="o">::</span><span class="no">Stats</span><span class="o">::</span><span class="no">LabourForce</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="vi">@readings</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Options</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">color</span><span class="p">:</span>   <span class="s2">&#34;warm&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">toolbox</span><span class="p">:</span> <span class="p">{</span>
@@ -1150,15 +1029,15 @@ more.</p>
 </span></span><span class="line"><span class="cl">          <span class="p">},</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">tooltip</span><span class="p">:</span> <span class="p">{</span> <span class="ss">trigger</span><span class="p">:</span> <span class="s2">&#34;axis&#34;</span><span class="p">,</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;rate&#34;</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">legend</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;scroll&#34;</span><span class="p">,</span> <span class="ss">bottom</span><span class="p">:</span> <span class="mi">5</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">x_axis</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;category&#34;</span><span class="p">,</span> <span class="ss">data</span><span class="p">:</span> <span class="n">years</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">x_axis</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;category&#34;</span><span class="p">,</span> <span class="ss">data</span><span class="p">:</span> <span class="n">years</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">y_axis</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span> <span class="ss">axisLabel</span><span class="p">:</span> <span class="p">{</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;rate&#34;</span> <span class="p">}</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">grid</span><span class="p">:</span>    <span class="p">{</span> <span class="ss">bottom</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span> <span class="ss">left</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="ss">right</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="ss">containLabel</span><span class="p">:</span> <span class="kp">true</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">series</span><span class="p">:</span>  <span class="n">build_series</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">series</span><span class="p">:</span>  <span class="n">build_series</span>
 </span></span><span class="line"><span class="cl">        <span class="p">)</span>
 </span></span><span class="line"><span class="cl">      <span class="k">end</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">build_series</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">data</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">state</span><span class="p">,</span> <span class="n">rows</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">build_series</span>
+</span></span><span class="line"><span class="cl">        <span class="vi">@data</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">state</span><span class="p">,</span> <span class="n">rows</span><span class="o">|</span>
 </span></span><span class="line"><span class="cl">          <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Line</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">            <span class="nb">name</span><span class="p">:</span>   <span class="n">state</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">            <span class="ss">data</span><span class="p">:</span>   <span class="n">rows</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">[</span><span class="ss">:rate</span><span class="o">]</span> <span class="p">},</span>
@@ -1167,8 +1046,8 @@ more.</p>
 </span></span><span class="line"><span class="cl">        <span class="k">end</span>
 </span></span><span class="line"><span class="cl">      <span class="k">end</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">years</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">first</span><span class="o">&amp;.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">[</span><span class="ss">:year</span><span class="o">].</span><span class="n">to_s</span> <span class="p">}</span> <span class="o">||</span> <span class="o">[]</span>
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">years</span>
+</span></span><span class="line"><span class="cl">        <span class="vi">@data</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">first</span><span class="o">&amp;.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">[</span><span class="ss">:year</span><span class="o">].</span><span class="n">to_s</span> <span class="p">}</span> <span class="o">||</span> <span class="o">[]</span>
 </span></span><span class="line"><span class="cl">      <span class="k">end</span>
 </span></span><span class="line"><span class="cl">    <span class="k">end</span>
 </span></span><span class="line"><span class="cl">  <span class="k">end</span>
@@ -1186,14 +1065,48 @@ more.</p>
   </button>
 </div>
 </div>
+<p>The <code>&quot;warm&quot;</code> palette — reds, oranges, and yellows — reinforces the &ldquo;heat&rdquo; of
+unemployment data. The formatter <code>&quot;rate&quot;</code> displays values as percentages with
+one decimal place. Both were introduced in Module 02.</p>
+<p>The COVID-19 spike in 2020 is visible across all states. Tasmania and South
+Australia consistently track above the national average.</p>
+<hr>
+<h2>3.6 — The Plumbing<span class="hx:absolute hx:-mt-20" id="36--the-plumbing"></span>
+    <a href="#36--the-plumbing" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Three controller actions, three routes, three views. The pattern is identical
+to Module 01 — the controller calls the service, passes data to the view,
+the view renders the component.</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><pre><code>&lt;%# app/views/charts/unemployment_rate.html.erb %&gt;
-&lt;h1 class=&#34;text-2xl font-bold mb-6&#34;&gt;Unemployment Rate by State&lt;/h1&gt;
-&lt;p class=&#34;text-neutral-500 mb-6 text-sm&#34;&gt;
-  Annual average unemployment rate (%), seasonally adjusted. Source: ABS Labour Force.
-&lt;/p&gt;
-&lt;%= render Components::Charts::UnemploymentRate.new(readings: @readings) %&gt;</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/controllers/charts_controller.rb</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">labour_force</span>
+</span></span><span class="line"><span class="cl">  <span class="vi">@data</span> <span class="o">=</span> <span class="no">Stats</span><span class="o">::</span><span class="no">LabourForce</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="no">LabourForceReading</span><span class="o">.</span><span class="n">ordered</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">labour_force_horizontal</span>
+</span></span><span class="line"><span class="cl">  <span class="vi">@data</span> <span class="o">=</span> <span class="no">Stats</span><span class="o">::</span><span class="no">LabourForce</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="no">LabourForceReading</span><span class="o">.</span><span class="n">ordered</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">unemployment_rate</span>
+</span></span><span class="line"><span class="cl">  <span class="vi">@data</span> <span class="o">=</span> <span class="no">Stats</span><span class="o">::</span><span class="no">LabourForce</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="no">LabourForceReading</span><span class="o">.</span><span class="n">ordered</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -1205,22 +1118,105 @@ more.</p>
   </button>
 </div>
 </div>
-<p>The COVID-19 spike in 2020 is visible across all states. Tasmania and South
-Australia consistently track above the national average. The ACT and Northern
-Territory show the most volatility — small populations amplify statistical noise.</p>
-<hr>
-<h2>3.8 — Gallery Index<span class="hx:absolute hx:-mt-20" id="38--gallery-index"></span>
-    <a href="#38--gallery-index" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Add to <code>app/views/charts/index.html.erb</code>:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># config/routes.rb</span>
+</span></span><span class="line"><span class="cl"><span class="n">get</span> <span class="s2">&#34;charts/labour_force&#34;</span><span class="p">,</span>            <span class="ss">to</span><span class="p">:</span> <span class="s2">&#34;charts#labour_force&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">get</span> <span class="s2">&#34;charts/labour_force_horizontal&#34;</span><span class="p">,</span> <span class="ss">to</span><span class="p">:</span> <span class="s2">&#34;charts#labour_force_horizontal&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">get</span> <span class="s2">&#34;charts/unemployment_rate&#34;</span><span class="p">,</span>       <span class="ss">to</span><span class="p">:</span> <span class="s2">&#34;charts#unemployment_rate&#34;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><pre><code>&lt;%# app/views/charts/labour_force.html.erb %&gt;
+&lt;h1 class=&#34;text-2xl font-bold mb-2&#34;&gt;Labour Force by State&lt;/h1&gt;
+&lt;p class=&#34;text-neutral-500 text-sm mb-6&#34;&gt;
+  Annual average employed persons (&#39;000), seasonally adjusted.
+  Source: ABS Labour Force (cat. 6202.0), CC BY 4.0.
+&lt;/p&gt;
+&lt;%= render Components::Charts::LabourForce.new(data: @data) %&gt;</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><pre><code>&lt;%# app/views/charts/labour_force_horizontal.html.erb %&gt;
+&lt;h1 class=&#34;text-2xl font-bold mb-2&#34;&gt;Employment by State — Latest Year&lt;/h1&gt;
+&lt;p class=&#34;text-neutral-500 text-sm mb-6&#34;&gt;
+  Annual average employed persons (&#39;000), seasonally adjusted.
+  Source: ABS Labour Force (cat. 6202.0), CC BY 4.0.
+&lt;/p&gt;
+&lt;%= render Components::Charts::LabourForceHorizontal.new(data: @data) %&gt;</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><pre><code>&lt;%# app/views/charts/unemployment_rate.html.erb %&gt;
+&lt;h1 class=&#34;text-2xl font-bold mb-2&#34;&gt;Unemployment Rate by State&lt;/h1&gt;
+&lt;p class=&#34;text-neutral-500 text-sm mb-6&#34;&gt;
+  Annual average unemployment rate (%), seasonally adjusted.
+  Source: ABS Labour Force (cat. 6202.0), CC BY 4.0.
+&lt;/p&gt;
+&lt;%= render Components::Charts::UnemploymentRate.new(data: @data) %&gt;</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p><strong>Gallery cards:</strong></p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><pre><code>&lt;%= render &#34;charts/gallery_card&#34;,
   title:       &#34;Labour Force by State&#34;,
-  description: &#34;Annual average employment by state, 2012–2024. Toggle stacked/grouped or switch to line chart.&#34;,
+  description: &#34;Annual average employment by state, 2012–2024. &#34;\
+               &#34;Toggle stacked/grouped or switch to line chart.&#34;,
   path:        charts_labour_force_path %&gt;
 
 &lt;%= render &#34;charts/gallery_card&#34;,
   title:       &#34;Employment Snapshot&#34;,
-  description: &#34;Latest year employment by state — horizontal bar chart.&#34;,
+  description: &#34;Latest year employment by state — horizontal bar.&#34;,
   path:        charts_labour_force_horizontal_path %&gt;
 
 &lt;%= render &#34;charts/gallery_card&#34;,
@@ -1239,44 +1235,8 @@ Territory show the most volatility — small populations amplify statistical noi
 </div>
 </div>
 <hr>
-<h2>3.9 — What groupdate Does For Us<span class="hx:absolute hx:-mt-20" id="39--what-groupdate-does-for-us"></span>
-    <a href="#39--what-groupdate-does-for-us" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Our Labour Force data uses integer <code>year</code> and <code>month</code> columns so we bucket manually.
-The <code>daily_activity_readings</code> table in Module 07 uses a proper <code>date</code> column — that
-is where <code>groupdate</code> earns its place:</p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># Without groupdate — verbose</span>
-</span></span><span class="line"><span class="cl"><span class="n">readings</span><span class="o">.</span><span class="n">group_by</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">year</span> <span class="p">}</span><span class="o">.</span><span class="n">transform_values</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># With groupdate — clean and timezone-aware</span>
-</span></span><span class="line"><span class="cl"><span class="no">DailyActivityReading</span><span class="o">.</span><span class="n">group_by_year</span><span class="p">(</span><span class="ss">:date</span><span class="p">)</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="ss">:value</span><span class="p">)</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<p><code>groupdate</code> handles sparse data (missing dates), configurable week start, timezone
-awareness, and range boundaries. Module 07 covers this properly.</p>
-<hr>
-<h2>3.10 — Module Summary<span class="hx:absolute hx:-mt-20" id="310--module-summary"></span>
-    <a href="#310--module-summary" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><strong>New files:</strong></p>
+<h2>3.7 — Module Summary<span class="hx:absolute hx:-mt-20" id="37--module-summary"></span>
+    <a href="#37--module-summary" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><strong>New files:</strong></p>
 <table>
   <thead>
       <tr>
@@ -1305,16 +1265,15 @@ awareness, and range boundaries. Module 07 covers this properly.</p>
 </table>
 <p><strong>Patterns introduced:</strong></p>
 <ul>
-<li>Annual bucketing of monthly data</li>
-<li><code>stack:</code> on <code>Chart::Series::Bar</code> for stacked bars</li>
-<li>Horizontal bars via axis type swap (<code>x_axis</code> value, <code>y_axis</code> category)</li>
-<li>ECharts native toolbox — <code>magicType</code>, <code>saveAsImage</code>, <code>restore</code></li>
-<li>Same service feeding multiple chart types</li>
+<li><code>Chart::Series::Bar</code> — same pattern as <code>Line</code>, adds <code>type: &quot;bar&quot;</code> automatically</li>
+<li><code>stack:</code> — shared name stacks bars; ECharts toolbox <code>magicType</code> toggles interactively</li>
+<li>Horizontal bars — swap <code>x_axis</code> and <code>y_axis</code> types, ECharts infers orientation</li>
+<li>ECharts toolbox — <code>magicType</code>, <code>saveAsImage</code>, <code>restore</code> — no custom JavaScript</li>
+<li><code>r.send(attr)</code> — dynamic method dispatch avoids repetition in the <code>avg</code> helper</li>
+<li>Same service, multiple chart types — the service is chart-agnostic</li>
 </ul>
-<p><strong>The toolbox replaces custom controls:</strong></p>
-<p>The ECharts toolbox handles stack/unstack, chart type switching, and PNG download
-natively — no custom Stimulus controllers, no extra JavaScript. Add it to any chart
-via the <code>toolbox:</code> option in <code>Chart::Options</code>.</p>
+<hr>
+<p><em>Next: Module 04 — Scatter: Labour Market Analysis</em></p>
 
         </div>
         <div class="hx:mt-16"></div><div class="hx:mb-8 hx:flex hx:items-center hx:border-t hx:pt-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-neutral-400 hx:dark:contrast-more:border-neutral-400 hx:print:hidden"><a
@@ -1323,9 +1282,9 @@ via the <code>toolbox:</code> option in <code>Chart::Options</code>.</p>
         class="hx:flex hx:max-w-[50%] hx:items-center hx:gap-1 hx:py-4 hx:text-base hx:font-medium hx:text-gray-600 hx:transition-colors [word-break:break-word] hx:hover:text-primary-600 hx:dark:text-gray-300 hx:md:text-lg hx:ltr:pr-4 hx:rtl:pl-4"
       ><svg class="hx:inline hx:h-5 hx:shrink-0 hx:ltr:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>Lesson 02 - Formatters and palettes</a><a
         href="/echarts/module-04-scatter/"
-        title="Lesson 04 - Scatter charts"
+        title="Lesson 04 - Scatter Charts"
         class="hx:flex hx:max-w-[50%] hx:items-center hx:gap-1 hx:py-4 hx:text-base hx:font-medium hx:text-gray-600 hx:transition-colors [word-break:break-word] hx:hover:text-primary-600 hx:dark:text-gray-300 hx:md:text-lg hx:ltr:ml-auto hx:ltr:pl-4 hx:ltr:text-right hx:rtl:mr-auto hx:rtl:pr-4 hx:rtl:text-left"
-      >Lesson 04 - Scatter charts<svg class="hx:inline hx:h-5 hx:shrink-0 hx:rtl:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a></div><script>
+      >Lesson 04 - Scatter Charts<svg class="hx:inline hx:h-5 hx:shrink-0 hx:rtl:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a></div><script>
   function getGiscusTheme() {
     const giscusTheme = '';
     if (giscusTheme === 'light' || giscusTheme === 'dark') {

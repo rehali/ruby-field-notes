@@ -9,30 +9,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 <title>Ruby Field Notes</title>
-  <meta name="description" content="Module 02 — Formatters and Colour PalettesWhat We’re Building The GDP chart from Module 01 renders correctly but the numbers are raw — axis labels show 351.882 instead of $352B, tooltips show a plain list of values with no units. This module introduces the formatter and palette systems that make charts readable.
-By the end of this module you will have:
-Named formatters applied to axis labels and tooltips A colour palette applied to the chart The same chart looking significantly more polished 2.1 — The Problem with JavaScript Formatters ECharts formatters are JavaScript functions. A formatter function like:" /><link rel="canonical" href="https://www.rehali.com/echarts/module-02-formatters/" itemprop="url" />
+  <meta name="description" content="Applying custom formatting to axes and tooltips for eCharts" /><link rel="canonical" href="https://www.rehali.com/echarts/module-02-formatters/" itemprop="url" />
 
 <meta property="og:title" content="">
 <meta
   property="og:description"
   content="
-    
-      Module 02 — Formatters and Colour PalettesWhat We&rsquo;re Building
-    The GDP chart from Module 01 renders correctly but the numbers are raw — axis
-labels show 351.882 instead of $352B, tooltips show a plain list of values
-with no units. This module introduces the formatter and palette systems that make
-charts readable.
-By the end of this module you will have:
-
-Named formatters applied to axis labels and tooltips
-A colour palette applied to the chart
-The same chart looking significantly more polished
-
-
-2.1 — The Problem with JavaScript Formatters
-    ECharts formatters are JavaScript functions. A formatter function like:
-    
+    Applying custom formatting to axes and tooltips for eCharts
   ">
 <meta
   property="og:type"
@@ -45,15 +28,11 @@ The same chart looking significantly more polished
 
 
   <meta itemprop="name" content="Ruby Field Notes">
-  <meta itemprop="description" content="Module 02 — Formatters and Colour PalettesWhat We’re Building The GDP chart from Module 01 renders correctly but the numbers are raw — axis labels show 351.882 instead of $352B, tooltips show a plain list of values with no units. This module introduces the formatter and palette systems that make charts readable.
-By the end of this module you will have:
-Named formatters applied to axis labels and tooltips A colour palette applied to the chart The same chart looking significantly more polished 2.1 — The Problem with JavaScript Formatters ECharts formatters are JavaScript functions. A formatter function like:">
-  <meta itemprop="wordCount" content="1295">
+  <meta itemprop="description" content="Applying custom formatting to axes and tooltips for eCharts">
+  <meta itemprop="wordCount" content="1156">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
-  <meta name="twitter:description" content="Module 02 — Formatters and Colour PalettesWhat We’re Building The GDP chart from Module 01 renders correctly but the numbers are raw — axis labels show 351.882 instead of $352B, tooltips show a plain list of values with no units. This module introduces the formatter and palette systems that make charts readable.
-By the end of this module you will have:
-Named formatters applied to axis labels and tooltips A colour palette applied to the chart The same chart looking significantly more polished 2.1 — The Problem with JavaScript Formatters ECharts formatters are JavaScript functions. A formatter function like:">
+  <meta name="twitter:description" content="Applying custom formatting to axes and tooltips for eCharts">
 
     <link rel="preload" href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" as="style" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
     <link href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" rel="stylesheet" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
@@ -186,7 +165,7 @@ Named formatters applied to axis labels and tooltips A colour palette applied to
       href="/echarts/module-04-scatter/"
       
     >
-      <span class="hx:min-w-0 [word-break:break-word]">Lesson 04 - Scatter charts</span>
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 04 - Scatter Charts</span>
     </a>
   </div></li>
             <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
@@ -492,6 +471,8 @@ charts readable.</p>
 <li>A colour palette applied to the chart</li>
 <li>The same chart looking significantly more polished</li>
 </ul>
+<p>Here&rsquo;s what we&rsquo;ll be building, (different color palette, y-axis and tooltip now have units applied to the values):</p>
+<p><img src="/echarts/module-02-formatters/formatter_chart.png" alt="formatter_chart.png"  loading="lazy" /></p>
 <hr>
 <h2>2.1 — The Problem with JavaScript Formatters<span class="hx:absolute hx:-mt-20" id="21--the-problem-with-javascript-formatters"></span>
     <a href="#21--the-problem-with-javascript-formatters" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>ECharts formatters are JavaScript functions. A formatter function like:</p>
@@ -772,22 +753,14 @@ for you.</p>
 </span><span class="lnt"> 8
 </span><span class="lnt"> 9
 </span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">chart_options</span>
 </span></span><span class="line"><span class="cl">  <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Options</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">    <span class="ss">color</span><span class="p">:</span>   <span class="s2">&#34;cool&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="ss">tooltip</span><span class="p">:</span> <span class="p">{</span> <span class="ss">trigger</span><span class="p">:</span> <span class="s2">&#34;axis&#34;</span><span class="p">,</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;billions&#34;</span> <span class="p">},</span>  <span class="c1"># ← add formatter</span>
-</span></span><span class="line"><span class="cl">    <span class="ss">legend</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;scroll&#34;</span><span class="p">,</span> <span class="ss">bottom</span><span class="p">:</span> <span class="mi">5</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">    <span class="ss">x_axis</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;category&#34;</span><span class="p">,</span> <span class="ss">data</span><span class="p">:</span> <span class="n">quarters</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">    <span class="ss">y_axis</span><span class="p">:</span>  <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="ss">type</span><span class="p">:</span>      <span class="s2">&#34;value&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="ss">axisLabel</span><span class="p">:</span> <span class="p">{</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;billions&#34;</span> <span class="p">}</span>                <span class="c1"># ← add formatter</span>
-</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="ss">legend</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">bottom</span><span class="p">:</span> <span class="mi">5</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="ss">x_axis</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;category&#34;</span><span class="p">,</span> <span class="ss">data</span><span class="p">:</span> <span class="n">years</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="ss">y_axis</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span>  <span class="ss">axisLabel</span><span class="p">:</span> <span class="p">{</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;billions&#34;</span> <span class="p">}</span>  <span class="c1"># ← add formatter</span>
 </span></span><span class="line"><span class="cl">    <span class="ss">grid</span><span class="p">:</span>    <span class="p">{</span> <span class="ss">left</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="ss">right</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="ss">bottom</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span> <span class="ss">containLabel</span><span class="p">:</span> <span class="kp">true</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">    <span class="ss">series</span><span class="p">:</span>  <span class="n">build_series</span>
 </span></span><span class="line"><span class="cl">  <span class="p">)</span>
@@ -822,7 +795,7 @@ registry maps names to arrays:</p>
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Options</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">  <span class="ss">color</span><span class="p">:</span> <span class="s2">&#34;cool&#34;</span><span class="p">,</span>   <span class="c1"># ← palette name</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">color</span><span class="p">:</span> <span class="s2">&#34;pastel&#34;</span><span class="p">,</span>   <span class="c1"># ← palette name</span>
 </span></span><span class="line"><span class="cl">  <span class="o">...</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre></td></tr></table>
 </div>
@@ -1074,16 +1047,6 @@ The full component:</p>
 </span><span class="lnt">33
 </span><span class="lnt">34
 </span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/views/components/charts/gdp_by_industry.rb</span>
@@ -1096,37 +1059,27 @@ The full component:</p>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">chart_options</span>
 </span></span><span class="line"><span class="cl">        <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Options</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">color</span><span class="p">:</span>   <span class="s2">&#34;cool&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">toolbox</span><span class="p">:</span> <span class="p">{</span> <span class="ss">feature</span><span class="p">:</span> <span class="p">{</span> <span class="ss">saveAsImage</span><span class="p">:</span> <span class="p">{},</span> <span class="ss">restore</span><span class="p">:</span> <span class="p">{}</span> <span class="p">}</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">tooltip</span><span class="p">:</span> <span class="p">{</span> <span class="ss">trigger</span><span class="p">:</span> <span class="s2">&#34;axis&#34;</span><span class="p">,</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;billions&#34;</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">legend</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;scroll&#34;</span><span class="p">,</span> <span class="ss">bottom</span><span class="p">:</span> <span class="mi">5</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">x_axis</span><span class="p">:</span>  <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="ss">type</span><span class="p">:</span>      <span class="s2">&#34;category&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">            <span class="ss">data</span><span class="p">:</span>      <span class="n">quarters</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">            <span class="ss">axisLabel</span><span class="p">:</span> <span class="p">{</span> <span class="ss">interval</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="ss">rotate</span><span class="p">:</span> <span class="mi">30</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">          <span class="p">},</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">y_axis</span><span class="p">:</span>  <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="ss">type</span><span class="p">:</span>      <span class="s2">&#34;value&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">            <span class="ss">axisLabel</span><span class="p">:</span> <span class="p">{</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;billions&#34;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">          <span class="p">},</span>
-</span></span><span class="line"><span class="cl">          <span class="ss">grid</span><span class="p">:</span>    <span class="p">{</span> <span class="ss">left</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="ss">right</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="ss">bottom</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span> <span class="ss">containLabel</span><span class="p">:</span> <span class="kp">true</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">color</span><span class="p">:</span> <span class="s2">&#34;pastel&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">tooltip</span><span class="p">:</span> <span class="p">{</span> <span class="ss">trigger</span><span class="p">:</span> <span class="s2">&#34;axis&#34;</span><span class="p">,</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;billions&#34;</span> <span class="p">},</span>  <span class="c1"># ← add formatter</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">legend</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">bottom</span><span class="p">:</span> <span class="mi">5</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">x_axis</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;category&#34;</span><span class="p">,</span> <span class="ss">data</span><span class="p">:</span> <span class="n">years</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">y_axis</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span>  <span class="ss">axisLabel</span><span class="p">:</span> <span class="p">{</span> <span class="ss">formatter</span><span class="p">:</span> <span class="s2">&#34;billions&#34;</span> <span class="p">}</span> <span class="p">},</span>  <span class="c1"># ← add formatter</span>
+</span></span><span class="line"><span class="cl">          <span class="ss">grid</span><span class="p">:</span>    <span class="p">{</span> <span class="ss">left</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="ss">right</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="ss">bottom</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span> <span class="ss">containLabel</span><span class="p">:</span> <span class="kp">true</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">series</span><span class="p">:</span>  <span class="n">build_series</span>
 </span></span><span class="line"><span class="cl">        <span class="p">)</span>
 </span></span><span class="line"><span class="cl">      <span class="k">end</span>
-</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  
 </span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">build_series</span>
-</span></span><span class="line"><span class="cl">        <span class="vi">@data</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">industry</span><span class="p">,</span> <span class="n">rows</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl">        <span class="vi">@data</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">industry</span><span class="p">,</span> <span class="n">values</span><span class="o">|</span>
 </span></span><span class="line"><span class="cl">          <span class="o">::</span><span class="no">Chart</span><span class="o">::</span><span class="no">Series</span><span class="o">::</span><span class="no">Line</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">            <span class="nb">name</span><span class="p">:</span>   <span class="n">industry</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">            <span class="ss">data</span><span class="p">:</span>   <span class="n">rows</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="o">[</span><span class="ss">:value</span><span class="o">]</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">            <span class="ss">smooth</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">            <span class="ss">symbol</span><span class="p">:</span> <span class="s2">&#34;none&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">name</span><span class="p">:</span> <span class="n">industry</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">data</span><span class="p">:</span> <span class="n">values</span>
 </span></span><span class="line"><span class="cl">          <span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="k">end</span>
 </span></span><span class="line"><span class="cl">      <span class="k">end</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">quarters</span>
-</span></span><span class="line"><span class="cl">        <span class="vi">@data</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">first</span><span class="o">&amp;.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="s2">&#34;</span><span class="si">#{</span><span class="n">r</span><span class="o">[</span><span class="ss">:year</span><span class="o">]</span><span class="si">}</span><span class="s2"> Q</span><span class="si">#{</span><span class="n">r</span><span class="o">[</span><span class="ss">:quarter</span><span class="o">]</span><span class="si">}</span><span class="s2">&#34;</span> <span class="p">}</span> <span class="o">||</span> <span class="o">[]</span>
+</span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">years</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="mi">2000</span><span class="o">..</span><span class="mi">2024</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:to_s</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">      <span class="k">end</span>
 </span></span><span class="line"><span class="cl">    <span class="k">end</span>
 </span></span><span class="line"><span class="cl">  <span class="k">end</span>
@@ -1144,84 +1097,10 @@ The full component:</p>
   </button>
 </div>
 </div>
-<p><code>axisLabel: { interval: 7, rotate: 30 }</code> — shows every 8th label (one per year
-for quarterly data) rotated 30 degrees to prevent overlap.</p>
+<p>Try changing <code>color:</code> to pick a different palette. Create and add a new custom palette of your own!</p>
 <hr>
 <h2>2.9 — Gallery<span class="hx:absolute hx:-mt-20" id="29--gallery"></span>
-    <a href="#29--gallery" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Add a gallery index to showcase charts as you build them. Create a simple index
-view:</p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/controllers/charts_controller.rb</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">index</span>
-</span></span><span class="line"><span class="cl">  <span class="c1"># gallery of all charts</span>
-</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><pre><code>&lt;%# app/views/charts/index.html.erb %&gt;
-&lt;div class=&#34;max-w-5xl mx-auto px-4 py-8&#34;&gt;
-  &lt;h1 class=&#34;text-3xl font-bold mb-8&#34;&gt;Chart Gallery&lt;/h1&gt;
-  &lt;div class=&#34;grid grid-cols-2 gap-4&#34;&gt;
-    &lt;%= render &#34;charts/gallery_card&#34;,
-      title:       &#34;GDP by Industry&#34;,
-      description: &#34;Chain volume measures by industry, 2000–2024.&#34;,
-      path:        charts_gdp_by_industry_path %&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><pre><code>&lt;%# app/views/charts/_gallery_card.html.erb %&gt;
-&lt;div class=&#34;border border-neutral-200 rounded-lg p-4 hover:border-neutral-400
-            transition-colors&#34;&gt;
-  &lt;%= link_to path, class: &#34;block&#34; do %&gt;
-    &lt;h2 class=&#34;font-semibold mb-1&#34;&gt;&lt;%= title %&gt;&lt;/h2&gt;
-    &lt;p class=&#34;text-sm text-neutral-500&#34;&gt;&lt;%= description %&gt;&lt;/p&gt;
-  &lt;% end %&gt;
-&lt;/div&gt;</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<p>Each module adds cards to the gallery as new charts are built.</p>
+    <a href="#29--gallery" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>No new cards for our gallery here - just an updated chart.</p>
 <hr>
 <h2>2.10 — Module Summary<span class="hx:absolute hx:-mt-20" id="210--module-summary"></span>
     <a href="#210--module-summary" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><strong>Patterns introduced:</strong></p>
@@ -1232,7 +1111,6 @@ view:</p>
 <li>Colour correspondence — same palette + same series order = same colour mapping</li>
 <li>Custom formatters in <code>custom_chart_formatters.js</code></li>
 <li>Custom palettes in <code>custom_chart_palettes.js</code></li>
-<li>Gallery index — adding cards as charts are built</li>
 </ul>
 <p><strong>The formatter principle:</strong></p>
 <blockquote>

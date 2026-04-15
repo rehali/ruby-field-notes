@@ -10,8 +10,7 @@
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 <title>Ruby Field Notes</title>
   <meta name="description" content="Data Visualisation with Phlex and EChartsSeries Overview Prerequisites: Completion of the Phlex v2 on Rails series, or equivalent familiarity with Rails 8, Phlex 2.4.1, Literal 1.9.0, Tailwind CSS v4, Stimulus, and importmaps.
-What This Series Builds This series teaches you to build rich, interactive, real-time data visualisations in Rails — written entirely in Ruby.
-The central thesis is simple: ECharts is a JavaScript runtime concern. Your job is Ruby. A thin Stimulus controller owns the ECharts instance lifecycle. A Ruby DSL generates the chart configuration. Phlex components assemble everything. You never write chart-specific JavaScript." /><link rel="canonical" href="https://www.rehali.com/echarts/overview/" itemprop="url" />
+Why Use ECharts? ECharts is an open-source JavaScript charting library maintained by Apache. It is one of the most capable charting libraries available — and unlike many alternatives, it is genuinely free with no commercial licensing restrictions." /><link rel="canonical" href="https://www.rehali.com/echarts/overview/" itemprop="url" />
 
 <meta property="og:title" content="">
 <meta
@@ -26,13 +25,10 @@ Stimulus, and importmaps.
 
 
 
-What This Series Builds
-    This series teaches you to build rich, interactive, real-time data visualisations
-in Rails — written entirely in Ruby.
-The central thesis is simple: ECharts is a JavaScript runtime concern. Your job
-is Ruby. A thin Stimulus controller owns the ECharts instance lifecycle. A Ruby
-DSL generates the chart configuration. Phlex components assemble everything. You
-never write chart-specific JavaScript.
+Why Use ECharts?
+    ECharts is an open-source JavaScript charting library maintained by Apache. It
+is one of the most capable charting libraries available — and unlike many
+alternatives, it is genuinely free with no commercial licensing restrictions.
     
   ">
 <meta
@@ -47,14 +43,12 @@ never write chart-specific JavaScript.
 
   <meta itemprop="name" content="Ruby Field Notes">
   <meta itemprop="description" content="Data Visualisation with Phlex and EChartsSeries Overview Prerequisites: Completion of the Phlex v2 on Rails series, or equivalent familiarity with Rails 8, Phlex 2.4.1, Literal 1.9.0, Tailwind CSS v4, Stimulus, and importmaps.
-What This Series Builds This series teaches you to build rich, interactive, real-time data visualisations in Rails — written entirely in Ruby.
-The central thesis is simple: ECharts is a JavaScript runtime concern. Your job is Ruby. A thin Stimulus controller owns the ECharts instance lifecycle. A Ruby DSL generates the chart configuration. Phlex components assemble everything. You never write chart-specific JavaScript.">
-  <meta itemprop="wordCount" content="1537">
+Why Use ECharts? ECharts is an open-source JavaScript charting library maintained by Apache. It is one of the most capable charting libraries available — and unlike many alternatives, it is genuinely free with no commercial licensing restrictions.">
+  <meta itemprop="wordCount" content="2112">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
   <meta name="twitter:description" content="Data Visualisation with Phlex and EChartsSeries Overview Prerequisites: Completion of the Phlex v2 on Rails series, or equivalent familiarity with Rails 8, Phlex 2.4.1, Literal 1.9.0, Tailwind CSS v4, Stimulus, and importmaps.
-What This Series Builds This series teaches you to build rich, interactive, real-time data visualisations in Rails — written entirely in Ruby.
-The central thesis is simple: ECharts is a JavaScript runtime concern. Your job is Ruby. A thin Stimulus controller owns the ECharts instance lifecycle. A Ruby DSL generates the chart configuration. Phlex components assemble everything. You never write chart-specific JavaScript.">
+Why Use ECharts? ECharts is an open-source JavaScript charting library maintained by Apache. It is one of the most capable charting libraries available — and unlike many alternatives, it is genuinely free with no commercial licensing restrictions.">
 
     <link rel="preload" href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" as="style" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
     <link href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" rel="stylesheet" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
@@ -187,7 +181,7 @@ The central thesis is simple: ECharts is a JavaScript runtime concern. Your job 
       href="/echarts/module-04-scatter/"
       
     >
-      <span class="hx:min-w-0 [word-break:break-word]">Lesson 04 - Scatter charts</span>
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 04 - Scatter Charts</span>
     </a>
   </div></li>
             <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
@@ -410,6 +404,14 @@ The central thesis is simple: ECharts is a JavaScript runtime concern. Your job 
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#why-use-echarts">Why Use ECharts?
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#why-use-phlex">Why Use Phlex?
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
         <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#what-this-series-builds">What This Series Builds
         </a>
       </li>
@@ -530,6 +532,63 @@ Stimulus, and importmaps.</p>
 
 </blockquote>
 <hr>
+<h2>Why Use ECharts?<span class="hx:absolute hx:-mt-20" id="why-use-echarts"></span>
+    <a href="#why-use-echarts" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>ECharts is an open-source JavaScript charting library maintained by Apache. It
+is one of the most capable charting libraries available — and unlike many
+alternatives, it is genuinely free with no commercial licensing restrictions.</p>
+<p><strong>Breadth of chart types.</strong> ECharts covers the full range: line, bar, scatter,
+pie, gauge, calendar heatmap, treemap, Sankey, radar, candlestick, choropleth
+maps, and more. Most charting libraries cover the common types well and become
+awkward at the edges. ECharts handles the edges as cleanly as the basics.</p>
+<p><strong>Interactivity out of the box.</strong> Tooltips, legends, zoom, pan, drill-down,
+linked charts, and animated transitions are all built in. The <code>magicType</code>
+toolbox lets users switch between bar and line charts, stack and unstack series,
+and download the chart as an image — without writing a line of JavaScript.</p>
+<p><strong>Real-time capable.</strong> ECharts&rsquo; <code>setOption</code> and <code>appendData</code> methods support
+live data updates efficiently. Combined with ActionCable, any chart can become
+a live dashboard with minimal additional code.</p>
+<p><strong>Performance.</strong> ECharts handles large datasets — tens of thousands of points —
+through <code>large</code> mode and progressive rendering. The SVG renderer scales cleanly
+on high-DPI displays and prints correctly without configuration.</p>
+<p><strong>Active development.</strong> ECharts is actively maintained with regular releases.
+The documentation is comprehensive and the option reference is exhaustive. When
+you need an obscure configuration option, it exists and is documented.</p>
+<p><strong>The honest alternative comparison.</strong> Chart.js is simpler but significantly
+more limited. Highcharts is commercial. D3 is powerful but requires you to
+build everything yourself. Vega-Lite is declarative but opinionated. ECharts
+sits in the right position for Rails applications: full-featured, free, and
+configurable without being overwhelming.</p>
+<hr>
+<h2>Why Use Phlex?<span class="hx:absolute hx:-mt-20" id="why-use-phlex"></span>
+    <a href="#why-use-phlex" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Phlex brings chart components into the Ruby object model — and that changes
+everything about how you build and maintain them.</p>
+<p><strong>Components are Ruby classes.</strong> A chart component is a class with props, private
+methods, and standard Ruby inheritance. You can test it with plain Ruby unit
+tests, passing data directly and asserting on the options hash — no browser,
+no JavaScript runtime, no fixtures. This is not possible with ERB partials or
+ViewComponent without additional setup.</p>
+<p><strong>The DSL is Ruby.</strong> <code>Chart::Options.new(x_axis: { type: &quot;category&quot; })</code> is
+Ruby. It has Ruby&rsquo;s syntax highlighting, Ruby&rsquo;s autocomplete, Ruby&rsquo;s refactoring
+tools. The alternative — building JSON strings or hashes in ERB — is error-prone
+and unreadable at scale.</p>
+<p><strong>Composition is natural.</strong> A chart component can call private helper methods,
+extract complex series-building logic into named methods, and share behaviour
+through inheritance. The base <code>Components::Chart</code> class provides props and
+rendering behaviour that every chart inherits — adding a new capability to all
+charts means changing one file.</p>
+<p><strong>Props are typed and validated.</strong> Literal properties give you typed props with
+defaults and validation. A chart that requires <code>data:</code> will raise immediately
+if data is nil. A chart with <code>height:</code> defaulting to <code>&quot;400px&quot;</code> just works when
+rendered without arguments. No defensive nil checks scattered through the code.</p>
+<p><strong>The separation is clean.</strong> Phlex draws a clear line: the component builds
+chart options and renders a mount div. <code>chart_controller.js</code> owns the ECharts
+instance. Neither crosses into the other&rsquo;s territory. This makes both sides
+easier to reason about, test, and change independently.</p>
+<p><strong>Familiarity from the main series.</strong> If you&rsquo;ve completed the Phlex v2 on Rails
+series, you already know how to write Phlex components, how props work, and how
+Stimulus wires JavaScript behaviour to Ruby-rendered HTML. This series builds
+directly on that foundation — the chart library is the same patterns applied to
+a new domain.</p>
 <h2>What This Series Builds<span class="hx:absolute hx:-mt-20" id="what-this-series-builds"></span>
     <a href="#what-this-series-builds" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>This series teaches you to build rich, interactive, real-time data visualisations
 in Rails — written entirely in Ruby.</p>

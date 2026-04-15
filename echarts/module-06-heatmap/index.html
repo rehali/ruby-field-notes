@@ -9,23 +9,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
 <title>Ruby Field Notes</title>
-  <meta name="description" content="Module 06 — Calendar Heatmap: Daily Economic ActivityWhat We’re Building The calendar heatmap maps values onto a calendar grid — each cell is one day, colour encodes the value. Seasonal patterns, weekly rhythms, and one-off events are immediately readable.
-This module also establishes the correct data flow pattern that applies from here forward: the controller calls the service and passes data to the component.
-By the end of this module you will have:" /><link rel="canonical" href="https://www.rehali.com/echarts/module-06-heatmap/" itemprop="url" />
+  <meta name="description" content="Creating Calendar Heatmap Charts with ECharts for Ruby on Rails and Phlex." /><link rel="canonical" href="https://www.rehali.com/echarts/module-06-heatmap/" itemprop="url" />
 
 <meta property="og:title" content="">
 <meta
   property="og:description"
   content="
-    
-      Module 06 — Calendar Heatmap: Daily Economic ActivityWhat We&rsquo;re Building
-    The calendar heatmap maps values onto a calendar grid — each cell is one day,
-colour encodes the value. Seasonal patterns, weekly rhythms, and one-off events
-are immediately readable.
-This module also establishes the correct data flow pattern that applies from here
-forward: the controller calls the service and passes data to the component.
-By the end of this module you will have:
-    
+    Creating Calendar Heatmap Charts with ECharts for Ruby on Rails and Phlex.
   ">
 <meta
   property="og:type"
@@ -38,15 +28,11 @@ By the end of this module you will have:
 
 
   <meta itemprop="name" content="Ruby Field Notes">
-  <meta itemprop="description" content="Module 06 — Calendar Heatmap: Daily Economic ActivityWhat We’re Building The calendar heatmap maps values onto a calendar grid — each cell is one day, colour encodes the value. Seasonal patterns, weekly rhythms, and one-off events are immediately readable.
-This module also establishes the correct data flow pattern that applies from here forward: the controller calls the service and passes data to the component.
-By the end of this module you will have:">
-  <meta itemprop="wordCount" content="1163">
+  <meta itemprop="description" content="Creating Calendar Heatmap Charts with ECharts for Ruby on Rails and Phlex.">
+  <meta itemprop="wordCount" content="1374">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
-  <meta name="twitter:description" content="Module 06 — Calendar Heatmap: Daily Economic ActivityWhat We’re Building The calendar heatmap maps values onto a calendar grid — each cell is one day, colour encodes the value. Seasonal patterns, weekly rhythms, and one-off events are immediately readable.
-This module also establishes the correct data flow pattern that applies from here forward: the controller calls the service and passes data to the component.
-By the end of this module you will have:">
+  <meta name="twitter:description" content="Creating Calendar Heatmap Charts with ECharts for Ruby on Rails and Phlex.">
 
     <link rel="preload" href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" as="style" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
     <link href="/css/compiled/main.min.a89fea993e80c655cf64e322f92968cd5ac7bc46c90ddfca8a55389be359b174.css" rel="stylesheet" integrity="sha256-qJ/qmT6AxlXPZOMi&#43;SlozVrHvEbJDd/KilU4m&#43;NZsXQ=" />
@@ -179,7 +165,7 @@ By the end of this module you will have:">
       href="/echarts/module-04-scatter/"
       
     >
-      <span class="hx:min-w-0 [word-break:break-word]">Lesson 04 - Scatter charts</span>
+      <span class="hx:min-w-0 [word-break:break-word]">Lesson 04 - Scatter Charts</span>
     </a>
   </div></li>
             <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
@@ -402,11 +388,11 @@ By the end of this module you will have:">
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#61--the-service">6.1 — The Service
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#61--the-calendar-coordinate-system">6.1 — The Calendar Coordinate System
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#62--the-calendar-coordinate-system">6.2 — The Calendar Coordinate System
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#62--the-service">6.2 — The Service
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
@@ -414,11 +400,27 @@ By the end of this module you will have:">
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#why-override-view_template">Why override view_template?
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#by_year--grouping-data-by-year">by_year — grouping data by year
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#calendarindex">calendarIndex
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#shared-visualmap">Shared visualMap
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
         <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#64--tooltip-formatter">6.4 — Tooltip Formatter
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
-        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#65--controller-and-views">6.5 — Controller and Views
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#65--the-plumbing">6.5 — The Plumbing
         </a>
       </li>
       <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
@@ -445,19 +447,99 @@ By the end of this module you will have:">
           <h1>Module 06 — Calendar Heatmap: Daily Economic Activity</h1><h2>What We&rsquo;re Building<span class="hx:absolute hx:-mt-20" id="what-were-building"></span>
     <a href="#what-were-building" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>The calendar heatmap maps values onto a calendar grid — each cell is one day,
 colour encodes the value. Seasonal patterns, weekly rhythms, and one-off events
-are immediately readable.</p>
-<p>This module also establishes the correct data flow pattern that applies from here
-forward: the controller calls the service and passes data to the component.</p>
+are immediately readable at a glance.</p>
 <p>By the end of this module you will have:</p>
 <ul>
-<li>A single-year calendar heatmap</li>
-<li>A multi-year calendar heatmap using the same component</li>
-<li><code>visualMap</code> for the colour scale</li>
+<li>The ECharts calendar coordinate system explained</li>
+<li>A single component that handles any year range — one year or many</li>
+<li><code>visualMap</code> for the shared colour scale</li>
+<li>A custom tooltip formatter with a timezone fix</li>
 </ul>
 <p>Here&rsquo;s what we&rsquo;ll be building:</p>
 <p><img src="/echarts/module-06-heatmap/daily_calendar.png" alt="daily_calendar.png"  loading="lazy" /></p>
-<h2>6.1 — The Service<span class="hx:absolute hx:-mt-20" id="61--the-service"></span>
-    <a href="#61--the-service" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+<hr>
+<h2>6.1 — The Calendar Coordinate System<span class="hx:absolute hx:-mt-20" id="61--the-calendar-coordinate-system"></span>
+    <a href="#61--the-calendar-coordinate-system" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>ECharts&rsquo; calendar coordinate system is unlike anything we&rsquo;ve used so far. Instead
+of X/Y axes, data is plotted onto a calendar grid. Two options work together:</p>
+<p><strong><code>calendar</code></strong> — defines the grid layout:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="ss">calendar</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">range</span><span class="p">:</span>      <span class="s2">&#34;2022&#34;</span><span class="p">,</span>           <span class="c1"># year, month &#34;2022-03&#34;, or date range array</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">top</span><span class="p">:</span>        <span class="mi">60</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">left</span><span class="p">:</span>       <span class="mi">30</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">right</span><span class="p">:</span>      <span class="mi">30</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">cellSize</span><span class="p">:</span>   <span class="o">[</span><span class="s2">&#34;auto&#34;</span><span class="p">,</span> <span class="mi">13</span><span class="o">]</span><span class="p">,</span>     <span class="c1"># width auto, height 13px per cell</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">yearLabel</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">show</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">position</span><span class="p">:</span> <span class="s2">&#34;top&#34;</span><span class="p">,</span> <span class="ss">margin</span><span class="p">:</span> <span class="mi">8</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">monthLabel</span><span class="p">:</span> <span class="p">{</span> <span class="ss">nameMap</span><span class="p">:</span> <span class="s2">&#34;en&#34;</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">dayLabel</span><span class="p">:</span>   <span class="p">{</span> <span class="ss">firstDay</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="ss">nameMap</span><span class="p">:</span> <span class="s2">&#34;en&#34;</span> <span class="p">}</span>  <span class="c1"># week starts Monday</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p><strong>The series</strong> — references the calendar via <code>coordinateSystem</code>:</p>
+<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">type</span><span class="p">:</span>             <span class="s2">&#34;heatmap&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">coordinateSystem</span><span class="p">:</span> <span class="s2">&#34;calendar&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">data</span><span class="p">:</span>             <span class="n">data</span>          <span class="c1"># [[&#34;2022-01-01&#34;, 94.15], ...]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p><code>coordinateSystem: &quot;calendar&quot;</code> is what connects the series to the calendar grid
+rather than the default Cartesian axes.</p>
+<p>For multiple years, both <code>calendar</code> and <code>series</code> become arrays. Each series
+references its grid by index via <code>calendarIndex</code>. This is the key insight of
+this module — <strong>a single year is a special case of multiple years</strong>, where the
+arrays each have one element.</p>
+<hr>
+<h2>6.2 — The Service<span class="hx:absolute hx:-mt-20" id="62--the-service"></span>
+    <a href="#62--the-service" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -518,90 +600,14 @@ forward: the controller calls the service and passes data to the component.</p>
   </button>
 </div>
 </div>
-<p><code>pluck</code> retrieves only the two columns needed — no full ActiveRecord objects
-for 2,557 rows. The result is an array of <code>[date_string, value]</code> pairs — the
-exact format ECharts calendar series expects.</p>
-<hr>
-<h2>6.2 — The Calendar Coordinate System<span class="hx:absolute hx:-mt-20" id="62--the-calendar-coordinate-system"></span>
-    <a href="#62--the-calendar-coordinate-system" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>ECharts&rsquo; calendar coordinate system is unlike any other. Instead of X/Y axes,
-data is plotted onto a calendar grid. Two options work together:</p>
-<p><strong><code>calendar</code></strong> — defines the grid:</p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="ss">calendar</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="ss">range</span><span class="p">:</span>      <span class="s2">&#34;2022&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="ss">top</span><span class="p">:</span>        <span class="mi">60</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="ss">left</span><span class="p">:</span>       <span class="mi">30</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="ss">right</span><span class="p">:</span>      <span class="mi">30</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="ss">cellSize</span><span class="p">:</span>   <span class="o">[</span><span class="s2">&#34;auto&#34;</span><span class="p">,</span> <span class="mi">13</span><span class="o">]</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="ss">yearLabel</span><span class="p">:</span>  <span class="p">{</span> <span class="ss">show</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">position</span><span class="p">:</span> <span class="s2">&#34;top&#34;</span><span class="p">,</span> <span class="ss">margin</span><span class="p">:</span> <span class="mi">8</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">  <span class="ss">monthLabel</span><span class="p">:</span> <span class="p">{</span> <span class="ss">nameMap</span><span class="p">:</span> <span class="s2">&#34;en&#34;</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">  <span class="ss">dayLabel</span><span class="p">:</span>   <span class="p">{</span> <span class="ss">firstDay</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="ss">nameMap</span><span class="p">:</span> <span class="s2">&#34;en&#34;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<p><strong>The series</strong> — references the calendar:</p>
-<div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="ss">type</span><span class="p">:</span>             <span class="s2">&#34;heatmap&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="ss">coordinateSystem</span><span class="p">:</span> <span class="s2">&#34;calendar&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="ss">data</span><span class="p">:</span>             <span class="n">data</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
-  <button
-    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
-    title="Copy code"
-    aria-label="Copy code"
-    data-copied-label="Copied!"
-  >
-    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
-<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
-  </button>
-</div>
-</div>
-<p><code>range</code> accepts a year string (<code>&quot;2022&quot;</code>), a month (<code>&quot;2022-03&quot;</code>), or a date
-range (<code>[&quot;2022-01-01&quot;, &quot;2022-06-30&quot;]</code>).</p>
-<p><code>dayLabel.firstDay: 1</code> starts weeks on Monday — correct for Australian calendars.</p>
+<p><code>pluck(:date, :value)</code> retrieves only the two columns needed — no full
+ActiveRecord objects for 2,557 rows. The result is an array of
+<code>[date_string, value]</code> pairs — the exact format ECharts calendar series expects.</p>
 <hr>
 <h2>6.3 — The Component<span class="hx:absolute hx:-mt-20" id="63--the-component"></span>
-    <a href="#63--the-component" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>A single year is a special case of a multi-year range. One component handles
-both by building arrays of calendar grids and series:</p>
+    <a href="#63--the-component" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>A single year is a special case of a multi-year range — both use the same
+configuration logic. When <code>year_range: [2022, 2022]</code>, the arrays have one
+element each. When <code>year_range: [2019, 2021]</code>, they have three.</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
@@ -677,6 +683,8 @@ both by building arrays of calendar grids and series:</p>
 </span><span class="lnt">69
 </span><span class="lnt">70
 </span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># app/views/components/charts/activity_calendar.rb</span>
@@ -690,7 +698,7 @@ both by building arrays of calendar grids and series:</p>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">chart_options</span>
 </span></span><span class="line"><span class="cl">        <span class="n">years</span>    <span class="o">=</span> <span class="p">(</span><span class="vi">@year_range</span><span class="o">.</span><span class="n">first</span><span class="o">..</span><span class="vi">@year_range</span><span class="o">.</span><span class="n">last</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span>
-</span></span><span class="line"><span class="cl">        <span class="n">by_year</span>  <span class="o">=</span> <span class="vi">@data</span><span class="o">.</span><span class="n">group_by</span> <span class="p">{</span> <span class="o">|</span><span class="n">date</span><span class="p">,</span> <span class="n">_</span><span class="o">|</span> <span class="n">date</span><span class="o">[</span><span class="mi">0</span><span class="o">..</span><span class="mi">3</span><span class="o">].</span><span class="n">to_i</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">by_year</span>  <span class="o">=</span> <span class="vi">@data</span><span class="o">.</span><span class="n">group_by</span> <span class="p">{</span> <span class="o">|</span><span class="n">row</span><span class="o">|</span> <span class="n">row</span><span class="o">.</span><span class="n">first</span><span class="o">[</span><span class="mi">0</span><span class="o">..</span><span class="mi">3</span><span class="o">].</span><span class="n">to_i</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">        <span class="n">all_vals</span> <span class="o">=</span> <span class="vi">@data</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:last</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="n">min</span>      <span class="o">=</span> <span class="n">all_vals</span><span class="o">.</span><span class="n">min</span><span class="o">&amp;.</span><span class="n">floor</span> <span class="o">||</span> <span class="mi">0</span>
 </span></span><span class="line"><span class="cl">        <span class="n">max</span>      <span class="o">=</span> <span class="n">all_vals</span><span class="o">.</span><span class="n">max</span><span class="o">&amp;.</span><span class="n">ceil</span>  <span class="o">||</span> <span class="mi">100</span>
@@ -704,7 +712,7 @@ both by building arrays of calendar grids and series:</p>
 </span></span><span class="line"><span class="cl">            <span class="ss">calculable</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">            <span class="ss">orient</span><span class="p">:</span>     <span class="s2">&#34;horizontal&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">            <span class="ss">left</span><span class="p">:</span>       <span class="s2">&#34;center&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">            <span class="ss">bottom</span><span class="p">:</span>      <span class="mi">10</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">top</span><span class="p">:</span>        <span class="mi">10</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">            <span class="ss">inRange</span><span class="p">:</span>    <span class="p">{</span> <span class="ss">color</span><span class="p">:</span> <span class="o">[</span><span class="s2">&#34;#ebedf0&#34;</span><span class="p">,</span> <span class="s2">&#34;#216e39&#34;</span><span class="o">]</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">          <span class="p">},</span>
 </span></span><span class="line"><span class="cl">          <span class="ss">calendar</span><span class="p">:</span> <span class="n">years</span><span class="o">.</span><span class="n">each_with_index</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">year</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span>
@@ -734,9 +742,11 @@ both by building arrays of calendar grids and series:</p>
 </span></span><span class="line"><span class="cl">        <span class="n">div</span><span class="p">(</span><span class="ss">class</span><span class="p">:</span> <span class="s2">&#34;p-2 rounded-lg bg-white border border-neutral-200&#34;</span><span class="p">,</span> <span class="o">**</span><span class="vi">@html</span><span class="p">)</span> <span class="k">do</span>
 </span></span><span class="line"><span class="cl">          <span class="n">div</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">            <span class="ss">data</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">              <span class="ss">controller</span><span class="p">:</span>          <span class="s2">&#34;chart&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">              <span class="ss">chart_target</span><span class="p">:</span>        <span class="s2">&#34;mount&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">              <span class="ss">chart_options_value</span><span class="p">:</span> <span class="n">chart_options</span><span class="o">.</span><span class="n">to_json</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">controller</span><span class="p">:</span>              <span class="s2">&#34;chart&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">chart_target</span><span class="p">:</span>            <span class="s2">&#34;mount&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">chart_options_value</span><span class="p">:</span>     <span class="n">chart_options</span><span class="o">.</span><span class="n">to_json</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">chart_group_value</span><span class="p">:</span>       <span class="vi">@group</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="ss">chart_select_url_value</span><span class="p">:</span>  <span class="vi">@select_url</span>
 </span></span><span class="line"><span class="cl">            <span class="p">},</span>
 </span></span><span class="line"><span class="cl">            <span class="ss">style</span><span class="p">:</span> <span class="s2">&#34;height: </span><span class="si">#{</span><span class="n">dynamic_height</span><span class="si">}</span><span class="s2">; width: 100%;&#34;</span>
 </span></span><span class="line"><span class="cl">          <span class="p">)</span>
@@ -744,8 +754,8 @@ both by building arrays of calendar grids and series:</p>
 </span></span><span class="line"><span class="cl">      <span class="k">end</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="k">def</span> <span class="nf">dynamic_height</span>
-</span></span><span class="line"><span class="cl">        <span class="n">years</span> <span class="o">=</span> <span class="vi">@year_range</span><span class="o">.</span><span class="n">last</span> <span class="o">-</span> <span class="vi">@year_range</span><span class="o">.</span><span class="n">first</span> <span class="o">+</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;</span><span class="si">#{</span><span class="mi">60</span> <span class="o">+</span> <span class="p">(</span><span class="n">years</span> <span class="o">*</span> <span class="mi">160</span><span class="p">)</span><span class="si">}</span><span class="s2">px&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">n</span> <span class="o">=</span> <span class="vi">@year_range</span><span class="o">.</span><span class="n">last</span> <span class="o">-</span> <span class="vi">@year_range</span><span class="o">.</span><span class="n">first</span> <span class="o">+</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;</span><span class="si">#{</span><span class="mi">60</span> <span class="o">+</span> <span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="mi">160</span><span class="p">)</span><span class="si">}</span><span class="s2">px&#34;</span>
 </span></span><span class="line"><span class="cl">      <span class="k">end</span>
 </span></span><span class="line"><span class="cl">    <span class="k">end</span>
 </span></span><span class="line"><span class="cl">  <span class="k">end</span>
@@ -763,16 +773,49 @@ both by building arrays of calendar grids and series:</p>
   </button>
 </div>
 </div>
-<p>When <code>year_range: [2022, 2022]</code> — one grid, one series, height 220px.
-When <code>year_range: [2019, 2021]</code> — three grids, three series, height 540px.
-The logic is identical — only the number of iterations changes.</p>
-<p><strong><code>calendarIndex</code></strong> assigns each series to the correct grid. Without it all
-series plot on the first grid.</p>
-<p><strong>Shared <code>visualMap</code></strong> — this is the key advantage over rendering multiple
-single-year components in a loop. All years share one colour scale, so the
-COVID dip in 2020 is visually comparable to 2019 and 2021.</p>
-<p><strong><code>dynamic_height</code></strong> — the component calculates its own height from the year
-range, overriding the base <code>height</code> prop.</p>
+<h3>Why override <code>view_template</code>?<span class="hx:absolute hx:-mt-20" id="why-override-view_template"></span>
+    <a href="#why-override-view_template" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>The base <code>Components::Chart</code> renders a fixed <code>height: #{@height}</code> from the
+<code>height:</code> prop. This component needs to calculate its height dynamically from
+the year range — a single year needs ~220px, three years need ~540px. Overriding
+<code>view_template</code> allows <code>dynamic_height</code> to replace the fixed prop.</p>
+<p>The override includes <code>chart_group_value</code> and <code>chart_select_url_value</code> — the
+same data attributes as the base class — so all inherited props (<code>group:</code>,
+<code>select_url:</code>) continue to work correctly.</p>
+<h3><code>by_year</code> — grouping data by year<span class="hx:absolute hx:-mt-20" id="by_year--grouping-data-by-year"></span>
+    <a href="#by_year--grouping-data-by-year" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+
+<div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">by_year</span> <span class="o">=</span> <span class="vi">@data</span><span class="o">.</span><span class="n">group_by</span> <span class="p">{</span> <span class="o">|</span><span class="n">row</span><span class="o">|</span> <span class="n">row</span><span class="o">.</span><span class="n">first</span><span class="o">[</span><span class="mi">0</span><span class="o">..</span><span class="mi">3</span><span class="o">].</span><span class="n">to_i</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+  <button
+    class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+    title="Copy code"
+    aria-label="Copy code"
+    data-copied-label="Copied!"
+  >
+    <div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"></div>
+<div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"></div>
+  </button>
+</div>
+</div>
+<p><code>@data</code> is an array of <code>[&quot;2022-01-15&quot;, 94.15]</code> pairs. <code>row.first</code> is the date
+string. <code>[0..3]</code> extracts the year characters — <code>&quot;2022&quot;</code>. <code>.to_i</code> converts to
+an integer. <code>group_by</code> produces <code>{ 2022 =&gt; [...], 2019 =&gt; [...] }</code> — each year&rsquo;s
+data ready to assign to its calendar grid.</p>
+<h3><code>calendarIndex</code><span class="hx:absolute hx:-mt-20" id="calendarindex"></span>
+    <a href="#calendarindex" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>Without <code>calendarIndex</code>, all series plot on the first calendar grid. With it,
+each series is assigned to the correct grid by position. Grid 0 gets the first
+year, grid 1 the second, and so on.</p>
+<h3>Shared <code>visualMap</code><span class="hx:absolute hx:-mt-20" id="shared-visualmap"></span>
+    <a href="#shared-visualmap" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>A single <code>visualMap</code> covers all years. This is the key advantage over rendering
+multiple single-year components in a loop — all years share one colour scale, so
+the COVID dip in 2020 is directly comparable to 2019 and 2021. The same shade of
+red means the same activity level regardless of which year&rsquo;s grid it appears in.</p>
 <hr>
 <h2>6.4 — Tooltip Formatter<span class="hx:absolute hx:-mt-20" id="64--tooltip-formatter"></span>
     <a href="#64--tooltip-formatter" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>Add to <code>custom_chart_formatters.js</code>:</p>
@@ -793,8 +836,8 @@ range, overriding the base <code>height</code> prop.</p>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="s2">&#34;item:calendarDay&#34;</span><span class="o">:</span> <span class="nx">params</span> <span class="p">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="p">[</span><span class="nx">date</span><span class="p">,</span> <span class="nx">value</span><span class="p">]</span> <span class="o">=</span> <span class="nx">params</span><span class="p">.</span><span class="nx">value</span>
-</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">d</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">date</span> <span class="o">+</span> <span class="s2">&#34;T00:00:00&#34;</span><span class="p">)</span>  <span class="c1">// force local time, not UTC
-</span></span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">formatted</span> <span class="o">=</span> <span class="nx">d</span><span class="p">.</span><span class="nx">toLocaleDateString</span><span class="p">(</span><span class="s2">&#34;en-AU&#34;</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">d</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">date</span> <span class="o">+</span> <span class="s2">&#34;T00:00:00&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">formatted</span> <span class="o">=</span> <span class="nx">d</span><span class="p">.</span><span class="nx">toLocaleDateString</span><span class="p">(</span><span class="s2">&#34;en-AU&#34;</span><span class="p">,</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">weekday</span><span class="o">:</span> <span class="s2">&#34;short&#34;</span><span class="p">,</span> <span class="nx">day</span><span class="o">:</span> <span class="s2">&#34;numeric&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">month</span><span class="o">:</span>   <span class="s2">&#34;long&#34;</span><span class="p">,</span>  <span class="nx">year</span><span class="o">:</span> <span class="s2">&#34;numeric&#34;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">})</span>
@@ -813,20 +856,15 @@ range, overriding the base <code>height</code> prop.</p>
   </button>
 </div>
 </div>
-<blockquote>
-  <p>Note: the &ldquo;item:xxx&rdquo; prefix for the custom formatter. Since the tooltip is for
-a single item, we differentiate it from our tabular (axis) based tooltips'</p>
-
-</blockquote>
-<blockquote>
-  <p>The <code>+ &quot;T00:00:00&quot;</code> is important — <code>new Date(&quot;2022-01-15&quot;)</code> parses as UTC
-midnight, which displays as January 14 in Australian timezones. Appending the
-time forces local time parsing.</p>
-
-</blockquote>
+<p>The <code>&quot;item:&quot;</code> prefix — the tooltip uses <code>trigger: &quot;item&quot;</code>, so the resolver
+qualifies <code>&quot;calendarDay&quot;</code> as <code>&quot;item:calendarDay&quot;</code> automatically. This is the
+same mechanism as Module 04&rsquo;s <code>&quot;item:participationScatter&quot;</code>.</p>
+<p>The <code>+ &quot;T00:00:00&quot;</code> — <code>new Date(&quot;2022-01-15&quot;)</code> parses as UTC midnight, which
+displays as January 14 in Australian timezones. Appending the time string forces
+the browser to parse it as local time.</p>
 <hr>
-<h2>6.5 — Controller and Views<span class="hx:absolute hx:-mt-20" id="65--controller-and-views"></span>
-    <a href="#65--controller-and-views" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+<h2>6.5 — The Plumbing<span class="hx:absolute hx:-mt-20" id="65--the-plumbing"></span>
+    <a href="#65--the-plumbing" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
 <div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -892,6 +930,7 @@ time forces local time parsing.</p>
 &lt;h1 class=&#34;text-2xl font-bold mb-2&#34;&gt;Daily Activity — 2022&lt;/h1&gt;
 &lt;p class=&#34;text-neutral-500 text-sm mb-6&#34;&gt;
   Illustrative daily index — generated data, not real ABS statistics.
+  Darker cells indicate higher activity.
 &lt;/p&gt;
 &lt;%= render Components::Charts::ActivityCalendar.new(
   data:       @data,
@@ -913,9 +952,9 @@ time forces local time parsing.</p>
 <div><pre><code>&lt;%# app/views/charts/multi_year_calendar.html.erb %&gt;
 &lt;h1 class=&#34;text-2xl font-bold mb-2&#34;&gt;Daily Activity — COVID Years&lt;/h1&gt;
 &lt;p class=&#34;text-neutral-500 text-sm mb-6&#34;&gt;
-  The COVID shock of 2020 is simulated as a sustained period of low activity
-  from March through December, followed by gradual recovery through 2021.
+  The COVID shock of 2020 is visible as a sustained period of low activity.
   All three years share the same colour scale for direct comparison.
+  Generated data — not real ABS statistics.
 &lt;/p&gt;
 &lt;%= render Components::Charts::ActivityCalendar.new(
   data:       @data,
@@ -932,33 +971,18 @@ time forces local time parsing.</p>
   </button>
 </div>
 </div>
-<p>And add the cards to the index:</p>
+<p><strong>Gallery cards:</strong></p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="err">&lt;</span>%= render &#34;charts/gallery_card&#34;,
-</span></span><span class="line"><span class="cl">  title:       &#34;Daily Activity — Single Year&#34;,
-</span></span><span class="line"><span class="cl">  description: &#34;Calendar heatmap for 2022.&#34;,
-</span></span><span class="line"><span class="cl">  path:        charts_single_year_calendar_path %&gt;
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="err">&lt;</span>%= render &#34;charts/gallery_card&#34;,
-</span></span><span class="line"><span class="cl">  title:       &#34;Daily Activity — COVID Years&#34;,
-</span></span><span class="line"><span class="cl">  description: &#34;Multi-year calendar heatmap 2019–2021 on a shared colour scale.&#34;,
-</span></span><span class="line"><span class="cl">  path:        charts_multi_year_calendar_path %&gt;</span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><pre><code>&lt;%= render &#34;charts/gallery_card&#34;,
+  title:       &#34;Daily Activity — Single Year&#34;,
+  description: &#34;Calendar heatmap for 2022.&#34;,
+  path:        charts_single_year_calendar_path %&gt;
+
+&lt;%= render &#34;charts/gallery_card&#34;,
+  title:       &#34;Daily Activity — COVID Years&#34;,
+  description: &#34;Multi-year calendar heatmap 2019–2021 on a shared colour scale.&#34;,
+  path:        charts_multi_year_calendar_path %&gt;</code></pre></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -983,11 +1007,7 @@ time forces local time parsing.</p>
   <tbody>
       <tr>
           <td><code>app/services/stats/daily_activity.rb</code></td>
-          <td>Query and shape for calendar series</td>
-      </tr>
-      <tr>
-          <td><code>app/services/stats/daily_activity_monthly.rb</code></td>
-          <td>groupdate monthly bucketing</td>
+          <td>Query and shape data for calendar series</td>
       </tr>
       <tr>
           <td><code>app/views/components/charts/activity_calendar.rb</code></td>
@@ -997,14 +1017,15 @@ time forces local time parsing.</p>
 </table>
 <p><strong>Patterns introduced:</strong></p>
 <ul>
-<li>ECharts calendar coordinate system — <code>calendar</code> + <code>coordinateSystem: &quot;calendar&quot;</code></li>
+<li>ECharts calendar coordinate system — <code>calendar</code> option + <code>coordinateSystem: &quot;calendar&quot;</code></li>
 <li>Multi-year calendar — arrays of <code>calendar</code> and <code>series</code> with <code>calendarIndex</code></li>
-<li>Single component as general case — single year is <code>[2022, 2022]</code></li>
+<li>Single year as special case — <code>year_range: [2022, 2022]</code> is one element each</li>
 <li>Shared <code>visualMap</code> — one colour scale across all years for direct comparison</li>
-<li>Dynamic height — component calculates its own height from the year range</li>
-<li>UTC date fix in JavaScript tooltip formatters</li>
+<li><code>view_template</code> override — when <code>dynamic_height</code> needs to replace the fixed <code>height:</code> prop</li>
+<li><code>by_year</code> grouping — extracting year from date string with <code>row.first[0..3].to_i</code></li>
+<li>UTC date fix — <code>+ &quot;T00:00:00&quot;</code> for correct local time parsing in JavaScript</li>
 </ul>
-<p><strong>calendar option reference:</strong></p>
+<p><strong>Calendar option reference:</strong></p>
 <table>
   <thead>
       <tr>
@@ -1027,10 +1048,12 @@ time forces local time parsing.</p>
       </tr>
       <tr>
           <td><code>calendarIndex</code></td>
-          <td>Which grid a series plots on — multi-year only</td>
+          <td>Which grid a series plots on — essential for multi-year</td>
       </tr>
   </tbody>
 </table>
+<hr>
+<p><em>Next: Module 07 — Gauge: National Accounts</em></p>
 
         </div>
         <div class="hx:mt-16"></div><div class="hx:mb-8 hx:flex hx:items-center hx:border-t hx:pt-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-neutral-400 hx:dark:contrast-more:border-neutral-400 hx:print:hidden"><a
