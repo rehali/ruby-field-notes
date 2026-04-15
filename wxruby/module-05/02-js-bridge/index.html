@@ -36,7 +36,7 @@ Demo 1 — Navigation interception
   <meta itemprop="name" content="Ruby Field Notes">
   <meta itemprop="description" content="The JavaScript bridgerun_script handles Ruby→JS communication for simple cases. For JS→Ruby you need a bridge — a mechanism for JavaScript to send messages back to your Ruby code. This lesson covers three approaches, progressively more capable, each demonstrated in a separate working app.
 Demo 1 — Navigation interception The simplest approach requires no setup at all. JavaScript sets window.location to a custom URL scheme. Ruby intercepts the navigation in evt_webview_navigating, cancels it, and handles the message.">
-  <meta itemprop="wordCount" content="724">
+  <meta itemprop="wordCount" content="722">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
   <meta name="twitter:description" content="The JavaScript bridgerun_script handles Ruby→JS communication for simple cases. For JS→Ruby you need a bridge — a mechanism for JavaScript to send messages back to your Ruby code. This lesson covers three approaches, progressively more capable, each demonstrated in a separate working app.
@@ -803,14 +803,7 @@ Demo 1 — Navigation interception The simplest approach requires no setup at al
 <p><strong>Ruby — responding to JS:</strong></p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@webview</span><span class="o">.</span><span class="n">run_script</span><span class="p">(</span><span class="s2">&#34;receiveFromRuby(&#39;</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">&#39;)&#34;</span><span class="p">)</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@webview</span><span class="o">.</span><span class="n">run_script</span><span class="p">(</span><span class="s2">&#34;receiveFromRuby(&#39;</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">&#39;)&#34;</span><span class="p">)</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -1011,14 +1004,7 @@ Demo 1 — Navigation interception The simplest approach requires no setup at al
 <h3>JS emitting events to Ruby<span class="hx:absolute hx:-mt-20" id="js-emitting-events-to-ruby"></span>
     <a href="#js-emitting-events-to-ruby" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">RubyBridge</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">&#39;userAction&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">button</span><span class="o">:</span> <span class="s1">&#39;save&#39;</span> <span class="p">});</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">RubyBridge</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">&#39;userAction&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">button</span><span class="o">:</span> <span class="s1">&#39;save&#39;</span> <span class="p">});</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"

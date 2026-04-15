@@ -34,7 +34,7 @@ Sizers are wxRuby3&rsquo;s layout system. Rather than fixing pixel positions, si
   <meta itemprop="name" content="Ruby Field Notes">
   <meta itemprop="description" content="Layout with sizersThe form you built in the previous lesson works, but it looks rough. The widgets are positioned with hardcoded pos: coordinates — manual arithmetic that breaks the moment you resize the window, change a font, or add a new field. This is not how wxRuby3 apps are meant to be laid out.
 Sizers are wxRuby3’s layout system. Rather than fixing pixel positions, sizers describe relationships between widgets — “these two controls should sit side by side”, “this widget should expand to fill available space”, “leave 8 pixels of padding around everything”. The sizer calculates the actual positions at runtime, and recalculates automatically whenever the window is resized.">
-  <meta itemprop="wordCount" content="2239">
+  <meta itemprop="wordCount" content="2228">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
   <meta name="twitter:description" content="Layout with sizersThe form you built in the previous lesson works, but it looks rough. The widgets are positioned with hardcoded pos: coordinates — manual arithmetic that breaks the moment you resize the window, change a font, or add a new field. This is not how wxRuby3 apps are meant to be laid out.
@@ -673,18 +673,9 @@ Sizers are wxRuby3’s layout system. Rather than fixing pixel positions, sizers
 <p>The basic pattern:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">sizer</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">VBoxSizer</span><span class="o">.</span><span class="n">new</span>                     <span class="c1"># create the sizer</span>
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">sizer</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">VBoxSizer</span><span class="o">.</span><span class="n">new</span>                     <span class="c1"># create the sizer</span>
 </span></span><span class="line"><span class="cl"><span class="n">sizer</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">widget</span><span class="p">,</span> <span class="n">proportion</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">border</span><span class="p">)</span>  <span class="c1"># add widgets</span>
-</span></span><span class="line"><span class="cl"><span class="n">panel</span><span class="o">.</span><span class="n">set_sizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>                        <span class="c1"># attach to panel</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+</span></span><span class="line"><span class="cl"><span class="n">panel</span><span class="o">.</span><span class="n">set_sizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>                        <span class="c1"># attach to panel</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -809,18 +800,9 @@ Sizers are wxRuby3’s layout system. Rather than fixing pixel positions, sizers
 <p>To see this clearly, update <code>sizer_demo.rb</code> — note there is no <code>Wx::EXPAND</code> here so we isolate proportion from width behaviour:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">vbox</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">btn_a</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALL</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">vbox</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">btn_a</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALL</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">vbox</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">btn_b</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALL</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">vbox</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">btn_c</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALL</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+</span></span><span class="line"><span class="cl"><span class="n">vbox</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">btn_c</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALL</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -838,18 +820,9 @@ Sizers are wxRuby3’s layout system. Rather than fixing pixel positions, sizers
 <p>Update the demo to see the difference:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">vbox</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">btn_a</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALL</span><span class="p">,</span>          <span class="mi">8</span><span class="p">)</span>   <span class="c1"># natural width, fixed height</span>
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">vbox</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">btn_a</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALL</span><span class="p">,</span>          <span class="mi">8</span><span class="p">)</span>   <span class="c1"># natural width, fixed height</span>
 </span></span><span class="line"><span class="cl"><span class="n">vbox</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">btn_b</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALL</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">EXPAND</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>   <span class="c1"># full width, fixed height</span>
-</span></span><span class="line"><span class="cl"><span class="n">vbox</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">btn_c</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALL</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">EXPAND</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>   <span class="c1"># full width, grows vertically</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+</span></span><span class="line"><span class="cl"><span class="n">vbox</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">btn_c</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALL</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">EXPAND</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>   <span class="c1"># full width, grows vertically</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -898,16 +871,8 @@ Sizers are wxRuby3’s layout system. Rather than fixing pixel positions, sizers
 <p>Flags are combined with <code>|</code>:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">vbox</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">label</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALIGN_CENTER_VERTICAL</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">RIGHT</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">vbox</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">field</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">EXPAND</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">BOTTOM</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">vbox</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">label</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ALIGN_CENTER_VERTICAL</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">RIGHT</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">vbox</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">field</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">EXPAND</span> <span class="o">|</span> <span class="no">Wx</span><span class="o">::</span><span class="no">BOTTOM</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"

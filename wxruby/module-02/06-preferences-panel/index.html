@@ -35,7 +35,7 @@ By the end you will have a tabbed preferences dialog with OK, Cancel, and Apply 
   <meta itemprop="name" content="Ruby Field Notes">
   <meta itemprop="description" content="A Preferences PanelThis project brings together everything from Module 2 — frames, panels, widgets, sizers, menus, and custom dialogs — into a single finished app. The result is a preferences dialog of the kind that appears in almost every real desktop application.
 By the end you will have a tabbed preferences dialog with OK, Cancel, and Apply buttons, dirty state tracking, and four categories of settings across four tabs.">
-  <meta itemprop="wordCount" content="2252">
+  <meta itemprop="wordCount" content="2250">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
   <meta name="twitter:description" content="A Preferences PanelThis project brings together everything from Module 2 — frames, panels, widgets, sizers, menus, and custom dialogs — into a single finished app. The result is a preferences dialog of the kind that appears in almost every real desktop application.
@@ -1727,16 +1727,8 @@ By the end you will have a tabbed preferences dialog with OK, Cancel, and Apply 
 <p>The reset button dismisses the dialog with <code>Wx::ID_OK</code> — the main frame sees this as a normal OK and would replace its preferences with whatever <code>dialog.prefs</code> contains. To make reset work properly, the main frame needs to handle it: check whether the returned prefs equal the defaults. For this capstone we keep it simple — the caller can detect a reset by comparing the returned prefs to the defaults. Add Advanced values to <code>apply_prefs</code>:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@prefs</span><span class="o">[</span><span class="ss">:debug_logging</span><span class="o">]</span> <span class="o">=</span> <span class="vi">@debug_cb</span><span class="o">.</span><span class="n">value</span>
-</span></span><span class="line"><span class="cl"><span class="vi">@prefs</span><span class="o">[</span><span class="ss">:cache_size</span><span class="o">]</span>    <span class="o">=</span> <span class="vi">@cache_spin</span><span class="o">.</span><span class="n">value</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@prefs</span><span class="o">[</span><span class="ss">:debug_logging</span><span class="o">]</span> <span class="o">=</span> <span class="vi">@debug_cb</span><span class="o">.</span><span class="n">value</span>
+</span></span><span class="line"><span class="cl"><span class="vi">@prefs</span><span class="o">[</span><span class="ss">:cache_size</span><span class="o">]</span>    <span class="o">=</span> <span class="vi">@cache_spin</span><span class="o">.</span><span class="n">value</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"

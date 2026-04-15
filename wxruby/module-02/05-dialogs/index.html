@@ -34,7 +34,7 @@ This lesson covers the standard dialogs and then shows how to build your own whe
   <meta itemprop="name" content="Ruby Field Notes">
   <meta itemprop="description" content="DialogsDialogs are focused windows that interrupt the main flow to get input from the user or deliver important information. wxRuby3 provides ready-made dialogs for the most common tasks — file picking, colour selection, font selection, text entry, and messages — so you rarely need to build these from scratch.
 This lesson covers the standard dialogs and then shows how to build your own when none of the built-in ones fit.">
-  <meta itemprop="wordCount" content="1478">
+  <meta itemprop="wordCount" content="1471">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
   <meta name="twitter:description" content="DialogsDialogs are focused windows that interrupt the main flow to get input from the user or deliver important information. wxRuby3 provides ready-made dialogs for the most common tasks — file picking, colour selection, font selection, text entry, and messages — so you rarely need to build these from scratch.
@@ -788,14 +788,7 @@ This lesson covers the standard dialogs and then shows how to build your own whe
     <a href="#step-1--message-box" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><code>Wx::message_box</code> is the simplest dialog — it shows a message and one or more buttons. Add a handler in <code>bind_events</code>:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">evt_button</span><span class="p">(</span><span class="vi">@msg_btn</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_message</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">evt_button</span><span class="p">(</span><span class="vi">@msg_btn</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_message</span> <span class="p">}</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -878,14 +871,7 @@ This lesson covers the standard dialogs and then shows how to build your own whe
     <a href="#step-2--confirm-dialog" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>A confirmation dialog returns which button the user pressed. Add a handler:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">evt_button</span><span class="p">(</span><span class="vi">@confirm_btn</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_confirm</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">evt_button</span><span class="p">(</span><span class="vi">@confirm_btn</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_confirm</span> <span class="p">}</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -947,14 +933,7 @@ This lesson covers the standard dialogs and then shows how to build your own whe
     <a href="#step-3--text-entry-dialog" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><code>Wx::TextEntryDialog</code> asks the user to type something:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">evt_button</span><span class="p">(</span><span class="vi">@text_btn</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_text_entry</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">evt_button</span><span class="p">(</span><span class="vi">@text_btn</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_text_entry</span> <span class="p">}</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -1025,16 +1004,8 @@ This lesson covers the standard dialogs and then shows how to build your own whe
     <a href="#step-4--file-dialogs" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><code>Wx::FileDialog</code> handles both open and save. Add handlers for both buttons:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">evt_button</span><span class="p">(</span><span class="vi">@file_open_btn</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_file_open</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="n">evt_button</span><span class="p">(</span><span class="vi">@file_save_btn</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_file_save</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">evt_button</span><span class="p">(</span><span class="vi">@file_open_btn</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_file_open</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">evt_button</span><span class="p">(</span><span class="vi">@file_save_btn</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_file_save</span> <span class="p">}</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -1175,14 +1146,7 @@ This lesson covers the standard dialogs and then shows how to build your own whe
     <a href="#step-5--colour-dialog" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><code>Wx::ColourDialog</code> shows a native colour picker:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">evt_button</span><span class="p">(</span><span class="vi">@colour_btn</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_colour</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">evt_button</span><span class="p">(</span><span class="vi">@colour_btn</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_colour</span> <span class="p">}</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -1248,14 +1212,7 @@ This lesson covers the standard dialogs and then shows how to build your own whe
     <a href="#step-6--font-dialog" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><code>Wx::FontDialog</code> shows a native font picker:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">evt_button</span><span class="p">(</span><span class="vi">@font_btn</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_font</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">evt_button</span><span class="p">(</span><span class="vi">@font_btn</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_font</span> <span class="p">}</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"

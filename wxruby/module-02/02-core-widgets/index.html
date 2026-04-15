@@ -34,7 +34,7 @@ You will work with the app.rb skeleton from the previous lesson, adding one widg
   <meta itemprop="name" content="Ruby Field Notes">
   <meta itemprop="description" content="Core widgetsWidgets are the controls users interact with — buttons they click, fields they type into, checkboxes they toggle. This lesson introduces the controls you will use in almost every application.
 You will work with the app.rb skeleton from the previous lesson, adding one widget at a time and running the app after each addition. By the end of the lesson the skeleton will have grown into a working registration form.">
-  <meta itemprop="wordCount" content="1977">
+  <meta itemprop="wordCount" content="1950">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
   <meta name="twitter:description" content="Core widgetsWidgets are the controls users interact with — buttons they click, fields they type into, checkboxes they toggle. This lesson introduces the controls you will use in almost every application.
@@ -774,16 +774,8 @@ You will work with the app.rb skeleton from the previous lesson, adding one widg
     <a href="#step-2--textctrl" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><code>Wx::TextCtrl</code> is the text input field. Update <code>build_ui</code> to add a name field next to the label:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@name_label</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">StaticText</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Name:&#39;</span><span class="p">,</span> <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">22</span><span class="o">]</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="vi">@name_field</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">TextCtrl</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">18</span><span class="o">]</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@name_label</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">StaticText</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Name:&#39;</span><span class="p">,</span> <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">22</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="vi">@name_field</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">TextCtrl</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">18</span><span class="o">]</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -798,18 +790,9 @@ You will work with the app.rb skeleton from the previous lesson, adding one widg
 <p>Run it. The label and field sit on the same row, the field accepting input immediately. The <code>size: [200, -1]</code> sets the width to 200 pixels; <code>-1</code> tells wxRuby3 to use the default height for the platform. Read the value in a method with:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@name_field</span><span class="o">.</span><span class="n">value</span>            <span class="c1"># returns the current string</span>
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@name_field</span><span class="o">.</span><span class="n">value</span>            <span class="c1"># returns the current string</span>
 </span></span><span class="line"><span class="cl"><span class="vi">@name_field</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;John&#39;</span>   <span class="c1"># sets the value programmatically</span>
-</span></span><span class="line"><span class="cl"><span class="vi">@name_field</span><span class="o">.</span><span class="n">clear</span>            <span class="c1"># empties the field</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+</span></span><span class="line"><span class="cl"><span class="vi">@name_field</span><span class="o">.</span><span class="n">clear</span>            <span class="c1"># empties the field</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -824,20 +807,10 @@ You will work with the app.rb skeleton from the previous lesson, adding one widg
 <p>Add a second row for email below the first:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@name_label</span>  <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">StaticText</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Name:&#39;</span><span class="p">,</span>  <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">20</span><span class="p">,</span>  <span class="mi">22</span><span class="o">]</span><span class="p">)</span>
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@name_label</span>  <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">StaticText</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Name:&#39;</span><span class="p">,</span>  <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">20</span><span class="p">,</span>  <span class="mi">22</span><span class="o">]</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="vi">@name_field</span>  <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">TextCtrl</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span>  <span class="ss">value</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>        <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">80</span><span class="p">,</span>  <span class="mi">18</span><span class="o">]</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="vi">@email_label</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">StaticText</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Email:&#39;</span><span class="p">,</span> <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">20</span><span class="p">,</span>  <span class="mi">52</span><span class="o">]</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="vi">@email_field</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">TextCtrl</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span>  <span class="ss">value</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>        <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">80</span><span class="p">,</span>  <span class="mi">48</span><span class="o">]</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+</span></span><span class="line"><span class="cl"><span class="vi">@email_field</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">TextCtrl</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span>  <span class="ss">value</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>        <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">80</span><span class="p">,</span>  <span class="mi">48</span><span class="o">]</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -853,28 +826,14 @@ You will work with the app.rb skeleton from the previous lesson, adding one widg
 <p><code>TextCtrl</code> has several useful style variants. You will use these in later lessons:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># Multi-line text area</span>
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># Multi-line text area</span>
 </span></span><span class="line"><span class="cl"><span class="no">Wx</span><span class="o">::</span><span class="no">TextCtrl</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="ss">style</span><span class="p">:</span> <span class="no">Wx</span><span class="o">::</span><span class="no">TE_MULTILINE</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># Password field — masks input</span>
 </span></span><span class="line"><span class="cl"><span class="no">Wx</span><span class="o">::</span><span class="no">TextCtrl</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="ss">style</span><span class="p">:</span> <span class="no">Wx</span><span class="o">::</span><span class="no">TE_PASSWORD</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># Read-only field</span>
-</span></span><span class="line"><span class="cl"><span class="no">Wx</span><span class="o">::</span><span class="no">TextCtrl</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="s1">&#39;Cannot edit this&#39;</span><span class="p">,</span> <span class="ss">style</span><span class="p">:</span> <span class="no">Wx</span><span class="o">::</span><span class="no">TE_READONLY</span><span class="p">)</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+</span></span><span class="line"><span class="cl"><span class="no">Wx</span><span class="o">::</span><span class="no">TextCtrl</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">value</span><span class="p">:</span> <span class="s1">&#39;Cannot edit this&#39;</span><span class="p">,</span> <span class="ss">style</span><span class="p">:</span> <span class="no">Wx</span><span class="o">::</span><span class="no">TE_READONLY</span><span class="p">)</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -890,16 +849,8 @@ You will work with the app.rb skeleton from the previous lesson, adding one widg
     <a href="#step-3--checkbox" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><code>Wx::CheckBox</code> is a labelled boolean toggle. Add one below the email field:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@subscribe_cb</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">CheckBox</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Subscribe to newsletter&#39;</span><span class="p">,</span> <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">80</span><span class="o">]</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="vi">@subscribe_cb</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="kp">true</span>    <span class="c1"># checked by default</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@subscribe_cb</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">CheckBox</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">label</span><span class="p">:</span> <span class="s1">&#39;Subscribe to newsletter&#39;</span><span class="p">,</span> <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">80</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="vi">@subscribe_cb</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="kp">true</span>    <span class="c1"># checked by default</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -914,14 +865,7 @@ You will work with the app.rb skeleton from the previous lesson, adding one widg
 <p>Run it. The checkbox appears, checked. Read its state with:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@subscribe_cb</span><span class="o">.</span><span class="n">value</span>    <span class="c1"># true or false</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@subscribe_cb</span><span class="o">.</span><span class="n">value</span>    <span class="c1"># true or false</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -1032,16 +976,8 @@ You will work with the app.rb skeleton from the previous lesson, adding one widg
 <p>Now wire up handlers for both groups. Storing buttons in arrays pays off here — one registration loop per group, and the handler uses <code>find(&amp;:value)</code> to locate the selected button and reads its label directly, so you never have to keep button names synchronised with a separate list of strings:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@size_buttons</span><span class="o">.</span><span class="n">each</span>   <span class="p">{</span> <span class="o">|</span><span class="n">rb</span><span class="o">|</span> <span class="n">evt_radiobutton</span><span class="p">(</span><span class="n">rb</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_group_changed</span> <span class="p">}</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="vi">@colour_buttons</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">rb</span><span class="o">|</span> <span class="n">evt_radiobutton</span><span class="p">(</span><span class="n">rb</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_group_changed</span> <span class="p">}</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@size_buttons</span><span class="o">.</span><span class="n">each</span>   <span class="p">{</span> <span class="o">|</span><span class="n">rb</span><span class="o">|</span> <span class="n">evt_radiobutton</span><span class="p">(</span><span class="n">rb</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_group_changed</span> <span class="p">}</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="vi">@colour_buttons</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">rb</span><span class="o">|</span> <span class="n">evt_radiobutton</span><span class="p">(</span><span class="n">rb</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_group_changed</span> <span class="p">}</span> <span class="p">}</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -1087,18 +1023,9 @@ You will work with the app.rb skeleton from the previous lesson, adding one widg
     <a href="#step-5--choice" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><code>Wx::Choice</code> is a drop-down list that shows only the selected item. Add a country selector:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">countries</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;Australia&#39;</span><span class="p">,</span> <span class="s1">&#39;Canada&#39;</span><span class="p">,</span> <span class="s1">&#39;New Zealand&#39;</span><span class="p">,</span> <span class="s1">&#39;United Kingdom&#39;</span><span class="p">,</span> <span class="s1">&#39;United States&#39;</span><span class="o">]</span>
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">countries</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;Australia&#39;</span><span class="p">,</span> <span class="s1">&#39;Canada&#39;</span><span class="p">,</span> <span class="s1">&#39;New Zealand&#39;</span><span class="p">,</span> <span class="s1">&#39;United Kingdom&#39;</span><span class="p">,</span> <span class="s1">&#39;United States&#39;</span><span class="o">]</span>
 </span></span><span class="line"><span class="cl"><span class="vi">@country</span>  <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Choice</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">,</span> <span class="ss">choices</span><span class="p">:</span> <span class="n">countries</span><span class="p">,</span> <span class="ss">pos</span><span class="p">:</span> <span class="o">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">144</span><span class="o">]</span><span class="p">,</span> <span class="ss">size</span><span class="p">:</span> <span class="o">[</span><span class="mi">200</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="vi">@country</span><span class="o">.</span><span class="n">selection</span> <span class="o">=</span> <span class="mi">0</span>    <span class="c1"># select the first item by default</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+</span></span><span class="line"><span class="cl"><span class="vi">@country</span><span class="o">.</span><span class="n">selection</span> <span class="o">=</span> <span class="mi">0</span>    <span class="c1"># select the first item by default</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -1113,16 +1040,8 @@ You will work with the app.rb skeleton from the previous lesson, adding one widg
 <p>Run it. The drop-down shows &ldquo;Australia&rdquo; and expands when clicked. Read the selection:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@country</span><span class="o">.</span><span class="n">selection</span>           <span class="c1"># integer index of selected item</span>
-</span></span><span class="line"><span class="cl"><span class="vi">@country</span><span class="o">.</span><span class="n">string_selection</span>    <span class="c1"># the selected string directly</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@country</span><span class="o">.</span><span class="n">selection</span>           <span class="c1"># integer index of selected item</span>
+</span></span><span class="line"><span class="cl"><span class="vi">@country</span><span class="o">.</span><span class="n">string_selection</span>    <span class="c1"># the selected string directly</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"

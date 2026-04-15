@@ -39,7 +39,7 @@ When to use HtmlWindow
   <meta itemprop="description" content="HtmlWindowWx::HTML::HtmlWindow is a lightweight HTML renderer built into wxRuby3. It handles a useful subset of HTML — headings, paragraphs, lists, tables, inline formatting, images, links, and horizontal rules — without requiring a full browser engine. It is the right tool when you need to display formatted content that you control and know will be straightforward HTML.
 Note the namespace: it is Wx::HTML (all caps), not Wx::Html.
 When to use HtmlWindow Use HtmlWindow when:">
-  <meta itemprop="wordCount" content="452">
+  <meta itemprop="wordCount" content="449">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
   <meta name="twitter:description" content="HtmlWindowWx::HTML::HtmlWindow is a lightweight HTML renderer built into wxRuby3. It handles a useful subset of HTML — headings, paragraphs, lists, tables, inline formatting, images, links, and horizontal rules — without requiring a full browser engine. It is the right tool when you need to display formatted content that you control and know will be straightforward HTML.
@@ -669,14 +669,7 @@ When to use HtmlWindow Use HtmlWindow when:">
 <h2>Creating a HtmlWindow<span class="hx:absolute hx:-mt-20" id="creating-a-htmlwindow"></span>
     <a href="#creating-a-htmlwindow" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@html</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">HTML</span><span class="o">::</span><span class="no">HtmlWindow</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">)</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@html</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">HTML</span><span class="o">::</span><span class="no">HtmlWindow</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@panel</span><span class="p">)</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -691,14 +684,7 @@ When to use HtmlWindow Use HtmlWindow when:">
 <p>Optionally set a larger base font size — the default is quite small:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@html</span><span class="o">.</span><span class="n">set_standard_fonts</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@html</span><span class="o">.</span><span class="n">set_standard_fonts</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -747,14 +733,7 @@ When to use HtmlWindow Use HtmlWindow when:">
 <p>Load from a file with <code>load_page</code>:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@html</span><span class="o">.</span><span class="n">load_page</span><span class="p">(</span><span class="s1">&#39;/path/to/document.html&#39;</span><span class="p">)</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@html</span><span class="o">.</span><span class="n">load_page</span><span class="p">(</span><span class="s1">&#39;/path/to/document.html&#39;</span><span class="p">)</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"

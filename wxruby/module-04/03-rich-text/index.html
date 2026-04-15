@@ -57,7 +57,7 @@ Wx::WANTS_CHARS is important — without it, Tab and Enter keys may not work cor
   <meta itemprop="description" content="Rich textWx::RTC::RichTextCtrl is a powerful formatted text editor. Unlike Wx::TextCtrl, it supports inline bold, italic, font sizes, colours, and paragraph alignment — all within a single editable widget. It is suitable for any application that needs to display or produce styled text: documentation tools, note-taking apps, report editors, and markdown previewers.
 Creating a RichTextCtrl The widget lives in the Wx::RTC namespace:
 1 2 @rtc = Wx::RTC::RichTextCtrl.new(@panel, style: Wx::VSCROLL | Wx::HSCROLL | Wx::NO_BORDER | Wx::WANTS_CHARS) Wx::WANTS_CHARS is important — without it, Tab and Enter keys may not work correctly inside the control.">
-  <meta itemprop="wordCount" content="499">
+  <meta itemprop="wordCount" content="497">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
   <meta name="twitter:description" content="Rich textWx::RTC::RichTextCtrl is a powerful formatted text editor. Unlike Wx::TextCtrl, it supports inline bold, italic, font sizes, colours, and paragraph alignment — all within a single editable widget. It is suitable for any application that needs to display or produce styled text: documentation tools, note-taking apps, report editors, and markdown previewers.
@@ -1029,14 +1029,7 @@ Creating a RichTextCtrl The widget lives in the Wx::RTC namespace:
     <a href="#scrolling-to-position" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>After programmatically populating the control, scroll to the top:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@rtc</span><span class="o">.</span><span class="n">move_home</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@rtc</span><span class="o">.</span><span class="n">move_home</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -1051,14 +1044,7 @@ Creating a RichTextCtrl The widget lives in the Wx::RTC namespace:
 <p>Or to the end:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@rtc</span><span class="o">.</span><span class="n">move_end</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@rtc</span><span class="o">.</span><span class="n">move_end</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"

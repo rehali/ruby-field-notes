@@ -34,7 +34,7 @@ This is categorically different from Wx::HTML::HtmlWindow. HtmlWindow is a light
   <meta itemprop="name" content="Ruby Field Notes">
   <meta itemprop="description" content="WebView basicsWx::WEB::WebView embeds a full browser engine in your desktop app. On macOS and Linux it uses WebKit; on Windows it uses the Edge WebView2 runtime. The result is a widget that can render any modern web page, execute JavaScript, load external resources, and display content indistinguishable from a browser tab.
 This is categorically different from Wx::HTML::HtmlWindow. HtmlWindow is a lightweight renderer supporting a useful subset of HTML. WebView is a full browser — everything that works in Chrome or Safari works in a WebView.">
-  <meta itemprop="wordCount" content="831">
+  <meta itemprop="wordCount" content="828">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
   <meta name="twitter:description" content="WebView basicsWx::WEB::WebView embeds a full browser engine in your desktop app. On macOS and Linux it uses WebKit; on Windows it uses the Edge WebView2 runtime. The result is a widget that can render any modern web page, execute JavaScript, load external resources, and display content indistinguishable from a browser tab.
@@ -661,14 +661,7 @@ This is categorically different from Wx::HTML::HtmlWindow. HtmlWindow is a light
     <a href="#creating-a-webview" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>The widget lives in the <code>Wx::WEB</code> namespace:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@webview</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">WEB</span><span class="o">::</span><span class="no">WebView</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ID_ANY</span><span class="p">,</span> <span class="s1">&#39;about:blank&#39;</span><span class="p">)</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@webview</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">WEB</span><span class="o">::</span><span class="no">WebView</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="no">Wx</span><span class="o">::</span><span class="no">ID_ANY</span><span class="p">,</span> <span class="s1">&#39;about:blank&#39;</span><span class="p">)</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -783,16 +776,8 @@ This is categorically different from Wx::HTML::HtmlWindow. HtmlWindow is a light
     <a href="#approach-3--base64-data-uri" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>Encode the complete HTML page as base64 and load via <code>load_url</code>:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">encoded</span> <span class="o">=</span> <span class="no">Base64</span><span class="o">.</span><span class="n">strict_encode64</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="vi">@webview</span><span class="o">.</span><span class="n">load_url</span><span class="p">(</span><span class="s2">&#34;data:text/html;base64,</span><span class="si">#{</span><span class="n">encoded</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">encoded</span> <span class="o">=</span> <span class="no">Base64</span><span class="o">.</span><span class="n">strict_encode64</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="vi">@webview</span><span class="o">.</span><span class="n">load_url</span><span class="p">(</span><span class="s2">&#34;data:text/html;base64,</span><span class="si">#{</span><span class="n">encoded</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"

@@ -35,7 +35,7 @@ A note on typing vs copying. The examples in this series are short enough to typ
   <meta itemprop="name" content="Ruby Field Notes">
   <meta itemprop="description" content="Frames and panels: the skeleton of every appEvery wxRuby3 application is built on the same foundation: a frame containing a panel containing everything else. This lesson builds that foundation step by step. By the end you will have a working skeleton that you will reuse — with small modifications — for every app in this series.
 A note on typing vs copying. The examples in this series are short enough to type. We strongly recommend typing rather than copying and pasting. The small friction of typing forces you to read each line, and reading each line is how the patterns become familiar. Copy-pasting produces files that run; typing produces understanding.">
-  <meta itemprop="wordCount" content="1043">
+  <meta itemprop="wordCount" content="1042">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
   <meta name="twitter:description" content="Frames and panels: the skeleton of every appEvery wxRuby3 application is built on the same foundation: a frame containing a panel containing everything else. This lesson builds that foundation step by step. By the end you will have a working skeleton that you will reuse — with small modifications — for every app in this series.
@@ -736,14 +736,7 @@ A note on typing vs copying. The examples in this series are short enough to typ
 <p>To prevent the user from resizing the window smaller than your layout requires, add a minimum size after <code>super</code>:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">set_min_size</span><span class="p">(</span><span class="no">Wx</span><span class="o">::</span><span class="no">Size</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">))</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">set_min_size</span><span class="p">(</span><span class="no">Wx</span><span class="o">::</span><span class="no">Size</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">))</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"

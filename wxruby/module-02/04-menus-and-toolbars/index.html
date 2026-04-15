@@ -34,7 +34,7 @@ This lesson builds both from scratch on a fresh app. By the end you will have a 
   <meta itemprop="name" content="Ruby Field Notes">
   <meta itemprop="description" content="Menus and toolbarsMenus and toolbars are how desktop apps expose commands — actions the user can trigger regardless of what they are doing in the main window. A well-designed menu bar is predictable: users know where to look for File, Edit, and Help without thinking about it. A toolbar puts the most frequent commands within a single click.
 This lesson builds both from scratch on a fresh app. By the end you will have a frame with a complete menu bar, keyboard shortcuts, and a toolbar — the kind of chrome that makes an app feel finished.">
-  <meta itemprop="wordCount" content="2007">
+  <meta itemprop="wordCount" content="1985">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Ruby Field Notes">
   <meta name="twitter:description" content="Menus and toolbarsMenus and toolbars are how desktop apps expose commands — actions the user can trigger regardless of what they are doing in the main window. A well-designed menu bar is predictable: users know where to look for File, Edit, and Help without thinking about it. A toolbar puts the most frequent commands within a single click.
@@ -1028,14 +1028,7 @@ This lesson builds both from scratch on a fresh app. By the end you will have a 
 <p><strong>Check items</strong> toggle independently — like checkboxes:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@show_ruler_id</span> <span class="o">=</span> <span class="n">view_menu</span><span class="o">.</span><span class="n">append_check_item</span><span class="p">(</span><span class="no">Wx</span><span class="o">::</span><span class="no">ID_ANY</span><span class="p">,</span> <span class="s2">&#34;Show &amp;Ruler&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">id</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@show_ruler_id</span> <span class="o">=</span> <span class="n">view_menu</span><span class="o">.</span><span class="n">append_check_item</span><span class="p">(</span><span class="no">Wx</span><span class="o">::</span><span class="no">ID_ANY</span><span class="p">,</span> <span class="s2">&#34;Show &amp;Ruler&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">id</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -1050,20 +1043,10 @@ This lesson builds both from scratch on a fresh app. By the end you will have a 
 <p><strong>Radio items</strong> are mutually exclusive within their group — like radio buttons:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">view_menu</span><span class="o">.</span><span class="n">append_separator</span>
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">view_menu</span><span class="o">.</span><span class="n">append_separator</span>
 </span></span><span class="line"><span class="cl"><span class="vi">@view_small_id</span>  <span class="o">=</span> <span class="n">view_menu</span><span class="o">.</span><span class="n">append_radio_item</span><span class="p">(</span><span class="no">Wx</span><span class="o">::</span><span class="no">ID_ANY</span><span class="p">,</span> <span class="s2">&#34;Small Icons&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">id</span>
 </span></span><span class="line"><span class="cl"><span class="vi">@view_medium_id</span> <span class="o">=</span> <span class="n">view_menu</span><span class="o">.</span><span class="n">append_radio_item</span><span class="p">(</span><span class="no">Wx</span><span class="o">::</span><span class="no">ID_ANY</span><span class="p">,</span> <span class="s2">&#34;Medium Icons&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">id</span>
-</span></span><span class="line"><span class="cl"><span class="vi">@view_large_id</span>  <span class="o">=</span> <span class="n">view_menu</span><span class="o">.</span><span class="n">append_radio_item</span><span class="p">(</span><span class="no">Wx</span><span class="o">::</span><span class="no">ID_ANY</span><span class="p">,</span> <span class="s2">&#34;Large Icons&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">id</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+</span></span><span class="line"><span class="cl"><span class="vi">@view_large_id</span>  <span class="o">=</span> <span class="n">view_menu</span><span class="o">.</span><span class="n">append_radio_item</span><span class="p">(</span><span class="no">Wx</span><span class="o">::</span><span class="no">ID_ANY</span><span class="p">,</span> <span class="s2">&#34;Large Icons&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">id</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -1114,16 +1097,8 @@ This lesson builds both from scratch on a fresh app. By the end you will have a 
 <p>To read or set a check item&rsquo;s state programmatically:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">menu_bar</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="vi">@show_ruler_id</span><span class="p">,</span> <span class="kp">true</span><span class="p">)</span>    <span class="c1"># check it</span>
-</span></span><span class="line"><span class="cl"><span class="n">menu_bar</span><span class="o">.</span><span class="n">is_checked</span><span class="p">(</span><span class="vi">@show_ruler_id</span><span class="p">)</span>     <span class="c1"># true or false</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">menu_bar</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="vi">@show_ruler_id</span><span class="p">,</span> <span class="kp">true</span><span class="p">)</span>    <span class="c1"># check it</span>
+</span></span><span class="line"><span class="cl"><span class="n">menu_bar</span><span class="o">.</span><span class="n">is_checked</span><span class="p">(</span><span class="vi">@show_ruler_id</span><span class="p">)</span>     <span class="c1"># true or false</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -1140,20 +1115,10 @@ This lesson builds both from scratch on a fresh app. By the end you will have a 
     <a href="#step-6--the-help-menu-and-about-dialog" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>A Help menu with an About item is standard on every platform.</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">help_menu</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Menu</span><span class="o">.</span><span class="n">new</span>
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">help_menu</span> <span class="o">=</span> <span class="no">Wx</span><span class="o">::</span><span class="no">Menu</span><span class="o">.</span><span class="n">new</span>
 </span></span><span class="line"><span class="cl"><span class="n">help_menu</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="no">Wx</span><span class="o">::</span><span class="no">ID_ABOUT</span><span class="p">,</span> <span class="s2">&#34;&amp;About</span><span class="se">\t</span><span class="s2">F1&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">menu_bar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">help_menu</span><span class="p">,</span> <span class="s2">&#34;&amp;Help&#34;</span><span class="p">)</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+</span></span><span class="line"><span class="cl"><span class="n">menu_bar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">help_menu</span><span class="p">,</span> <span class="s2">&#34;&amp;Help&#34;</span><span class="p">)</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -1297,22 +1262,11 @@ This lesson builds both from scratch on a fresh app. By the end you will have a 
 <p>Toolbar buttons fire <code>evt_tool</code>, not <code>evt_menu</code>. Add handlers in <code>bind_events</code>:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">evt_tool</span><span class="p">(</span><span class="no">Wx</span><span class="o">::</span><span class="no">ID_NEW</span><span class="p">)</span>   <span class="p">{</span> <span class="n">log</span><span class="p">(</span><span class="s1">&#39;Toolbar &gt; New&#39;</span><span class="p">)</span> <span class="p">}</span>
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">evt_tool</span><span class="p">(</span><span class="no">Wx</span><span class="o">::</span><span class="no">ID_NEW</span><span class="p">)</span>   <span class="p">{</span> <span class="n">log</span><span class="p">(</span><span class="s1">&#39;Toolbar &gt; New&#39;</span><span class="p">)</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="n">evt_tool</span><span class="p">(</span><span class="no">Wx</span><span class="o">::</span><span class="no">ID_OPEN</span><span class="p">)</span>  <span class="p">{</span> <span class="n">log</span><span class="p">(</span><span class="s1">&#39;Toolbar &gt; Open&#39;</span><span class="p">)</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="n">evt_tool</span><span class="p">(</span><span class="no">Wx</span><span class="o">::</span><span class="no">ID_SAVE</span><span class="p">)</span>  <span class="p">{</span> <span class="n">log</span><span class="p">(</span><span class="s1">&#39;Toolbar &gt; Save&#39;</span><span class="p">)</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="n">evt_tool</span><span class="p">(</span><span class="vi">@zoom_in_id</span><span class="p">)</span>  <span class="p">{</span> <span class="n">log</span><span class="p">(</span><span class="s1">&#39;Toolbar &gt; Zoom In&#39;</span><span class="p">)</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="n">evt_tool</span><span class="p">(</span><span class="vi">@zoom_out_id</span><span class="p">)</span> <span class="p">{</span> <span class="n">log</span><span class="p">(</span><span class="s1">&#39;Toolbar &gt; Zoom Out&#39;</span><span class="p">)</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+</span></span><span class="line"><span class="cl"><span class="n">evt_tool</span><span class="p">(</span><span class="vi">@zoom_out_id</span><span class="p">)</span> <span class="p">{</span> <span class="n">log</span><span class="p">(</span><span class="s1">&#39;Toolbar &gt; Zoom Out&#39;</span><span class="p">)</span> <span class="p">}</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
@@ -1327,24 +1281,12 @@ This lesson builds both from scratch on a fresh app. By the end you will have a 
 <p>Run it. The toolbar buttons all fire and log their actions. In a real app, the menu item and toolbar button for the same action would call the same handler method:</p>
 <div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 
-<div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">evt_menu</span><span class="p">(</span><span class="no">Wx</span><span class="o">::</span><span class="no">ID_NEW</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_new</span> <span class="p">}</span>
+<div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">evt_menu</span><span class="p">(</span><span class="no">Wx</span><span class="o">::</span><span class="no">ID_NEW</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_new</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="n">evt_tool</span><span class="p">(</span><span class="no">Wx</span><span class="o">::</span><span class="no">ID_NEW</span><span class="p">)</span> <span class="p">{</span> <span class="n">on_new</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">on_new</span>
 </span></span><span class="line"><span class="cl">  <span class="c1"># one method, triggered from both menu and toolbar</span>
-</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+</span></span><span class="line"><span class="cl"><span class="k">end</span></span></span></code></pre></div></div><div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
   <button
     class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
     title="Copy code"
