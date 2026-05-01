@@ -4,6 +4,8 @@
   <url>
     <loc>https://www.rehali.com/echarts/overview/</loc>
   </url><url>
+    <loc>https://www.rehali.com/gis/overview/</loc>
+  </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/overview/</loc>
   </url><url>
     <loc>https://www.rehali.com/draft/</loc>
@@ -12,9 +14,15 @@
   </url><url>
     <loc>https://www.rehali.com/echarts/module-00-setup/</loc>
   </url><url>
+    <loc>https://www.rehali.com/phlex-leaflet/overview/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-06/01-a-richer-dataset/</loc>
+  </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-03/01-base-component/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-07/01-design-tokens/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-07/01-distance-and-projection/</loc>
   </url><url>
     <loc>https://www.rehali.com/wxruby/module-04/01-drawing-with-device-contexts/</loc>
   </url><url>
@@ -22,11 +30,15 @@
   </url><url>
     <loc>https://www.rehali.com/wxruby/module-02/01-frames-and-panels/</loc>
   </url><url>
+    <loc>https://www.rehali.com/gis/module-04/01-geojson-from-rails/</loc>
+  </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-09/01-hotwire-mental-model/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-04/01-installation/</loc>
   </url><url>
     <loc>https://www.rehali.com/echarts/module-01-foundation/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/phlex-leaflet/module-01/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-05/01-lookbook/</loc>
   </url><url>
@@ -34,11 +46,21 @@
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-01/</loc>
   </url><url>
+    <loc>https://www.rehali.com/gis/module-01/</loc>
+  </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-10/01-rails-8-auth/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-02/01-rails-8-with-postgis/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-11/01-setup-and-seeding/</loc>
   </url><url>
+    <loc>https://www.rehali.com/gis/appendix-b/sql-reference/</loc>
+  </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-08/01-stimulus-in-depth/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/appendix-a/01-getting-abs-data/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-05/01-the-operational-model/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-01/01-the-problem-with-erb/</loc>
   </url><url>
@@ -46,15 +68,25 @@
   </url><url>
     <loc>https://www.rehali.com/wxruby/module-05/01-webview-basics/</loc>
   </url><url>
+    <loc>https://www.rehali.com/gis/module-03/01-what-postgis-adds/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-01/01-what-were-building/</loc>
+  </url><url>
     <loc>https://www.rehali.com/wxruby/module-01/01-the-case-for-desktop/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-02/01-your-first-component/</loc>
   </url><url>
     <loc>https://www.rehali.com/echarts/</loc>
   </url><url>
+    <loc>https://www.rehali.com/phlex-leaflet/</loc>
+  </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/</loc>
   </url><url>
     <loc>https://www.rehali.com/wxruby/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/tile_server/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/</loc>
   </url><url>
     <loc>https://www.rehali.com/wxruby/module-03/02-application-structure/</loc>
   </url><url>
@@ -63,6 +95,8 @@
     <loc>https://www.rehali.com/phlex-on-rails/module-10/02-auth-views/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-11/02-board-policy/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-06/02-clustering-and-spiderify/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-01/02-component-philosophy/</loc>
   </url><url>
@@ -80,6 +114,8 @@
   </url><url>
     <loc>https://www.rehali.com/wxruby/module-04/02-images-and-bitmaps/</loc>
   </url><url>
+    <loc>https://www.rehali.com/gis/module-07/02-indexed-proximity/</loc>
+  </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-03/02-kits/</loc>
   </url><url>
     <loc>https://www.rehali.com/echarts/module-02-formatters/</loc>
@@ -88,15 +124,35 @@
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-02/</loc>
   </url><url>
+    <loc>https://www.rehali.com/gis/module-02/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/appendix-b/postgis-reference/</loc>
+  </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-07/02-restyling-components/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-05/02-role-aware-navigation/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-04/02-sources-layers/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/appendix-a/02-the-database-structure/</loc>
   </url><url>
     <loc>https://www.rehali.com/wxruby/module-05/02-js-bridge/</loc>
   </url><url>
     <loc>https://www.rehali.com/wxruby/module-01/02-the-mental-model/</loc>
   </url><url>
+    <loc>https://www.rehali.com/gis/module-01/02-the-two-audiences/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-02/02-adding-the-gem/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-03/02-your-first-geometry-column/</loc>
+  </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-07/03-dark-mode/</loc>
   </url><url>
     <loc>https://www.rehali.com/wxruby/module-03/03-data-driven-widgets/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/appendix-b/explain-analyze/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-07/03-travel-analysis/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-06/03-form-primitives/</loc>
   </url><url>
@@ -122,19 +178,39 @@
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-03/</loc>
   </url><url>
+    <loc>https://www.rehali.com/gis/module-03/</loc>
+  </url><url>
     <loc>https://www.rehali.com/wxruby/module-04/03-rich-text/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-10/03-sign-up/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-03/03-simple-components/</loc>
   </url><url>
+    <loc>https://www.rehali.com/gis/module-06/03-spatial-joins-with-st-within/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-03/03-srids-and-projections/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-04/03-styling-polygons/</loc>
+  </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-02/03-the-difference-from-erb/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-09/03-the-full-board-view/</loc>
   </url><url>
+    <loc>https://www.rehali.com/gis/module-05/03-managers-dashboard/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-01/03-what-youll-learn/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-02/03-your-first-map/</loc>
+  </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-03/04-simple-yield/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-05/04-breadcrumb/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-02/04-coordinates-and-the-lat-lng-convention/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-07/04-coverage-and-territory/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/appendix-b/data-table/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-09/04-drag-and-drop/</loc>
   </url><url>
@@ -144,11 +220,15 @@
   </url><url>
     <loc>https://www.rehali.com/wxruby/module-01/04-the-sampler/</loc>
   </url><url>
+    <loc>https://www.rehali.com/gis/module-04/04-multiple-layers-from-one-source/</loc>
+  </url><url>
     <loc>https://www.rehali.com/wxruby/module-03/04-file-input-output/</loc>
   </url><url>
     <loc>https://www.rehali.com/forms/</loc>
   </url><url>
     <loc>https://www.rehali.com/wxruby/module-04/04-html-window/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-03/04-importing-abs-sa3-boundaries/</loc>
   </url><url>
     <loc>https://www.rehali.com/wxruby/module-05/04-leaflet-maps/</loc>
   </url><url>
@@ -158,6 +238,8 @@
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-04/</loc>
   </url><url>
+    <loc>https://www.rehali.com/gis/module-04/</loc>
+  </url><url>
     <loc>https://www.rehali.com/wxruby/module-04/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-11/04-policy-driven-ui/</loc>
@@ -166,9 +248,19 @@
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-02/04-structural-safety/</loc>
   </url><url>
+    <loc>https://www.rehali.com/gis/module-06/04-choropleth/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-05/04-dispatcher-dashboard/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-01/04-the-three-roles/</loc>
+  </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-07/04-theme-switching/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-10/04-current-user/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-05/05-composing-the-map/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-04/05-depots-as-points/</loc>
   </url><url>
     <loc>https://www.rehali.com/wxruby/module-02/05-dialogs/</loc>
   </url><url>
@@ -181,6 +273,8 @@
     <loc>https://www.rehali.com/phlex-on-rails/module-11/05-presence/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-05/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-05/</loc>
   </url><url>
     <loc>https://www.rehali.com/wxruby/module-05/</loc>
   </url><url>
@@ -198,9 +292,13 @@
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-06/05-self-permitting-forms/</loc>
   </url><url>
+    <loc>https://www.rehali.com/gis/module-06/05-sla-performance-chorpleth/</loc>
+  </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-02/05-svg-components/</loc>
   </url><url>
     <loc>https://www.rehali.com/tailwind/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-02/05-the-corner-convention/</loc>
   </url><url>
     <loc>https://www.rehali.com/wxruby/module-03/05-threading/</loc>
   </url><url>
@@ -218,13 +316,19 @@
   </url><url>
     <loc>https://www.rehali.com/echarts/module-06-heatmap/</loc>
   </url><url>
+    <loc>https://www.rehali.com/gis/module-06/06-map-driven-sidebars/</loc>
+  </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-06/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-06/</loc>
   </url><url>
     <loc>https://www.rehali.com/wxruby/module-02/06-preferences-panel/</loc>
   </url><url>
     <loc>https://www.rehali.com/wxruby/module-03/06-a-file-processor/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-09/06-real-time-broadcasts/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-05/06-dispatcher-dashboard/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-06/06-the-finished-form/</loc>
   </url><url>
@@ -238,9 +342,15 @@
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-07/</loc>
   </url><url>
+    <loc>https://www.rehali.com/gis/module-07/</loc>
+  </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-04/07-testing-phlex-views/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-03/07-testing-with-minitest/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-05/07-field-officer-dashboard/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/module-05/08-consolidation/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-05/08-documentation/</loc>
   </url><url>
@@ -264,11 +374,17 @@
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/module-11/</loc>
   </url><url>
+    <loc>https://www.rehali.com/gis/appendix-a/</loc>
+  </url><url>
     <loc>https://www.rehali.com/echarts/module-12-extending-the-series/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/gis/appendix-b/</loc>
   </url><url>
     <loc>https://www.rehali.com/phlex-on-rails/bonus-01/</loc>
   </url><url>
     <loc>https://www.rehali.com/echarts/appendix-a/</loc>
+  </url><url>
+    <loc>https://www.rehali.com/phlex-leaflet/appendix-b/</loc>
   </url><url>
     <loc>https://www.rehali.com/echarts/appendix-b/</loc>
   </url><url>

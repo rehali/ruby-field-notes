@@ -1,0 +1,546 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ruby Field Notes – </title>
+    <link>https://www.rehali.com/gis/module-01/</link>
+    <description>Recent content on Ruby Field Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2026 rehali 2 — Tutorial content: CC BY-NC-ND 4.0 · Code examples: MIT</copyright>
+    
+	  <atom:link href="https://www.rehali.com/gis/module-01/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title></title>
+      <link>https://www.rehali.com/gis/module-01/01-what-were-building/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.rehali.com/gis/module-01/01-what-were-building/</guid>
+      <description>
+        
+        
+        &lt;h2&gt;Lesson 1 — What we&amp;rsquo;re building&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;lesson-1--what-were-building&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#lesson-1--what-were-building&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The application we&amp;rsquo;ll build over the course of this tutorial is called
+Vera Dispatch Manager. It&amp;rsquo;s a field-service operations app — the kind
+of system that a national broadband installer, a utility maintenance
+company, or a logistics business uses to schedule technicians, dispatch
+vehicles, and manage jobs across a wide geography.&lt;/p&gt;
+&lt;p&gt;That domain is a deliberate choice. Field service is one of the genuine
+sweet spots for spatial software: every job has a location, every
+technician has a position that matters, every service area is a
+polygon, and every operational decision involves &amp;ldquo;what&amp;rsquo;s near what.&amp;rdquo;
+The problems are real and the queries aren&amp;rsquo;t contrived. By the time
+we&amp;rsquo;ve finished, the app will exercise every interesting capability of
+PostGIS and MapLibre.&lt;/p&gt;
+&lt;p&gt;The setting is Australia. The data uses real Australian Bureau of
+Statistics SA3 boundaries (about 360 polygons covering the whole
+country) for service areas. Job density is weighted by SA3 population,
+so the heavy traffic is in Sydney, Melbourne, Brisbane, Perth, and
+Adelaide, with thinner coverage through regional areas — exactly as
+you&amp;rsquo;d expect for a real national service business. We&amp;rsquo;ll generate
+synthetic but plausible data for everything else: technicians, depots,
+vehicles, jobs, customer sites.&lt;/p&gt;
+&lt;h3&gt;The shape of what you&amp;rsquo;ll have built&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;the-shape-of-what-youll-have-built&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#the-shape-of-what-youll-have-built&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;By the end of Module 10, the application includes:&lt;/p&gt;
+&lt;p&gt;A &lt;strong&gt;dispatcher&amp;rsquo;s home view&lt;/strong&gt; showing live job activity across a
+service region. Sortable, filterable, paginated. Click a job, get a
+detail panel. Click a service area on the map, drill into its data.&lt;/p&gt;
+&lt;p&gt;A &lt;strong&gt;manager&amp;rsquo;s national dashboard&lt;/strong&gt; with a choropleth view of job
+density across all of Australia, response-time aggregations per
+region, and drilldown into specifics. Loading half a million job
+records efficiently — vector tiles served from PostGIS, indexes that
+actually do their job.&lt;/p&gt;
+&lt;p&gt;A &lt;strong&gt;field officer&amp;rsquo;s view&lt;/strong&gt; scoped to their own work — today&amp;rsquo;s jobs,
+upcoming, recently completed. Map showing the next destination.
+Update job status from the field.&lt;/p&gt;
+&lt;p&gt;A &lt;strong&gt;drawing tool&lt;/strong&gt; that lets a dispatcher define ad-hoc service
+zones by drawing polygons on the map. The drawn shapes save to
+PostGIS, persist across sessions, and become queryable areas — &amp;ldquo;show
+me jobs inside this zone I just drew.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;A &lt;strong&gt;real-time fleet view&lt;/strong&gt; where technician GPS positions stream live
+across the map. Vehicles glide between locations. ETAs update. New
+jobs appear as they&amp;rsquo;re created. All powered by Action Cable broadcasts.&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s the application&amp;rsquo;s surface. Underneath, you&amp;rsquo;ll have built about
+a dozen tables with proper foreign keys and spatial geometry columns,
+about half a million seeded job records, GiST indexes on the geometry
+columns, vector-tile-serving controllers, Action Cable channels,
+Pundit-shaped policies for role-based access, and a small but capable
+Phlex component library for the UI.&lt;/p&gt;
+&lt;h3&gt;Three roles, one chassis&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;three-roles-one-chassis&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#three-roles-one-chassis&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The application has three user roles: field officer, dispatcher, and
+manager. Each sees the same chassis — the same top bar, sidebar,
+visual identity — but with different navigation items and different
+data scope. A field officer sees their own work; a dispatcher sees
+their region; a manager sees everything.&lt;/p&gt;
+&lt;p&gt;This matters because role-aware UI is a real-world requirement most
+tutorials skip. We&amp;rsquo;ll build it from chapter 1, with a development-mode
+role switcher in the top bar that lets you experience the app from
+each perspective without logging out. Lesson 4 of this module covers
+the roles in more detail.&lt;/p&gt;
+&lt;h3&gt;What it looks like&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;what-it-looks-like&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#what-it-looks-like&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The visual style is what we&amp;rsquo;re calling the &lt;strong&gt;dispatch deck&lt;/strong&gt; — an
+operations console aesthetic. Information density. Status colours
+(green for active, amber for delayed, red for issues). A dark sidebar
+that anchors the layout. A small accent strip at the very top of every
+page. It&amp;rsquo;s not the editorial-style typography you&amp;rsquo;d see on a content
+site or a marketing page; it&amp;rsquo;s closer to the rhythm of an air-traffic
+control screen or a fleet dispatch terminal.&lt;/p&gt;
+&lt;p&gt;You&amp;rsquo;ll build this incrementally. The starter app for chapter 1 ships
+the chassis pre-built — top bar, sidebar, layouts, authentication,
+seed users with each role, the visual styling. Maps and spatial
+features start being added in Module 2. We don&amp;rsquo;t expect you to
+construct the chassis from scratch; we expect you to build the
+spatial work that goes inside it.&lt;/p&gt;
+&lt;h3&gt;What this isn&amp;rsquo;t&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;what-this-isnt&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#what-this-isnt&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;This isn&amp;rsquo;t a Phlex tutorial. We use Phlex extensively for the UI
+components, and there&amp;rsquo;s a separate tutorial — Phlex on Rails — that
+covers Phlex from the ground up. Here we&amp;rsquo;ll explain Phlex idioms as
+they come up but won&amp;rsquo;t unpack them in depth. If a chapter says
+&amp;ldquo;render &lt;code&gt;Components::DataTable.new(rows: @jobs)&lt;/code&gt;&amp;rdquo; and you&amp;rsquo;ve never
+seen Phlex before, the syntax may surprise you, but you&amp;rsquo;ll be able
+to follow what it&amp;rsquo;s doing without difficulty. If you want a deeper
+foundation, the Phlex on Rails tutorial is the place.&lt;/p&gt;
+&lt;p&gt;This isn&amp;rsquo;t a Rails tutorial either. We assume you&amp;rsquo;ve built Rails
+applications before — controllers, views, ActiveRecord, basic Hotwire.
+We won&amp;rsquo;t explain what &lt;code&gt;params[:id]&lt;/code&gt; means or how a controller maps
+to a route. If you&amp;rsquo;re comfortable with the basics of Rails, you&amp;rsquo;re
+the right reader.&lt;/p&gt;
+&lt;p&gt;It also isn&amp;rsquo;t a complete GIS course. PostGIS is a deep system; we
+cover what&amp;rsquo;s needed to build the application well, including some
+genuinely interesting territory around spatial indexing and query
+optimisation, but we don&amp;rsquo;t visit topographies, raster data, or
+projection mathematics in depth. By the end you&amp;rsquo;ll have a solid
+working understanding of geographic queries in PostGIS — enough to
+build serious applications and to know which references to reach for
+when you need more.&lt;/p&gt;
+&lt;h3&gt;What it is&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;what-it-is&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#what-it-is&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;A practical, application-driven tutorial that builds something
+useful, teaches GIS as it goes, and shows what map work in Rails
+can look like when you stop fighting it. Two audiences are
+explicitly served, and the next lesson covers them.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.rehali.com/gis/module-01/02-the-two-audiences/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.rehali.com/gis/module-01/02-the-two-audiences/</guid>
+      <description>
+        
+        
+        &lt;h2&gt;Lesson 2 — The two audiences&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;lesson-2--the-two-audiences&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#lesson-2--the-two-audiences&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;This tutorial is written for two audiences whose needs overlap but
+aren&amp;rsquo;t identical. Most chapters speak to both. A few chapters are more
+useful for one than the other, and you&amp;rsquo;ll get more from the tutorial
+if you know which one you are.&lt;/p&gt;
+&lt;h3&gt;Audience A — Rails developers familiar with GIS&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;audience-a--rails-developers-familiar-with-gis&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#audience-a--rails-developers-familiar-with-gis&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;You&amp;rsquo;ve worked with maps before. Probably Leaflet. You know roughly
+what a tile is, why coordinates use latitude and longitude, what
+GeoJSON looks like. You may have used PostGIS — even if just adding
+a geometry column and writing one or two &lt;code&gt;ST_Within&lt;/code&gt; queries. You&amp;rsquo;re
+not surprised by the term &amp;ldquo;SRID.&amp;rdquo; You don&amp;rsquo;t need an explanation of
+projections; you&amp;rsquo;ve picked which one to use before.&lt;/p&gt;
+&lt;p&gt;What you want from this tutorial is bridging knowledge. You&amp;rsquo;re
+comfortable with the spatial concepts but you&amp;rsquo;ve been writing imperative
+JavaScript to handle the map side, and the maintenance overhead of
+that code has worn thin. You&amp;rsquo;d like to see what it looks like to
+declare maps as Phlex components. You&amp;rsquo;d like to understand how
+MapLibre differs from Leaflet (it&amp;rsquo;s a fork of Mapbox GL, vector-tile-
+native, and significantly more capable for serious work). You&amp;rsquo;d like
+to see how Hotwire — Turbo morph, frames, streams — integrates with
+maps without you writing a thick layer of glue Stimulus.&lt;/p&gt;
+&lt;p&gt;For Audience A, the demo site at &lt;code&gt;https://vera-demo.example.com&lt;/code&gt; is
+also a useful resource alongside this tutorial. The demo site shows
+finished features in isolation — here&amp;rsquo;s what hover styling looks
+like, here&amp;rsquo;s how a Turbo Frame popup works. You can copy patterns
+from there and adapt them. The tutorial is the slower, more thorough
+walk; the demo site is the reference shelf.&lt;/p&gt;
+&lt;p&gt;You can read this tutorial from chapter 1 or skip ahead. Module 1 is
+framing — useful but not technical. Module 2 covers setup; if you
+already have a Rails 8 + PostGIS environment running you can skim it.
+Module 3 is foundational PostGIS material; you might know most of
+it. Module 4 onward — where we connect data to maps and start
+interacting — is where the bridging knowledge lives, and that&amp;rsquo;s
+where you&amp;rsquo;ll likely spend most of your time.&lt;/p&gt;
+&lt;h3&gt;Audience B — Rails developers new to GIS&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;audience-b--rails-developers-new-to-gis&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#audience-b--rails-developers-new-to-gis&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;You&amp;rsquo;ve built Rails applications. You know your way around ActiveRecord,
+controllers, views. You&amp;rsquo;re comfortable with Tailwind, with Stimulus,
+with basic Turbo. But spatial software is unfamiliar territory. When
+someone says &amp;ldquo;geometry column&amp;rdquo; you have a vague idea but you&amp;rsquo;ve never
+created one. You haven&amp;rsquo;t used PostGIS. You don&amp;rsquo;t know the difference
+between a tile and a layer. You&amp;rsquo;re not sure if &lt;code&gt;lat&lt;/code&gt; comes before
+&lt;code&gt;lng&lt;/code&gt; or after. The reason you&amp;rsquo;re here is that an upcoming project
+needs maps — or you&amp;rsquo;ve decided you want to build something with maps —
+and you&amp;rsquo;re starting from the beginning.&lt;/p&gt;
+&lt;p&gt;For Audience B, this tutorial is your foundational text. It introduces
+GIS concepts as they become relevant — usually one new concept per
+chapter, anchored to a working application feature so you immediately
+see why it matters.&lt;/p&gt;
+&lt;p&gt;The most important thing to know reading as Audience B: &lt;strong&gt;don&amp;rsquo;t skip
+chapters&lt;/strong&gt;. The earlier modules introduce concepts that later modules
+build on. If you skip Module 3 (Geometry in PostgreSQL) because the
+title sounds dry, you&amp;rsquo;ll be lost in Module 4 (Data into maps) when
+we connect a Phlex map component to a &lt;code&gt;geometry&lt;/code&gt; column you don&amp;rsquo;t
+have. Each chapter introduces small new pieces; cumulative skipping
+compounds.&lt;/p&gt;
+&lt;p&gt;You should also expect occasional moments of &amp;ldquo;wait, why does this
+work?&amp;rdquo; — particularly when something happens between Rails and the
+browser that involves spatial data. Spatial software has more moving
+parts than typical web work because there&amp;rsquo;s a database type, a
+serialisation format (GeoJSON), a JavaScript library, a tile server,
+and a coordinate system to coordinate. The tutorial makes these
+visible as we go, but the first time something clicks across that
+stack, take a moment to feel it. The clicking is real progress.&lt;/p&gt;
+&lt;h3&gt;What you&amp;rsquo;ll need either way&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;what-youll-need-either-way&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#what-youll-need-either-way&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Regardless of which audience you are, the tutorial assumes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Rails experience.&lt;/strong&gt; You&amp;rsquo;ve built Rails apps. You know what a
+migration is, what a Phlex component is even if you haven&amp;rsquo;t used
+one, how ActiveRecord scopes work. The Phlex on Rails tutorial is
+worth working through first if you&amp;rsquo;ve never written a Phlex
+component.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Comfort with the command line.&lt;/strong&gt; You can run a Rails console,
+invoke &lt;code&gt;rake&lt;/code&gt; tasks, edit files in a terminal-friendly editor.
+You&amp;rsquo;re not afraid of &lt;code&gt;psql&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;A development environment.&lt;/strong&gt; macOS or Linux is straightforward;
+Windows works through WSL. You&amp;rsquo;ll need PostgreSQL with PostGIS
+installed locally — Module 2 walks through this if it&amp;rsquo;s new.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Patience for setup.&lt;/strong&gt; The first chapter where you start coding
+involves installing PostGIS and configuring a Rails 8 project.
+Like any setup chapter, it&amp;rsquo;s the least exciting part of the
+tutorial. Stick with it; everything afterwards is more interesting.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Reading on a phone&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;reading-on-a-phone&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#reading-on-a-phone&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;This tutorial has chapters that go three thousand words and contain
+code blocks with line numbers. The Hugo site renders responsively
+and the code blocks scroll horizontally on small screens, but you&amp;rsquo;ll
+have a much better time reading at a desk with a real keyboard and
+a wide enough screen to put the tutorial side-by-side with your
+editor. The activities expect you to be at a working development
+environment, not on a train.&lt;/p&gt;
+&lt;p&gt;That said — Module 1 is all framing. If you&amp;rsquo;re reading this on a
+phone right now, you&amp;rsquo;re fine. Pick this up at the desk for Module 2.&lt;/p&gt;
+&lt;h3&gt;One more thing&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;one-more-thing&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#one-more-thing&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Before we move on, an honest note about pacing. The first three
+modules feel like setup. You won&amp;rsquo;t have a working map until Module
+2 Lesson 3, and you won&amp;rsquo;t have data on a map until Module 4. If
+that feels slow, it is — deliberately. The reason for the pace is
+that every later chapter benefits from the foundations laid here.
+Module 7&amp;rsquo;s chapter on spatial indexing is much better when you
+already understand the geometry column, the GeoJSON pipeline, and
+the SRID convention. Skipping the foundations to &amp;ldquo;get to the
+interesting bit&amp;rdquo; makes the interesting bit harder, not easier.&lt;/p&gt;
+&lt;p&gt;Module 9 is where everything comes together — the live dispatch
+view with vehicles streaming across the map. The reward at that
+chapter is real, and it&amp;rsquo;s better when you&amp;rsquo;ve earned it.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.rehali.com/gis/module-01/03-what-youll-learn/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.rehali.com/gis/module-01/03-what-youll-learn/</guid>
+      <description>
+        
+        
+        &lt;h2&gt;Lesson 3 — What you&amp;rsquo;ll learn&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;lesson-3--what-youll-learn&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#lesson-3--what-youll-learn&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;This tutorial covers two intertwined topics. One is the architectural
+pattern for building maps in Rails declaratively, with Phlex on the
+component side and the Vera gem wrapping MapLibre. The other is GIS
+proper — the database concepts, query patterns, and performance
+considerations of working with spatial data. The two arrive together
+across ten modules.&lt;/p&gt;
+&lt;p&gt;The arc roughly mirrors how a real spatial application develops.
+You start with one point on a map and end with a half-million-row
+dataset, vector tiles, drawn polygons, and live position streams.
+Every module introduces concepts that the next module relies on.&lt;/p&gt;
+&lt;h3&gt;Module 1 — Why this tutorial exists&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;module-1--why-this-tutorial-exists&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#module-1--why-this-tutorial-exists&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;You&amp;rsquo;re reading it. Framing.&lt;/p&gt;
+&lt;h3&gt;Module 2 — Setup and your first map&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;module-2--setup-and-your-first-map&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#module-2--setup-and-your-first-map&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Install Rails 8, PostgreSQL, and PostGIS. Configure the dispatch app&amp;rsquo;s
+chassis (which ships pre-built — the chassis isn&amp;rsquo;t what we&amp;rsquo;re learning
+to build). Add the Vera gem. Render an empty map of Australia. By the
+end of the module you have a working development environment with the
+basic Phlex map component on the page.&lt;/p&gt;
+&lt;p&gt;The conceptual content here is light: what MapLibre is, how it differs
+from Leaflet and Mapbox, what a tile server is, why coordinates use
+[lat, lng] in some libraries and [lng, lat] in others. Mostly setup.&lt;/p&gt;
+&lt;h3&gt;Module 3 — Geometry in PostgreSQL&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;module-3--geometry-in-postgresql&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#module-3--geometry-in-postgresql&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The first deep module. We add PostGIS to the database, learn what
+&lt;code&gt;geometry&lt;/code&gt; and &lt;code&gt;geography&lt;/code&gt; columns are, set up a &lt;code&gt;Depot&lt;/code&gt; model with
+a point column, insert one row via SQL, and import the ABS SA3
+boundaries via a rake task. By the end you understand SRIDs (and
+why 4326 is what we use), the difference between geometry and
+geography types, and what&amp;rsquo;s actually inside a geometry column at
+the bytes level.&lt;/p&gt;
+&lt;p&gt;This module is also where Audience A might find the slowest pace.
+If you already know SRIDs and projections you can move quickly. The
+boundary-import lesson is worth doing regardless because the
+boundaries become the foundation for everything later.&lt;/p&gt;
+&lt;h3&gt;Module 4 — Data into maps&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;module-4--data-into-maps&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#module-4--data-into-maps&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The bridge. We write a controller action that returns depot locations
+as GeoJSON. We connect that GeoJSON to the map. We use the Phlex DSL
+to declare a circle layer with paint properties — colour, opacity,
+radius. We render multiple layers from the same source.&lt;/p&gt;
+&lt;p&gt;By the end of this module the application shows real depot data on
+a real map. This is also the module where Audience B starts to see
+the architecture click — there&amp;rsquo;s a clear pipeline from PostGIS to
+Rails to JSON to the browser, and each stage is something you can
+inspect and reason about.&lt;/p&gt;
+&lt;h3&gt;Module 5 — Interaction&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;module-5--interaction&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#module-5--interaction&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Click handling. Popups, both simple-text and Turbo-Frame-loaded.
+Hover state via feature-state and the on_hover paint patch. URL-driven
+filtering. And one critical chapter on the three Turbo primitives —
+morph, frames, and streams — and when each is the right choice.
+That conceptual chapter pays back across every later module.&lt;/p&gt;
+&lt;p&gt;By the end of Module 5 the map is interactive. You can click depots
+to see details. You can filter by URL parameters. The application
+starts to feel like a tool, not a demo.&lt;/p&gt;
+&lt;h3&gt;Module 6 — Polygons and spatial relationships&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;module-6--polygons-and-spatial-relationships&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#module-6--polygons-and-spatial-relationships&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The chapter where service areas come alive. We render the ABS
+polygons as fill layers. Click a polygon, drill into its data —
+which depots are inside, how many jobs were performed there. We do
+real spatial joins with &lt;code&gt;ST_Within&lt;/code&gt;. We build a choropleth — the
+classic GIS visualisation where polygon colour encodes a value.&lt;/p&gt;
+&lt;p&gt;The conceptual content includes the &lt;code&gt;data-vs-display&lt;/code&gt; principle:
+hover state shouldn&amp;rsquo;t corrupt the choropleth&amp;rsquo;s encoding because
+choropleth colour means something specific to the reader. Small
+detail, huge impact on map design.&lt;/p&gt;
+&lt;h3&gt;Module 7 — Working at scale&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;module-7--working-at-scale&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#module-7--working-at-scale&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The performance module. We step up the seed data from 50,000 jobs
+to 500,000 and watch the queries slow down. We add a GiST index
+and watch them speed back up. We discover that not every spatial
+function uses the index — &lt;code&gt;ST_DWithin&lt;/code&gt; does, &lt;code&gt;ST_Distance &amp;lt; N&lt;/code&gt;
+doesn&amp;rsquo;t — and learn why. We cluster the points on the map. We
+implement viewport-based loading. We serve vector tiles from
+PostGIS using &lt;code&gt;ST_AsMVT&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;This is the module where you stop building a toy and start
+building production-shaped software. The chapter on how spatial
+indexes actually work is worth the price of admission for many
+readers — most GIS-with-Rails resources don&amp;rsquo;t go this deep.&lt;/p&gt;
+&lt;h3&gt;Module 8 — Drawing and saving&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;module-8--drawing-and-saving&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#module-8--drawing-and-saving&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Geoman integration for drawing tools. The dynamic-import pattern
+that keeps drawing JavaScript out of pages that don&amp;rsquo;t need it.
+Saving drawn geometry to PostGIS. And the payoff — querying within
+drawn shapes. &amp;ldquo;Show me jobs inside this polygon I just drew.&amp;rdquo; The
+loop closes between user input and spatial query.&lt;/p&gt;
+&lt;h3&gt;Module 9 — Real-time&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;module-9--real-time&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#module-9--real-time&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The headline module. Action Cable broadcasts. A position simulator
+that nudges technician GPS coordinates toward their next job. The
+live dispatch view where vehicles glide across the map in real time.
+By the end of Module 9 the application looks and feels like a real
+operations tool. Multiple browsers watch the same fleet.&lt;/p&gt;
+&lt;p&gt;This is also where the role-aware UI gets its biggest workout.
+Each role&amp;rsquo;s real-time view is different — a manager watches the
+fleet nationally, a dispatcher watches their region, a field officer
+watches their own ETA.&lt;/p&gt;
+&lt;h3&gt;Module 10 — Production&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;module-10--production&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#module-10--production&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Deployment, performance considerations beyond the database, system
+testing for spatial features, and a forward-looking chapter on
+what&amp;rsquo;s next. Less about new techniques, more about taking what
+you&amp;rsquo;ve built and putting it in front of real users.&lt;/p&gt;
+&lt;h3&gt;What you&amp;rsquo;ll know by the end&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;what-youll-know-by-the-end&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#what-youll-know-by-the-end&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Specifically, by the time you finish Module 10:&lt;/p&gt;
+&lt;p&gt;You&amp;rsquo;ll know how to &lt;strong&gt;set up a PostGIS-backed Rails 8 application&lt;/strong&gt;
+and configure it for spatial work — adapter selection, geometry
+columns, indexes, fixture data.&lt;/p&gt;
+&lt;p&gt;You&amp;rsquo;ll know how to &lt;strong&gt;declare maps as Phlex components&lt;/strong&gt;, with
+sources, layers, paint properties, popups, hover state, and click
+handling — without writing custom JavaScript for the common cases.&lt;/p&gt;
+&lt;p&gt;You&amp;rsquo;ll know how to &lt;strong&gt;think about spatial data&lt;/strong&gt; — when to use
+geometry vs geography, what an SRID is and why 4326 is usually
+the right choice, what bounding boxes are and why they matter for
+performance, when a query benefits from an index and when it doesn&amp;rsquo;t.&lt;/p&gt;
+&lt;p&gt;You&amp;rsquo;ll know how to &lt;strong&gt;structure the queries&lt;/strong&gt; that real spatial
+applications run — points-in-polygons, distance queries, polygon
+overlap, viewport-bounded queries — and how to make them fast at
+scale.&lt;/p&gt;
+&lt;p&gt;You&amp;rsquo;ll know how to &lt;strong&gt;integrate maps with Hotwire&lt;/strong&gt; — when to use
+Turbo morph for state changes, when to use Turbo Frames for
+independent regions, when to use Turbo Streams for server-pushed
+updates.&lt;/p&gt;
+&lt;p&gt;You&amp;rsquo;ll know how to &lt;strong&gt;handle large datasets&lt;/strong&gt; — vector tiles served
+from PostGIS, clustering, viewport-bounded loading, when GeoJSON
+stops scaling and what to do about it.&lt;/p&gt;
+&lt;p&gt;You&amp;rsquo;ll know how to &lt;strong&gt;build role-aware UIs&lt;/strong&gt; in a real Rails
+application, with policy-driven access control and scoped queries
+that compose with spatial constraints.&lt;/p&gt;
+&lt;p&gt;You&amp;rsquo;ll know how to &lt;strong&gt;stream real-time spatial data&lt;/strong&gt; to maps using
+Action Cable, including the practical considerations of what should
+be persistent state versus transient state.&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s the technical surface. There&amp;rsquo;s a less concrete benefit too:
+you&amp;rsquo;ll have a mental model for spatial software that makes the next
+project — whatever it is — much easier than the first one was. The
+specifics of MapLibre, PostGIS, and the Vera gem are tools you&amp;rsquo;ve
+chosen. The mental model — what spatial data is, how databases find
+things in space, what makes a query fast or slow — is general.&lt;/p&gt;
+&lt;p&gt;The next lesson covers the three user roles that shape how the
+application is structured. After that, Module 2 starts.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.rehali.com/gis/module-01/04-the-three-roles/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.rehali.com/gis/module-01/04-the-three-roles/</guid>
+      <description>
+        
+        
+        &lt;h2&gt;Lesson 4 — The three roles&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;lesson-4--the-three-roles&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#lesson-4--the-three-roles&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Real operations applications have multiple kinds of users. A field
+service business doesn&amp;rsquo;t just have technicians; it also has dispatchers
+who decide where the technicians go and managers who decide how the
+business is performing. These users don&amp;rsquo;t share a screen — each has
+different needs, different responsibilities, and different access to
+data.&lt;/p&gt;
+&lt;p&gt;This tutorial builds the application for three distinct roles. Each
+role is a real perspective on the same underlying data, with different
+defaults, different navigation, and different scope. Understanding
+the roles up front matters because they shape decisions in almost
+every chapter — from the seed data we generate to the queries we
+write to the chrome on the page.&lt;/p&gt;
+&lt;h3&gt;Field officer&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;field-officer&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#field-officer&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;A technician working in the field. Their interest is narrow and
+immediate: the job they&amp;rsquo;re on right now, the next job they&amp;rsquo;re being
+sent to, recently completed work, and a small amount of context
+about where they&amp;rsquo;re going.&lt;/p&gt;
+&lt;p&gt;Field officers see only their own data. The jobs page shows their
+jobs. The map shows their next destination. Reports aren&amp;rsquo;t relevant
+— managers run reports. Most of the powerful operations features are
+hidden because they aren&amp;rsquo;t useful at the field officer&amp;rsquo;s scale.&lt;/p&gt;
+&lt;p&gt;What a field officer needs from the application is &lt;strong&gt;right-now
+information&lt;/strong&gt;. &amp;ldquo;Where am I going next? What&amp;rsquo;s the address? Who&amp;rsquo;s
+the customer? What&amp;rsquo;s the issue I&amp;rsquo;m being sent for?&amp;rdquo; Not aggregations,
+not historical trends, not regional summaries. Personal, contextual,
+immediate.&lt;/p&gt;
+&lt;p&gt;The field officer&amp;rsquo;s view appears throughout the tutorial as a
+constraint check — &amp;ldquo;what does the dispatcher do, and how does the
+field officer&amp;rsquo;s view differ?&amp;rdquo; Many features that make sense for a
+dispatcher&amp;rsquo;s roster don&amp;rsquo;t make sense for an individual technician&amp;rsquo;s
+day, and vice versa. The contrast is instructive.&lt;/p&gt;
+&lt;h3&gt;Dispatcher&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;dispatcher&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#dispatcher&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;A dispatcher is responsible for assigning technicians to jobs across
+one or more service regions. They live in the application all day.
+They pick up new job requests, decide which technician to send,
+update statuses as the day unfolds, and intervene when things go
+wrong (a job overruns, a vehicle breaks down, a customer cancels).&lt;/p&gt;
+&lt;p&gt;Dispatchers see jobs and technicians &lt;strong&gt;scoped to their service
+regions&lt;/strong&gt;. A dispatcher in Brisbane sees Queensland jobs; a
+dispatcher in Melbourne sees Victorian jobs; the system prevents
+them from accidentally interfering with each other&amp;rsquo;s work.&lt;/p&gt;
+&lt;p&gt;The dispatcher&amp;rsquo;s primary tool is the &lt;strong&gt;map&lt;/strong&gt;. They look at the map
+to see where things are happening, where technicians are positioned,
+where the gaps in coverage are. They look at lists of jobs to
+prioritise their decisions. They use the drawing tool to mark
+ad-hoc service zones when patterns emerge (&amp;ldquo;we need extra coverage
+around the Caulfield exhibition this week&amp;rdquo;).&lt;/p&gt;
+&lt;p&gt;Building good dispatcher tools is the heart of this tutorial. Most
+of the interactive features we build — sortable filterable tables,
+choropleth views, click-to-drilldown, drawn polygons, real-time
+position tracking — are dispatcher-facing. If you imagine yourself
+as the user while you build, the dispatcher is the right user to
+imagine for most chapters.&lt;/p&gt;
+&lt;h3&gt;Manager&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;manager&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#manager&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;A regional or national manager whose interest is &lt;strong&gt;operational
+performance&lt;/strong&gt;, not individual jobs. Managers want to know how the
+business is doing — are response times within SLAs? Are there
+regions where job density is overwhelming our coverage? Which
+service categories are growing? Where should we expand?&lt;/p&gt;
+&lt;p&gt;Managers see &lt;strong&gt;everything&lt;/strong&gt;, but they don&amp;rsquo;t operate at the
+job-by-job level. They look at aggregates. The manager&amp;rsquo;s home
+page is a dashboard with summary metrics, a national map showing
+job density as a choropleth, response-time aggregations per
+service area, and the ability to drill into specifics when
+something looks anomalous.&lt;/p&gt;
+&lt;p&gt;The manager&amp;rsquo;s view is where the &lt;strong&gt;scale-related features&lt;/strong&gt; matter
+most — vector tiles serving half a million records, choropleth
+binning that picks the right colour scale, fast aggregations
+that don&amp;rsquo;t make the dashboard wait. Module 7 (Working at scale)
+is essentially the manager&amp;rsquo;s module.&lt;/p&gt;
+&lt;h3&gt;How the roles compose with the application&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;how-the-roles-compose-with-the-application&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#how-the-roles-compose-with-the-application&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Three things change between roles in the running application:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Navigation.&lt;/strong&gt; A field officer&amp;rsquo;s sidebar shows Dashboard and
+Jobs. A dispatcher&amp;rsquo;s sidebar adds Technicians and Service Areas.
+A manager&amp;rsquo;s sidebar adds Reports. The same &lt;code&gt;Components::Sidebar&lt;/code&gt;
+component, different items rendered.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Data scope.&lt;/strong&gt; A field officer querying jobs sees only their own.
+A dispatcher sees their region&amp;rsquo;s. A manager sees everything. This
+is implemented as &lt;code&gt;Job.visible_to(current_user)&lt;/code&gt; — a scope that
+reads the user&amp;rsquo;s role and their region assignment(s) and filters
+accordingly. The chassis ships a stub; we flesh it out as the
+tutorial progresses.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Default landing page.&lt;/strong&gt; A field officer signs in and lands on
+their next job. A dispatcher lands on the map of their region.
+A manager lands on the national dashboard. The &lt;code&gt;HomeController&lt;/code&gt;
+performs a role-aware redirect.&lt;/p&gt;
+&lt;p&gt;These three changes — navigation, scope, default — are most of
+what role-aware UI means in practice. There&amp;rsquo;s also access control
+(a field officer shouldn&amp;rsquo;t be able to call a dispatch endpoint),
+but that&amp;rsquo;s a Module 11 / Appendix concern. For most of the tutorial,
+the role mechanics are implicit.&lt;/p&gt;
+&lt;h3&gt;The development role switcher&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;the-development-role-switcher&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#the-development-role-switcher&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Working through this tutorial, you&amp;rsquo;ll need to see the application
+from each role&amp;rsquo;s perspective. Logging out and signing in as
+different users dozens of times per chapter would be tedious.&lt;/p&gt;
+&lt;p&gt;The chassis includes a &lt;strong&gt;development-only role switcher&lt;/strong&gt; in the
+top bar. Click the dropdown labelled &amp;ldquo;DEV&amp;rdquo;, choose a role, and
+you&amp;rsquo;re signed in as the corresponding seeded user. The seed data
+ships with three users —&lt;code&gt;manager@vera.test&lt;/code&gt;, &lt;code&gt;dispatcher@vera.test&lt;/code&gt;,
+and &lt;code&gt;field_officer@vera.test&lt;/code&gt; — each with the matching role.&lt;/p&gt;
+&lt;p&gt;The role switcher is gated by &lt;code&gt;Rails.env.development?&lt;/code&gt; and is
+genuinely invisible in production. The mechanism uses real
+authentication: clicking &amp;ldquo;Manager&amp;rdquo; signs you out and signs you
+back in as the manager seed user. So everything else in the
+application — &lt;code&gt;Current.user&lt;/code&gt;, &lt;code&gt;current_user.role&lt;/code&gt;, scoped queries
+— works exactly as it would in production. There&amp;rsquo;s no
+&amp;ldquo;impersonation&amp;rdquo; magic that could leak.&lt;/p&gt;
+&lt;p&gt;When a chapter introduces a feature, you&amp;rsquo;ll often see it from the
+dispatcher&amp;rsquo;s view first (because that&amp;rsquo;s our primary user) and
+then either explicitly or by implication, from the manager&amp;rsquo;s
+view. Use the role switcher to see for yourself.&lt;/p&gt;
+&lt;h3&gt;Roles aren&amp;rsquo;t the focus, but they shape the structure&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;roles-arent-the-focus-but-they-shape-the-structure&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#roles-arent-the-focus-but-they-shape-the-structure&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;This tutorial isn&amp;rsquo;t about authorisation patterns. We don&amp;rsquo;t go deep
+on Pundit or CanCanCan; the chassis ships a thin policy layer that
+handles the basics, and Appendix 1 covers the role-based access
+control patterns in more depth for readers who want them.&lt;/p&gt;
+&lt;p&gt;But the existence of three roles influences every chapter. When we
+build a feature, the question &amp;ldquo;which role is this for?&amp;rdquo; almost
+always has a clear answer, and that answer shapes the design. A
+choropleth on the home page is implicitly a manager&amp;rsquo;s feature. A
+&amp;ldquo;my next job&amp;rdquo; view is implicitly a field officer&amp;rsquo;s feature.
+Knowing this up front means the tutorial reads more coherently.&lt;/p&gt;
+&lt;p&gt;It also means &lt;strong&gt;the application you finish with feels like a real
+product&lt;/strong&gt; rather than a demo. Real products have real users with
+real roles. Toy applications don&amp;rsquo;t.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;That&amp;rsquo;s Module 1. The next module starts the actual build —
+installing PostGIS, configuring the Rails 8 project, dropping in
+the chassis, and rendering an empty map of Australia. See you there.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

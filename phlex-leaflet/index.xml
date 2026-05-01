@@ -1,0 +1,19 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ruby Field Notes – Phlex meets GIS</title>
+    <link>https://www.rehali.com/phlex-leaflet/</link>
+    <description>Recent content in Phlex meets GIS on Ruby Field Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2026 rehali 2 — Tutorial content: CC BY-NC-ND 4.0 · Code examples: MIT</copyright>
+    
+	  <atom:link href="https://www.rehali.com/phlex-leaflet/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+  </channel>
+</rss>
